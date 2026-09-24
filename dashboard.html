@@ -101,7 +101,12 @@
       <h2 id="welcome">Welcome to DeutschStart! 👋</h2>
       <p>Continue learning German and improve your skills.</p>
     </div>
+<div class="welcome">
+  <h2 id="welcome">Welcome to DeutschStart! 👋</h2>
+  <p>Continue learning German and improve your skills.</p>
 
+  <button id="logoutBtn">🚪 Logout</button>
+</div>
     <div class="cards">
 
       <div class="card">
@@ -155,8 +160,12 @@
         "Welcome, " + user.email + "! 👋";
     }
   }
-
-  loadUser();
+document.getElementById("logoutBtn").addEventListener("click", async () => {
+  await supabaseClient.auth.signOut();
+  window.location.href = "login.html";
+});
+  loadUser()
+}););
 </script>
 </body>
 </html>
