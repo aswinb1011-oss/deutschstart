@@ -212,7 +212,9 @@ function showLesson(lesson) {
         <div class="lesson">
             <h2>👋 Greetings</h2>
             <p>Learn common German greetings.</p>
-
+<button onclick="completeLesson('Greetings')">
+  ✅ Complete Lesson
+</button>
             <div class="words">
                 <b>Hallo!</b> — Hello!<br>
                 <b>Guten Morgen!</b> — Good morning!<br>
@@ -464,6 +466,30 @@ async function loadUser() {
 }
 
 loadUser();
+</script>
+    <script>
+async function completeLesson(lessonName) {
+
+  if (!currentUser) {
+    alert("Please login first.");
+    return;
+  }
+
+  const { error } = await supabaseClient
+    .from("lesson_progress")
+    .upsert({
+      user_id: currentUser.id,
+      lesson_name: lessonName,
+      completed: true
+    });
+
+  if (error) {
+    alert("Error: " + error.message);
+    return;
+  }
+
+  alert("✅ Lesson completed!");
+}
 </script>
 </body>
 </html>
