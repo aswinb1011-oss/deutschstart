@@ -160,11 +160,13 @@
         "Welcome, " + user.email + "! 👋";
     }
   }
-document.getElementById("logoutBtn").addEventListener("click", async () => {
+
+});
+  loadUser()
+  document.getElementById("logoutBtn").addEventListener("click", async () => {
   await supabaseClient.auth.signOut();
   window.location.href = "login.html";
 });
-  loadUser()
 }););
 </script>
 </body>
