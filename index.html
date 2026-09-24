@@ -1,18 +1,284 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>DeutschStart</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeutschStart 🇩🇪</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #172033;
+}
+
+header {
+    background: #172033;
+    color: white;
+    padding: 18px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.nav {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+    font-size: 14px;
+}
+
+.hero {
+    background: linear-gradient(135deg, #172033, #31456b);
+    color: white;
+    text-align: center;
+    padding: 70px 20px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 28px;
+}
+
+.button {
+    display: inline-block;
+    background: #ffcc00;
+    color: #172033;
+    padding: 14px 25px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 45px 20px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.levels {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.card {
+    background: white;
+    padding: 25px 18px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.card h3 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #667085;
+    margin-bottom: 18px;
+}
+
+.card a {
+    color: #3157a5;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.feature {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+}
+
+.feature h3 {
+    margin-bottom: 10px;
+}
+
+.feature p {
+    color: #667085;
+    line-height: 1.5;
+}
+
+.cta {
+    background: #e8edf7;
+    text-align: center;
+    padding: 45px 20px;
+    margin-top: 20px;
+}
+
+.cta h2 {
+    margin-bottom: 12px;
+}
+
+.cta p {
+    margin-bottom: 20px;
+}
+
+footer {
+    background: #172033;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+@media (max-width: 700px) {
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .levels {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
 </head>
-<body style="font-family: Arial; text-align: center; padding: 50px;">
-    <h1>🇩🇪 DeutschStart</h1>
-    <h2>Learn German A1 → B2</h2>
 
-    <p>Welcome to your German learning website.</p>
+<body>
 
-    <h3>Levels</h3>
-    <p>A1 | A2 | B1 | B2</p>
+<header>
+    <div class="nav">
+        <div class="logo">🇩🇪 DeutschStart</div>
+        <nav>
+            <a href="#levels">Levels</a>
+            <a href="#learn">Learn</a>
+            <a href="#about">About</a>
+        </nav>
+    </div>
+</header>
 
-    <h3>Sections</h3>
-    <p>Grammar | Vocabulary | Speaking | Writing | Listening</p>
+<section class="hero">
+    <h1>Learn German. Speak with Confidence.</h1>
+    <p>German learning from A1 to B2 — simple, practical and beginner-friendly.</p>
+    <a class="button" href="#levels">Start Learning 🚀</a>
+</section>
+
+<section class="container" id="levels">
+    <h2 class="section-title">Choose Your Level</h2>
+
+    <div class="levels">
+
+        <div class="card">
+            <h3>🇩🇪 A1</h3>
+            <p>Beginner German</p>
+            <a href="#">Start A1 →</a>
+        </div>
+
+        <div class="card">
+            <h3>🇩🇪 A2</h3>
+            <p>Elementary German</p>
+            <a href="#">Start A2 →</a>
+        </div>
+
+        <div class="card">
+            <h3>🇩🇪 B1</h3>
+            <p>Intermediate German</p>
+            <a href="#">Start B1 →</a>
+        </div>
+
+        <div class="card">
+            <h3>🇩🇪 B2</h3>
+            <p>Upper-intermediate German</p>
+            <a href="#">Start B2 →</a>
+        </div>
+
+    </div>
+</section>
+
+<section class="container" id="learn">
+    <h2 class="section-title">What Can You Learn?</h2>
+
+    <div class="features">
+
+        <div class="feature">
+            <h3>📚 Grammar</h3>
+            <p>Learn German grammar step by step with simple examples and exercises.</p>
+        </div>
+
+        <div class="feature">
+            <h3>🧠 Vocabulary</h3>
+            <p>Build useful German vocabulary for everyday life, study and work.</p>
+        </div>
+
+        <div class="feature">
+            <h3>🗣️ Speaking</h3>
+            <p>Practice German speaking questions and useful conversation sentences.</p>
+        </div>
+
+        <div class="feature">
+            <h3>✍️ Writing</h3>
+            <p>Learn how to write German messages, emails and exam topics.</p>
+        </div>
+
+        <div class="feature">
+            <h3>🎧 Listening</h3>
+            <p>Improve your German listening skills with practical exercises.</p>
+        </div>
+
+        <div class="feature">
+            <h3>📝 Tests</h3>
+            <p>Practice A1, A2, B1 and B2 exam-style questions.</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="cta" id="about">
+    <h2>🇩🇪 Your German Journey Starts Here</h2>
+    <p>Learn German step by step and prepare for your future in Germany.</p>
+    <a class="button" href="#levels">Start Now</a>
+</section>
+
+<footer>
+    <p>© 2026 DeutschStart 🇩🇪</p>
+    <p>Learn German A1 → B2</p>
+</footer>
+
 </body>
 </html>
