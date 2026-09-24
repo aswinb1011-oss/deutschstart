@@ -161,11 +161,16 @@
     }
   }
 
-});
-  loadUser()
-  document.getElementById("logoutBtn").addEventListener("click", async () => {
-  await supabaseClient.auth.signOut();
-  window.location.href = "login.html";
+  document.getElementById("logoutBtn").addEventListener("click", async function () {
+    const { error } = await supabaseClient.auth.signOut();
+
+    if (!error) {
+      window.location.href = "login.html";
+    }
+  });
+
+  loadUser();
+</script>
 });
 }););
 </script>
