@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DeutschStart – A1 🇩🇪</title>
+<title>DeutschStart A1 🇩🇪</title>
 
 <style>
 * {
@@ -21,18 +21,12 @@ body {
 header {
     background: #172033;
     color: white;
-    padding: 18px 20px;
+    padding: 18px;
+    text-align: center;
 }
 
-.logo {
-    font-size: 22px;
-    font-weight: bold;
-}
-
-.container {
-    max-width: 900px;
-    margin: auto;
-    padding: 30px 20px;
+header h1 {
+    font-size: 24px;
 }
 
 .hero {
@@ -42,60 +36,76 @@ header {
     padding: 45px 20px;
 }
 
-.hero h1 {
-    font-size: 36px;
-    margin-bottom: 12px;
+.hero h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
 }
 
-.hero p {
-    font-size: 17px;
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 25px 18px;
 }
 
 .back {
     display: inline-block;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     color: #3157a5;
     text-decoration: none;
     font-weight: bold;
 }
 
+.lesson-menu {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.menu-button {
+    background: white;
+    border: none;
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    font-size: 16px;
+    font-weight: bold;
+    color: #172033;
+}
+
 .lesson {
     background: white;
-    padding: 22px;
-    margin: 18px 0;
+    padding: 25px;
     border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
 }
 
 .lesson h2 {
-    margin-bottom: 12px;
+    margin-bottom: 15px;
 }
 
 .lesson p {
     line-height: 1.6;
-    color: #4b5565;
+    margin-bottom: 12px;
 }
 
-.example {
+.words {
     background: #eef2f8;
     padding: 15px;
     border-radius: 10px;
-    margin-top: 12px;
-    line-height: 1.8;
+    line-height: 2;
 }
 
-.quiz {
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    margin-top: 25px;
+.quiz-question {
+    margin-top: 20px;
+    font-weight: bold;
 }
 
 .option {
-    display: block;
     width: 100%;
     padding: 13px;
-    margin: 10px 0;
+    margin-top: 10px;
     border: 1px solid #d5dbea;
     background: white;
     border-radius: 9px;
@@ -103,11 +113,16 @@ header {
     font-size: 16px;
 }
 
-.option:active {
+.option:hover {
     background: #eef2f8;
 }
 
-.button {
+.result {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.home-button {
     display: inline-block;
     background: #ffcc00;
     color: #172033;
@@ -115,7 +130,7 @@ header {
     border-radius: 9px;
     text-decoration: none;
     font-weight: bold;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 footer {
@@ -125,119 +140,269 @@ footer {
     padding: 25px;
     margin-top: 30px;
 }
+
+@media (max-width: 600px) {
+    .lesson-menu {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h2 {
+        font-size: 27px;
+    }
+}
 </style>
 </head>
 
 <body>
 
 <header>
-    <div class="logo">🇩🇪 DeutschStart</div>
+    <h1>🇩🇪 DeutschStart</h1>
 </header>
 
 <section class="hero">
-    <h1>A1 German 🇩🇪</h1>
-    <p>Start your German journey from zero.</p>
+    <h2>A1 German</h2>
+    <p>Learn German step by step.</p>
 </section>
 
 <div class="container">
 
 <a class="back" href="index.html">← Back to Home</a>
 
-<div class="lesson">
-    <h2>👋 Lesson 1: Greetings</h2>
-    <p>Learn the most common German greetings.</p>
+<h2 style="margin-bottom:15px;">📚 A1 Lessons</h2>
 
-    <div class="example">
-        <b>Hallo!</b> — Hello!<br>
-        <b>Guten Morgen!</b> — Good morning!<br>
-        <b>Guten Tag!</b> — Good day!<br>
-        <b>Guten Abend!</b> — Good evening!<br>
-        <b>Gute Nacht!</b> — Good night!<br>
-        <b>Auf Wiedersehen!</b> — Goodbye!
-    </div>
+<div class="lesson-menu">
+    <button class="menu-button" onclick="showLesson('greetings')">👋 Greetings</button>
+    <button class="menu-button" onclick="showLesson('intro')">🙋 Introduction</button>
+    <button class="menu-button" onclick="showLesson('numbers')">🔢 Numbers</button>
+    <button class="menu-button" onclick="showLesson('family')">👨‍👩‍👧 Family</button>
+    <button class="menu-button" onclick="showLesson('home')">🏠 Home</button>
+    <button class="menu-button" onclick="showLesson('food')">🍎 Food</button>
+    <button class="menu-button" onclick="showLesson('routine')">🕐 Daily Routine</button>
+    <button class="menu-button" onclick="showLesson('grammar')">📚 Grammar</button>
+    <button class="menu-button" onclick="showLesson('speaking')">🗣️ Speaking</button>
+    <button class="menu-button" onclick="showLesson('quiz')">📝 A1 Quiz</button>
 </div>
 
-<div class="lesson">
-    <h2>🙋 Lesson 2: Introduce Yourself</h2>
-
-    <div class="example">
-        <b>Ich heiße Aswin.</b><br>
-        My name is Aswin.<br><br>
-
-        <b>Ich bin 18 Jahre alt.</b><br>
-        I am 18 years old.<br><br>
-
-        <b>Ich komme aus Indien.</b><br>
-        I come from India.<br><br>
-
-        <b>Ich wohne in Wayanad.</b><br>
-        I live in Wayanad.
-    </div>
-</div>
+<div id="lesson-area">
 
 <div class="lesson">
-    <h2>🔢 Lesson 3: Numbers</h2>
-
-    <div class="example">
-        <b>eins</b> — 1<br>
-        <b>zwei</b> — 2<br>
-        <b>drei</b> — 3<br>
-        <b>vier</b> — 4<br>
-        <b>fünf</b> — 5<br>
-        <b>sechs</b> — 6<br>
-        <b>sieben</b> — 7<br>
-        <b>acht</b> — 8<br>
-        <b>neun</b> — 9<br>
-        <b>zehn</b> — 10
-    </div>
+    <h2>👋 Welcome to A1!</h2>
+    <p>Select a lesson above to start learning German.</p>
 </div>
 
-<div class="lesson">
-    <h2>👨‍👩‍👧 Lesson 4: Family</h2>
-
-    <div class="example">
-        <b>die Familie</b> — family<br>
-        <b>der Vater</b> — father<br>
-        <b>die Mutter</b> — mother<br>
-        <b>der Bruder</b> — brother<br>
-        <b>die Schwester</b> — sister<br>
-        <b>das Kind</b> — child
-    </div>
 </div>
 
-<div class="lesson">
-    <h2>📝 A1 Quick Test</h2>
-
-    <div class="quiz">
-        <p><b>What does "Guten Morgen" mean?</b></p>
-
-        <button class="option" onclick="checkAnswer(false)">
-            Good night
-        </button>
-
-        <button class="option" onclick="checkAnswer(true)">
-            Good morning
-        </button>
-
-        <button class="option" onclick="checkAnswer(false)">
-            Goodbye
-        </button>
-
-        <p id="result"></p>
-    </div>
-</div>
-
-<a class="button" href="index.html">🏠 Home</a>
+<a class="home-button" href="index.html">🏠 Home</a>
 
 </div>
 
 <footer>
     <p>© 2026 DeutschStart 🇩🇪</p>
+    <p>Learn German A1 → B2</p>
 </footer>
 
 <script>
-function checkAnswer(correct) {
-    const result = document.getElementById("result");
+
+function showLesson(lesson) {
+
+    const area = document.getElementById("lesson-area");
+
+    if (lesson === "greetings") {
+        area.innerHTML = `
+        <div class="lesson">
+            <h2>👋 Greetings</h2>
+            <p>Learn common German greetings.</p>
+
+            <div class="words">
+                <b>Hallo!</b> — Hello!<br>
+                <b>Guten Morgen!</b> — Good morning!<br>
+                <b>Guten Tag!</b> — Good day!<br>
+                <b>Guten Abend!</b> — Good evening!<br>
+                <b>Gute Nacht!</b> — Good night!<br>
+                <b>Auf Wiedersehen!</b> — Goodbye!
+            </div>
+        </div>`;
+    }
+
+    else if (lesson === "intro") {
+        area.innerHTML = `
+        <div class="lesson">
+            <h2>🙋 Introduce Yourself</h2>
+
+            <div class="words">
+                <b>Ich heiße Aswin.</b><br>
+                My name is Aswin.<br><br>
+
+                <b>Ich bin 18 Jahre alt.</b><br>
+                I am 18 years old.<br><br>
+
+                <b>Ich komme aus Indien.</b><br>
+                I come from India.<br><br>
+
+                <b>Ich wohne in Wayanad.</b><br>
+                I live in Wayanad.
+            </div>
+        </div>`;
+    }
+
+    else if (lesson === "numbers") {
+        area.innerHTML = `
+        <div class="lesson">
+            <h2>🔢 Numbers 1–10</h2>
+
+            <div class="words">
+                eins — 1<br>
+                zwei — 2<br>
+                drei — 3<br>
+                vier — 4<br>
+                fünf — 5<br>
+                sechs — 6<br>
+                sieben — 7<br>
+                acht — 8<br>
+                neun — 9<br>
+                zehn — 10
+            </div>
+        </div>`;
+    }
+
+    else if (lesson === "family") {
+        area.innerHTML = `
+        <div class="lesson">
+            <h2>👨‍👩‍👧 Family</h2>
+
+            <div class="words">
+                die Familie — family<br>
+                der Vater — father<br>
+                die Mutter — mother<br>
+                der Bruder — brother<br>
+                die Schwester — sister<br>
+                das Kind — child
+            </div>
+        </div>`;
+    }
+
+    else if (lesson === "home") {
+        area.innerHTML = `
+        <div class="lesson">
+            <h2>🏠 Home</h2>
+
+            <div class="words">
+                das Haus — house<br>
+                die Wohnung — apartment<br>
+                das Zimmer — room<br>
+                die Küche — kitchen<br>
+                das Bad — bathroom<br>
+                das Schlafzimmer — bedroom
+            </div>
+        </div>`;
+    }
+
+    else if (lesson === "food") {
+        area.innerHTML = `
+        <div class="lesson">
+            <h2>🍎 Food</h2>
+
+            <div class="words">
+                das Brot — bread<br>
+                der Reis — rice<br>
+                das Wasser — water<br>
+                der Kaffee — coffee<br>
+                der Apfel — apple<br>
+                das Essen — food
+            </div>
+        </div>`;
+    }
+
+    else if (lesson === "routine") {
+        area.innerHTML = `
+        <div class="lesson">
+            <h2>🕐 Daily Routine</h2>
+
+            <div class="words">
+                <b>Ich stehe um 7 Uhr auf.</b><br>
+                I get up at 7 o'clock.<br><br>
+
+                <b>Ich frühstücke.</b><br>
+                I have breakfast.<br><br>
+
+                <b>Ich spiele Fußball.</b><br>
+                I play football.<br><br>
+
+                <b>Ich gehe um 22 Uhr schlafen.</b><br>
+                I go to sleep at 10 PM.
+            </div>
+        </div>`;
+    }
+
+    else if (lesson === "grammar") {
+        area.innerHTML = `
+        <div class="lesson">
+            <h2>📚 Basic Grammar</h2>
+
+            <p><b>Personal pronouns:</b></p>
+
+            <div class="words">
+                ich — I<br>
+                du — you<br>
+                er — he<br>
+                sie — she<br>
+                es — it<br>
+                wir — we<br>
+                ihr — you (plural)<br>
+                sie — they
+            </div>
+
+            <p style="margin-top:15px;">
+                Example: <b>Ich bin Student.</b>
+            </p>
+        </div>`;
+    }
+
+    else if (lesson === "speaking") {
+        area.innerHTML = `
+        <div class="lesson">
+            <h2>🗣️ Speaking Practice</h2>
+
+            <p><b>Frage:</b> Wie heißt du?</p>
+            <p><b>Antwort:</b> Ich heiße Aswin.</p>
+
+            <p><b>Frage:</b> Woher kommst du?</p>
+            <p><b>Antwort:</b> Ich komme aus Indien.</p>
+
+            <p><b>Frage:</b> Was sind deine Hobbys?</p>
+            <p><b>Antwort:</b> Meine Hobbys sind Fußball spielen und Musik hören.</p>
+        </div>`;
+    }
+
+    else if (lesson === "quiz") {
+        area.innerHTML = `
+        <div class="lesson">
+            <h2>📝 A1 Quiz</h2>
+
+            <p class="quiz-question">
+            What does "Guten Morgen" mean?
+            </p>
+
+            <button class="option" onclick="answer(false)">
+            Good night
+            </button>
+
+            <button class="option" onclick="answer(true)">
+            Good morning
+            </button>
+
+            <button class="option" onclick="answer(false)">
+            Goodbye
+            </button>
+
+            <p id="quiz-result" class="result"></p>
+        </div>`;
+    }
+}
+
+function answer(correct) {
+
+    const result = document.getElementById("quiz-result");
 
     if (correct) {
         result.innerHTML = "✅ Correct! Sehr gut!";
@@ -247,6 +412,7 @@ function checkAnswer(correct) {
         result.style.color = "red";
     }
 }
+
 </script>
 
 </body>
