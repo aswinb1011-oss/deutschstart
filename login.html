@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DeutschStart – Login</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .box {
+      background: white;
+      width: 90%;
+      max-width: 400px;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h1 {
+      color: #111827;
+    }
+
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 13px;
+      margin: 8px 0;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 13px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 10px;
+      background: #2563eb;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    #message {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    a {
+      display: block;
+      margin-top: 20px;
+      color: #2563eb;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <h1>🇩🇪 DeutschStart</h1>
+    <p>Create an account or log in</p>
+
+    <input id="email" type="email" placeholder="Email address">
+
+    <input id="password" type="password" placeholder="Password">
+
+    <button onclick="signUp()">Create Account</button>
+
+    <button onclick="login()">Login</button>
+
+    <p id="message"></p>
+
+    <a href="index.html">← Back to DeutschStart</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+
+  <script>
+    const supabaseClient = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
+
+    async function signUp() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const message = document.getElementById("message");
+
+      const { error } = await supabaseClient.auth.signUp({
+        email: email,
+        password: password
+      });
+
+      if (error) {
+        message.textContent = error.message;
+      } else {
+        message.textContent =
+          "Account created! Check your email to confirm your account.";
+      }
+    }
+
+    async function login() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const message = document.getElementById("message");
+
+      const { error } = await supabaseClient.auth.signInWithPassword({
+        email: email,
+        password: password
+      });
+
+      if (error) {
+        message.textContent = error.message;
+      } else {
+        message.textContent = "Login successful! 🎉";
+      }
+    }
+  </script>
+
+</body>
+</html>
