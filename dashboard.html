@@ -73,11 +73,11 @@
       border-radius: 10px;
       cursor: pointer;
       font-size: 15px;
+      margin-top: 10px;
     }
 
-    a {
-      color: #2563eb;
-      text-decoration: none;
+    .logout {
+      background: #dc2626;
     }
 
     footer {
@@ -98,19 +98,23 @@
   <div class="container">
 
     <div class="welcome">
-      <h2 id="welcome">Welcome to DeutschStart! 👋</h2>
-      <p>Continue learning German and improve your skills.</p>
-    </div>
-<div class="welcome">
-  <h2 id="welcome">Welcome to DeutschStart! 👋</h2>
-  <p>Continue learning German and improve your skills.</p>
 
-  <button onclick="logout()">🚪 Logout</button>
-</div>
+      <h2 id="welcome">Welcome to DeutschStart! 👋</h2>
+
+      <p>Continue learning German and improve your skills.</p>
+
+      <button onclick="logout()" class="logout">
+        🚪 Logout
+      </button>
+
+    </div>
+
     <div class="cards">
 
       <div class="card">
+
         <h2>📚 A1 German</h2>
+
         <p>Your progress</p>
 
         <div class="progress">
@@ -119,21 +123,38 @@
 
         <p>20% completed</p>
 
-        <a href="a1.html">
-          <button>Continue Learning</button>
-        </a>
+        <button onclick="goToA1()">
+          Continue Learning
+        </button>
+
       </div>
 
       <div class="card">
+
         <h2>📝 A1 Quiz</h2>
+
         <p>Your quiz progress</p>
-        <p><strong>Not completed yet</strong></p>
+
+        <p>
+          <strong>Not completed yet</strong>
+        </p>
+
       </div>
 
       <div class="card">
+
         <h2>📊 My Progress</h2>
-        <p>Lessons completed: <strong>0</strong></p>
-        <p>Quiz score: <strong>—</strong></p>
+
+        <p>
+          Lessons completed:
+          <strong>0</strong>
+        </p>
+
+        <p>
+          Quiz score:
+          <strong>—</strong>
+        </p>
+
       </div>
 
     </div>
@@ -143,34 +164,79 @@
   <footer>
     🇩🇪 DeutschStart — Learn German. Speak with Confidence.
   </footer>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="config.js"></script>
 
-<script>
-  const supabaseClient = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
-  );
 
-  async function loadUser() {
-    const { data: { user } } = await supabaseClient.auth.getUser();
+  <!-- Supabase -->
 
-    if (user) {
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script src="config.js"></script>
+
+
+  <script>
+
+    const supabaseClient = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+    // Load logged-in user
+
+    async function loadUser() {
+
+      const {
+        data: { user }
+      } = await supabaseClient.auth.getUser();
+
+
+      if (!user) {
+
+        window.location.href = "login.html";
+
+        return;
+      }
+
+
       document.getElementById("welcome").textContent =
         "Welcome, " + user.email + "! 👋";
+
     }
-  }
 
-  document.getElementById("logoutBtn").addEventListener("click", async function () {
-    const { error } = await supabaseClient.auth.signOut();
 
-    if (!error) {
-      window.location.href = "async function logout() {
-  await supabaseClient.auth.signOut();
-  window.location.href = "login.html";
-}
-});
-}););
-</script>
+    // Logout
+
+    async function logout() {
+
+      const { error } =
+        await supabaseClient.auth.signOut();
+
+
+      if (error) {
+
+        alert("Logout failed: " + error.message);
+
+        return;
+      }
+
+
+      window.location.href = "login.html";
+
+    }
+
+
+    // Open A1
+
+    function goToA1() {
+
+      window.location.href = "a1.html";
+
+    }
+
+
+    loadUser();
+
+  </script>
+
 </body>
 </html>
