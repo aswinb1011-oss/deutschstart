@@ -105,7 +105,7 @@
   <h2 id="welcome">Welcome to DeutschStart! 👋</h2>
   <p>Continue learning German and improve your skills.</p>
 
-  <button id="logoutBtn">🚪 Logout</button>
+  <button onclick="logout()">🚪 Logout</button>
 </div>
     <div class="cards">
 
@@ -165,12 +165,10 @@
     const { error } = await supabaseClient.auth.signOut();
 
     if (!error) {
-      window.location.href = "login.html";
-    }
-  });
-
-  loadUser();
-</script>
+      window.location.href = "async function logout() {
+  await supabaseClient.auth.signOut();
+  window.location.href = "login.html";
+}
 });
 }););
 </script>
