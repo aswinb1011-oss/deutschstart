@@ -98,7 +98,7 @@
   <div class="container">
 
     <div class="welcome">
-      <h2>Welcome to DeutschStart! 👋</h2>
+      <h2 id="welcome">Welcome to DeutschStart! 👋</h2>
       <p>Continue learning German and improve your skills.</p>
     </div>
 
@@ -138,6 +138,25 @@
   <footer>
     🇩🇪 DeutschStart — Learn German. Speak with Confidence.
   </footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
 
+<script>
+  const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+
+  async function loadUser() {
+    const { data: { user } } = await supabaseClient.auth.getUser();
+
+    if (user) {
+      document.getElementById("welcome").textContent =
+        "Welcome, " + user.email + "! 👋";
+    }
+  }
+
+  loadUser();
+</script>
 </body>
 </html>
