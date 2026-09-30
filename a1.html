@@ -71,6 +71,11 @@ header h1 {
     font-size: 16px;
     font-weight: bold;
     color: #172033;
+    cursor: pointer;
+}
+
+.menu-button:hover {
+    background: #eef2f8;
 }
 
 .lesson {
@@ -97,29 +102,74 @@ header h1 {
     line-height: 2;
 }
 
+.complete-button {
+    background: #172033;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 9px;
+    margin: 10px 0 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.complete-button:hover {
+    background: #31456b;
+}
+
+.quiz-header {
+    background: #eef2f8;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
 .quiz-question {
     margin-top: 20px;
+    font-size: 19px;
     font-weight: bold;
+    line-height: 1.5;
 }
 
 .option {
     width: 100%;
-    padding: 13px;
+    padding: 14px;
     margin-top: 10px;
     border: 1px solid #d5dbea;
     background: white;
     border-radius: 9px;
     text-align: left;
     font-size: 16px;
+    cursor: pointer;
 }
 
 .option:hover {
     background: #eef2f8;
 }
 
+.option:disabled {
+    cursor: default;
+}
+
 .result {
     margin-top: 15px;
     font-weight: bold;
+    line-height: 1.5;
+}
+
+.quiz-button {
+    background: #ffcc00;
+    color: #172033;
+    border: none;
+    padding: 13px 22px;
+    border-radius: 9px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.quiz-button:hover {
+    opacity: 0.9;
 }
 
 .home-button {
@@ -139,6 +189,20 @@ footer {
     text-align: center;
     padding: 25px;
     margin-top: 30px;
+}
+
+.score-box {
+    text-align: center;
+    padding: 25px;
+    background: #eef2f8;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+.score-number {
+    font-size: 38px;
+    font-weight: bold;
+    margin: 10px 0;
 }
 
 @media (max-width: 600px) {
@@ -201,20 +265,70 @@ footer {
     <p>Learn German A1 → B2</p>
 </footer>
 
+
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- Question bank -->
+<script src="a1-questions.js"></script>
+
+<!-- Supabase configuration -->
+<script src="config.js"></script>
+
 <script>
+
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
+
+let currentUser = null;
+
+
+/* =========================
+   LOAD USER
+========================= */
+
+async function loadUser() {
+
+    const {
+        data: { user }
+    } = await supabaseClient.auth.getUser();
+
+    if (!user) {
+        window.location.href = "login.html";
+        return;
+    }
+
+    currentUser = user;
+}
+
+loadUser();
+
+
+/* =========================
+   LESSON MENU
+========================= */
 
 function showLesson(lesson) {
 
     const area = document.getElementById("lesson-area");
 
+
     if (lesson === "greetings") {
+
         area.innerHTML = `
         <div class="lesson">
+
             <h2>👋 Greetings</h2>
+
             <p>Learn common German greetings.</p>
-<button onclick="completeLesson('Greetings')">
-  ✅ Complete Lesson
-</button>
+
+            <button class="complete-button"
+                onclick="completeLesson('Greetings')">
+                ✅ Complete Lesson
+            </button>
+
             <div class="words">
                 <b>Hallo!</b> — Hello!<br>
                 <b>Guten Morgen!</b> — Good morning!<br>
@@ -223,15 +337,20 @@ function showLesson(lesson) {
                 <b>Gute Nacht!</b> — Good night!<br>
                 <b>Auf Wiedersehen!</b> — Goodbye!
             </div>
+
         </div>`;
     }
 
+
     else if (lesson === "intro") {
+
         area.innerHTML = `
         <div class="lesson">
+
             <h2>🙋 Introduce Yourself</h2>
 
             <div class="words">
+
                 <b>Ich heiße Aswin.</b><br>
                 My name is Aswin.<br><br>
 
@@ -243,18 +362,27 @@ function showLesson(lesson) {
 
                 <b>Ich wohne in Wayanad.</b><br>
                 I live in Wayanad.
+
             </div>
+
         </div>`;
     }
 
+
     else if (lesson === "numbers") {
+
         area.innerHTML = `
         <div class="lesson">
+
             <h2>🔢 Numbers 1–10</h2>
-<button onclick="completeLesson('Numbers')">
-  ✅ Complete Lesson
-</button>
+
+            <button class="complete-button"
+                onclick="completeLesson('Numbers')">
+                ✅ Complete Lesson
+            </button>
+
             <div class="words">
+
                 eins — 1<br>
                 zwei — 2<br>
                 drei — 3<br>
@@ -265,72 +393,108 @@ function showLesson(lesson) {
                 acht — 8<br>
                 neun — 9<br>
                 zehn — 10
+
             </div>
+
         </div>`;
     }
 
+
     else if (lesson === "family") {
+
         area.innerHTML = `
         <div class="lesson">
+
             <h2>👨‍👩‍👧 Family</h2>
-<button onclick="completeLesson('Family')">
-  ✅ Complete Lesson
-</button>
+
+            <button class="complete-button"
+                onclick="completeLesson('Family')">
+                ✅ Complete Lesson
+            </button>
+
             <div class="words">
+
                 die Familie — family<br>
                 der Vater — father<br>
                 die Mutter — mother<br>
                 der Bruder — brother<br>
                 die Schwester — sister<br>
                 das Kind — child
+
             </div>
+
         </div>`;
     }
 
+
     else if (lesson === "home") {
+
         area.innerHTML = `
         <div class="lesson">
+
             <h2>🏠 Home</h2>
-<button onclick="completeLesson('Home')">
-  ✅ Complete Lesson
-</button>
+
+            <button class="complete-button"
+                onclick="completeLesson('Home')">
+                ✅ Complete Lesson
+            </button>
+
             <div class="words">
+
                 das Haus — house<br>
                 die Wohnung — apartment<br>
                 das Zimmer — room<br>
                 die Küche — kitchen<br>
                 das Bad — bathroom<br>
                 das Schlafzimmer — bedroom
+
             </div>
+
         </div>`;
     }
 
+
     else if (lesson === "food") {
+
         area.innerHTML = `
         <div class="lesson">
+
             <h2>🍎 Food</h2>
-<button onclick="completeLesson('Food')">
-  ✅ Complete Lesson
-</button>
+
+            <button class="complete-button"
+                onclick="completeLesson('Food')">
+                ✅ Complete Lesson
+            </button>
+
             <div class="words">
+
                 das Brot — bread<br>
                 der Reis — rice<br>
                 das Wasser — water<br>
                 der Kaffee — coffee<br>
                 der Apfel — apple<br>
                 das Essen — food
+
             </div>
+
         </div>`;
     }
 
+
     else if (lesson === "routine") {
+
         area.innerHTML = `
         <div class="lesson">
+
             <h2>🕐 Daily Routine</h2>
-<button onclick="completeLesson('Daily Routine')">
-  ✅ Complete Lesson
-</button>
+
+            <button class="complete-button"
+                onclick="completeLesson('Daily Routine')">
+                ✅ Complete Lesson
+            </button>
+
             <div class="words">
+
                 <b>Ich stehe um 7 Uhr auf.</b><br>
                 I get up at 7 o'clock.<br><br>
 
@@ -342,20 +506,29 @@ function showLesson(lesson) {
 
                 <b>Ich gehe um 22 Uhr schlafen.</b><br>
                 I go to sleep at 10 PM.
+
             </div>
+
         </div>`;
     }
 
+
     else if (lesson === "grammar") {
+
         area.innerHTML = `
         <div class="lesson">
+
             <h2>📚 Basic Grammar</h2>
-<button onclick="completeLesson('Grammar')">
-  ✅ Complete Lesson
-</button>
+
+            <button class="complete-button"
+                onclick="completeLesson('Grammar')">
+                ✅ Complete Lesson
+            </button>
+
             <p><b>Personal pronouns:</b></p>
 
             <div class="words">
+
                 ich — I<br>
                 du — you<br>
                 er — he<br>
@@ -364,167 +537,368 @@ function showLesson(lesson) {
                 wir — we<br>
                 ihr — you (plural)<br>
                 sie — they
+
             </div>
 
             <p style="margin-top:15px;">
                 Example: <b>Ich bin Student.</b>
             </p>
+
         </div>`;
     }
+
 
     else if (lesson === "speaking") {
+
         area.innerHTML = `
         <div class="lesson">
+
             <h2>🗣️ Speaking Practice</h2>
 
-            <p><b>Frage:</b> Wie heißt du?</p>
-            <p><b>Antwort:</b> Ich heiße Aswin.</p>
-
-            <p><b>Frage:</b> Woher kommst du?</p>
-            <p><b>Antwort:</b> Ich komme aus Indien.</p>
-
-            <p><b>Frage:</b> Was sind deine Hobbys?</p>
-            <p><b>Antwort:</b> Meine Hobbys sind Fußball spielen und Musik hören.</p>
-        </div>`;
-    }
-
-    else if (lesson === "quiz") {
-        area.innerHTML = `
-        <div class="lesson">
-            <h2>📝 A1 Quiz</h2>
-
-            <p class="quiz-question">
-            What does "Guten Morgen" mean?
+            <p>
+                <b>Frage:</b> Wie heißt du?
             </p>
 
-            <button class="option" onclick="answer(false)">
-            Good night
-            </button>
+            <p>
+                <b>Antwort:</b> Ich heiße Aswin.
+            </p>
 
-            <button class="option" onclick="answer(true)">
-            Good morning
-            </button>
+            <p>
+                <b>Frage:</b> Woher kommst du?
+            </p>
 
-            <button class="option" onclick="answer(false)">
-            Goodbye
-            </button>
+            <p>
+                <b>Antwort:</b> Ich komme aus Indien.
+            </p>
 
-            <p id="quiz-result" class="result"></p>
+            <p>
+                <b>Frage:</b> Was sind deine Hobbys?
+            </p>
+
+            <p>
+                <b>Antwort:</b>
+                Meine Hobbys sind Fußball spielen und Musik hören.
+            </p>
+
         </div>`;
+    }
+
+
+    else if (lesson === "quiz") {
+
+        startQuiz();
+
     }
 }
 
-async function answer(correct) {
 
-  const result = document.getElementById("quiz-result");
+/* =========================
+   LESSON COMPLETION
+========================= */
 
-  if (correct) {
-    result.innerHTML = "✅ Correct! Sehr gut!";
-    result.style.color = "green";
-  } else {
-    result.innerHTML = "❌ Try again!";
-    result.style.color = "red";
-  }
-
-  if (!currentUser) {
-    console.log("User not logged in");
-    return;
-  }
-
-  const score = correct ? 1 : 0;
-  const total = 1;
-
-  const { error } = await supabaseClient
-    .from("quiz_results")
-    .insert({
-      user_id: currentUser.id,
-      score: score,
-      total: total
-    });
-
-  if (error) {
-    console.log("Quiz save error:", error.message);
-  } else {
-    console.log("Quiz result saved!");
-  }
-}
-
-</script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="config.js"></script>
-
-<script>
-const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_PUBLISHABLE_KEY
-);
-
-let currentUser = null;
-
-async function loadUser() {
-  const {
-    data: { user }
-  } = await supabaseClient.auth.getUser();
-
-  if (!user) {
-    window.location.href = "login.html";
-    return;
-  }
-
-  currentUser = user;
-}
-
-loadUser();
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="a1-questions.js"></script>
-<script src="config.js"></script>
-
-<script>
-const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_PUBLISHABLE_KEY
-);
-
-let currentUser = null;
-
-async function loadUser() {
-  const {
-    data: { user }
-  } = await supabaseClient.auth.getUser();
-
-  if (!user) {
-    window.location.href = "login.html";
-    return;
-  }
-
-  currentUser = user;
-}
-
-loadUser();
-</script>
-    <script>
 async function completeLesson(lessonName) {
 
-  if (!currentUser) {
-    alert("Please login first.");
-    return;
-  }
+    if (!currentUser) {
 
-  const { error } = await supabaseClient
-    .from("lesson_progress")
-    .upsert({
-      user_id: currentUser.id,
-      lesson_name: lessonName,
-      completed: true
+        alert("Please login first.");
+
+        return;
+    }
+
+    const { error } = await supabaseClient
+        .from("lesson_progress")
+        .upsert({
+            user_id: currentUser.id,
+            lesson_name: lessonName,
+            completed: true
+        });
+
+    if (error) {
+
+        alert("Error: " + error.message);
+
+        return;
+    }
+
+    alert("✅ Lesson completed!");
+}
+
+
+/* =========================
+   QUIZ VARIABLES
+========================= */
+
+let quizQuestions = [];
+let currentQuestion = 0;
+let quizScore = 0;
+let quizFinished = false;
+
+
+/* =========================
+   START QUIZ
+========================= */
+
+function startQuiz() {
+
+    if (!Array.isArray(A1_QUESTIONS) || A1_QUESTIONS.length === 0) {
+
+        document.getElementById("lesson-area").innerHTML = `
+        <div class="lesson">
+
+            <h2>📝 A1 Quiz</h2>
+
+            <p>❌ Question bank could not be loaded.</p>
+
+        </div>`;
+
+        return;
+    }
+
+
+    /* Shuffle all questions */
+
+    const shuffled = [...A1_QUESTIONS];
+
+    for (let i = shuffled.length - 1; i > 0; i--) {
+
+        const j = Math.floor(Math.random() * (i + 1));
+
+        [shuffled[i], shuffled[j]] =
+        [shuffled[j], shuffled[i]];
+    }
+
+
+    /* Select 10 questions */
+
+    quizQuestions = shuffled.slice(
+        0,
+        Math.min(10, shuffled.length)
+    );
+
+    currentQuestion = 0;
+    quizScore = 0;
+    quizFinished = false;
+
+    showQuizQuestion();
+}
+
+
+/* =========================
+   SHOW QUESTION
+========================= */
+
+function showQuizQuestion() {
+
+    const area = document.getElementById("lesson-area");
+
+    if (currentQuestion >= quizQuestions.length) {
+
+        finishQuiz();
+
+        return;
+    }
+
+    const q = quizQuestions[currentQuestion];
+
+    area.innerHTML = `
+    <div class="lesson">
+
+        <h2>📝 A1 Quiz</h2>
+
+        <div class="quiz-header">
+
+            <b>
+                Question ${currentQuestion + 1}
+                / ${quizQuestions.length}
+            </b>
+
+            <br>
+
+            <span>
+                Category: ${q.category || "A1"}
+            </span>
+
+        </div>
+
+        <p class="quiz-question">
+            ${q.question}
+        </p>
+
+        <div id="quiz-options"></div>
+
+        <p id="quiz-result" class="result"></p>
+
+    </div>
+    `;
+
+
+    const optionsArea =
+        document.getElementById("quiz-options");
+
+
+    q.options.forEach((option, index) => {
+
+        const button =
+            document.createElement("button");
+
+        button.className = "option";
+
+        button.textContent = option;
+
+        button.onclick = function () {
+
+            selectAnswer(index);
+
+        };
+
+        optionsArea.appendChild(button);
+
+    });
+}
+
+
+/* =========================
+   SELECT ANSWER
+========================= */
+
+function selectAnswer(selectedIndex) {
+
+    const q = quizQuestions[currentQuestion];
+
+    const buttons =
+        document.querySelectorAll(".option");
+
+    buttons.forEach(button => {
+
+        button.disabled = true;
+
     });
 
-  if (error) {
-    alert("Error: " + error.message);
-    return;
-  }
 
-  alert("✅ Lesson completed!");
+    const result =
+        document.getElementById("quiz-result");
+
+
+    if (selectedIndex === q.answer) {
+
+        quizScore++;
+
+        result.innerHTML =
+            "✅ Correct! Sehr gut!";
+
+        result.style.color = "green";
+
+    } else {
+
+        result.innerHTML =
+            "❌ Incorrect.<br>" +
+            "Correct answer: " +
+            q.options[q.answer];
+
+        result.style.color = "red";
+    }
+
+
+    setTimeout(() => {
+
+        currentQuestion++;
+
+        showQuizQuestion();
+
+    }, 900);
 }
+
+
+/* =========================
+   FINISH QUIZ
+========================= */
+
+async function finishQuiz() {
+
+    quizFinished = true;
+
+    const total = quizQuestions.length;
+
+    const percentage =
+        Math.round((quizScore / total) * 100);
+
+
+    const area =
+        document.getElementById("lesson-area");
+
+
+    area.innerHTML = `
+    <div class="lesson">
+
+        <h2>🎉 Quiz Complete!</h2>
+
+        <div class="score-box">
+
+            <p>Your Score</p>
+
+            <div class="score-number">
+                ${quizScore}/${total}
+            </div>
+
+            <p>
+                ${percentage}%
+            </p>
+
+        </div>
+
+        <button
+            class="quiz-button"
+            onclick="startQuiz()">
+            🔄 New Quiz
+        </button>
+
+        <br>
+
+        <button
+            class="quiz-button"
+            onclick="showLesson('quiz')">
+            📝 Take Another Quiz
+        </button>
+
+    </div>
+    `;
+
+
+    /* Save score to Supabase */
+
+    if (!currentUser) {
+
+        console.log("User not logged in.");
+
+        return;
+    }
+
+
+    const { error } = await supabaseClient
+        .from("quiz_results")
+        .insert({
+            user_id: currentUser.id,
+            score: quizScore,
+            total: total
+        });
+
+
+    if (error) {
+
+        console.log(
+            "Quiz save error:",
+            error.message
+        );
+
+    } else {
+
+        console.log(
+            "Quiz result saved!"
+        );
+    }
+}
+
 </script>
+
 </body>
 </html>
