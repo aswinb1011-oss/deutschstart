@@ -414,17 +414,39 @@ function showLesson(lesson) {
     }
 }
 
-function answer(correct) {
+async function answer(correct) {
 
-    const result = document.getElementById("quiz-result");
+  const result = document.getElementById("quiz-result");
 
-    if (correct) {
-        result.innerHTML = "✅ Correct! Sehr gut!";
-        result.style.color = "green";
-    } else {
-        result.innerHTML = "❌ Try again!";
-        result.style.color = "red";
-    }
+  if (correct) {
+    result.innerHTML = "✅ Correct! Sehr gut!";
+    result.style.color = "green";
+  } else {
+    result.innerHTML = "❌ Try again!";
+    result.style.color = "red";
+  }
+
+  if (!currentUser) {
+    console.log("User not logged in");
+    return;
+  }
+
+  const score = correct ? 1 : 0;
+  const total = 1;
+
+  const { error } = await supabaseClient
+    .from("quiz_results")
+    .insert({
+      user_id: currentUser.id,
+      score: score,
+      total: total
+    });
+
+  if (error) {
+    console.log("Quiz save error:", error.message);
+  } else {
+    console.log("Quiz result saved!");
+  }
 }
 
 </script>
