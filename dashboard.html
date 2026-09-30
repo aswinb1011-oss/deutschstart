@@ -190,7 +190,26 @@ const supabaseClient = window.supabase.createClient(
 // Load user and quiz result
 
 async function loadDashboard() {
+const { data: lessons, error: progressError } = await supabaseClient
+  .from("lesson_progress")
+  .select("lesson_name, completed")
+  .eq("user_id", user.id)
+  .eq("completed", true);
 
+if (progressError) {
+  console.log("Progress error:", progressError.message);
+} else {
+  const totalLessons = 7;
+  const completedLessons = lessons.length;
+  const percentage = Math.round((completedLessons / totalLessons) * 100);
+
+  document.getElementById("progressBar").style.width = percentage + "%";
+  document.getElementById("progressText").textContent =
+    percentage + "% completed";
+
+  document.getElementById("lessonCount").textContent =
+    completedLessons;
+}
   const {
     data: { user }
   } = await supabaseClient.auth.getUser();
