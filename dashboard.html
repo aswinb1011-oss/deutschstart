@@ -4,14 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>DeutschStart – Dashboard</title>
+  <title>Dashboard | DeutschStart 🇩🇪</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
 
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+
+    body {
       font-family: Arial, sans-serif;
       background: #f5f7fb;
-      color: #111827;
+      color: #222;
     }
 
     header {
@@ -21,294 +29,452 @@
       text-align: center;
     }
 
+    header h1 {
+      font-size: 28px;
+      margin-bottom: 6px;
+    }
+
+    header p {
+      color: #d1d5db;
+    }
+
     .container {
-      width: 90%;
-      max-width: 900px;
+      max-width: 1000px;
       margin: 30px auto;
+      padding: 0 20px;
     }
 
     .welcome {
       background: white;
       padding: 25px;
-      border-radius: 18px;
-      margin-bottom: 20px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      border-radius: 15px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .welcome h2 {
+      margin-bottom: 10px;
+    }
+
+    .welcome p {
+      color: #555;
+      word-break: break-word;
     }
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
     }
 
     .card {
       background: white;
       padding: 25px;
-      border-radius: 18px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     }
 
-    .card h2 {
-      margin-top: 0;
+    .card h3 {
+      margin-bottom: 15px;
+      font-size: 20px;
     }
 
-    .progress {
+    .card p {
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .progress-container {
+      width: 100%;
+      height: 20px;
       background: #e5e7eb;
-      height: 12px;
-      border-radius: 10px;
+      border-radius: 20px;
       overflow: hidden;
+      margin: 15px 0;
     }
 
     .progress-bar {
-      background: #2563eb;
-      width: 20%;
       height: 100%;
+      width: 0%;
+      background: #2563eb;
+      border-radius: 20px;
+      transition: width 0.5s ease;
+    }
+
+    .big-number {
+      font-size: 36px;
+      font-weight: bold;
+      margin: 10px 0;
     }
 
     button {
-      background: #2563eb;
-      color: white;
       border: none;
-      padding: 12px 18px;
       border-radius: 10px;
+      padding: 12px 20px;
+      font-size: 16px;
       cursor: pointer;
-      font-size: 15px;
       margin-top: 10px;
     }
 
-    .logout {
+    .a1-button {
+      background: #2563eb;
+      color: white;
+    }
+
+    .logout-button {
       background: #dc2626;
+      color: white;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 50px;
+      font-size: 20px;
     }
 
     footer {
       text-align: center;
       padding: 30px;
-      color: #6b7280;
+      color: #777;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 24px;
+      }
+
+      .container {
+        margin: 20px auto;
+        padding: 0 15px;
+      }
+
+      .card,
+      .welcome {
+        padding: 20px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <h1>🇩🇪 DeutschStart</h1>
-  <p>Student Dashboard</p>
-</header>
+  <header>
+    <h1>DeutschStart 🇩🇪</h1>
+    <p>Student Dashboard</p>
+  </header>
 
-<div class="container">
+  <div class="container">
 
-  <div class="welcome">
+    <div id="loading" class="loading">
+      Loading dashboard...
+    </div>
 
-    <h2 id="welcome">Welcome to DeutschStart! 👋</h2>
+    <div id="dashboard" style="display:none;">
 
-    <p>Continue learning German and improve your skills.</p>
+      <!-- Welcome -->
+      <div class="welcome">
+        <h2>Willkommen! 👋</h2>
+        <p>
+          Logged in as:
+          <strong id="userEmail"></strong>
+        </p>
 
-    <button onclick="logout()" class="logout">
-      🚪 Logout
-    </button>
-
-  </div>
-
-  <div class="cards">
-
-    <!-- A1 Progress -->
-
-    <div class="card">
-
-      <h2>📚 A1 German</h2>
-
-      <p>Your progress</p>
-
-      <div class="progress">
-        <div class="progress-bar" id="progressBar"></div>
+        <button class="logout-button" onclick="logout()">
+          🚪 Logout
+        </button>
       </div>
 
-      <p id="progressText">Loading progress...</p>
+      <!-- Cards -->
+      <div class="cards">
 
-      <button onclick="goToA1()">
-        Continue Learning
-      </button>
+        <!-- A1 Progress -->
+        <div class="card">
+          <h3>📚 A1 Progress</h3>
 
-    </div>
+          <p>
+            Your A1 learning progress:
+          </p>
+
+          <div class="progress-container">
+            <div
+              class="progress-bar"
+              id="progressBar">
+            </div>
+          </div>
+
+          <p id="progressText">
+            Loading progress...
+          </p>
+
+          <p>
+            Lessons completed:
+            <strong id="lessonCount">0</strong> / 7
+          </p>
+
+          <button
+            class="a1-button"
+            onclick="window.location.href='a1.html'">
+            Continue A1 →
+          </button>
+        </div>
 
 
-    <!-- Quiz Score -->
+        <!-- Quiz Results -->
+        <div class="card">
+          <h3>📝 A1 Quiz</h3>
 
-    <div class="card">
+          <p>
+            Latest quiz result:
+          </p>
 
-      <h2>📝 A1 Quiz</h2>
+          <div class="big-number" id="quizScore">
+            --
+          </div>
 
-      <p>Your latest quiz result:</p>
+          <p id="quizMessage">
+            Loading quiz result...
+          </p>
+        </div>
 
-      <h2 id="quizScore">Loading...</h2>
 
-    </div>
+        <!-- Learning Progress -->
+        <div class="card">
+          <h3>📊 Learning Progress</h3>
 
+          <p>
+            Keep learning German every day! 🇩🇪
+          </p>
 
-    <!-- Progress -->
+          <p>
+            Complete lessons and quizzes to improve your progress.
+          </p>
 
-    <div class="card">
+          <button
+            class="a1-button"
+            onclick="window.location.href='a1.html'">
+            📖 Study A1
+          </button>
+        </div>
 
-      <h2>📊 My Progress</h2>
-
-      <p>
-        Lessons completed:
-        <strong>0</strong>
-      </p>
-
-      <p>
-        Quiz score:
-        <strong id="dashboardScore">Loading...</strong>
-      </p>
+      </div>
 
     </div>
 
   </div>
 
-</div>
-
-<footer>
-  🇩🇪 DeutschStart — Learn German. Speak with Confidence.
-</footer>
+  <footer>
+    <p>© 2026 DeutschStart 🇩🇪</p>
+  </footer>
 
 
-<!-- Supabase -->
+  <script>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script src="config.js"></script>
-
-
-<script>
-
-const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_PUBLISHABLE_KEY
-);
+    const supabaseClient = supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
 
 
-// Load user and quiz result
+    async function loadDashboard() {
 
-async function loadDashboard() {
-const { data: lessons, error: progressError } = await supabaseClient
-  .from("lesson_progress")
-  .select("lesson_name, completed")
-  .eq("user_id", user.id)
-  .eq("completed", true);
+      const loading = document.getElementById("loading");
+      const dashboard = document.getElementById("dashboard");
 
-if (progressError) {
-  console.log("Progress error:", progressError.message);
-} else {
-  const totalLessons = 7;
-  const completedLessons = lessons.length;
-  const percentage = Math.round((completedLessons / totalLessons) * 100);
+      try {
 
-  document.getElementById("progressBar").style.width = percentage + "%";
-  document.getElementById("progressText").textContent =
-    percentage + "% completed";
+        /* -------------------------
+           GET CURRENT USER
+        ------------------------- */
 
-  document.getElementById("lessonCount").textContent =
-    completedLessons;
-}
-  const {
-    data: { user }
-  } = await supabaseClient.auth.getUser();
+        const {
+          data,
+          error
+        } = await supabaseClient.auth.getUser();
+
+        if (error || !data.user) {
+
+          window.location.href = "login.html";
+          return;
+        }
+
+        const user = data.user;
 
 
-  if (!user) {
+        /* -------------------------
+           SHOW USER EMAIL
+        ------------------------- */
 
-    window.location.href = "login.html";
-
-    return;
-  }
-
-
-  // Show email
-
-  document.getElementById("welcome").textContent =
-    "Welcome, " + user.email + "! 👋";
+        document.getElementById("userEmail").textContent =
+          user.email;
 
 
-  // Get quiz results
+        /* -------------------------
+           LOAD A1 PROGRESS
+        ------------------------- */
 
-  const { data, error } = await supabaseClient
-    .from("quiz_results")
-    .select("score,total")
-    .eq("user_id", user.id);
-
-
-  if (error) {
-
-    console.log("Quiz result error:", error);
-
-    document.getElementById("quizScore").textContent =
-      "Not completed yet";
-
-    document.getElementById("dashboardScore").textContent =
-      "—";
-
-    return;
-  }
+        const {
+          data: lessons,
+          error: progressError
+        } = await supabaseClient
+          .from("lesson_progress")
+          .select("lesson_name, completed")
+          .eq("user_id", user.id)
+          .eq("completed", true);
 
 
-  if (data && data.length > 0) {
+        if (progressError) {
 
-    // Get latest saved result
+          console.log(
+            "Progress error:",
+            progressError.message
+          );
 
-    const latest = data[data.length - 1];
+        } else {
 
-    document.getElementById("quizScore").textContent =
-      latest.score + " / " + latest.total;
+          const totalLessons = 7;
 
-    document.getElementById("dashboardScore").textContent =
-      latest.score + " / " + latest.total;
+          const completedLessons =
+            lessons ? lessons.length : 0;
 
-  } else {
-
-    document.getElementById("quizScore").textContent =
-      "Not completed yet";
-
-    document.getElementById("dashboardScore").textContent =
-      "—";
-
-  }
-
-}
+          const percentage =
+            Math.round(
+              (completedLessons / totalLessons) * 100
+            );
 
 
-// Logout
-
-async function logout() {
-
-  const { error } =
-    await supabaseClient.auth.signOut();
+          document.getElementById("progressBar")
+            .style.width = percentage + "%";
 
 
-  if (error) {
-
-    alert("Logout failed: " + error.message);
-
-    return;
-  }
+          document.getElementById("progressText")
+            .textContent =
+              percentage + "% completed";
 
 
-  window.location.href = "login.html";
-
-}
-
-
-// A1 button
-
-function goToA1() {
-
-  window.location.href = "a1.html";
-
-}
+          document.getElementById("lessonCount")
+            .textContent =
+              completedLessons;
+        }
 
 
-loadDashboard();
+        /* -------------------------
+           LOAD LATEST QUIZ RESULT
+        ------------------------- */
 
-</script>
+        const {
+          data: quizResults,
+          error: quizError
+        } = await supabaseClient
+          .from("quiz_results")
+          .select("score, total, created_at")
+          .eq("user_id", user.id)
+          .order("created_at", {
+            ascending: false
+          })
+          .limit(1);
+
+
+        if (quizError) {
+
+          console.log(
+            "Quiz error:",
+            quizError.message
+          );
+
+          document.getElementById("quizScore")
+            .textContent = "--";
+
+          document.getElementById("quizMessage")
+            .textContent =
+              "No quiz result available.";
+
+        } else if (
+          !quizResults ||
+          quizResults.length === 0
+        ) {
+
+          document.getElementById("quizScore")
+            .textContent = "0 / 0";
+
+          document.getElementById("quizMessage")
+            .textContent =
+              "Take the A1 quiz to see your result.";
+
+        } else {
+
+          const latestQuiz =
+            quizResults[0];
+
+          document.getElementById("quizScore")
+            .textContent =
+              latestQuiz.score +
+              " / " +
+              latestQuiz.total;
+
+          document.getElementById("quizMessage")
+            .textContent =
+              "Latest quiz result 🎉";
+        }
+
+
+        /* -------------------------
+           SHOW DASHBOARD
+        ------------------------- */
+
+        loading.style.display = "none";
+
+        dashboard.style.display = "block";
+
+      } catch (error) {
+
+        console.log(
+          "Dashboard error:",
+          error
+        );
+
+        loading.textContent =
+          "Something went wrong. Please login again.";
+
+      }
+    }
+
+
+    /* -------------------------
+       LOGOUT
+    ------------------------- */
+
+    async function logout() {
+
+      const {
+        error
+      } = await supabaseClient.auth.signOut();
+
+      if (error) {
+
+        alert(
+          "Logout error: " +
+          error.message
+        );
+
+        return;
+      }
+
+      window.location.href =
+        "login.html";
+    }
+
+
+    /* -------------------------
+       START DASHBOARD
+    ------------------------- */
+
+    loadDashboard();
+
+  </script>
 
 </body>
 </html>
