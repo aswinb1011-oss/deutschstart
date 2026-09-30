@@ -999,3 +999,607 @@ const A1_QUESTIONS = [
   {
     question: "Sie ___ gern Kaffee.",
     options: ["trinke", "trinkst", "tr
+  {
+    question: "Ich ___ Deutsch.",
+    options: ["lerne", "lernst", "lernt", "lernen"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "Du ___ aus Indien.",
+    options: ["komme", "kommst", "kommt", "kommen"],
+    answer: 1,
+    category: "Grammar"
+  },
+  {
+    question: "Er ___ in Berlin.",
+    options: ["wohne", "wohnst", "wohnt", "wohnen"],
+    answer: 2,
+    category: "Grammar"
+  },
+  {
+    question: "Wir ___ Fußball.",
+    options: ["spiele", "spielst", "spielt", "spielen"],
+    answer: 3,
+    category: "Grammar"
+  },
+  {
+    question: "Ihr ___ sehr nett.",
+    options: ["seid", "sind", "bist", "ist"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "Sie ___ aus Deutschland.",
+    options: ["komme", "kommst", "kommt", "kommen"],
+    answer: 3,
+    category: "Grammar"
+  },
+  {
+    question: "Ich ___ einen Bruder.",
+    options: ["habe", "hast", "hat", "haben"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "Du ___ Wasser.",
+    options: ["trinke", "trinkst", "trinkt", "trinken"],
+    answer: 1,
+    category: "Grammar"
+  },
+  {
+    question: "Er ___ gern Musik.",
+    options: ["höre", "hörst", "hört", "hören"],
+    answer: 2,
+    category: "Grammar"
+  },
+  {
+    question: "Wir ___ morgen nach Köln.",
+    options: ["fahre", "fährst", "fährt", "fahren"],
+    answer: 3,
+    category: "Grammar"
+  },
+  {
+    question: "Ich ___ um sieben Uhr auf.",
+    options: ["stehe", "stehst", "steht", "stehen"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "Du ___ gern Bücher.",
+    options: ["lese", "liest", "lesen", "liest"],
+    answer: 1,
+    category: "Grammar"
+  },
+  {
+    question: "Er ___ Fußball.",
+    options: ["spiele", "spielst", "spielt", "spielen"],
+    answer: 2,
+    category: "Grammar"
+  },
+  {
+    question: "Wir ___ heute Deutsch.",
+    options: ["lerne", "lernst", "lernt", "lernen"],
+    answer: 3,
+    category: "Grammar"
+  },
+  {
+    question: "Ich ___ müde.",
+    options: ["bin", "bist", "ist", "sind"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "Du ___ 18 Jahre alt.",
+    options: ["bin", "bist", "ist", "sind"],
+    answer: 1,
+    category: "Grammar"
+  },
+  {
+    question: "Sie ___ heute krank.",
+    options: ["bin", "bist", "ist", "sind"],
+    answer: 2,
+    category: "Grammar"
+  },
+  {
+    question: "Wir ___ Studenten.",
+    options: ["bin", "bist", "ist", "sind"],
+    answer: 3,
+    category: "Grammar"
+  },
+  {
+    question: "Ich ___ in Wayanad.",
+    options: ["wohne", "wohnst", "wohnt", "wohnen"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "Ihr ___ Deutsch.",
+    options: ["lerne", "lernt", "lernst", "lernen"],
+    answer: 1,
+    category: "Grammar"
+  },
+
+  {
+    question: "___ Mann ist mein Vater.",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 0,
+    category: "Articles"
+  },
+  {
+    question: "___ Frau ist meine Mutter.",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 1,
+    category: "Articles"
+  },
+  {
+    question: "___ Kind spielt.",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 2,
+    category: "Articles"
+  },
+  {
+    question: "___ Bruder ist 20 Jahre alt.",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 0,
+    category: "Articles"
+  },
+  {
+    question: "___ Schwester lernt Deutsch.",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 1,
+    category: "Articles"
+  },
+  {
+    question: "___ Auto ist neu.",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 2,
+    category: "Articles"
+  },
+  {
+    question: "___ Tisch ist groß.",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 0,
+    category: "Articles"
+  },
+  {
+    question: "___ Lampe ist neu.",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 1,
+    category: "Articles"
+  },
+  {
+    question: "___ Buch ist interessant.",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 2,
+    category: "Articles"
+  },
+  {
+    question: "___ Schule ist groß.",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 1,
+    category: "Articles"
+  },
+  {
+    question: "___ Apfel ist rot.",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 0,
+    category: "Articles"
+  },
+  {
+    question: "___ Orange ist lecker.",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 1,
+    category: "Articles"
+  },
+  {
+    question: "___ Fenster ist offen.",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 2,
+    category: "Articles"
+  },
+  {
+    question: "___ Tür ist geschlossen.",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 1,
+    category: "Articles"
+  },
+  {
+    question: "___ Bahnhof ist dort.",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 0,
+    category: "Articles"
+  },
+  {
+    question: "___ Kino ist heute geöffnet.",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 2,
+    category: "Articles"
+  },
+  {
+    question: "___ Lehrer ist freundlich.",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 0,
+    category: "Articles"
+  },
+  {
+    question: "___ Lehrerin ist freundlich.",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 1,
+    category: "Articles"
+  },
+  {
+    question: "___ Zimmer ist sauber.",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 2,
+    category: "Articles"
+  },
+  {
+    question: "___ Küche ist klein.",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 1,
+    category: "Articles"
+  },
+
+  {
+    question: "Was bedeutet „früh“?",
+    options: ["early", "late", "slow", "expensive"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „spät“?",
+    options: ["early", "late", "young", "small"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „teuer“?",
+    options: ["cheap", "expensive", "easy", "quiet"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „billig“?",
+    options: ["expensive", "cheap", "beautiful", "difficult"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „einfach“?",
+    options: ["easy", "difficult", "cold", "loud"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „schwierig“?",
+    options: ["easy", "difficult", "young", "warm"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „glücklich“?",
+    options: ["sad", "happy", "angry", "tired"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „traurig“?",
+    options: ["happy", "sad", "healthy", "fast"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „müde“?",
+    options: ["tired", "hungry", "thirsty", "young"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „hungrig“?",
+    options: ["thirsty", "hungry", "tired", "angry"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „durstig“?",
+    options: ["hungry", "thirsty", "happy", "sad"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „gesund“?",
+    options: ["sick", "healthy", "tired", "cold"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „krank“?",
+    options: ["healthy", "sick", "happy", "strong"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „stark“?",
+    options: ["weak", "strong", "slow", "small"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „schwach“?",
+    options: ["strong", "weak", "fast", "young"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „laut“?",
+    options: ["quiet", "loud", "cold", "old"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „leise“?",
+    options: ["loud", "quiet", "big", "hot"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „warm“?",
+    options: ["cold", "warm", "dark", "slow"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „heiß“?",
+    options: ["hot", "cold", "quiet", "young"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „kalt“?",
+    options: ["hot", "warm", "cold", "fast"],
+    answer: 2,
+    category: "Vocabulary"
+  },
+
+  {
+    question: "Was sagt man am Morgen?",
+    options: ["Guten Morgen!", "Gute Nacht!", "Tschüss!", "Danke!"],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Was sagt man vor dem Schlafen?",
+    options: ["Guten Morgen!", "Gute Nacht!", "Hallo!", "Bitte!"],
+    answer: 1,
+    category: "Everyday German"
+  },
+  {
+    question: "Was bedeutet „Tschüss“?",
+    options: ["Hello", "Bye", "Thank you", "Please"],
+    answer: 1,
+    category: "Everyday German"
+  },
+  {
+    question: "Was bedeutet „Danke“?",
+    options: ["Please", "Thank you", "Sorry", "Hello"],
+    answer: 1,
+    category: "Everyday German"
+  },
+  {
+    question: "Was bedeutet „Bitte“?",
+    options: ["Please", "Goodbye", "Morning", "Yesterday"],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Wie antwortet man auf „Danke“?",
+    options: ["Bitte.", "Hallo.", "Gute Nacht.", "Tschüss."],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Wie fragt man nach dem Namen?",
+    options: ["Wie heißt du?", "Wo wohnst du?", "Wie alt bist du?", "Was trinkst du?"],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Wie fragt man nach dem Alter?",
+    options: ["Woher kommst du?", "Wie alt bist du?", "Wie heißt du?", "Was machst du?"],
+    answer: 1,
+    category: "Everyday German"
+  },
+  {
+    question: "Wie fragt man nach dem Wohnort?",
+    options: ["Wo wohnst du?", "Wie heißt du?", "Was lernst du?", "Wie geht es dir?"],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Wie fragt man nach der Herkunft?",
+    options: ["Woher kommst du?", "Wo wohnst du?", "Wie alt bist du?", "Was isst du?"],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Welche Antwort passt zu „Wie geht es dir?“",
+    options: ["Danke, gut.", "Ich bin Aswin.", "Aus Indien.", "Um sieben Uhr."],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Welche Antwort passt zu „Wo wohnst du?“",
+    options: ["In Wayanad.", "18 Jahre.", "Deutsch.", "Mandi."],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Welche Antwort passt zu „Was trinkst du?“",
+    options: ["Wasser.", "Fußball.", "Berlin.", "Montag."],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Welche Antwort passt zu „Was isst du?“",
+    options: ["Brot.", "Kaffee.", "Deutschland.", "Acht Uhr."],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Welche Antwort passt zu „Was machst du gern?“",
+    options: ["Ich spiele Fußball.", "Ich bin 18.", "Ich komme aus Indien.", "Ich heiße Aswin."],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Welche Antwort passt zu „Wann stehst du auf?“",
+    options: ["Um sieben Uhr.", "In Indien.", "Mit meinem Freund.", "Deutsch."],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Welche Antwort passt zu „Was ist dein Hobby?“",
+    options: ["Fußball spielen.", "Wayanad.", "18 Jahre.", "Mandi."],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Welche Antwort passt zu „Was lernst du?“",
+    options: ["Deutsch.", "Kaffee.", "Berlin.", "Samstag."],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Welche Antwort passt zu „Woher kommt er?“",
+    options: ["Aus Deutschland.", "Um acht Uhr.", "Ein Buch.", "Kaffee."],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Welche Antwort passt zu „Wie alt ist sie?“",
+    options: ["Sie ist 20 Jahre alt.", "Sie wohnt in Berlin.", "Sie trinkt Wasser.", "Sie lernt Deutsch."],
+    answer: 0,
+    category: "Everyday German"
+  },
+
+  {
+    question: "Was ist „Montag“ auf Englisch?",
+    options: ["Monday", "Tuesday", "Friday", "Sunday"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was ist „Dienstag“ auf Englisch?",
+    options: ["Thursday", "Tuesday", "Saturday", "Monday"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was ist „Mittwoch“ auf Englisch?",
+    options: ["Wednesday", "Friday", "Sunday", "Tuesday"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was ist „Donnerstag“ auf Englisch?",
+    options: ["Monday", "Thursday", "Saturday", "Sunday"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was ist „Freitag“ auf Englisch?",
+    options: ["Tuesday", "Friday", "Wednesday", "Monday"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was ist „Samstag“ auf Englisch?",
+    options: ["Saturday", "Sunday", "Friday", "Thursday"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was ist „Sonntag“ auf Englisch?",
+    options: ["Monday", "Saturday", "Sunday", "Tuesday"],
+    answer: 2,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „heute“?",
+    options: ["today", "tomorrow", "yesterday", "week"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „morgen“?",
+    options: ["yesterday", "tomorrow", "today", "month"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „gestern“?",
+    options: ["today", "tomorrow", "yesterday", "morning"],
+    answer: 2,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „Woche“?",
+    options: ["day", "week", "month", "year"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „Monat“?",
+    options: ["month", "week", "year", "day"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „Jahr“?",
+    options: ["week", "month", "year", "day"],
+    answer: 2,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „Morgen“?",
+    options: ["morning", "evening", "night", "afternoon"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „Abend“?",
+    options: ["morning", "afternoon", "evening", "night"],
+    answer: 2,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „Nacht“?",
+    options: ["day", "night", "morning", "week"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „Mittag“?",
+    options: ["midday/noon", "night", "morning", "week"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „Uhr“?",
+    options: ["clock/time", "house", "school", "food"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „Minute“?",
+    options: ["hour", "minute", "day", "month"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „Stunde“?",
+    options: ["minute", "week", "hour", "year"],
+    answer: 2,
+    category: "Vocabulary"
+  }
