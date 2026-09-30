@@ -570,3 +570,177 @@ const A1_QUESTIONS = [
     answer: 0,
     category: "Articles"
   }
+  {
+    question: "Was bedeutet „Danke“?",
+    options: ["Please", "Thank you", "Sorry", "Hello"],
+    answer: 1,
+    category: "Everyday German"
+  },
+
+  {
+    question: "Ich ___ aus Indien.",
+    options: ["komme", "kommt", "kommst", "kommen"],
+    answer: 0,
+    category: "Grammar"
+  },
+
+  {
+    question: "Welcher Artikel passt? ___ Apfelsaft",
+    options: ["die", "der", "das", "den"],
+    answer: 2,
+    category: "Articles"
+  },
+
+  {
+    question: "Was bedeutet „kalt“?",
+    options: ["hot", "warm", "cold", "fast"],
+    answer: 2,
+    category: "Vocabulary"
+  },
+
+  {
+    question: "Du ___ jeden Morgen Kaffee.",
+    options: ["trinkst", "trinkt", "trinke", "trinken"],
+    answer: 0,
+    category: "Verbs"
+  },
+
+  {
+    question: "Welche Antwort passt? „Wie geht es dir?“",
+    options: ["Ich bin Aswin.", "Danke, sehr gut.", "Ich komme aus Indien.", "Ich bin 18."],
+    answer: 1,
+    category: "Everyday German"
+  },
+
+  {
+    question: "Was ist der Plural von „die Tasche“?",
+    options: ["die Taschen", "die Tasche", "der Taschen", "das Taschen"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+
+  {
+    question: "Wir ___ in Wayanad.",
+    options: ["wohne", "wohnst", "wohnen", "wohnt"],
+    answer: 2,
+    category: "Grammar"
+  },
+
+  {
+    question: "Welcher Artikel passt? ___ Mädchen",
+    options: ["der", "die", "das", "den"],
+    answer: 2,
+    category: "Articles"
+  },
+
+  {
+    question: "Was bedeutet „groß“?",
+    options: ["small", "big", "short", "old"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+
+  {
+    question: "Er ___ gern Fußball.",
+    options: ["spielen", "spielst", "spielt", "spiele"],
+    answer: 2,
+    category: "Verbs"
+  },
+
+  {
+    question: "Was bedeutet „Gute Nacht“?",
+    options: ["Good morning", "Good evening", "Good night", "Goodbye"],
+    answer: 2,
+    category: "Everyday German"
+  },
+
+  {
+    question: "Ich ___ einen Bruder.",
+    options: ["habe", "hast", "hat", "haben"],
+    answer: 0,
+    category: "Grammar"
+  },
+
+  {
+    question: "Welcher Artikel passt? ___ Mutter",
+    options: ["der", "das", "die", "den"],
+    answer: 2,
+    category: "Articles"
+  },
+
+  {
+    question: "Was bedeutet „schnell“?",
+    options: ["slow", "fast", "cold", "young"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+
+  {
+    question: "Ihr ___ sehr nett.",
+    options: ["seid", "sind", "bist", "ist"],
+    answer: 0,
+    category: "Verbs"
+  },
+
+  {
+    question: "Welche Antwort passt? „Wie heißt du?“",
+    options: ["Ich bin müde.", "Ich heiße Aswin.", "Ich wohne in Indien.", "Ich spiele Fußball."],
+    answer: 1,
+    category: "Everyday German"
+  },
+
+  {
+    question: "Was ist der Plural von „das Kind“?",
+    options: ["die Kinder", "die Kinds", "der Kinder", "das Kinder"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+
+  {
+    question: "Sie ___ in Berlin.",
+    options: ["wohne", "wohnst", "wohnt", "wohnen"],
+    answer: 2,
+    category: "Grammar"
+  },
+
+  {
+    question: "Welcher Artikel passt? ___ Auto",
+    options: ["der", "die", "das", "den"],
+    answer: 2,
+    category: "Articles"
+  },
+
+  {
+    question: "Was bedeutet „müde“?",
+    options: ["tired", "happy", "angry", "fast"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+
+  {
+    question: "Wir ___ Deutsch.",
+    options: ["lernt", "lernen", "lerne", "lernst"],
+    answer: 1,
+    category: "Verbs"
+  },
+
+  {
+    question: "Welche Antwort passt? „Was trinkst du?“",
+    options: ["Ich trinke Wasser.", "Ich esse Brot.", "Ich spiele Fußball.", "Ich wohne in Wayanad."],
+    answer: 0,
+    category: "Everyday German"
+  },
+
+  {
+    question: "Ich ___ jeden Tag um sieben Uhr auf.",
+    options: ["stehe", "steht", "stehst", "stehen"],
+    answer: 0,
+    category: "Grammar"
+  },
+
+  {
+    question: "Welcher Artikel passt? ___ Schule",
+    options: ["der", "die", "das", "den"],
+    answer: 1,
+    category: "Articles"
+  }
