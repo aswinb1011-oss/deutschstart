@@ -90,178 +90,206 @@
 
 <body>
 
-  <header>
-    <h1>🇩🇪 DeutschStart</h1>
-    <p>Student Dashboard</p>
-  </header>
+<header>
+  <h1>🇩🇪 DeutschStart</h1>
+  <p>Student Dashboard</p>
+</header>
 
-  <div class="container">
+<div class="container">
 
-    <div class="welcome">
+  <div class="welcome">
 
-      <h2 id="welcome">Welcome to DeutschStart! 👋</h2>
+    <h2 id="welcome">Welcome to DeutschStart! 👋</h2>
 
-      <p>Continue learning German and improve your skills.</p>
+    <p>Continue learning German and improve your skills.</p>
 
-      <button onclick="logout()" class="logout">
-        🚪 Logout
+    <button onclick="logout()" class="logout">
+      🚪 Logout
+    </button>
+
+  </div>
+
+  <div class="cards">
+
+    <!-- A1 Progress -->
+
+    <div class="card">
+
+      <h2>📚 A1 German</h2>
+
+      <p>Your progress</p>
+
+      <div class="progress">
+        <div class="progress-bar"></div>
+      </div>
+
+      <p>20% completed</p>
+
+      <button onclick="goToA1()">
+        Continue Learning
       </button>
 
     </div>
 
-    <div class="cards">
 
-      <div class="card">
+    <!-- Quiz Score -->
 
-        <h2>📚 A1 German</h2>
+    <div class="card">
 
-        <p>Your progress</p>
+      <h2>📝 A1 Quiz</h2>
 
-        <div class="progress">
-       <div class="progress-bar" id="progressBar"></div>
-        </div>
+      <p>Your latest quiz result:</p>
 
-        <p id="progressText">Loading progress...</p>
+      <h2 id="quizScore">Loading...</h2>
 
-        <button onclick="goToA1()">
-          Continue Learning
-        </button>
+    </div>
 
-      </div>
 
-      <div class="card">
+    <!-- Progress -->
 
-        <h2>📝 A1 Quiz</h2>
+    <div class="card">
 
-        <p>Your quiz progress</p>
+      <h2>📊 My Progress</h2>
 
-        <p>
-          <strong>Not completed yet</strong>
-        </p>
+      <p>
+        Lessons completed:
+        <strong>0</strong>
+      </p>
 
-      </div>
-
-      <div class="card">
-
-        <h2>📊 My Progress</h2>
-
-        <p>
-          Lessons completed:
-          <strong>0</strong>
-        </p>
-
-        <p>
-          Quiz score:
-          <strong>—</strong>
-        </p>
-
-      </div>
+      <p>
+        Quiz score:
+        <strong id="dashboardScore">Loading...</strong>
+      </p>
 
     </div>
 
   </div>
 
-  <footer>
-    🇩🇪 DeutschStart — Learn German. Speak with Confidence.
-  </footer>
+</div>
+
+<footer>
+  🇩🇪 DeutschStart — Learn German. Speak with Confidence.
+</footer>
 
 
-  <!-- Supabase -->
+<!-- Supabase -->
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-  <script src="config.js"></script>
-
-
-  <script>
-
-    const supabaseClient = window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_PUBLISHABLE_KEY
-    );
+<script src="config.js"></script>
 
 
-    // Load logged-in user
+<script>
 
-    async function loadUser() {
-
-      const {
-        data: { user }
-      } = await supabaseClient.auth.getUser();
-
-
-      if (!user) {
-
-        window.location.href = "login.html";
-
-        return;
-      }
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
 
 
-      document.getElementById("welcome").textContent =
-        "Welcome, " + user.email + "! 👋";
+// Load user and quiz result
 
-    }
+async function loadDashboard() {
 
-
-    // Logout
-
-    async function logout() {
-
-      const { error } =
-        await supabaseClient.auth.signOut();
+  const {
+    data: { user }
+  } = await supabaseClient.auth.getUser();
 
 
-      if (error) {
+  if (!user) {
 
-        alert("Logout failed: " + error.message);
+    window.location.href = "login.html";
 
-        return;
-      }
-
-
-      window.location.href = "login.html";
-
-    }
-
-
-    // Open A1
-
-    function goToA1() {
-
-      window.location.href = "a1.html";
-
-    }
-
-async function loadProgress() {
-  const { data, error } = await supabaseClient
-    .from("lesson_progress")
-    .select("lesson_name, completed")
-    .eq("completed", true);
-
-  if (error) {
-    console.log(error);
     return;
   }
 
-  const totalLessons = 7;
-  const completedLessons = data.length;
 
-  const percentage = Math.round(
-    (completedLessons / totalLessons) * 100
-  );
+  // Show email
 
-  document.getElementById("progressBar").style.width =
-    percentage + "%";
+  document.getElementById("welcome").textContent =
+    "Welcome, " + user.email + "! 👋";
 
-  document.getElementById("progressText").textContent =
-    percentage + "% completed";
+
+  // Get quiz results
+
+  const { data, error } = await supabaseClient
+    .from("quiz_results")
+    .select("score,total")
+    .eq("User_id", user.id);
+
+
+  if (error) {
+
+    console.log("Quiz result error:", error);
+
+    document.getElementById("quizScore").textContent =
+      "Not completed yet";
+
+    document.getElementById("dashboardScore").textContent =
+      "—";
+
+    return;
+  }
+
+
+  if (data && data.length > 0) {
+
+    // Get latest saved result
+
+    const latest = data[data.length - 1];
+
+    document.getElementById("quizScore").textContent =
+      latest.score + " / " + latest.total;
+
+    document.getElementById("dashboardScore").textContent =
+      latest.score + " / " + latest.total;
+
+  } else {
+
+    document.getElementById("quizScore").textContent =
+      "Not completed yet";
+
+    document.getElementById("dashboardScore").textContent =
+      "—";
+
+  }
+
 }
 
-loadProgress();
-    loadUser();
 
-  </script>
+// Logout
+
+async function logout() {
+
+  const { error } =
+    await supabaseClient.auth.signOut();
+
+
+  if (error) {
+
+    alert("Logout failed: " + error.message);
+
+    return;
+  }
+
+
+  window.location.href = "login.html";
+
+}
+
+
+// A1 button
+
+function goToA1() {
+
+  window.location.href = "a1.html";
+
+}
+
+
+loadDashboard();
+
+</script>
 
 </body>
 </html>
