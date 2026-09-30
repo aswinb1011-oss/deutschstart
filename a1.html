@@ -670,10 +670,9 @@ function startQuiz() {
 
     /* Select 10 questions */
 
-    quizQuestions = shuffled.slice(
-        0,
-        Math.min(10, shuffled.length)
-    );
+const quizSize = Math.min(10, shuffled.length);
+
+quizQuestions = shuffled.slice(0, quizSize);
 
     currentQuestion = 0;
     quizScore = 0;
