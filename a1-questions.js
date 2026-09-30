@@ -381,3 +381,192 @@ const A1_QUESTIONS = [
     category: "Articles"
   }
 ];
+  {
+    question: "Was bedeutet „Hallo“?",
+    options: ["Hello", "Goodbye", "Thank you", "Please"],
+    answer: 0,
+    category: "Everyday German"
+  },
+
+  {
+    question: "Wir ___ aus Indien.",
+    options: ["kommen", "kommt", "kommst", "komme"],
+    answer: 0,
+    category: "Grammar"
+  },
+
+  {
+    question: "Welcher Artikel passt? ___ Lampe",
+    options: ["die", "der", "das", "den"],
+    answer: 0,
+    category: "Articles"
+  },
+
+  {
+    question: "Was bedeutet „alt“?",
+    options: ["old", "young", "new", "small"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+
+  {
+    question: "Er ___ jeden Tag Deutsch.",
+    options: ["lernt", "lernen", "lerne", "lernst"],
+    answer: 0,
+    category: "Verbs"
+  },
+
+  {
+    question: "Welche Antwort passt? „Woher kommst du?“",
+    options: [
+      "Ich komme aus Indien.",
+      "Ich wohne in Berlin.",
+      "Ich heiße Aswin.",
+      "Ich bin Student."
+    ],
+    answer: 0,
+    category: "Everyday German"
+  },
+
+  {
+    question: "Was ist der Plural von „der Mann“?",
+    options: ["die Männer", "die Manns", "der Männer", "das Männer"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+
+  {
+    question: "Ich ___ Student.",
+    options: ["bin", "bist", "ist", "sind"],
+    answer: 0,
+    category: "Grammar"
+  },
+
+  {
+    question: "Welcher Artikel passt? ___ Fenster",
+    options: ["das", "der", "die", "den"],
+    answer: 0,
+    category: "Articles"
+  },
+
+  {
+    question: "Was bedeutet „langsam“?",
+    options: ["slow", "fast", "big", "young"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+
+  {
+    question: "Wir ___ am Wochenende Fußball.",
+    options: ["spielen", "spielt", "spielst", "spiele"],
+    answer: 0,
+    category: "Verbs"
+  },
+
+  {
+    question: "Ich ___ meine Mutter.",
+    options: ["liebe", "liebst", "liebt", "lieben"],
+    answer: 0,
+    category: "Grammar"
+  },
+
+  {
+    question: "Was bedeutet „Freitag“?",
+    options: ["Friday", "Monday", "Wednesday", "Sunday"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+
+  {
+    question: "Welcher Artikel passt? ___ Vater",
+    options: ["der", "die", "das", "den"],
+    answer: 0,
+    category: "Articles"
+  },
+
+  {
+    question: "Welche Antwort passt? „Was ist dein Lieblingsessen?“",
+    options: [
+      "Mein Lieblingsessen ist Mandi.",
+      "Ich bin 18 Jahre alt.",
+      "Ich komme aus Indien.",
+      "Ich wohne in Wayanad."
+    ],
+    answer: 0,
+    category: "Everyday German"
+  },
+
+  {
+    question: "Sie ___ gern Musik.",
+    options: ["hört", "höre", "hörst", "hören"],
+    answer: 0,
+    category: "Verbs"
+  },
+
+  {
+    question: "Was bedeutet „schön“?",
+    options: ["beautiful", "ugly", "difficult", "cold"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+
+  {
+    question: "Du ___ 18 Jahre alt.",
+    options: ["bist", "bin", "ist", "sind"],
+    answer: 0,
+    category: "Grammar"
+  },
+
+  {
+    question: "Welcher Artikel passt? ___ Stuhl",
+    options: ["der", "die", "das", "den"],
+    answer: 0,
+    category: "Articles"
+  },
+
+  {
+    question: "Was bedeutet „Abend“?",
+    options: ["evening", "morning", "afternoon", "night"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+
+  {
+    question: "Ich ___ gern Musik.",
+    options: ["höre", "hörst", "hört", "hören"],
+    answer: 0,
+    category: "Verbs"
+  },
+
+  {
+    question: "Welche Antwort passt? „Was machst du am Wochenende?“",
+    options: [
+      "Ich spiele Fußball.",
+      "Ich bin 18 Jahre alt.",
+      "Ich heiße Aswin.",
+      "Ich komme aus Indien."
+    ],
+    answer: 0,
+    category: "Everyday German"
+  },
+
+  {
+    question: "Was ist der Plural von „das Buch“?",
+    options: ["die Bücher", "die Buchs", "der Bücher", "das Bücher"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+
+  {
+    question: "Er ___ aus Deutschland.",
+    options: ["kommt", "komme", "kommst", "kommen"],
+    answer: 0,
+    category: "Grammar"
+  },
+
+  {
+    question: "Welcher Artikel passt? ___ Straße",
+    options: ["die", "der", "das", "den"],
+    answer: 0,
+    category: "Articles"
+  }
