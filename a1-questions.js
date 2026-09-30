@@ -1603,3 +1603,734 @@ const A1_QUESTIONS = [
     answer: 2,
     category: "Vocabulary"
   }
+  {
+    question: "Ich ___ jeden Morgen früh auf.",
+    options: ["stehe", "stehst", "steht", "stehen"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "Du ___ am Wochenende Fußball.",
+    options: ["spiele", "spielst", "spielt", "spielen"],
+    answer: 1,
+    category: "Grammar"
+  },
+  {
+    question: "Er ___ jeden Abend fern.",
+    options: ["sehe", "siehst", "sieht", "sehen"],
+    answer: 2,
+    category: "Grammar"
+  },
+  {
+    question: "Wir ___ zusammen Deutsch.",
+    options: ["lerne", "lernst", "lernt", "lernen"],
+    answer: 3,
+    category: "Grammar"
+  },
+  {
+    question: "Ihr ___ heute im Park.",
+    options: ["seid", "sind", "bist", "ist"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "Sie ___ gern Kaffee.",
+    options: ["trinke", "trinkst", "trinkt", "trinken"],
+    answer: 2,
+    category: "Grammar"
+  },
+  {
+    question: "Ich ___ meine Hausaufgaben.",
+    options: ["mache", "machst", "macht", "machen"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "Du ___ deine Mutter.",
+    options: ["liebe", "liebst", "liebt", "lieben"],
+    answer: 1,
+    category: "Grammar"
+  },
+  {
+    question: "Er ___ einen Film.",
+    options: ["sehe", "siehst", "sieht", "sehen"],
+    answer: 2,
+    category: "Grammar"
+  },
+  {
+    question: "Wir ___ heute zu Hause.",
+    options: ["bleibe", "bleibst", "bleibt", "bleiben"],
+    answer: 3,
+    category: "Grammar"
+  },
+
+  {
+    question: "___ Vater arbeitet heute.",
+    options: ["Mein", "Meine", "Meinen", "Meinem"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "___ Mutter ist nett.",
+    options: ["Mein", "Meine", "Meinen", "Meinem"],
+    answer: 1,
+    category: "Grammar"
+  },
+  {
+    question: "___ Bruder spielt Fußball.",
+    options: ["Meine", "Mein", "Meinen", "Meinem"],
+    answer: 1,
+    category: "Grammar"
+  },
+  {
+    question: "___ Schwester lernt Deutsch.",
+    options: ["Mein", "Meine", "Meinen", "Meinem"],
+    answer: 1,
+    category: "Grammar"
+  },
+  {
+    question: "___ Auto ist neu.",
+    options: ["Mein", "Meine", "Meinen", "Meinem"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "___ Freunde wohnen in Berlin.",
+    options: ["Mein", "Meine", "Meinen", "Meinem"],
+    answer: 1,
+    category: "Grammar"
+  },
+  {
+    question: "___ Haus ist groß.",
+    options: ["Mein", "Meine", "Meinen", "Meinem"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "___ Tasche ist schwarz.",
+    options: ["Mein", "Meine", "Meinen", "Meinem"],
+    answer: 1,
+    category: "Grammar"
+  },
+  {
+    question: "___ Lehrer ist freundlich.",
+    options: ["Mein", "Meine", "Meinen", "Meinem"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "___ Lehrerin ist nett.",
+    options: ["Mein", "Meine", "Meinen", "Meinem"],
+    answer: 1,
+    category: "Grammar"
+  },
+
+  {
+    question: "Ich habe ___ Bruder.",
+    options: ["ein", "eine", "einen", "einem"],
+    answer: 2,
+    category: "Articles"
+  },
+  {
+    question: "Ich habe ___ Schwester.",
+    options: ["ein", "eine", "einen", "einem"],
+    answer: 1,
+    category: "Articles"
+  },
+  {
+    question: "Er hat ___ Auto.",
+    options: ["ein", "eine", "einen", "einem"],
+    answer: 0,
+    category: "Articles"
+  },
+  {
+    question: "Wir kaufen ___ Apfel.",
+    options: ["ein", "eine", "einen", "einem"],
+    answer: 2,
+    category: "Articles"
+  },
+  {
+    question: "Sie kauft ___ Tasche.",
+    options: ["ein", "eine", "einen", "einem"],
+    answer: 1,
+    category: "Articles"
+  },
+  {
+    question: "Ich sehe ___ Mann.",
+    options: ["ein", "eine", "einen", "einem"],
+    answer: 2,
+    category: "Articles"
+  },
+  {
+    question: "Er liest ___ Buch.",
+    options: ["ein", "eine", "einen", "einem"],
+    answer: 0,
+    category: "Articles"
+  },
+  {
+    question: "Du brauchst ___ Stift.",
+    options: ["ein", "eine", "einen", "einem"],
+    answer: 2,
+    category: "Articles"
+  },
+  {
+    question: "Ich kaufe ___ Lampe.",
+    options: ["ein", "eine", "einen", "einem"],
+    answer: 1,
+    category: "Articles"
+  },
+  {
+    question: "Wir haben ___ Haus.",
+    options: ["ein", "eine", "einen", "einem"],
+    answer: 0,
+    category: "Articles"
+  },
+
+  {
+    question: "Was bedeutet „essen“?",
+    options: ["to eat", "to drink", "to sleep", "to read"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „trinken“?",
+    options: ["to drink", "to eat", "to run", "to write"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „schlafen“?",
+    options: ["to sleep", "to work", "to speak", "to buy"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „arbeiten“?",
+    options: ["to work", "to play", "to sleep", "to eat"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „spielen“?",
+    options: ["to play", "to read", "to drink", "to go"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „lesen“?",
+    options: ["to read", "to write", "to speak", "to listen"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „schreiben“?",
+    options: ["to write", "to read", "to sleep", "to eat"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „sprechen“?",
+    options: ["to speak", "to hear", "to see", "to buy"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „hören“?",
+    options: ["to hear/listen", "to speak", "to write", "to cook"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „sehen“?",
+    options: ["to see", "to hear", "to eat", "to drink"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+
+  {
+    question: "Was bedeutet „gehen“?",
+    options: ["to go/walk", "to sleep", "to eat", "to work"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „fahren“?",
+    options: ["to travel/drive", "to read", "to sleep", "to cook"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „kommen“?",
+    options: ["to come", "to leave", "to buy", "to drink"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „wohnen“?",
+    options: ["to live/reside", "to work", "to play", "to read"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „lernen“?",
+    options: ["to learn", "to teach", "to sleep", "to eat"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „kaufen“?",
+    options: ["to buy", "to sell", "to read", "to listen"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „kosten“?",
+    options: ["to cost", "to cook", "to come", "to drink"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „suchen“?",
+    options: ["to search/look for", "to find", "to lose", "to sleep"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „finden“?",
+    options: ["to find", "to search", "to buy", "to speak"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „helfen“?",
+    options: ["to help", "to ask", "to answer", "to wait"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+
+  {
+    question: "Welche Antwort passt? „Wo ist der Bahnhof?“",
+    options: ["Dort.", "18 Jahre.", "Wasser.", "Deutsch."],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Welche Antwort passt? „Wie viel kostet das?“",
+    options: ["Das kostet zehn Euro.", "Es ist Montag.", "Ich bin Student.", "In Berlin."],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Welche Antwort passt? „Kann ich Ihnen helfen?“",
+    options: ["Ja, bitte.", "Ich bin 18.", "Um sieben Uhr.", "Aus Indien."],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Welche Antwort passt? „Was möchten Sie?“",
+    options: ["Ich möchte einen Kaffee.", "Ich wohne in Berlin.", "Ich bin müde.", "Heute ist Montag."],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Welche Antwort passt? „Haben Sie Wasser?“",
+    options: ["Ja, bitte.", "Ich bin Student.", "Um acht Uhr.", "Aus Indien."],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Welche Antwort passt? „Wie spät ist es?“",
+    options: ["Es ist drei Uhr.", "Ich bin Aswin.", "Ich komme aus Indien.", "Ich spiele Fußball."],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Welche Antwort passt? „Wann beginnt der Kurs?“",
+    options: ["Um neun Uhr.", "In Wayanad.", "Mit meinem Freund.", "Deutsch."],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Welche Antwort passt? „Was möchten Sie trinken?“",
+    options: ["Einen Kaffee, bitte.", "Ein Buch.", "Fußball.", "Berlin."],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Welche Antwort passt? „Wo ist die Toilette?“",
+    options: ["Dort links.", "Ich bin müde.", "Um zehn Uhr.", "Mandi."],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Welche Antwort passt? „Wie ist das Wetter heute?“",
+    options: ["Es ist warm.", "Ich bin Student.", "Ich komme aus Indien.", "Ich spiele Fußball."],
+    answer: 0,
+    category: "Everyday German"
+  },
+
+  {
+    question: "___ ist dein Lieblingsessen?",
+    options: ["Was", "Wer", "Wo", "Wann"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "___ wohnst du?",
+    options: ["Was", "Wo", "Wer", "Wie"],
+    answer: 1,
+    category: "Grammar"
+  },
+  {
+    question: "___ heißt du?",
+    options: ["Wie", "Wo", "Was", "Wann"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "___ bist du?",
+    options: ["Wer", "Wie alt", "Wo", "Was"],
+    answer: 1,
+    category: "Grammar"
+  },
+  {
+    question: "___ kommst du?",
+    options: ["Woher", "Warum", "Wann", "Was"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "___ machst du am Wochenende?",
+    options: ["Was", "Wo", "Wer", "Wie alt"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "___ beginnt der Film?",
+    options: ["Wann", "Wer", "Woher", "Was"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "___ ist dein Lehrer?",
+    options: ["Wer", "Was", "Wo", "Wann"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "___ lernst du Deutsch?",
+    options: ["Warum", "Wer", "Wo", "Was"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "___ kostet das Buch?",
+    options: ["Wie viel", "Wer", "Wo", "Wann"],
+    answer: 0,
+    category: "Grammar"
+  },
+
+  {
+    question: "Ich gehe ___ Schule.",
+    options: ["zur", "zum", "in der", "bei"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "Er geht ___ Kino.",
+    options: ["zur", "zum", "bei der", "in die"],
+    answer: 1,
+    category: "Grammar"
+  },
+  {
+    question: "Wir fahren ___ Berlin.",
+    options: ["nach", "zu", "bei", "an"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "Ich komme ___ Indien.",
+    options: ["aus", "von", "zu", "bei"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "Sie wohnt ___ Deutschland.",
+    options: ["in", "nach", "aus", "zu"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "Ich bin ___ Hause.",
+    options: ["zu", "nach", "aus", "bei"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "Wir gehen ___ Supermarkt.",
+    options: ["zum", "zur", "nach", "aus"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "Sie geht ___ Apotheke.",
+    options: ["zum", "zur", "nach", "aus"],
+    answer: 1,
+    category: "Grammar"
+  },
+  {
+    question: "Ich fahre ___ Arbeit.",
+    options: ["zur", "zum", "nach", "aus"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "Er fährt ___ Bahnhof.",
+    options: ["zum", "zur", "nach", "aus"],
+    answer: 0,
+    category: "Grammar"
+  },
+
+  {
+    question: "Was ist das Gegenteil von „groß“?",
+    options: ["klein", "alt", "neu", "lang"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was ist das Gegenteil von „alt“?",
+    options: ["neu", "klein", "lang", "kalt"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was ist das Gegenteil von „kalt“?",
+    options: ["warm", "klein", "leise", "langsam"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was ist das Gegenteil von „schnell“?",
+    options: ["langsam", "laut", "warm", "jung"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was ist das Gegenteil von „laut“?",
+    options: ["leise", "groß", "heiß", "teuer"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was ist das Gegenteil von „teuer“?",
+    options: ["billig", "schön", "schwer", "neu"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was ist das Gegenteil von „leicht“?",
+    options: ["schwer", "klein", "warm", "früh"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was ist das Gegenteil von „früh“?",
+    options: ["spät", "alt", "klein", "kalt"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was ist das Gegenteil von „glücklich“?",
+    options: ["traurig", "gesund", "jung", "schnell"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was ist das Gegenteil von „gesund“?",
+    options: ["krank", "stark", "glücklich", "warm"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+
+  {
+    question: "Was bedeutet „der Vater“?",
+    options: ["father", "mother", "brother", "uncle"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „die Mutter“?",
+    options: ["sister", "mother", "daughter", "wife"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „der Bruder“?",
+    options: ["brother", "father", "son", "friend"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „die Schwester“?",
+    options: ["mother", "sister", "daughter", "friend"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „der Sohn“?",
+    options: ["son", "father", "brother", "husband"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „die Tochter“?",
+    options: ["daughter", "mother", "sister", "wife"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „der Freund“?",
+    options: ["friend", "teacher", "father", "student"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „die Freundin“?",
+    options: ["female friend/girlfriend", "teacher", "mother", "student"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „der Lehrer“?",
+    options: ["teacher", "student", "doctor", "driver"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „der Schüler“?",
+    options: ["school student", "teacher", "doctor", "father"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+
+  {
+    question: "Ich ___ gern Fußball.",
+    options: ["spiele", "spielt", "spielst", "spielen"],
+    answer: 0,
+    category: "Verbs"
+  },
+  {
+    question: "Du ___ gern Musik.",
+    options: ["höre", "hörst", "hört", "hören"],
+    answer: 1,
+    category: "Verbs"
+  },
+  {
+    question: "Er ___ gern Bücher.",
+    options: ["lese", "liest", "lesen", "liest"],
+    answer: 1,
+    category: "Verbs"
+  },
+  {
+    question: "Wir ___ gern Filme.",
+    options: ["sehe", "siehst", "sieht", "sehen"],
+    answer: 3,
+    category: "Verbs"
+  },
+  {
+    question: "Ihr ___ gern Kaffee.",
+    options: ["trinkt", "trinken", "trinkst", "trinke"],
+    answer: 0,
+    category: "Verbs"
+  },
+  {
+    question: "Sie ___ gern Deutsch.",
+    options: ["lerne", "lernst", "lernt", "lernen"],
+    answer: 2,
+    category: "Verbs"
+  },
+  {
+    question: "Ich ___ gern Pizza.",
+    options: ["esse", "isst", "essen", "esst"],
+    answer: 0,
+    category: "Verbs"
+  },
+  {
+    question: "Du ___ gern im Park.",
+    options: ["gehe", "gehst", "geht", "gehen"],
+    answer: 1,
+    category: "Verbs"
+  },
+  {
+    question: "Er ___ mit dem Bus.",
+    options: ["fahre", "fährst", "fährt", "fahren"],
+    answer: 2,
+    category: "Verbs"
+  },
+  {
+    question: "Wir ___ heute zu Hause.",
+    options: ["bleibe", "bleibst", "bleibt", "bleiben"],
+    answer: 3,
+    category: "Verbs"
+  },
+
+  {
+    question: "Was bedeutet „das Frühstück“?",
+    options: ["breakfast", "lunch", "dinner", "snack"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „das Mittagessen“?",
+    options: ["breakfast", "lunch", "dinner", "drink"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „das Abendessen“?",
+    options: ["breakfast", "lunch", "dinner", "fruit"],
+    answer: 2,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „das Brot“?",
+    options: ["bread", "rice", "milk", "water"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „die Milch“?",
+    options: ["milk", "juice", "bread", "coffee"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „der Kaffee“?",
+    options: ["coffee", "tea", "milk", "water"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „der Tee“?",
+    options: ["tea", "coffee", "juice", "water"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „der Reis“?",
+    options: ["rice", "bread", "meat", "fish"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „das Fleisch“?",
+    options: ["meat", "fish", "rice", "fruit"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „der Fisch“?",
+    options: ["fish", "meat", "rice", "bread"],
+    answer: 0,
+    category: "Vocabulary"
+  }
