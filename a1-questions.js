@@ -744,3 +744,258 @@ const A1_QUESTIONS = [
     answer: 1,
     category: "Articles"
   }
+  {
+    question: "Was bedeutet „bitte“?",
+    options: ["Please", "Thank you", "Goodbye", "Sorry"],
+    answer: 0,
+    category: "Everyday German"
+  },
+
+  {
+    question: "Ich ___ 18 Jahre alt.",
+    options: ["bin", "bist", "ist", "sind"],
+    answer: 0,
+    category: "Grammar"
+  },
+
+  {
+    question: "Welcher Artikel passt? ___ Tisch",
+    options: ["die", "das", "der", "den"],
+    answer: 2,
+    category: "Articles"
+  },
+
+  {
+    question: "Was bedeutet „neu“?",
+    options: ["old", "new", "small", "slow"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+
+  {
+    question: "Du ___ sehr gut Deutsch.",
+    options: ["sprechen", "sprichst", "spricht", "spreche"],
+    answer: 1,
+    category: "Verbs"
+  },
+
+  {
+    question: "Welche Antwort passt? „Wo wohnst du?“",
+    options: ["Ich bin Student.", "Ich wohne in Wayanad.", "Ich heiße Aswin.", "Ich bin 18."],
+    answer: 1,
+    category: "Everyday German"
+  },
+
+  {
+    question: "Was ist der Plural von „der Freund“?",
+    options: ["die Freunden", "die Freund", "die Freunde", "der Freunde"],
+    answer: 2,
+    category: "Vocabulary"
+  },
+
+  {
+    question: "Sie ___ sehr freundlich.",
+    options: ["bist", "sind", "ist", "seid"],
+    answer: 1,
+    category: "Grammar"
+  },
+
+  {
+    question: "Welcher Artikel passt? ___ Brot",
+    options: ["der", "die", "das", "den"],
+    answer: 2,
+    category: "Articles"
+  },
+
+  {
+    question: "Was bedeutet „jung“?",
+    options: ["young", "old", "big", "tired"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+
+  {
+    question: "Ich ___ morgens Brot.",
+    options: ["esse", "isst", "essen", "isst"],
+    answer: 0,
+    category: "Verbs"
+  },
+
+  {
+    question: "Was sagt man am Morgen?",
+    options: ["Gute Nacht!", "Guten Morgen!", "Auf Wiedersehen!", "Gute Reise!"],
+    answer: 1,
+    category: "Everyday German"
+  },
+
+  {
+    question: "Wir ___ fünf Personen in der Familie.",
+    options: ["haben", "hat", "hast", "habe"],
+    answer: 0,
+    category: "Grammar"
+  },
+
+  {
+    question: "Welcher Artikel passt? ___ Katze",
+    options: ["der", "das", "die", "den"],
+    answer: 2,
+    category: "Articles"
+  },
+
+  {
+    question: "Was bedeutet „teuer“?",
+    options: ["cheap", "expensive", "easy", "small"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+
+  {
+    question: "Er ___ jeden Morgen um sieben Uhr auf.",
+    options: ["stehen", "stehst", "steht", "stehe"],
+    answer: 2,
+    category: "Verbs"
+  },
+
+  {
+    question: "Welche Antwort passt? „Wie alt bist du?“",
+    options: ["Ich bin 18 Jahre alt.", "Ich komme aus Indien.", "Ich wohne in Wayanad.", "Ich heiße Aswin."],
+    answer: 0,
+    category: "Everyday German"
+  },
+
+  {
+    question: "Was ist der Plural von „die Frau“?",
+    options: ["die Frauen", "die Fraue", "der Frauen", "das Frauen"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+
+  {
+    question: "Du ___ heute müde.",
+    options: ["bin", "ist", "bist", "sind"],
+    answer: 2,
+    category: "Grammar"
+  },
+
+  {
+    question: "Welcher Artikel passt? ___ Haus",
+    options: ["die", "der", "das", "den"],
+    answer: 2,
+    category: "Articles"
+  },
+
+  {
+    question: "Was bedeutet „leicht“?",
+    options: ["difficult", "easy/light", "expensive", "cold"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+
+  {
+    question: "Wir ___ gern Musik.",
+    options: ["hören", "hört", "hörst", "höre"],
+    answer: 0,
+    category: "Verbs"
+  },
+
+  {
+    question: "Welche Antwort passt? „Was machst du gern?“",
+    options: ["Ich spiele gern Fußball.", "Ich bin aus Indien.", "Ich bin 18.", "Ich heiße Aswin."],
+    answer: 0,
+    category: "Everyday German"
+  },
+
+  {
+    question: "Ich ___ einen Kaffee.",
+    options: ["trinkst", "trinkt", "trinke", "trinken"],
+    answer: 2,
+    category: "Grammar"
+  },
+
+  {
+    question: "Welcher Artikel passt? ___ Computer",
+    options: ["der", "die", "das", "den"],
+    answer: 0,
+    category: "Articles"
+  },
+
+  {
+    question: "Was bedeutet „richtig“?",
+    options: ["wrong", "right/correct", "slow", "old"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+
+  {
+    question: "Ihr ___ heute Deutsch.",
+    options: ["lernen", "lernt", "lernst", "lerne"],
+    answer: 1,
+    category: "Verbs"
+  },
+
+  {
+    question: "Was bedeutet „Auf Wiedersehen“?",
+    options: ["Hello", "Thank you", "Goodbye", "Please"],
+    answer: 2,
+    category: "Everyday German"
+  },
+
+  {
+    question: "Er ___ ein neues Handy.",
+    options: ["habe", "haben", "hast", "hat"],
+    answer: 3,
+    category: "Grammar"
+  },
+
+  {
+    question: "Welcher Artikel passt? ___ Schwester",
+    options: ["der", "die", "das", "den"],
+    answer: 1,
+    category: "Articles"
+  },
+
+  {
+    question: "Was bedeutet „schwer“?",
+    options: ["easy/light", "heavy/difficult", "young", "fast"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+
+  {
+    question: "Du ___ Fußball mit deinen Freunden.",
+    options: ["spiele", "spielen", "spielst", "spielt"],
+    answer: 2,
+    category: "Verbs"
+  },
+
+  {
+    question: "Welche Antwort passt? „Was ist das?“",
+    options: ["Das ist ein Buch.", "Ich bin Student.", "Ich komme aus Indien.", "Ich wohne in Wayanad."],
+    answer: 0,
+    category: "Everyday German"
+  },
+
+  {
+    question: "Wir ___ Studenten.",
+    options: ["ist", "seid", "sind", "bist"],
+    answer: 2,
+    category: "Grammar"
+  },
+
+  {
+    question: "Welcher Artikel passt? ___ Apfel",
+    options: ["die", "das", "der", "den"],
+    answer: 2,
+    category: "Articles"
+  },
+
+  {
+    question: "Was bedeutet „warm“?",
+    options: ["cold", "warm", "wet", "dark"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+
+  {
+    question: "Sie ___ gern Kaffee.",
+    options: ["trinke", "trinkst", "tr
