@@ -6,6 +6,7 @@
 
   <title>Dashboard | DeutschStart 🇩🇪</title>
 
+  <!-- Supabase -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="config.js"></script>
 
@@ -25,7 +26,7 @@
     header {
       background: #111827;
       color: white;
-      padding: 20px;
+      padding: 22px 20px;
       text-align: center;
     }
 
@@ -47,9 +48,9 @@
     .welcome {
       background: white;
       padding: 25px;
-      border-radius: 15px;
+      border-radius: 16px;
       margin-bottom: 25px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     }
 
     .welcome h2 {
@@ -59,30 +60,34 @@
     .welcome p {
       color: #555;
       word-break: break-word;
+      margin-bottom: 15px;
     }
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
       gap: 20px;
     }
 
     .card {
       background: white;
       padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     }
 
     .card h3 {
       margin-bottom: 15px;
-      font-size: 20px;
+      font-size: 21px;
     }
 
     .card p {
       color: #555;
       margin-bottom: 10px;
+      line-height: 1.5;
     }
+
+    /* Progress */
 
     .progress-container {
       width: 100%;
@@ -90,7 +95,7 @@
       background: #e5e7eb;
       border-radius: 20px;
       overflow: hidden;
-      margin: 15px 0;
+      margin: 18px 0;
     }
 
     .progress-bar {
@@ -101,19 +106,28 @@
       transition: width 0.5s ease;
     }
 
+    /* Quiz */
+
     .big-number {
-      font-size: 36px;
+      font-size: 38px;
       font-weight: bold;
-      margin: 10px 0;
+      margin: 15px 0;
+      color: #111827;
     }
+
+    /* Buttons */
 
     button {
       border: none;
       border-radius: 10px;
-      padding: 12px 20px;
+      padding: 13px 20px;
       font-size: 16px;
       cursor: pointer;
       margin-top: 10px;
+    }
+
+    button:hover {
+      opacity: 0.9;
     }
 
     .a1-button {
@@ -126,23 +140,34 @@
       color: white;
     }
 
-    button:hover {
-      opacity: 0.9;
-    }
+    /* Loading */
 
     .loading {
       text-align: center;
-      padding: 50px;
+      padding: 50px 20px;
       font-size: 20px;
     }
 
+    /* Error */
+
+    .error-message {
+      color: #dc2626 !important;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    /* Footer */
+
     footer {
       text-align: center;
-      padding: 30px;
+      padding: 35px 20px;
       color: #777;
     }
 
+    /* Mobile */
+
     @media (max-width: 600px) {
+
       header h1 {
         font-size: 24px;
       }
@@ -152,9 +177,17 @@
         padding: 0 15px;
       }
 
-      .card,
-      .welcome {
+      .welcome,
+      .card {
         padding: 20px;
+      }
+
+      .big-number {
+        font-size: 32px;
+      }
+
+      button {
+        width: 100%;
       }
     }
   </style>
@@ -162,37 +195,58 @@
 
 <body>
 
+  <!-- HEADER -->
+
   <header>
     <h1>DeutschStart 🇩🇪</h1>
     <p>Student Dashboard</p>
   </header>
 
+
+  <!-- MAIN -->
+
   <div class="container">
+
+    <!-- Loading -->
 
     <div id="loading" class="loading">
       Loading dashboard...
     </div>
 
-    <div id="dashboard" style="display:none;">
+
+    <!-- Dashboard -->
+
+    <div id="dashboard" style="display: none;">
 
       <!-- Welcome -->
+
       <div class="welcome">
+
         <h2>Willkommen! 👋</h2>
+
         <p>
           Logged in as:
           <strong id="userEmail"></strong>
         </p>
 
-        <button class="logout-button" onclick="logout()">
+        <button
+          class="logout-button"
+          onclick="logout()">
           🚪 Logout
         </button>
+
       </div>
 
-      <!-- Cards -->
+
+      <!-- CARDS -->
+
       <div class="cards">
 
-        <!-- A1 Progress -->
+
+        <!-- A1 PROGRESS -->
+
         <div class="card">
+
           <h3>📚 A1 Progress</h3>
 
           <p>
@@ -200,10 +254,12 @@
           </p>
 
           <div class="progress-container">
+
             <div
               class="progress-bar"
               id="progressBar">
             </div>
+
           </div>
 
           <p id="progressText">
@@ -220,29 +276,42 @@
             onclick="window.location.href='a1.html'">
             Continue A1 →
           </button>
+
         </div>
 
 
-        <!-- Quiz Results -->
+        <!-- A1 QUIZ -->
+
         <div class="card">
+
           <h3>📝 A1 Quiz</h3>
 
           <p>
             Latest quiz result:
           </p>
 
-          <div class="big-number" id="quizScore">
+          <div
+            class="big-number"
+            id="quizScore">
             --
           </div>
 
           <p id="quizMessage">
             Loading quiz result...
           </p>
+
+          <p
+            id="quizError"
+            class="error-message">
+          </p>
+
         </div>
 
 
-        <!-- Learning Progress -->
+        <!-- LEARNING PROGRESS -->
+
         <div class="card">
+
           <h3>📊 Learning Progress</h3>
 
           <p>
@@ -250,7 +319,8 @@
           </p>
 
           <p>
-            Complete lessons and quizzes to improve your progress.
+            Complete lessons and quizzes to improve
+            your German skills.
           </p>
 
           <button
@@ -258,7 +328,9 @@
             onclick="window.location.href='a1.html'">
             📖 Study A1
           </button>
+
         </div>
+
 
       </div>
 
@@ -266,12 +338,25 @@
 
   </div>
 
+
+  <!-- FOOTER -->
+
   <footer>
-    <p>© 2026 DeutschStart 🇩🇪</p>
+
+    <p>
+      © 2026 DeutschStart 🇩🇪
+    </p>
+
   </footer>
 
 
+  <!-- JAVASCRIPT -->
+
   <script>
+
+    /* =========================
+       SUPABASE CONNECTION
+    ========================= */
 
     const supabaseClient = supabase.createClient(
       SUPABASE_URL,
@@ -279,42 +364,55 @@
     );
 
 
+    /* =========================
+       LOAD DASHBOARD
+    ========================= */
+
     async function loadDashboard() {
 
-      const loading = document.getElementById("loading");
-      const dashboard = document.getElementById("dashboard");
+      const loading =
+        document.getElementById("loading");
+
+      const dashboard =
+        document.getElementById("dashboard");
+
 
       try {
 
-        /* -------------------------
+        /* =========================
            GET CURRENT USER
-        ------------------------- */
+        ========================= */
 
         const {
           data,
           error
         } = await supabaseClient.auth.getUser();
 
+
         if (error || !data.user) {
 
-          window.location.href = "login.html";
+          window.location.href =
+            "login.html";
+
           return;
         }
+
 
         const user = data.user;
 
 
-        /* -------------------------
-           SHOW USER EMAIL
-        ------------------------- */
+        /* =========================
+           SHOW EMAIL
+        ========================= */
 
-        document.getElementById("userEmail").textContent =
-          user.email;
+        document.getElementById(
+          "userEmail"
+        ).textContent = user.email;
 
 
-        /* -------------------------
-           LOAD A1 PROGRESS
-        ------------------------- */
+        /* =========================
+           LOAD LESSON PROGRESS
+        ========================= */
 
         const {
           data: lessons,
@@ -333,49 +431,122 @@
             progressError.message
           );
 
+          document.getElementById(
+            "progressText"
+          ).textContent =
+            "Unable to load progress.";
+
         } else {
 
-          const totalLessons = 7;
+          /*
+            Remove duplicate lesson names.
 
-          const completedLessons =
-            lessons ? lessons.length : 0;
+            Example:
 
-          const percentage =
-            Math.round(
-              (completedLessons / totalLessons) * 100
+            Greetings
+            Greetings
+            Numbers
+            Family
+
+            becomes:
+
+            Greetings
+            Numbers
+            Family
+          */
+
+          const uniqueLessons =
+            new Set(
+              (lessons || []).map(
+                lesson => lesson.lesson_name
+              )
             );
 
 
-          document.getElementById("progressBar")
-            .style.width = percentage + "%";
+          /*
+            We have 7 A1 lessons.
+          */
+
+          const totalLessons = 7;
 
 
-          document.getElementById("progressText")
-            .textContent =
-              percentage + "% completed";
+          let completedLessons =
+            uniqueLessons.size;
 
 
-          document.getElementById("lessonCount")
-            .textContent =
-              completedLessons;
+          /*
+            Never allow the number
+            to exceed 7.
+          */
+
+          if (completedLessons > totalLessons) {
+
+            completedLessons =
+              totalLessons;
+
+          }
+
+
+          /*
+            Calculate percentage.
+          */
+
+          let percentage =
+            Math.round(
+              (completedLessons /
+                totalLessons) * 100
+            );
+
+
+          /*
+            Never allow percentage
+            above 100%.
+          */
+
+          if (percentage > 100) {
+
+            percentage = 100;
+
+          }
+
+
+          /* Update progress bar */
+
+          document.getElementById(
+            "progressBar"
+          ).style.width =
+            percentage + "%";
+
+
+          /* Update percentage text */
+
+          document.getElementById(
+            "progressText"
+          ).textContent =
+            percentage +
+            "% completed";
+
+
+          /* Update lesson count */
+
+          document.getElementById(
+            "lessonCount"
+          ).textContent =
+            completedLessons;
         }
 
 
-        /* -------------------------
-           LOAD LATEST QUIZ RESULT
-        ------------------------- */
+        /* =========================
+           LOAD QUIZ RESULTS
+        ========================= */
 
         const {
           data: quizResults,
           error: quizError
         } = await supabaseClient
           .from("quiz_results")
-          .select("score, total, created_at")
-          .eq("user_id", user.id)
-          .order("created_at", {
-            ascending: false
-          })
-          .limit(1);
+          .select("score, total")
+          .eq("user_id", user.id);
 
 
         if (quizError) {
@@ -385,49 +556,87 @@
             quizError.message
           );
 
-          document.getElementById("quizScore")
-            .textContent = "--";
 
-          document.getElementById("quizMessage")
-            .textContent =
-              "No quiz result available.";
+          document.getElementById(
+            "quizScore"
+          ).textContent =
+            "--";
 
-        } else if (
+
+          document.getElementById(
+            "quizMessage"
+          ).textContent =
+            "Unable to load quiz result.";
+
+
+          document.getElementById(
+            "quizError"
+          ).textContent =
+            quizError.message;
+
+        }
+
+        else if (
           !quizResults ||
           quizResults.length === 0
         ) {
 
-          document.getElementById("quizScore")
-            .textContent = "0 / 0";
+          document.getElementById(
+            "quizScore"
+          ).textContent =
+            "0 / 0";
 
-          document.getElementById("quizMessage")
-            .textContent =
-              "Take the A1 quiz to see your result.";
 
-        } else {
+          document.getElementById(
+            "quizMessage"
+          ).textContent =
+            "Take the A1 quiz to see your result.";
+
+        }
+
+        else {
+
+          /*
+            Get the most recent row
+            returned by Supabase.
+
+            Since your current quiz has
+            only one result, this will
+            show your saved score.
+          */
 
           const latestQuiz =
-            quizResults[0];
+            quizResults[
+              quizResults.length - 1
+            ];
 
-          document.getElementById("quizScore")
-            .textContent =
-              latestQuiz.score +
-              " / " +
-              latestQuiz.total;
 
-          document.getElementById("quizMessage")
-            .textContent =
-              "Latest quiz result 🎉";
+          document.getElementById(
+            "quizScore"
+          ).textContent =
+            latestQuiz.score +
+            " / " +
+            latestQuiz.total;
+
+
+          document.getElementById(
+            "quizMessage"
+          ).textContent =
+            "Latest quiz result 🎉";
+
         }
 
 
-        /* -------------------------
+        /* =========================
            SHOW DASHBOARD
-        ------------------------- */
+        ========================= */
 
-        loading.style.display = "none";
+        loading.style.display =
+          "none";
 
-        dashboard.style.display = "block";
+        dashboard.style.display =
+          "block";
+
 
       } catch (error) {
 
@@ -436,22 +645,26 @@
           error
         );
 
+
         loading.textContent =
           "Something went wrong. Please login again.";
 
       }
+
     }
 
 
-    /* -------------------------
+    /* =========================
        LOGOUT
-    ------------------------- */
+    ========================= */
 
     async function logout() {
 
       const {
         error
-      } = await supabaseClient.auth.signOut();
+      } =
+        await supabaseClient.auth.signOut();
+
 
       if (error) {
 
@@ -463,14 +676,16 @@
         return;
       }
 
+
       window.location.href =
         "login.html";
+
     }
 
 
-    /* -------------------------
-       START DASHBOARD
-    ------------------------- */
+    /* =========================
+       START
+    ========================= */
 
     loadDashboard();
 
