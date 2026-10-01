@@ -6,15 +6,15 @@
 <meta charset="UTF-8">
 
 <meta
-name="viewport"
-content="width=device-width, initial-scale=1.0">
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>DeutschStart – Dashboard</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script src="config.js"></script>
-
 
 <style>
 
@@ -23,52 +23,32 @@ content="width=device-width, initial-scale=1.0">
 }
 
 body {
-
     margin: 0;
-
     font-family: Arial, sans-serif;
-
     background: #f4f7fb;
-
     color: #172033;
-
 }
 
-
 header {
-
     background: #111827;
-
     color: white;
-
     padding: 18px 20px;
 
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
 
     gap: 15px;
-
 }
-
 
 .logo {
-
     font-size: 22px;
-
     font-weight: bold;
-
 }
 
-
 .logout {
-
     background: #dc2626;
-
     color: white;
-
     border: none;
 
     padding: 10px 15px;
@@ -78,23 +58,16 @@ header {
     cursor: pointer;
 
     font-weight: bold;
-
 }
 
-
 .container {
-
     max-width: 1100px;
-
     margin: auto;
 
     padding: 25px 15px 50px;
-
 }
 
-
 .welcome {
-
     background: white;
 
     padding: 25px;
@@ -104,40 +77,28 @@ header {
     margin-bottom: 20px;
 
     box-shadow: 0 5px 20px rgba(0,0,0,.06);
-
 }
-
 
 .welcome h1 {
-
     margin-top: 0;
-
 }
-
 
 .email {
-
     color: #6b7280;
-
 }
 
-
 .grid {
-
     display: grid;
 
     grid-template-columns:
-    repeat(auto-fit,minmax(220px,1fr));
+    repeat(auto-fit, minmax(220px, 1fr));
 
     gap: 18px;
 
     margin-bottom: 20px;
-
 }
 
-
 .card {
-
     background: white;
 
     padding: 22px;
@@ -145,19 +106,13 @@ header {
     border-radius: 16px;
 
     box-shadow: 0 5px 20px rgba(0,0,0,.06);
-
 }
-
 
 .card h2 {
-
     margin-top: 0;
-
 }
 
-
 .progress {
-
     height: 12px;
 
     background: #e5e7eb;
@@ -167,12 +122,9 @@ header {
     overflow: hidden;
 
     margin: 12px 0;
-
 }
 
-
 .progress-bar {
-
     height: 100%;
 
     width: 0%;
@@ -180,51 +132,33 @@ header {
     background: #2563eb;
 
     transition: width .4s;
-
 }
-
 
 .a2-bar {
-
     background: #16a34a;
-
 }
 
-
 .stat {
-
     font-size: 32px;
 
     font-weight: bold;
-
 }
 
-
 .small {
-
     color: #6b7280;
 
     font-size: 14px;
-
 }
-
 
 .level-card {
-
     text-align: center;
-
 }
-
 
 .level-card h2 {
-
     font-size: 28px;
-
 }
 
-
 .btn {
-
     display: inline-block;
 
     text-decoration: none;
@@ -244,58 +178,40 @@ header {
     font-weight: bold;
 
     margin-top: 8px;
-
 }
-
 
 .btn-green {
-
     background: #16a34a;
-
 }
-
 
 .btn-gray {
-
     background: #6b7280;
-
 }
 
-
 .result {
-
     font-size: 20px;
 
     font-weight: bold;
-
 }
 
-
 footer {
-
     text-align: center;
 
     color: #6b7280;
 
     padding: 30px 10px;
-
 }
-
 
 @media(max-width:600px) {
 
     header {
-
         flex-direction: column;
 
         align-items: flex-start;
-
     }
 
     .container {
-
         padding: 15px 10px 40px;
-
     }
 
 }
@@ -316,14 +232,12 @@ footer {
 
     <button
         class="logout"
-        onclick="logout()">
-
+        onclick="logout()"
+    >
         Logout
-
     </button>
 
 </header>
-
 
 
 <div class="container">
@@ -343,10 +257,9 @@ footer {
 
     <p
         class="email"
-        id="userEmail">
-
+        id="userEmail"
+    >
         Loading account...
-
     </p>
 
 </section>
@@ -358,75 +271,76 @@ footer {
 <section class="grid">
 
 
-<div class="card">
+    <!-- A1 LESSONS -->
 
-    <p class="small">
-        A1 Lessons
-    </p>
+    <div class="card">
 
-    <div
-        class="stat"
-        id="a1Lessons">
+        <p class="small">
+            A1 Lessons
+        </p>
 
-        0/7
-
-    </div>
-
-</div>
-
-
-
-<div class="card">
-
-    <p class="small">
-        A2 Lessons
-    </p>
-
-    <div
-        class="stat"
-        id="a2Lessons">
-
-        0/10
+        <div
+            class="stat"
+            id="a1Lessons"
+        >
+            0/7
+        </div>
 
     </div>
 
-</div>
 
+    <!-- A2 LESSONS -->
 
+    <div class="card">
 
-<div class="card">
+        <p class="small">
+            A2 Lessons
+        </p>
 
-    <p class="small">
-        A1 Quiz
-    </p>
-
-    <div
-        class="result"
-        id="a1Quiz">
-
-        —
-
-    </div>
-
-</div>
-
-
-
-<div class="card">
-
-    <p class="small">
-        A2 Quiz
-    </p>
-
-    <div
-        class="result"
-        id="a2Quiz">
-
-        —
+        <div
+            class="stat"
+            id="a2Lessons"
+        >
+            0/10
+        </div>
 
     </div>
 
-</div>
+
+    <!-- A1 QUIZ -->
+
+    <div class="card">
+
+        <p class="small">
+            A1 Quiz
+        </p>
+
+        <div
+            class="result"
+            id="a1Quiz"
+        >
+            —
+        </div>
+
+    </div>
+
+
+    <!-- A2 QUIZ -->
+
+    <div class="card">
+
+        <p class="small">
+            A2 Quiz
+        </p>
+
+        <div
+            class="result"
+            id="a2Quiz"
+        >
+            —
+        </div>
+
+    </div>
 
 
 </section>
@@ -450,35 +364,31 @@ footer {
 
         <div
             class="progress-bar"
-            id="a1ProgressBar">
-        </div>
+            id="a1ProgressBar"
+        ></div>
 
     </div>
 
 
     <p
         class="small"
-        id="a1ProgressText">
-
+        id="a1ProgressText"
+    >
         0 / 7 lessons completed
-
     </p>
 
 
     <a
         href="a1.html"
-        class="btn">
-
+        class="btn"
+    >
         Continue A1 →
-
     </a>
 
 </section>
 
 
-
 <br>
-
 
 
 <!-- A2 -->
@@ -499,35 +409,31 @@ footer {
 
         <div
             class="progress-bar a2-bar"
-            id="a2ProgressBar">
-        </div>
+            id="a2ProgressBar"
+        ></div>
 
     </div>
 
 
     <p
         class="small"
-        id="a2ProgressText">
-
+        id="a2ProgressText"
+    >
         0 / 10 lessons completed
-
     </p>
 
 
     <a
         href="a2.html"
-        class="btn btn-green">
-
+        class="btn btn-green"
+    >
         Continue A2 →
-
     </a>
 
 </section>
 
 
-
 <br>
-
 
 
 <!-- LEVELS -->
@@ -535,98 +441,98 @@ footer {
 <section class="grid">
 
 
-<div class="card level-card">
+    <!-- A1 -->
 
-    <h2>
-        🇩🇪 A1
-    </h2>
+    <div class="card level-card">
 
-    <p>
-        Beginner
-    </p>
+        <h2>
+            🇩🇪 A1
+        </h2>
 
-    <a
-        href="a1.html"
-        class="btn">
+        <p>
+            Beginner
+        </p>
 
-        Open A1
+        <a
+            href="a1.html"
+            class="btn"
+        >
+            Open A1
+        </a>
 
-    </a>
-
-</div>
-
-
-
-<div class="card level-card">
-
-    <h2>
-        🇩🇪 A2
-    </h2>
-
-    <p>
-        Elementary
-    </p>
-
-    <a
-        href="a2.html"
-        class="btn btn-green">
-
-        Open A2
-
-    </a>
-
-</div>
+    </div>
 
 
+    <!-- A2 -->
 
-<div class="card level-card">
+    <div class="card level-card">
 
-    <h2>
-        🇩🇪 B1
-    </h2>
+        <h2>
+            🇩🇪 A2
+        </h2>
 
-    <p>
-        Intermediate
-    </p>
+        <p>
+            Elementary
+        </p>
 
-    <button
-        class="btn btn-gray"
-        onclick="comingSoon('B1')">
+        <a
+            href="a2.html"
+            class="btn btn-green"
+        >
+            Open A2
+        </a>
 
-        Coming Soon
-
-    </button>
-
-</div>
-
+    </div>
 
 
-<div class="card level-card">
+    <!-- B1 -->
 
-    <h2>
-        🇩🇪 B2
-    </h2>
+    <div class="card level-card">
 
-    <p>
-        Upper Intermediate
-    </p>
+        <h2>
+            🇩🇪 B1
+        </h2>
 
-    <button
-        class="btn btn-gray"
-        onclick="comingSoon('B2')">
+        <p>
+            Intermediate
+        </p>
 
-        Coming Soon
+        <button
+            class="btn btn-gray"
+            onclick="comingSoon('B1')"
+        >
+            Coming Soon
+        </button>
 
-    </button>
+    </div>
 
-</div>
+
+    <!-- B2 -->
+
+    <div class="card level-card">
+
+        <h2>
+            🇩🇪 B2
+        </h2>
+
+        <p>
+            Upper Intermediate
+        </p>
+
+        <button
+            class="btn btn-gray"
+            onclick="comingSoon('B2')"
+        >
+            Coming Soon
+        </button>
+
+    </div>
 
 
 </section>
 
 
 </div>
-
 
 
 <footer>
@@ -640,6 +546,10 @@ footer {
 
 <script>
 
+
+/* ==========================================
+   SUPABASE
+========================================== */
 
 const supabaseClient =
     window.supabase.createClient(
@@ -660,13 +570,9 @@ async function loadDashboard() {
 
 
     const {
-
         data: { user },
-
         error
-
     } = await supabaseClient.auth.getUser();
-
 
 
     if (error || !user) {
@@ -675,13 +581,10 @@ async function loadDashboard() {
             "login.html";
 
         return;
-
     }
 
 
-
     currentUser = user;
-
 
 
     document.getElementById(
@@ -689,11 +592,9 @@ async function loadDashboard() {
     ).textContent = user.email;
 
 
-
     await loadLessonProgress();
 
     await loadQuizResults();
-
 
 }
 
@@ -726,7 +627,6 @@ async function loadLessonProgress() {
         );
 
 
-
     if (error) {
 
         console.log(
@@ -735,14 +635,13 @@ async function loadLessonProgress() {
         );
 
         return;
-
     }
-
 
 
     const lessons = data || [];
 
 
+    /* A1 LESSONS */
 
     const a1Names = [
 
@@ -763,6 +662,7 @@ async function loadLessonProgress() {
     ];
 
 
+    /* A2 LESSONS */
 
     const a2Names = [
 
@@ -789,23 +689,18 @@ async function loadLessonProgress() {
     ];
 
 
+    const completedNames = [
 
-    const completedNames =
-        [
+        ...new Set(
 
-            ...new Set(
-
-                lessons.map(
-
-                    item =>
-                        item.lesson_name
-
-                )
-
+            lessons.map(
+                item =>
+                    item.lesson_name
             )
 
-        ];
+        )
 
+    ];
 
 
     const a1Completed =
@@ -817,7 +712,6 @@ async function loadLessonProgress() {
         ).length;
 
 
-
     const a2Completed =
         completedNames.filter(
 
@@ -825,7 +719,6 @@ async function loadLessonProgress() {
                 a2Names.includes(name)
 
         ).length;
-
 
 
     updateA1Progress(
@@ -836,7 +729,6 @@ async function loadLessonProgress() {
     updateA2Progress(
         a2Completed
     );
-
 
 }
 
@@ -860,19 +752,16 @@ function updateA1Progress(
         );
 
 
-
     document.getElementById(
         "a1Lessons"
     ).textContent =
         `${completed}/${total}`;
 
 
-
     document.getElementById(
         "a1ProgressBar"
     ).style.width =
         percentage + "%";
-
 
 
     document.getElementById(
@@ -902,19 +791,16 @@ function updateA2Progress(
         );
 
 
-
     document.getElementById(
         "a2Lessons"
     ).textContent =
         `${completed}/${total}`;
 
 
-
     document.getElementById(
         "a2ProgressBar"
     ).style.width =
         percentage + "%";
-
 
 
     document.getElementById(
@@ -939,21 +825,13 @@ async function loadQuizResults() {
         .from("quiz_results")
 
         .select(
-            "score, total, created_at, level"
+            "score, total, level"
         )
 
         .eq(
             "user_id",
             currentUser.id
-        )
-
-        .order(
-            "created_at",
-            {
-                ascending: false
-            }
         );
-
 
 
     if (error) {
@@ -964,19 +842,15 @@ async function loadQuizResults() {
         );
 
         return;
-
     }
 
 
-
-    const results =
-        data || [];
+    const results = data || [];
 
 
-
-    /*
-       Find latest A1 result
-    */
+    /* =====================================
+       A1 RESULTS
+    ===================================== */
 
     const a1Results =
         results.filter(
@@ -987,11 +861,13 @@ async function loadQuizResults() {
         );
 
 
-
     if (a1Results.length > 0) {
 
+
         const latestA1 =
-            a1Results[0];
+            a1Results[
+                a1Results.length - 1
+            ];
 
 
         document.getElementById(
@@ -1004,9 +880,9 @@ async function loadQuizResults() {
 
 
 
-    /*
-       Find latest A2 result
-    */
+    /* =====================================
+       A2 RESULTS
+    ===================================== */
 
     const a2Results =
         results.filter(
@@ -1017,11 +893,13 @@ async function loadQuizResults() {
         );
 
 
-
     if (a2Results.length > 0) {
 
+
         const latestA2 =
-            a2Results[0];
+            a2Results[
+                a2Results.length - 1
+            ];
 
 
         document.getElementById(
@@ -1031,7 +909,6 @@ async function loadQuizResults() {
             `${latestA2.score}/${latestA2.total}`;
 
     }
-
 
 }
 
@@ -1048,7 +925,6 @@ async function logout() {
         await supabaseClient.auth.signOut();
 
 
-
     if (error) {
 
         alert(
@@ -1057,14 +933,11 @@ async function logout() {
         );
 
         return;
-
     }
-
 
 
     window.location.href =
         "login.html";
-
 
 }
 
@@ -1076,12 +949,10 @@ async function logout() {
 
 function comingSoon(level) {
 
-
     alert(
         level +
         " German is coming soon! 🇩🇪"
     );
-
 
 }
 
