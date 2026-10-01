@@ -2334,3 +2334,612 @@ const A1_QUESTIONS = [
     answer: 0,
     category: "Vocabulary"
   }
+  {
+    question: "Ich ___ aus Indien.",
+    options: ["komme", "kommst", "kommt", "kommen"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "Du ___ in Deutschland.",
+    options: ["wohne", "wohnst", "wohnt", "wohnen"],
+    answer: 1,
+    category: "Grammar"
+  },
+  {
+    question: "Er ___ heute sehr müde.",
+    options: ["bin", "bist", "ist", "sind"],
+    answer: 2,
+    category: "Grammar"
+  },
+  {
+    question: "Wir ___ Studenten.",
+    options: ["bin", "bist", "ist", "sind"],
+    answer: 3,
+    category: "Grammar"
+  },
+  {
+    question: "Ihr ___ sehr freundlich.",
+    options: ["seid", "sind", "bist", "ist"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "Sie ___ aus Berlin.",
+    options: ["komme", "kommst", "kommt", "kommen"],
+    answer: 3,
+    category: "Grammar"
+  },
+  {
+    question: "Ich ___ 18 Jahre alt.",
+    options: ["bin", "bist", "ist", "sind"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "Du ___ mein Freund.",
+    options: ["bin", "bist", "ist", "sind"],
+    answer: 1,
+    category: "Grammar"
+  },
+  {
+    question: "Sie ___ meine Lehrerin.",
+    options: ["bin", "bist", "ist", "sind"],
+    answer: 2,
+    category: "Grammar"
+  },
+  {
+    question: "Wir ___ heute zu Hause.",
+    options: ["bin", "bist", "ist", "sind"],
+    answer: 3,
+    category: "Grammar"
+  },
+
+  {
+    question: "Ich habe ___ Hund.",
+    options: ["ein", "eine", "einen", "einem"],
+    answer: 2,
+    category: "Articles"
+  },
+  {
+    question: "Sie hat ___ Katze.",
+    options: ["ein", "eine", "einen", "einem"],
+    answer: 1,
+    category: "Articles"
+  },
+  {
+    question: "Er hat ___ Fahrrad.",
+    options: ["ein", "eine", "einen", "einem"],
+    answer: 0,
+    category: "Articles"
+  },
+  {
+    question: "Wir kaufen ___ Tisch.",
+    options: ["ein", "eine", "einen", "einem"],
+    answer: 2,
+    category: "Articles"
+  },
+  {
+    question: "Ich brauche ___ Jacke.",
+    options: ["ein", "eine", "einen", "einem"],
+    answer: 1,
+    category: "Articles"
+  },
+  {
+    question: "Du hast ___ Handy.",
+    options: ["ein", "eine", "einen", "einem"],
+    answer: 0,
+    category: "Articles"
+  },
+  {
+    question: "Sie kauft ___ Rock.",
+    options: ["ein", "eine", "einen", "einem"],
+    answer: 2,
+    category: "Articles"
+  },
+  {
+    question: "Er kauft ___ Uhr.",
+    options: ["ein", "eine", "einen", "einem"],
+    answer: 1,
+    category: "Articles"
+  },
+  {
+    question: "Ich sehe ___ Kind.",
+    options: ["ein", "eine", "einen", "einem"],
+    answer: 0,
+    category: "Articles"
+  },
+  {
+    question: "Wir besuchen ___ Freund.",
+    options: ["ein", "eine", "einen", "einem"],
+    answer: 2,
+    category: "Articles"
+  },
+
+  {
+    question: "Was ist die richtige Form? „___ Mann ist nett.“",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 0,
+    category: "Articles"
+  },
+  {
+    question: "Was ist die richtige Form? „___ Frau ist nett.“",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 1,
+    category: "Articles"
+  },
+  {
+    question: "Was ist die richtige Form? „___ Kind spielt.“",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 2,
+    category: "Articles"
+  },
+  {
+    question: "Was ist die richtige Form? „Ich sehe ___ Mann.“",
+    options: ["der", "die", "das", "den"],
+    answer: 3,
+    category: "Articles"
+  },
+  {
+    question: "Was ist die richtige Form? „Ich sehe ___ Frau.“",
+    options: ["der", "die", "das", "den"],
+    answer: 1,
+    category: "Articles"
+  },
+  {
+    question: "Was ist die richtige Form? „Ich sehe ___ Kind.“",
+    options: ["der", "die", "das", "den"],
+    answer: 2,
+    category: "Articles"
+  },
+  {
+    question: "___ Auto ist schnell.",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 2,
+    category: "Articles"
+  },
+  {
+    question: "___ Bücher sind interessant.",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 1,
+    category: "Articles"
+  },
+  {
+    question: "___ Lehrer kommt heute.",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 0,
+    category: "Articles"
+  },
+  {
+    question: "Ich kaufe ___ Bücher.",
+    options: ["der", "die", "das", "den"],
+    answer: 1,
+    category: "Articles"
+  },
+
+  {
+    question: "Was bedeutet „das Zimmer“?",
+    options: ["room", "house", "kitchen", "garden"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „die Küche“?",
+    options: ["bedroom", "kitchen", "bathroom", "garden"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „das Badezimmer“?",
+    options: ["bathroom", "bedroom", "living room", "kitchen"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „das Schlafzimmer“?",
+    options: ["bedroom", "kitchen", "bathroom", "garage"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „das Wohnzimmer“?",
+    options: ["living room", "bedroom", "bathroom", "office"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „der Garten“?",
+    options: ["garden", "garage", "room", "balcony"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „die Tür“?",
+    options: ["door", "window", "wall", "floor"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „das Fenster“?",
+    options: ["window", "door", "roof", "chair"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „der Tisch“?",
+    options: ["table", "chair", "bed", "door"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „der Stuhl“?",
+    options: ["chair", "table", "bed", "sofa"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+
+  {
+    question: "Was bedeutet „das Bett“?",
+    options: ["bed", "chair", "table", "sofa"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „das Sofa“?",
+    options: ["sofa", "bed", "desk", "door"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „der Schrank“?",
+    options: ["cupboard/wardrobe", "chair", "window", "bed"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „die Lampe“?",
+    options: ["lamp", "door", "table", "window"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „der Schlüssel“?",
+    options: ["key", "bag", "phone", "book"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „die Tasche“?",
+    options: ["bag", "key", "shoe", "shirt"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „das Handy“?",
+    options: ["mobile phone", "computer", "television", "radio"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „der Computer“?",
+    options: ["computer", "phone", "television", "camera"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „das Buch“?",
+    options: ["book", "pen", "paper", "bag"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „der Kugelschreiber“?",
+    options: ["ballpoint pen", "pencil", "book", "bag"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+
+  {
+    question: "Ich ___ morgens um sieben Uhr auf.",
+    options: ["stehe", "steht", "stehst", "stehen"],
+    answer: 0,
+    category: "Daily Routine"
+  },
+  {
+    question: "Danach ___ ich Frühstück.",
+    options: ["esse", "isst", "essen", "esst"],
+    answer: 0,
+    category: "Daily Routine"
+  },
+  {
+    question: "Um acht Uhr ___ ich zur Schule.",
+    options: ["gehe", "geht", "gehst", "gehen"],
+    answer: 0,
+    category: "Daily Routine"
+  },
+  {
+    question: "Am Mittag ___ ich zu Hause.",
+    options: ["esse", "isst", "essen", "esst"],
+    answer: 0,
+    category: "Daily Routine"
+  },
+  {
+    question: "Am Nachmittag ___ ich Fußball.",
+    options: ["spiele", "spielt", "spielst", "spielen"],
+    answer: 0,
+    category: "Daily Routine"
+  },
+  {
+    question: "Am Abend ___ ich einen Film.",
+    options: ["sehe", "sieht", "siehst", "sehen"],
+    answer: 0,
+    category: "Daily Routine"
+  },
+  {
+    question: "Danach ___ ich meine Hausaufgaben.",
+    options: ["mache", "macht", "machst", "machen"],
+    answer: 0,
+    category: "Daily Routine"
+  },
+  {
+    question: "Um zehn Uhr ___ ich ins Bett.",
+    options: ["gehe", "geht", "gehst", "gehen"],
+    answer: 0,
+    category: "Daily Routine"
+  },
+  {
+    question: "Nach dem Essen ___ ich meine Zähne.",
+    options: ["putze", "putzt", "putzt", "putzen"],
+    answer: 0,
+    category: "Daily Routine"
+  },
+  {
+    question: "Am Wochenende ___ ich lange.",
+    options: ["schlafe", "schläft", "schläfst", "schlafen"],
+    answer: 0,
+    category: "Daily Routine"
+  },
+
+  {
+    question: "Wie sagt man „Good morning“ auf Deutsch?",
+    options: ["Guten Morgen", "Gute Nacht", "Guten Abend", "Hallo Nacht"],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Wie sagt man „Good evening“ auf Deutsch?",
+    options: ["Guten Abend", "Guten Morgen", "Gute Nacht", "Guten Tag"],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Wie sagt man „Good night“ auf Deutsch?",
+    options: ["Gute Nacht", "Guten Morgen", "Guten Abend", "Guten Tag"],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Wie sagt man „Thank you“ auf Deutsch?",
+    options: ["Danke", "Bitte", "Entschuldigung", "Hallo"],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Wie sagt man „Please“ auf Deutsch?",
+    options: ["Bitte", "Danke", "Hallo", "Tschüss"],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Wie sagt man „Sorry/Excuse me“ auf Deutsch?",
+    options: ["Entschuldigung", "Danke", "Bitte", "Willkommen"],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Wie sagt man „See you“ auf Deutsch?",
+    options: ["Bis später", "Guten Morgen", "Danke", "Bitte"],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Wie sagt man „Hello“ auf Deutsch?",
+    options: ["Hallo", "Tschüss", "Danke", "Bitte"],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Wie sagt man „Welcome“ auf Deutsch?",
+    options: ["Willkommen", "Tschüss", "Danke", "Gute Nacht"],
+    answer: 0,
+    category: "Everyday German"
+  },
+  {
+    question: "Wie sagt man „Goodbye“ auf Deutsch?",
+    options: ["Auf Wiedersehen", "Guten Morgen", "Willkommen", "Bitte"],
+    answer: 0,
+    category: "Everyday German"
+  },
+
+  {
+    question: "___ du Deutsch?",
+    options: ["Sprichst", "Spreche", "Sprechen", "Spricht"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "___ du Kaffee?",
+    options: ["Trinkst", "Trinke", "Trinken", "Trinkt"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "___ du Fußball?",
+    options: ["Spielst", "Spiele", "Spielen", "Spielt"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "___ du in Berlin?",
+    options: ["Wohnst", "Wohne", "Wohnen", "Wohnt"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "___ du heute Zeit?",
+    options: ["Hast", "Habe", "Hat", "Haben"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "___ du müde?",
+    options: ["Bist", "Bin", "Ist", "Sind"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "___ ihr heute Fußball?",
+    options: ["Spielt", "Spiele", "Spielst", "Spielen"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "___ ihr Deutsch?",
+    options: ["Lernt", "Lerne", "Lernst", "Lernen"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "___ Sie einen Kaffee?",
+    options: ["Möchten", "Möchte", "Möchtest", "Möchtet"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "___ du mir helfen?",
+    options: ["Kannst", "Kann", "Können", "Könnt"],
+    answer: 0,
+    category: "Grammar"
+  },
+
+  {
+    question: "Ich ___ heute nicht arbeiten.",
+    options: ["kann", "kannst", "können", "könnt"],
+    answer: 0,
+    category: "Modal Verbs"
+  },
+  {
+    question: "Du ___ gut Deutsch sprechen.",
+    options: ["kannst", "kann", "können", "könnt"],
+    answer: 0,
+    category: "Modal Verbs"
+  },
+  {
+    question: "Er ___ heute kommen.",
+    options: ["kann", "kannst", "können", "könnt"],
+    answer: 0,
+    category: "Modal Verbs"
+  },
+  {
+    question: "Wir ___ morgen lernen.",
+    options: ["können", "kann", "kannst", "könnt"],
+    answer: 0,
+    category: "Modal Verbs"
+  },
+  {
+    question: "Ihr ___ hier warten.",
+    options: ["könnt", "kann", "kannst", "können"],
+    answer: 0,
+    category: "Modal Verbs"
+  },
+  {
+    question: "Ich ___ einen Kaffee trinken.",
+    options: ["möchte", "möchtest", "möchten", "möchtet"],
+    answer: 0,
+    category: "Modal Verbs"
+  },
+  {
+    question: "Du ___ ein neues Handy kaufen.",
+    options: ["möchtest", "möchte", "möchten", "möchtet"],
+    answer: 0,
+    category: "Modal Verbs"
+  },
+  {
+    question: "Wir ___ nach Berlin fahren.",
+    options: ["möchten", "möchte", "möchtest", "möchtet"],
+    answer: 0,
+    category: "Modal Verbs"
+  },
+  {
+    question: "Er ___ Arzt werden.",
+    options: ["möchte", "möchtest", "möchten", "möchtet"],
+    answer: 0,
+    category: "Modal Verbs"
+  },
+  {
+    question: "Ihr ___ Deutsch lernen.",
+    options: ["möchtet", "möchte", "möchtest", "möchten"],
+    answer: 0,
+    category: "Modal Verbs"
+  },
+
+  {
+    question: "Was ist die richtige Antwort? „Wie heißt du?“",
+    options: ["Ich heiße Aswin.", "Ich bin aus Indien.", "Ich bin 18 Jahre.", "Ich wohne in Berlin."],
+    answer: 0,
+    category: "A1 Exam Practice"
+  },
+  {
+    question: "Was ist die richtige Antwort? „Woher kommst du?“",
+    options: ["Ich komme aus Indien.", "Ich heiße Aswin.", "Ich bin 18.", "Ich spiele Fußball."],
+    answer: 0,
+    category: "A1 Exam Practice"
+  },
+  {
+    question: "Was ist die richtige Antwort? „Wie alt bist du?“",
+    options: ["Ich bin 18 Jahre alt.", "Ich komme aus Indien.", "Ich wohne in Wayanad.", "Ich heiße Aswin."],
+    answer: 0,
+    category: "A1 Exam Practice"
+  },
+  {
+    question: "Was ist die richtige Antwort? „Wo wohnst du?“",
+    options: ["Ich wohne in Wayanad.", "Ich bin 18 Jahre alt.", "Ich komme aus Indien.", "Ich heiße Aswin."],
+    answer: 0,
+    category: "A1 Exam Practice"
+  },
+  {
+    question: "Was ist die richtige Antwort? „Was sind deine Hobbys?“",
+    options: ["Ich spiele Fußball und höre Musik.", "Ich bin 18 Jahre alt.", "Ich komme aus Indien.", "Ich wohne in Wayanad."],
+    answer: 0,
+    category: "A1 Exam Practice"
+  },
+  {
+    question: "Was ist die richtige Antwort? „Was ist dein Lieblingsessen?“",
+    options: ["Mein Lieblingsessen ist Mandi.", "Ich bin Student.", "Ich wohne in Indien.", "Ich spiele Fußball."],
+    answer: 0,
+    category: "A1 Exam Practice"
+  },
+  {
+    question: "Was ist die richtige Antwort? „Was machst du am Wochenende?“",
+    options: ["Ich spiele Fußball mit meinen Freunden.", "Ich bin 18 Jahre alt.", "Ich heiße Aswin.", "Ich komme aus Indien."],
+    answer: 0,
+    category: "A1 Exam Practice"
+  },
+  {
+    question: "Was ist die richtige Antwort? „Was trinkst du gern?“",
+    options: ["Ich trinke gern Orangensaft.", "Ich spiele gern Fußball.", "Ich wohne in Indien.", "Ich bin Student."],
+    answer: 0,
+    category: "A1 Exam Practice"
+  },
+  {
+    question: "Was ist die richtige Antwort? „Wann stehst du auf?“",
+    options: ["Ich stehe um sieben Uhr auf.", "Ich wohne in Wayanad.", "Ich spiele Fußball.", "Ich bin Student."],
+    answer: 0,
+    category: "A1 Exam Practice"
+  },
+  {
+    question: "Was ist die richtige Antwort? „Wann gehst du schlafen?“",
+    options: ["Ich gehe um zehn Uhr schlafen.", "Ich komme aus Indien.", "Ich trinke Kaffee.", "Ich spiele Fußball."],
+    answer: 0,
+    category: "A1 Exam Practice"
+  }
