@@ -1,1772 +1,2377 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
-
-<title>DeutschStart – Dashboard</title>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="config.js"></script>
+<title>DeutschStart A2 🇩🇪</title>
 
 <style>
-
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-
-    margin: 0;
-
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
-    background:
-        radial-gradient(
-            circle at top left,
-            #243b55 0%,
-            #101827 35%,
-            #070b13 75%
-        );
-
-    color: #ffffff;
-
-    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #172033;
 }
-
-
-/* ==========================================
-   HEADER
-========================================== */
 
 header {
-
-    background: rgba(8, 13, 24, 0.88);
-
-    backdrop-filter: blur(18px);
-
-    border-bottom:
-        1px solid rgba(255,255,255,.08);
-
-    padding: 18px 22px;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    position: sticky;
-
-    top: 0;
-
-    z-index: 10;
+    background: linear-gradient(135deg, #172033, #3157a5);
+    color: white;
+    text-align: center;
+    padding: 28px 18px;
 }
 
-
-.logo {
-
-    font-size: 22px;
-
-    font-weight: 800;
-
-    letter-spacing: .3px;
+header h1 {
+    font-size: 30px;
+    margin-bottom: 8px;
 }
 
-
-.logout {
-
-    background:
-        rgba(239,68,68,.14);
-
-    color: #ff8b8b;
-
-    border:
-        1px solid rgba(239,68,68,.35);
-
-    padding: 10px 16px;
-
-    border-radius: 10px;
-
-    cursor: pointer;
-
-    font-weight: 700;
+header p {
+    opacity: 0.9;
 }
-
-
-.logout:hover {
-
-    background:
-        rgba(239,68,68,.25);
-}
-
-
-
-/* ==========================================
-   CONTAINER
-========================================== */
 
 .container {
-
-    max-width: 1150px;
-
+    max-width: 1000px;
     margin: auto;
-
-    padding: 28px 18px 60px;
+    padding: 25px 18px;
 }
 
-
-
-/* ==========================================
-   HERO
-========================================== */
-
-.hero {
-
-    padding: 30px;
-
-    border-radius: 24px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(37,99,235,.22),
-            rgba(124,58,237,.18)
-        );
-
-    border:
-        1px solid rgba(255,255,255,.1);
-
-    box-shadow:
-        0 20px 60px rgba(0,0,0,.25);
-
-    margin-bottom: 22px;
+.back {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #3157a5;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-
-.hero h1 {
-
-    margin: 0 0 8px;
-
-    font-size: 32px;
-}
-
-
-.hero p {
-
-    margin: 7px 0;
-
-    color: #b8c2d6;
-}
-
-
-.email {
-
-    font-size: 14px;
-
-    color: #8fa1bd !important;
-}
-
-
-
-/* ==========================================
-   OVERALL PROGRESS
-========================================== */
-
-.overall {
-
-    background:
-        rgba(255,255,255,.055);
-
-    border:
-        1px solid rgba(255,255,255,.09);
-
-    border-radius: 22px;
-
-    padding: 24px;
-
-    margin-bottom: 22px;
-
-    backdrop-filter: blur(15px);
-}
-
-
-.section-title {
-
-    font-size: 20px;
-
-    font-weight: 800;
-
-    margin: 0 0 18px;
-}
-
-
-.overall-top {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    gap: 15px;
-
-    margin-bottom: 12px;
-}
-
-
-.overall-number {
-
-    font-size: 34px;
-
-    font-weight: 900;
-}
-
-
-.muted {
-
-    color: #8fa1bd;
-
-    font-size: 14px;
-}
-
-
-.progress {
-
-    height: 13px;
-
-    background:
-        rgba(255,255,255,.08);
-
-    border-radius: 20px;
-
-    overflow: hidden;
-}
-
-
-.progress-bar {
-
-    height: 100%;
-
-    width: 0%;
-
-    border-radius: 20px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #3b82f6,
-            #8b5cf6
-        );
-
-    transition:
-        width .5s ease;
-}
-
-
-
-/* ==========================================
-   STATS
-========================================== */
-
-.grid {
-
+.menu {
     display: grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(210px,1fr)
-        );
-
-    gap: 16px;
-
-    margin-bottom: 22px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 30px;
 }
 
-
-.stat-card {
-
-    background:
-        rgba(255,255,255,.055);
-
-    border:
-        1px solid rgba(255,255,255,.09);
-
-    border-radius: 20px;
-
-    padding: 22px;
-
-    backdrop-filter: blur(15px);
-
-    box-shadow:
-        0 12px 35px rgba(0,0,0,.15);
+.menu button {
+    border: none;
+    background: white;
+    padding: 18px;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #172033;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    cursor: pointer;
 }
 
-
-.stat-label {
-
-    color: #8fa1bd;
-
-    font-size: 14px;
-
-    margin-bottom: 10px;
+.menu button:hover {
+    background: #eef3ff;
 }
 
-
-.stat-value {
-
-    font-size: 30px;
-
-    font-weight: 900;
+.section {
+    background: white;
+    border-radius: 18px;
+    padding: 28px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.07);
 }
 
-
-
-/* ==========================================
-   LEVEL CARDS
-========================================== */
-
-.level {
-
-    position: relative;
-
-    overflow: hidden;
-}
-
-
-.level::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 140px;
-
-    height: 140px;
-
-    border-radius: 50%;
-
-    right: -60px;
-
-    top: -60px;
-
-    background:
-        rgba(59,130,246,.12);
-}
-
-
-.level-a2::before {
-
-    background:
-        rgba(34,197,94,.12);
-}
-
-
-.level h2 {
-
-    margin: 0 0 7px;
-
-    font-size: 23px;
-}
-
-
-.level p {
-
-    color: #9aa8bd;
-
-    margin: 0 0 18px;
-}
-
-
-.level-progress {
-
+.section h2 {
+    font-size: 28px;
     margin-bottom: 15px;
 }
 
-
-.level-progress-text {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    font-size: 13px;
-
-    color: #9aa8bd;
-
-    margin-bottom: 7px;
+.section h3 {
+    margin: 20px 0 10px;
 }
 
-
-.a2-progress {
-
-    background:
-        linear-gradient(
-            90deg,
-            #22c55e,
-            #10b981
-        );
+.section p {
+    line-height: 1.7;
+    margin-bottom: 12px;
 }
 
+.lesson-card {
+    background: white;
+    border: 1px solid #dce2ee;
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 18px;
+}
 
+.lesson-card h3 {
+    margin-top: 0;
+    font-size: 23px;
+}
 
-/* ==========================================
-   BUTTONS
-========================================== */
+.lesson-card p {
+    color: #46516a;
+}
 
-.btn {
-
-    display: inline-block;
-
-    text-decoration: none;
-
-    border: none;
-
-    background:
-        linear-gradient(
-            135deg,
-            #2563eb,
-            #4f46e5
-        );
-
+.complete-btn {
+    background: #3157a5;
     color: white;
-
-    padding: 12px 18px;
-
-    border-radius: 11px;
-
+    border: none;
+    padding: 13px 20px;
+    border-radius: 10px;
+    font-weight: bold;
     cursor: pointer;
-
-    font-weight: 800;
-
-    transition:
-        transform .2s,
-        opacity .2s;
+    margin-top: 10px;
 }
 
-
-.btn:hover {
-
-    transform:
-        translateY(-2px);
-
-    opacity: .92;
+.complete-btn:hover {
+    background: #24468d;
 }
 
-
-.btn-green {
-
-    background:
-        linear-gradient(
-            135deg,
-            #16a34a,
-            #059669
-        );
+.completed {
+    background: #198754;
 }
 
-
-.btn-gray {
-
-    background:
-        rgba(255,255,255,.08);
-
-    color: #aebbd0;
-
-    border:
-        1px solid rgba(255,255,255,.1);
+.words {
+    background: #f0f4fa;
+    border-radius: 12px;
+    padding: 18px;
+    margin-top: 15px;
+    line-height: 2;
 }
 
+.example {
+    background: #eef5ff;
+    border-left: 5px solid #3157a5;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+}
 
-
-/* ==========================================
-   QUIZ
-========================================== */
-
-.quiz-card {
-
+.quiz-controls {
     display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
 }
 
-
-.quiz-score {
-
-    font-size: 27px;
-
-    font-weight: 900;
+.quiz-controls select,
+.quiz-controls button {
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: 1px solid #ccd4e3;
+    font-size: 15px;
 }
 
-
-.quiz-label {
-
-    color: #8fa1bd;
-
-    font-size: 14px;
+.quiz-controls button {
+    background: #3157a5;
+    color: white;
+    border: none;
+    font-weight: bold;
 }
 
-
-
-/* ==========================================
-   LEVEL BUTTONS
-========================================== */
-
-.level-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(200px,1fr)
-        );
-
-    gap: 16px;
-
-    margin-top: 22px;
+.quiz-question {
+    border: 1px solid #dce2ee;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 18px 0;
 }
 
-
-.level-box {
-
-    background:
-        rgba(255,255,255,.045);
-
-    border:
-        1px solid rgba(255,255,255,.08);
-
-    border-radius: 18px;
-
-    padding: 22px;
-
-    text-align: center;
-
-    transition:
-        transform .2s,
-        background .2s;
+.quiz-question h3 {
+    margin-bottom: 15px;
 }
 
-
-.level-box:hover {
-
-    transform:
-        translateY(-3px);
-
-    background:
-        rgba(255,255,255,.07);
+.option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 13px;
+    margin: 8px 0;
+    background: white;
+    border: 1px solid #ccd4e3;
+    border-radius: 9px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
-
-.level-box h2 {
-
-    margin:
-        0 0 7px;
-
-    font-size: 28px;
+.option:hover {
+    background: #eef3ff;
 }
 
-
-.level-box p {
-
-    color: #8fa1bd;
-
-    margin:
-        0 0 14px;
+.option.correct {
+    background: #d9f7e5;
+    border-color: #198754;
 }
 
+.option.wrong {
+    background: #ffe0e0;
+    border-color: #dc3545;
+}
 
+.feedback {
+    margin-top: 10px;
+    font-weight: bold;
+}
 
-/* ==========================================
-   FOOTER
-========================================== */
+#quizResult {
+    background: #172033;
+    color: white;
+    padding: 20px;
+    border-radius: 14px;
+    margin-top: 20px;
+    display: none;
+}
+
+textarea {
+    width: 100%;
+    min-height: 180px;
+    padding: 15px;
+    border: 1px solid #ccd4e3;
+    border-radius: 12px;
+    font-size: 16px;
+    resize: vertical;
+}
+
+.speak-box {
+    background: #f0f4fa;
+    padding: 20px;
+    border-radius: 14px;
+    margin-top: 15px;
+}
+
+.home-button {
+    display: inline-block;
+    background: #ffcc00;
+    color: #172033;
+    padding: 13px 22px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.status {
+    margin-top: 10px;
+    font-weight: bold;
+}
 
 footer {
-
+    background: #172033;
+    color: white;
     text-align: center;
-
-    color: #65748c;
-
-    padding:
-        25px 10px 40px;
-
-    font-size: 13px;
+    padding: 30px 20px;
+    margin-top: 30px;
 }
 
+@media (max-width: 600px) {
 
-
-/* ==========================================
-   MOBILE
-========================================== */
-
-@media(max-width:600px) {
-
-    header {
-
-        padding:
-            15px;
+    .menu {
+        grid-template-columns: 1fr;
     }
 
-
-    .logo {
-
-        font-size: 19px;
+    .section {
+        padding: 20px;
     }
 
-
-    .container {
-
-        padding:
-            18px 12px 45px;
+    header h1 {
+        font-size: 25px;
     }
 
-
-    .hero {
-
-        padding:
-            23px;
-
-        border-radius:
-            20px;
+    .section h2 {
+        font-size: 24px;
     }
-
-
-    .hero h1 {
-
-        font-size:
-            27px;
-    }
-
-
-    .overall {
-
-        padding:
-            20px;
-    }
-
-
-    .overall-number {
-
-        font-size:
-            28px;
-    }
-
-
-    .quiz-card {
-
-        align-items:
-            flex-start;
-
-        flex-direction:
-            column;
-    }
-
-
-    .stat-card {
-
-        padding:
-            19px;
-    }
-
 }
-
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- ==========================================
-     HEADER
-========================================== -->
-
 <header>
-
-    <div class="logo">
-
-        🇩🇪 DeutschStart
-
-    </div>
-
-
-    <button
-        class="logout"
-        onclick="logout()"
-    >
-
-        Logout
-
-    </button>
-
+    <h1>🇩🇪 DeutschStart A2</h1>
+    <p>Build stronger German skills step by step.</p>
 </header>
-
-
 
 <div class="container">
 
+<a class="back" href="dashboard.html">← Back to Dashboard</a>
 
-<!-- ==========================================
-     HERO
-========================================== -->
+<div class="menu">
 
-<section class="hero">
+    <button onclick="showSection('lessons')">
+        📚 Lessons
+    </button>
 
-    <h1>
+    <button onclick="showSection('grammar')">
+        📖 Grammar
+    </button>
 
-        Willkommen! 👋
+    <button onclick="showSection('vocabulary')">
+        🧠 Vocabulary
+    </button>
 
-    </h1>
+    <button onclick="showSection('speaking')">
+        🗣️ Speaking
+    </button>
 
+    <button onclick="showSection('writing')">
+        ✍️ Writing
+    </button>
 
-    <p>
+    <button onclick="showSection('reading')">
+        📄 Reading
+    </button>
 
-        Your personal German learning dashboard.
+    <button onclick="showSection('quiz')">
+        🎯 A2 Quiz
+    </button>
 
-    </p>
+</div>
 
+<!-- LESSONS -->
 
-    <p
-        class="email"
-        id="userEmail"
-    >
+<div id="lessons" class="section">
 
-        Loading account...
+<h2>📚 A2 Lessons</h2>
 
-    </p>
+<p>
+Complete the lessons one by one. Your progress will be saved to your account.
+</p>
 
-</section>
+<div class="lesson-card">
 
+<h3>1. Perfekt und Präteritum</h3>
 
+<p>
+Learn how to talk about past events using Perfekt and common Präteritum forms.
+</p>
 
-<!-- ==========================================
-     OVERALL PROGRESS
-========================================== -->
+<div class="example">
+<b>Perfekt:</b><br>
+Ich habe Fußball gespielt.<br><br>
 
-<section class="overall">
+<b>Präteritum:</b><br>
+Ich war gestern zu Hause.
+</div>
 
-    <h2 class="section-title">
+<div class="words">
+<b>sein → war</b><br>
+<b>haben → hatte</b><br>
+<b>gehen → ging</b><br>
+<b>kommen → kam</b><br>
+<b>sehen → sah</b>
+</div>
 
-        🎯 Overall Learning Progress
-
-    </h2>
-
-
-    <div class="overall-top">
-
-        <div>
-
-            <div
-                class="overall-number"
-                id="overallPercent"
-            >
-
-                0%
-
-            </div>
-
-            <div class="muted">
-
-                A1 + A2 lessons completed
-
-            </div>
-
-        </div>
-
-
-        <div
-            class="muted"
-            id="overallLessons"
-        >
-
-            0 / 17
-
-        </div>
-
-    </div>
-
-
-    <div class="progress">
-
-        <div
-            class="progress-bar"
-            id="overallProgressBar"
-        ></div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ==========================================
-     STATS
-========================================== -->
-
-<section class="grid">
-
-
-    <div class="stat-card">
-
-        <div class="stat-label">
-
-            🟢 A1 Lessons
-
-        </div>
-
-
-        <div
-            class="stat-value"
-            id="a1Lessons"
-        >
-
-            0/7
-
-        </div>
-
-    </div>
-
-
-
-    <div class="stat-card">
-
-        <div class="stat-label">
-
-            🔵 A2 Lessons
-
-        </div>
-
-
-        <div
-            class="stat-value"
-            id="a2Lessons"
-        >
-
-            0/10
-
-        </div>
-
-    </div>
-
-
-
-    <div class="stat-card">
-
-        <div class="stat-label">
-
-            📝 A1 Quiz
-
-        </div>
-
-
-        <div
-            class="stat-value"
-            id="a1Quiz"
-        >
-
-            —
-
-        </div>
-
-    </div>
-
-
-
-    <div class="stat-card">
-
-        <div class="stat-label">
-
-            📝 A2 Quiz
-
-        </div>
-
-
-        <div
-            class="stat-value"
-            id="a2Quiz"
-        >
-
-            —
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ==========================================
-     A1
-========================================== -->
-
-<section class="stat-card level">
-
-    <h2>
-
-        🟢 A1 German
-
-    </h2>
-
-
-    <p>
-
-        Beginner German
-
-    </p>
-
-
-    <div class="level-progress">
-
-        <div class="level-progress-text">
-
-            <span>
-                Lesson progress
-            </span>
-
-            <span id="a1ProgressText">
-                0 / 7
-            </span>
-
-        </div>
-
-
-        <div class="progress">
-
-            <div
-                class="progress-bar"
-                id="a1ProgressBar"
-            ></div>
-
-        </div>
-
-    </div>
-
-
-    <a
-        href="a1.html"
-        class="btn"
-    >
-
-        Continue A1 →
-
-    </a>
-
-</section>
-
-
-
-<br>
-
-
-
-<!-- ==========================================
-     A2
-========================================== -->
-
-<section class="stat-card level level-a2">
-
-    <h2>
-
-        🔵 A2 German
-
-    </h2>
-
-
-    <p>
-
-        Elementary German
-
-    </p>
-
-
-    <div class="level-progress">
-
-        <div class="level-progress-text">
-
-            <span>
-                Lesson progress
-            </span>
-
-            <span id="a2ProgressText">
-                0 / 10
-            </span>
-
-        </div>
-
-
-        <div class="progress">
-
-            <div
-                class="progress-bar a2-progress"
-                id="a2ProgressBar"
-            ></div>
-
-        </div>
-
-    </div>
-
-
-    <a
-        href="a2.html"
-        class="btn btn-green"
-    >
-
-        Continue A2 →
-
-    </a>
-
-</section>
-
-
-
-<!-- ==========================================
-     QUIZ PERFORMANCE
-========================================== -->
-
-<section
-    class="grid"
-    style="margin-top:22px;"
->
-
-
-    <div class="stat-card quiz-card">
-
-        <div>
-
-            <div class="quiz-label">
-
-                🟢 A1 Quiz Performance
-
-            </div>
-
-
-            <div
-                class="quiz-score"
-                id="a1QuizLarge"
-            >
-
-                —
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-    <div class="stat-card quiz-card">
-
-        <div>
-
-            <div class="quiz-label">
-
-                🔵 A2 Quiz Performance
-
-            </div>
-
-
-            <div
-                class="quiz-score"
-                id="a2QuizLarge"
-            >
-
-                —
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ==========================================
-     LEVELS
-========================================== -->
-
-<h2
-    class="section-title"
-    style="margin-top:30px;"
->
-
-    📚 Your German Levels
-
-</h2>
-
-
-<section class="level-grid">
-
-
-    <!-- A1 -->
-
-    <div class="level-box">
-
-        <h2>
-
-            🇩🇪 A1
-
-        </h2>
-
-
-        <p>
-
-            Beginner
-
-        </p>
-
-
-        <a
-            href="a1.html"
-            class="btn"
-        >
-
-            Open A1
-
-        </a>
-
-    </div>
-
-
-
-    <!-- A2 -->
-
-    <div class="level-box">
-
-        <h2>
-
-            🇩🇪 A2
-
-        </h2>
-
-
-        <p>
-
-            Elementary
-
-        </p>
-
-
-        <a
-            href="a2.html"
-            class="btn btn-green"
-        >
-
-            Open A2
-
-        </a>
-
-    </div>
-
-
-
-    <!-- B1 -->
-
-    <div class="level-box">
-
-        <h2>
-
-            🇩🇪 B1
-
-        </h2>
-
-
-        <p>
-
-            Intermediate
-
-        </p>
-
-
-        <button
-            class="btn btn-gray"
-            onclick="comingSoon('B1')"
-        >
-
-            Coming Soon
-
-        </button>
-
-    </div>
-
-
-
-    <!-- B2 -->
-
-    <div class="level-box">
-
-        <h2>
-
-            🇩🇪 B2
-
-        </h2>
-
-
-        <p>
-
-            Upper Intermediate
-
-        </p>
-
-
-        <button
-            class="btn btn-gray"
-            onclick="comingSoon('B2')"
-        >
-
-            Coming Soon
-
-        </button>
-
-    </div>
-
-
-</section>
-
+<button
+class="complete-btn"
+onclick="saveLessonProgress('Perfekt und Präteritum')">
+✅ Complete
+</button>
 
 </div>
 
 
+<div class="lesson-card">
 
-<!-- ==========================================
-     FOOTER
-========================================== -->
+<h3>2. Dativ & Akkusativ</h3>
+
+<p>
+Use cases correctly with verbs and objects.
+</p>
+
+<div class="example">
+Ich gebe <b>dem Mann</b> den Schlüssel.<br>
+Ich sehe <b>den Mann</b>.
+</div>
+
+<div class="words">
+<b>Akkusativ:</b> den, die, das, die<br>
+<b>Dativ:</b> dem, der, dem, den
+</div>
+
+<button
+class="complete-btn"
+onclick="saveLessonProgress('Dativ und Akkusativ')">
+✅ Complete
+</button>
+
+</div>
+
+
+<div class="lesson-card">
+
+<h3>3. Präpositionen</h3>
+
+<p>
+Learn important A2 prepositions and their cases.
+</p>
+
+<div class="words">
+<b>mit</b> + Dativ<br>
+<b>bei</b> + Dativ<br>
+<b>nach</b> + Dativ<br>
+<b>für</b> + Akkusativ<br>
+<b>ohne</b> + Akkusativ<br>
+<b>gegen</b> + Akkusativ
+</div>
+
+<div class="example">
+Ich fahre <b>mit dem Bus</b>.<br>
+Das Geschenk ist <b>für meinen Freund</b>.
+</div>
+
+<button
+class="complete-btn"
+onclick="saveLessonProgress('Präpositionen')">
+✅ Complete
+</button>
+
+</div>
+
+
+<div class="lesson-card">
+
+<h3>4. Nebensätze</h3>
+
+<p>
+Learn how to build subordinate clauses with weil, dass, wenn and obwohl.
+</p>
+
+<div class="example">
+Ich bleibe zu Hause,
+<b>weil ich krank bin.</b>
+<br><br>
+
+Ich weiß,
+<b>dass er heute kommt.</b>
+</div>
+
+<button
+class="complete-btn"
+onclick="saveLessonProgress('Nebensätze')">
+✅ Complete
+</button>
+
+</div>
+
+
+<div class="lesson-card">
+
+<h3>5. Adjektivendungen</h3>
+
+<p>
+Practice adjective endings after articles.
+</p>
+
+<div class="example">
+Der <b>kleine</b> Hund ist süß.<br>
+Ich sehe einen <b>kleinen</b> Hund.<br>
+Ich helfe einem <b>kleinen</b> Hund.
+</div>
+
+<button
+class="complete-btn"
+onclick="saveLessonProgress('Adjektivendungen')">
+✅ Complete
+</button>
+
+</div>
+
+
+<div class="lesson-card">
+
+<h3>6. Komparativ und Superlativ</h3>
+
+<p>
+Compare people, objects and situations.
+</p>
+
+<div class="words">
+schnell → schneller → am schnellsten<br>
+groß → größer → am größten<br>
+gut → besser → am besten<br>
+viel → mehr → am meisten
+</div>
+
+<div class="example">
+Mein Auto ist <b>schneller als</b> dein Auto.
+</div>
+
+<button
+class="complete-btn"
+onclick="saveLessonProgress('Komparativ und Superlativ')">
+✅ Complete
+</button>
+
+</div>
+
+
+<div class="lesson-card">
+
+<h3>7. Reflexive Verben A2</h3>
+
+<p>
+Practice reflexive verbs in everyday situations.
+</p>
+
+<div class="words">
+sich erinnern an<br>
+sich freuen auf<br>
+sich interessieren für<br>
+sich beeilen<br>
+sich treffen
+</div>
+
+<div class="example">
+Ich <b>freue mich auf</b> das Wochenende.
+</div>
+
+<button
+class="complete-btn"
+onclick="saveLessonProgress('Reflexive Verben A2')">
+✅ Complete
+</button>
+
+</div>
+
+
+<div class="lesson-card">
+
+<h3>8. Konjunktiv II</h3>
+
+<p>
+Use Konjunktiv II for wishes, polite requests and hypothetical situations.
+</p>
+
+<div class="example">
+Ich <b>würde</b> gern nach Deutschland reisen.<br><br>
+
+Wenn ich mehr Geld hätte,
+<b>würde ich</b> ein Auto kaufen.
+</div>
+
+<div class="words">
+haben → hätte<br>
+sein → wäre<br>
+können → könnte<br>
+müssen → müsste<br>
+würde + Infinitiv
+</div>
+
+<button
+class="complete-btn"
+onclick="saveLessonProgress('Konjunktiv II')">
+✅ Complete
+</button>
+
+</div>
+
+
+<div class="lesson-card">
+
+<h3>9. Modalverben A2</h3>
+
+<p>
+Practice modal verbs in different tenses and situations.
+</p>
+
+<div class="words">
+können — can<br>
+müssen — must<br>
+dürfen — may<br>
+sollen — should<br>
+wollen — want<br>
+möchten — would like
+</div>
+
+<div class="example">
+Ich <b>muss</b> morgen arbeiten.<br>
+Ich <b>kann</b> heute nicht kommen.
+</div>
+
+<button
+class="complete-btn"
+onclick="saveLessonProgress('Modalverben A2')">
+✅ Complete
+</button>
+
+</div>
+
+
+<div class="lesson-card">
+
+<h3>10. Schreiben und Sprechen</h3>
+
+<p>
+Prepare for A2 speaking and writing tasks.
+</p>
+
+<div class="example">
+Thema: Stadtleben oder Landleben?<br><br>
+
+Ich lebe lieber in der Stadt,
+weil es dort viele Möglichkeiten gibt.
+Außerdem gibt es gute Verkehrsmittel.
+</div>
+
+<button
+class="complete-btn"
+onclick="saveLessonProgress('Schreiben und Sprechen')">
+✅ Complete
+</button>
+
+</div>
+
+</div>
+
+
+<!-- GRAMMAR -->
+
+<div id="grammar" class="section" style="display:none;">
+
+<h2>📖 A2 Grammar</h2>
+
+<h3>1. Weil</h3>
+
+<p>
+With <b>weil</b>, the conjugated verb goes to the end.
+</p>
+
+<div class="example">
+Ich bleibe zu Hause,
+weil ich <b>krank bin</b>.
+</div>
+
+<h3>2. Dass</h3>
+
+<div class="example">
+Ich glaube, dass er heute <b>kommt</b>.
+</div>
+
+<h3>3. Wenn</h3>
+
+<div class="example">
+Wenn ich Zeit habe, spiele ich Fußball.
+</div>
+
+<h3>4. Dativ</h3>
+
+<div class="example">
+Ich helfe <b>meinem Freund</b>.
+</div>
+
+<h3>5. Akkusativ</h3>
+
+<div class="example">
+Ich sehe <b>meinen Freund</b>.
+</div>
+
+<h3>6. Konjunktiv II</h3>
+
+<div class="example">
+Wenn ich reich wäre, würde ich viel reisen.
+</div>
+
+</div>
+
+
+<!-- VOCABULARY -->
+
+<div id="vocabulary" class="section" style="display:none;">
+
+<h2>🧠 A2 Vocabulary</h2>
+
+<div class="words">
+
+<b>die Gesundheit</b> — health<br>
+<b>die Ernährung</b> — nutrition<br>
+<b>der Verkehr</b> — traffic<br>
+<b>die Umwelt</b> — environment<br>
+<b>die Ausbildung</b> — vocational training<br>
+<b>die Arbeit</b> — work<br>
+<b>die Freizeit</b> — free time<br>
+<b>die Erfahrung</b> — experience<br>
+<b>die Möglichkeit</b> — possibility<br>
+<b>die Entscheidung</b> — decision<br>
+<b>die Meinung</b> — opinion<br>
+<b>die Zukunft</b> — future
+
+</div>
+
+</div>
+
+
+<!-- SPEAKING -->
+
+<div id="speaking" class="section" style="display:none;">
+
+<h2>🗣️ A2 Speaking</h2>
+
+<p>Practice speaking about everyday topics.</p>
+
+<div class="speak-box">
+
+<h3>Topic 1: Wochenende</h3>
+
+<p>
+Was machst du am Wochenende?
+</p>
+
+<p>
+Try to speak for 30–60 seconds.
+</p>
+
+</div>
+
+<div class="speak-box">
+
+<h3>Topic 2: Stadt oder Land</h3>
+
+<p>
+Wo möchtest du lieber leben: in der Stadt oder auf dem Land?
+Warum?
+</p>
+
+</div>
+
+<div class="speak-box">
+
+<h3>Topic 3: Freizeit</h3>
+
+<p>
+Was machst du in deiner Freizeit?
+</p>
+
+</div>
+
+<div class="speak-box">
+
+<h3>Useful phrases</h3>
+
+<div class="words">
+Meiner Meinung nach ...<br>
+Ich denke, dass ...<br>
+Ich persönlich finde ...<br>
+Ein Vorteil ist ...<br>
+Ein Nachteil ist ...<br>
+Zum Beispiel ...<br>
+Außerdem ...<br>
+Deshalb ...
+</div>
+
+</div>
+
+</div>
+
+
+<!-- WRITING -->
+
+<div id="writing" class="section" style="display:none;">
+
+<h2>✍️ A2 Writing</h2>
+
+<h3>Task</h3>
+
+<p>
+Du möchtest mit deinem Freund einen Ausflug machen.
+Schreibe eine kurze Nachricht.
+</p>
+
+<div class="words">
+Schreibe über:<br>
+• Wann?<br>
+• Wohin?<br>
+• Wie fahren?<br>
+• Was mitnehmen?
+</div>
+
+<textarea
+id="writingBox"
+placeholder="Schreibe deine Antwort auf Deutsch...">
+</textarea>
+
+<button
+class="complete-btn"
+onclick="checkWriting()">
+Check Writing
+</button>
+
+<p id="writingResult" class="status"></p>
+
+</div>
+
+
+<!-- READING -->
+
+<div id="reading" class="section" style="display:none;">
+
+<h2>📄 A2 Reading</h2>
+
+<div class="example">
+
+<b>Ein Wochenende in Köln</b><br><br>
+
+Am Samstag fährt Anna mit ihrer Freundin nach Köln.
+Sie besuchen das Stadtzentrum und sehen den Dom.
+Am Abend essen sie in einem Restaurant.
+Am Sonntag fahren sie wieder nach Hause.
+
+</div>
+
+<h3>Question</h3>
+
+<p>
+Wohin fährt Anna am Samstag?
+</p>
+
+<button
+class="option"
+onclick="readingAnswer(this,false)">
+Nach Berlin
+</button>
+
+<button
+class="option"
+onclick="readingAnswer(this,true)">
+Nach Köln
+</button>
+
+<button
+class="option"
+onclick="readingAnswer(this,false)">
+Nach München
+</button>
+
+<p id="readingResult" class="status"></p>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div id="quiz" class="section" style="display:none;">
+
+<h2>🎯 A2 Quiz</h2>
+
+<p>
+Choose your difficulty and number of questions.
+</p>
+
+<div class="quiz-controls">
+
+<select id="difficulty">
+
+<option value="all">
+All
+</option>
+
+<option value="medium">
+Medium
+</option>
+
+<option value="hard">
+Hard
+</option>
+
+<option value="veryhard">
+Very Hard
+</option>
+
+</select>
+
+
+<select id="questionCount">
+
+<option value="10">
+10 Questions
+</option>
+
+<option value="20">
+20 Questions
+</option>
+
+<option value="30">
+30 Questions
+</option>
+
+</select>
+
+<button onclick="startQuiz()">
+Start Quiz
+</button>
+
+</div>
+
+<div id="quizArea"></div>
+
+<div id="quizResult"></div>
+
+</div>
+
+
+<a class="home-button" href="dashboard.html">
+🏠 Dashboard
+</a>
+
+</div>
+
 
 <footer>
 
-    🇩🇪 DeutschStart
+<p>© 2026 DeutschStart 🇩🇪</p>
 
-    <br>
-
-    Learn German. Speak with Confidence.
+<p>
+A1 → A2 → B1 → B2
+</p>
 
 </footer>
 
 
+<!-- SUPABASE -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="config.js"></script>
+
 
 <script>
 
+let supabaseClient;
+let currentUser = null;
 
-/* ==========================================
-   SUPABASE
-========================================== */
 
-const supabaseClient =
-    window.supabase.createClient(
+/* -----------------------------
+   INITIALIZE SUPABASE
+----------------------------- */
+
+try {
+
+    supabaseClient = window.supabase.createClient(
         SUPABASE_URL,
         SUPABASE_PUBLISHABLE_KEY
     );
 
+} catch (error) {
 
-let currentUser = null;
-
-let a1CompletedGlobal = 0;
-
-let a2CompletedGlobal = 0;
-
-
-
-/* ==========================================
-   LOAD DASHBOARD
-========================================== */
-
-async function loadDashboard() {
-
-
-    const {
-
-        data: { user },
-
-        error
-
-    } = await supabaseClient.auth.getUser();
-
-
-    if (error || !user) {
-
-        window.location.href =
-            "login.html";
-
-        return;
-
-    }
-
-
-    currentUser = user;
-
-
-    document.getElementById(
-        "userEmail"
-    ).textContent = user.email;
-
-
-    await loadLessonProgress();
-
-    await loadQuizResults();
-
+    console.error("Supabase initialization error:", error);
 
 }
 
 
+/* -----------------------------
+   CHECK LOGIN
+----------------------------- */
 
-/* ==========================================
-   LESSON PROGRESS
-========================================== */
+async function loadUser() {
 
-async function loadLessonProgress() {
+    try {
 
-
-    const { data, error } =
-        await supabaseClient
-
-        .from("lesson_progress")
-
-        .select(
-            "lesson_name, completed"
-        )
-
-        .eq(
-            "user_id",
-            currentUser.id
-        )
-
-        .eq(
-            "completed",
-            true
-        );
-
-
-    if (error) {
-
-        console.log(
-            "Progress error:",
+        const {
+            data,
             error
-        );
+        } = await supabaseClient.auth.getUser();
 
+        if (error) {
+
+            console.error(error);
+            return;
+
+        }
+
+        currentUser = data.user;
+
+        if (!currentUser) {
+
+            alert("Please login first.");
+            window.location.href = "login.html";
+            return;
+
+        }
+
+    } catch (error) {
+
+        console.error("User error:", error);
+
+    }
+
+}
+
+
+loadUser();
+
+
+/* -----------------------------
+   SECTION SWITCHER
+----------------------------- */
+
+function showSection(sectionName) {
+
+    const sections = [
+        "lessons",
+        "grammar",
+        "vocabulary",
+        "speaking",
+        "writing",
+        "reading",
+        "quiz"
+    ];
+
+    sections.forEach(function(section) {
+
+        const element =
+            document.getElementById(section);
+
+        if (element) {
+
+            element.style.display =
+                section === sectionName
+                    ? "block"
+                    : "none";
+
+        }
+
+    });
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* -----------------------------
+   SAVE LESSON PROGRESS
+   FIXED VERSION
+----------------------------- */
+
+async function saveLessonProgress(lessonName) {
+
+    if (!currentUser) {
+
+        alert("Please login first.");
         return;
 
     }
 
+    try {
 
-    const lessons = data || [];
+        /*
+         Check whether the lesson
+         already exists.
+        */
 
+        const {
+            data: existing,
+            error: checkError
+        } = await supabaseClient
 
-    const a1Names = [
+            .from("lesson_progress")
 
-        "Greetings",
+            .select("id")
 
-        "Introduction",
-
-        "Numbers",
-
-        "Family",
-
-        "Home",
-
-        "Food",
-
-        "Daily Routine"
-
-    ];
-
-
-    const a2Names = [
-
-        "Perfekt und Präteritum",
-
-        "Dativ und Akkusativ",
-
-        "Präpositionen",
-
-        "Nebensätze",
-
-        "Adjektivendungen",
-
-        "Komparativ und Superlativ",
-
-        "Reflexive Verben A2",
-
-        "Konjunktiv II",
-
-        "Modalverben A2",
-
-        "Schreiben und Sprechen"
-
-    ];
-
-
-    const completedNames = [
-
-        ...new Set(
-
-            lessons.map(
-                item =>
-                    item.lesson_name
+            .eq(
+                "user_id",
+                currentUser.id
             )
 
-        )
+            .eq(
+                "lesson_name",
+                lessonName
+            )
 
-    ];
-
-
-    const a1Completed =
-        completedNames.filter(
-
-            name =>
-                a1Names.includes(name)
-
-        ).length;
+            .maybeSingle();
 
 
-    const a2Completed =
-        completedNames.filter(
+        if (checkError) {
 
-            name =>
-                a2Names.includes(name)
+            throw checkError;
 
-        ).length;
+        }
 
 
-    a1CompletedGlobal =
-        a1Completed;
+        /*
+         Already completed
+        */
+
+        if (existing) {
+
+            alert(
+                "✅ Lesson already completed!"
+            );
+
+            return;
+
+        }
 
 
-    a2CompletedGlobal =
-        a2Completed;
+        /*
+         Insert new progress
+        */
+
+        const {
+            error: insertError
+        } = await supabaseClient
+
+            .from("lesson_progress")
+
+            .insert({
+
+                user_id:
+                    currentUser.id,
+
+                lesson_name:
+                    lessonName,
+
+                completed:
+                    true
+
+            });
 
 
-    updateA1Progress(
-        a1Completed
-    );
+        if (insertError) {
+
+            throw insertError;
+
+        }
 
 
-    updateA2Progress(
-        a2Completed
-    );
-
-
-    updateOverallProgress(
-        a1Completed,
-        a2Completed
-    );
-
-}
-
-
-
-/* ==========================================
-   A1 PROGRESS
-========================================== */
-
-function updateA1Progress(
-    completed
-) {
-
-
-    const total = 7;
-
-
-    const percentage =
-        Math.round(
-            (completed / total) * 100
+        alert(
+            "✅ Lesson completed and progress saved!"
         );
 
 
-    document.getElementById(
-        "a1Lessons"
-    ).textContent =
-        `${completed}/${total}`;
+        /*
+         Refresh dashboard progress
+        */
+
+        location.reload();
 
 
-    document.getElementById(
-        "a1ProgressBar"
-    ).style.width =
-        percentage + "%";
+    } catch (error) {
 
-
-    document.getElementById(
-        "a1ProgressText"
-    ).textContent =
-        `${completed} / ${total}`;
-
-}
-
-
-
-/* ==========================================
-   A2 PROGRESS
-========================================== */
-
-function updateA2Progress(
-    completed
-) {
-
-
-    const total = 10;
-
-
-    const percentage =
-        Math.round(
-            (completed / total) * 100
-        );
-
-
-    document.getElementById(
-        "a2Lessons"
-    ).textContent =
-        `${completed}/${total}`;
-
-
-    document.getElementById(
-        "a2ProgressBar"
-    ).style.width =
-        percentage + "%";
-
-
-    document.getElementById(
-        "a2ProgressText"
-    ).textContent =
-        `${completed} / ${total}`;
-
-}
-
-
-
-/* ==========================================
-   OVERALL PROGRESS
-========================================== */
-
-function updateOverallProgress(
-    a1,
-    a2
-) {
-
-
-    const totalLessons = 17;
-
-
-    const completed =
-        a1 + a2;
-
-
-    const percentage =
-        Math.round(
-            (completed / totalLessons) * 100
-        );
-
-
-    document.getElementById(
-        "overallPercent"
-    ).textContent =
-        percentage + "%";
-
-
-    document.getElementById(
-        "overallLessons"
-    ).textContent =
-        `${completed} / ${totalLessons}`;
-
-
-    document.getElementById(
-        "overallProgressBar"
-    ).style.width =
-        percentage + "%";
-
-}
-
-
-
-/* ==========================================
-   QUIZ RESULTS
-========================================== */
-
-async function loadQuizResults() {
-
-
-    const { data, error } =
-        await supabaseClient
-
-        .from("quiz_results")
-
-        .select(
-            "score, total, level"
-        )
-
-        .eq(
-            "user_id",
-            currentUser.id
-        );
-
-
-    if (error) {
-
-        console.log(
-            "Quiz result error:",
+        console.error(
+            "Progress save error:",
             error
         );
 
-        return;
-
-    }
-
-
-    const results = data || [];
-
-
-    /* A1 */
-
-    const a1Results =
-        results.filter(
-
-            result =>
-                result.level === "A1"
-
-        );
-
-
-    if (a1Results.length > 0) {
-
-
-        const latestA1 =
-            a1Results[
-                a1Results.length - 1
-            ];
-
-
-        const score =
-            `${latestA1.score}/${latestA1.total}`;
-
-
-        document.getElementById(
-            "a1Quiz"
-        ).textContent =
-            score;
-
-
-        document.getElementById(
-            "a1QuizLarge"
-        ).textContent =
-            score;
-
-    }
-
-
-
-    /* A2 */
-
-    const a2Results =
-        results.filter(
-
-            result =>
-                result.level === "A2"
-
-        );
-
-
-    if (a2Results.length > 0) {
-
-
-        const latestA2 =
-            a2Results[
-                a2Results.length - 1
-            ];
-
-
-        const score =
-            `${latestA2.score}/${latestA2.total}`;
-
-
-        document.getElementById(
-            "a2Quiz"
-        ).textContent =
-            score;
-
-
-        document.getElementById(
-            "a2QuizLarge"
-        ).textContent =
-            score;
-
-    }
-
-}
-
-
-
-/* ==========================================
-   LOGOUT
-========================================== */
-
-async function logout() {
-
-
-    const { error } =
-        await supabaseClient.auth.signOut();
-
-
-    if (error) {
 
         alert(
-            "Logout error: " +
+            "❌ Could not save progress.\n\n" +
             error.message
         );
 
+    }
+
+}
+
+
+/* -----------------------------
+   WRITING
+----------------------------- */
+
+function checkWriting() {
+
+    const text =
+        document.getElementById(
+            "writingBox"
+        ).value.trim();
+
+    const result =
+        document.getElementById(
+            "writingResult"
+        );
+
+    if (!text) {
+
+        result.textContent =
+            "✍️ Please write something first.";
+
+        return;
+
+    }
+
+    const words =
+        text.split(/\s+/).length;
+
+    if (words < 10) {
+
+        result.textContent =
+            "⚠️ Try to write at least 10 words.";
+
+    } else {
+
+        result.textContent =
+            "✅ Good! You wrote " +
+            words +
+            " words. Keep practicing!";
+
+    }
+
+}
+
+
+/* -----------------------------
+   READING
+----------------------------- */
+
+function readingAnswer(button, correct) {
+
+    const result =
+        document.getElementById(
+            "readingResult"
+        );
+
+    if (correct) {
+
+        button.classList.add("correct");
+
+        result.textContent =
+            "✅ Correct! Anna fährt nach Köln.";
+
+    } else {
+
+        button.classList.add("wrong");
+
+        result.textContent =
+            "❌ Not correct. Read the text again.";
+
+    }
+
+}
+
+
+/* -----------------------------
+   A2 QUIZ QUESTIONS
+----------------------------- */
+
+const A2_QUESTIONS = [
+
+{
+question:
+"Ich bleibe zu Hause, ___ ich krank bin.",
+
+options:
+[
+"aber",
+"weil",
+"oder",
+"und"
+],
+
+answer:
+1,
+
+difficulty:
+"medium",
+
+explanation:
+"Nach weil steht das konjugierte Verb am Ende: weil ich krank bin."
+},
+
+
+{
+question:
+"Ich helfe ___ Mann.",
+
+options:
+[
+"den",
+"der",
+"dem",
+"des"
+],
+
+answer:
+2,
+
+difficulty:
+"medium",
+
+explanation:
+"helfen verlangt den Dativ: dem Mann."
+},
+
+
+{
+question:
+"Ich sehe ___ Mann.",
+
+options:
+[
+"dem",
+"den",
+"der",
+"des"
+],
+
+answer:
+1,
+
+difficulty:
+"medium",
+
+explanation:
+"sehen verlangt den Akkusativ: den Mann."
+},
+
+
+{
+question:
+"Wenn ich Zeit ___, würde ich reisen.",
+
+options:
+[
+"habe",
+"hatte",
+"hätte",
+"haben"
+],
+
+answer:
+2,
+
+difficulty:
+"hard",
+
+explanation:
+"Für eine hypothetische Situation verwendet man hier Konjunktiv II: hätte."
+},
+
+
+{
+question:
+"Das ist der Mann, ___ ich gestern gesehen habe.",
+
+options:
+[
+"dem",
+"den",
+"der",
+"dessen"
+],
+
+answer:
+1,
+
+difficulty:
+"hard",
+
+explanation:
+"sehen nimmt Akkusativ: den Mann."
+},
+
+
+{
+question:
+"Mein Auto ist ___ als dein Auto.",
+
+options:
+[
+"schnell",
+"schneller",
+"am schnellsten",
+"schnelle"
+],
+
+answer:
+1,
+
+difficulty:
+"medium",
+
+explanation:
+"Bei einem Vergleich mit als verwendet man den Komparativ: schneller als."
+},
+
+
+{
+question:
+"Das ist ___ Buch, das ich gelesen habe.",
+
+options:
+[
+"interessant",
+"interessanter",
+"das interessanteste",
+"am interessantesten"
+],
+
+answer:
+2,
+
+difficulty:
+"hard",
+
+explanation:
+"Vor einem Substantiv mit bestimmtem Artikel braucht man hier den Superlativ: das interessanteste Buch."
+},
+
+
+{
+question:
+"Ich freue mich ___ das Wochenende.",
+
+options:
+[
+"an",
+"für",
+"auf",
+"mit"
+],
+
+answer:
+2,
+
+difficulty:
+"medium",
+
+explanation:
+"sich freuen auf + Akkusativ."
+},
+
+
+{
+question:
+"Ich interessiere mich ___ Fußball.",
+
+options:
+[
+"für",
+"auf",
+"mit",
+"bei"
+],
+
+answer:
+0,
+
+difficulty:
+"medium",
+
+explanation:
+"sich interessieren für + Akkusativ."
+},
+
+
+{
+question:
+"Er sagt, dass er morgen ___ .",
+
+options:
+[
+"kommt",
+"kommen",
+"kam",
+"gekommen"
+],
+
+answer:
+0,
+
+difficulty:
+"medium",
+
+explanation:
+"Im dass-Satz steht das konjugierte Verb am Ende: dass er morgen kommt."
+},
+
+
+{
+question:
+"Ich ___ gestern lange gearbeitet.",
+
+options:
+[
+"habe",
+"bin",
+"hatte",
+"werde"
+],
+
+answer:
+0,
+
+difficulty:
+"medium",
+
+explanation:
+"arbeiten bildet das Perfekt mit haben: Ich habe gearbeitet."
+},
+
+
+{
+question:
+"Gestern ___ ich sehr müde.",
+
+options:
+[
+"bin",
+"war",
+"habe",
+"werde"
+],
+
+answer:
+1,
+
+difficulty:
+"medium",
+
+explanation:
+"Die Präteritumform von sein ist war."
+},
+
+
+{
+question:
+"Ich würde gern nach Deutschland ___ .",
+
+options:
+[
+"gereist",
+"reisen",
+"reiste",
+"gereisen"
+],
+
+answer:
+1,
+
+difficulty:
+"medium",
+
+explanation:
+"Nach würde steht der Infinitiv: würde gern reisen."
+},
+
+
+{
+question:
+"Wenn ich reich wäre, ___ ich ein großes Haus kaufen.",
+
+options:
+[
+"kann",
+"würde",
+"bin",
+"habe"
+],
+
+answer:
+1,
+
+difficulty:
+"hard",
+
+explanation:
+"Konjunktiv II wird hier mit würde + Infinitiv gebildet."
+},
+
+
+{
+question:
+"Ich fahre morgen ___ meinem Freund.",
+
+options:
+[
+"für",
+"mit",
+"ohne",
+"gegen"
+],
+
+answer:
+1,
+
+difficulty:
+"medium",
+
+explanation:
+"mit verlangt den Dativ: mit meinem Freund."
+},
+
+
+{
+question:
+"Das Geschenk ist ___ meine Mutter.",
+
+options:
+[
+"mit",
+"bei",
+"für",
+"nach"
+],
+
+answer:
+2,
+
+difficulty:
+"medium",
+
+explanation:
+"für verlangt den Akkusativ."
+},
+
+
+{
+question:
+"Er hat ___ neuen Computer gekauft.",
+
+options:
+[
+"ein",
+"einen",
+"einem",
+"einer"
+],
+
+answer:
+1,
+
+difficulty:
+"medium",
+
+explanation:
+"Computer ist maskulin und steht hier im Akkusativ: einen neuen Computer."
+},
+
+
+{
+question:
+"Ich spreche mit ___ Lehrerin.",
+
+options:
+[
+"die",
+"der",
+"den",
+"das"
+],
+
+answer:
+1,
+
+difficulty:
+"hard",
+
+explanation:
+"mit verlangt Dativ: mit der Lehrerin."
+},
+
+
+{
+question:
+"Sie ___ sich jeden Morgen.",
+
+options:
+[
+"beeilt",
+"beeilen",
+"beeilst",
+"beeilte"
+],
+
+answer:
+0,
+
+difficulty:
+"medium",
+
+explanation:
+"Bei sie lautet die Form: Sie beeilt sich."
+},
+
+
+{
+question:
+"Ich erinnere mich ___ meinen ersten Deutschkurs.",
+
+options:
+[
+"an",
+"auf",
+"mit",
+"bei"
+],
+
+answer:
+0,
+
+difficulty:
+"hard",
+
+explanation:
+"sich erinnern an + Akkusativ."
+},
+
+
+{
+question:
+"Du ___ heute früher gehen.",
+
+options:
+[
+"kannst",
+"kann",
+"können",
+"könnt"
+],
+
+answer:
+0,
+
+difficulty:
+"medium",
+
+explanation:
+"Bei du lautet können: du kannst."
+},
+
+
+{
+question:
+"Wir ___ morgen arbeiten.",
+
+options:
+[
+"müssen",
+"muss",
+"musst",
+"müsst"
+],
+
+answer:
+0,
+
+difficulty:
+"medium",
+
+explanation:
+"Bei wir lautet müssen: wir müssen."
+},
+
+
+{
+question:
+"Ich glaube, ___ er Recht hat.",
+
+options:
+[
+"weil",
+"dass",
+"wenn",
+"obwohl"
+],
+
+answer:
+1,
+
+difficulty:
+"medium",
+
+explanation:
+"Nach glauben wird häufig ein dass-Satz verwendet."
+},
+
+
+{
+question:
+"Obwohl es regnet, ___ ich Fußball.",
+
+options:
+[
+"spiele",
+"spielen",
+"gespielt",
+"spielte"
+],
+
+answer:
+0,
+
+difficulty:
+"hard",
+
+explanation:
+"Bei ich lautet die Präsensform: ich spiele."
+},
+
+
+{
+question:
+"Der Zug ist ___ als der Bus.",
+
+options:
+[
+"schnell",
+"schneller",
+"am schnellsten",
+"schnelle"
+],
+
+answer:
+1,
+
+difficulty:
+"medium",
+
+explanation:
+"Der Komparativ wird mit als verwendet."
+},
+
+
+{
+question:
+"Das ist der ___ Tag meines Lebens.",
+
+options:
+[
+"schön",
+"schöner",
+"schönste",
+"am schönsten"
+],
+
+answer:
+2,
+
+difficulty:
+"hard",
+
+explanation:
+"Vor einem Substantiv verwendet man: der schönste Tag."
+},
+
+
+{
+question:
+"Ich habe keine Zeit, ___ ich muss arbeiten.",
+
+options:
+[
+"weil",
+"denn",
+"dass",
+"obwohl"
+],
+
+answer:
+1,
+
+difficulty:
+"hard",
+
+explanation:
+"denn verbindet zwei Hauptsätze, daher bleibt die normale Wortstellung erhalten."
+},
+
+
+{
+question:
+"Ich weiß nicht, ___ er heute kommt.",
+
+options:
+[
+"ob",
+"dass",
+"weil",
+"denn"
+],
+
+answer:
+0,
+
+difficulty:
+"hard",
+
+explanation:
+"Bei einer indirekten Ja/Nein-Frage verwendet man ob."
+},
+
+
+{
+question:
+"Er ___ gestern nach Berlin gefahren.",
+
+options:
+[
+"hat",
+"ist",
+"war",
+"wird"
+],
+
+answer:
+1,
+
+difficulty:
+"hard",
+
+explanation:
+"fahren verwendet bei einer Ortsveränderung im Perfekt normalerweise sein: ist gefahren."
+},
+
+
+{
+question:
+"Ich ___ gern einen Kaffee.",
+
+options:
+[
+"hätte",
+"habe",
+"hatte",
+"bin"
+],
+
+answer:
+0,
+
+difficulty:
+"veryhard",
+
+explanation:
+"hätte gern" ist eine höfliche Form für einen Wunsch."
+}
+
+];
+
+
+/* -----------------------------
+   QUIZ VARIABLES
+----------------------------- */
+
+let quizQuestions = [];
+let currentQuestion = 0;
+let quizScore = 0;
+let quizAnswered = false;
+
+
+/* -----------------------------
+   SHUFFLE
+----------------------------- */
+
+function shuffle(array) {
+
+    return array
+        .map(value => ({
+            value,
+            sort: Math.random()
+        }))
+        .sort((a, b) =>
+            a.sort - b.sort
+        )
+        .map(obj => obj.value);
+
+}
+
+
+/* -----------------------------
+   START QUIZ
+----------------------------- */
+
+function startQuiz() {
+
+    const difficulty =
+        document.getElementById(
+            "difficulty"
+        ).value;
+
+    const count =
+        Number(
+            document.getElementById(
+                "questionCount"
+            ).value
+        );
+
+
+    let available =
+        A2_QUESTIONS.filter(
+            question => {
+
+                if (
+                    difficulty === "all"
+                ) {
+
+                    return true;
+
+                }
+
+                return question.difficulty ===
+                    difficulty;
+
+            }
+        );
+
+
+    /*
+     If selected difficulty has
+     fewer questions, use all
+     available questions.
+    */
+
+    if (available.length < count) {
+
+        available = A2_QUESTIONS.slice();
+
+    }
+
+
+    quizQuestions =
+        shuffle(available).slice(
+            0,
+            Math.min(
+                count,
+                available.length
+            )
+        );
+
+
+    currentQuestion = 0;
+    quizScore = 0;
+
+
+    document.getElementById(
+        "quizResult"
+    ).style.display = "none";
+
+
+    showQuizQuestion();
+
+}
+
+
+/* -----------------------------
+   SHOW QUESTION
+----------------------------- */
+
+function showQuizQuestion() {
+
+    const area =
+        document.getElementById(
+            "quizArea"
+        );
+
+
+    if (
+        currentQuestion >=
+        quizQuestions.length
+    ) {
+
+        finishQuiz();
         return;
 
     }
 
 
-    window.location.href =
-        "login.html";
+    quizAnswered = false;
+
+
+    const q =
+        quizQuestions[
+            currentQuestion
+        ];
+
+
+    let html = "";
+
+    html += `
+        <div class="quiz-question">
+
+            <p>
+                Question
+                ${currentQuestion + 1}
+                /
+                ${quizQuestions.length}
+            </p>
+
+            <h3>
+                ${q.question}
+            </h3>
+    `;
+
+
+    q.options.forEach(
+        function(option, index) {
+
+            html += `
+                <button
+                    class="option"
+                    onclick="answerQuiz(${index})">
+                    ${option}
+                </button>
+            `;
+
+        }
+    );
+
+
+    html += `
+            <div
+                id="questionFeedback"
+                class="feedback">
+            </div>
+
+        </div>
+    `;
+
+
+    area.innerHTML = html;
 
 }
 
 
+/* -----------------------------
+   ANSWER QUIZ
+----------------------------- */
 
-/* ==========================================
-   COMING SOON
-========================================== */
+function answerQuiz(selected) {
 
-function comingSoon(level) {
+    if (quizAnswered) {
+        return;
+    }
 
-    alert(
-        level +
-        " German is coming soon! 🇩🇪"
+
+    quizAnswered = true;
+
+
+    const q =
+        quizQuestions[
+            currentQuestion
+        ];
+
+
+    const buttons =
+        document.querySelectorAll(
+            ".quiz-question .option"
+        );
+
+
+    buttons.forEach(
+        function(button, index) {
+
+            if (
+                index === q.answer
+            ) {
+
+                button.classList.add(
+                    "correct"
+                );
+
+            }
+
+            if (
+                index === selected &&
+                index !== q.answer
+            ) {
+
+                button.classList.add(
+                    "wrong"
+                );
+
+            }
+
+            button.disabled = true;
+
+        }
+    );
+
+
+    const feedback =
+        document.getElementById(
+            "questionFeedback"
+        );
+
+
+    if (
+        selected === q.answer
+    ) {
+
+        quizScore++;
+
+        feedback.textContent =
+            "✅ Correct! " +
+            q.explanation;
+
+    } else {
+
+        feedback.textContent =
+            "❌ " +
+            q.explanation;
+
+    }
+
+
+    setTimeout(
+        function() {
+
+            currentQuestion++;
+
+            showQuizQuestion();
+
+        },
+        1200
     );
 
 }
 
 
+/* -----------------------------
+   FINISH QUIZ
+----------------------------- */
 
-/* ==========================================
-   START
-========================================== */
+async function finishQuiz() {
 
-loadDashboard();
+    const area =
+        document.getElementById(
+            "quizArea"
+        );
 
+
+    const result =
+        document.getElementById(
+            "quizResult"
+        );
+
+
+    const total =
+        quizQuestions.length;
+
+
+    const percentage =
+        total > 0
+            ? Math.round(
+                (quizScore / total) * 100
+            )
+            : 0;
+
+
+    area.innerHTML = "";
+
+
+    result.style.display = "block";
+
+
+    result.innerHTML = `
+        <h2>🎉 Quiz Complete!</h2>
+
+        <p>
+            Score:
+            <strong>
+                ${quizScore} / ${total}
+            </strong>
+        </p>
+
+        <p>
+            Result:
+            <strong>
+                ${percentage}%
+            </strong>
+        </p>
+
+        <button
+            class="complete-btn"
+            onclick="startQuiz()">
+            🔄 Try Again
+        </button>
+    `;
+
+
+    /*
+     Save quiz result
+     */
+
+    if (!currentUser) {
+
+        return;
+
+    }
+
+
+    try {
+
+        const {
+            error
+        } = await supabaseClient
+
+            .from("quiz_results")
+
+            .insert({
+
+                user_id:
+                    currentUser.id,
+
+                score:
+                    quizScore,
+
+                total:
+                    total,
+
+                level:
+                    "A2"
+
+            });
+
+
+        if (error) {
+
+            console.error(
+                "Quiz result save error:",
+                error
+            );
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Quiz save error:",
+            error
+        );
+
+    }
+
+}
+
+
+/* -----------------------------
+   KEYBOARD SUPPORT
+----------------------------- */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "1" ||
+            event.key === "2" ||
+            event.key === "3" ||
+            event.key === "4"
+        ) {
+
+            const number =
+                Number(event.key) - 1;
+
+            const buttons =
+                document.querySelectorAll(
+                    ".quiz-question .option"
+                );
+
+
+            if (
+                buttons[number] &&
+                !quizAnswered
+            ) {
+
+                buttons[number].click();
+
+            }
+
+        }
+
+    }
+);
 
 </script>
 
-
 </body>
-
 </html>
