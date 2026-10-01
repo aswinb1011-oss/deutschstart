@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>DeutschStart 🇩🇪 A2 Complete Course</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#07111f;color:#eef5ff;line-height:1.65}
+header{position:sticky;top:0;z-index:10;background:#0b1829ee;border-bottom:1px solid #203852;backdrop-filter:blur(12px)}
+.wrap{max-width:1050px;margin:auto;padding:18px}
+.header{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.logo{font-size:21px;font-weight:800}.logo span{color:#6eb4ff}
+nav{display:flex;gap:7px;flex-wrap:wrap}
+button{border:1px solid #294664;background:#10243a;color:#eef5ff;padding:10px 13px;border-radius:10px;cursor:pointer;font-size:14px}
+button:hover{background:#18324d}.primary{background:#2677d9;border-color:#2677d9}.danger{background:#55232b}
+.hero,.card{background:#0d1d31;border:1px solid #203a56;border-radius:18px;padding:22px;margin:18px 0}
+.hero{background:linear-gradient(145deg,#102844,#0c1a2c)}
+h1{font-size:34px;margin:0 0 8px}h2{margin-top:0}h3{color:#8dc6ff;margin-bottom:7px}
+.muted{color:#aebed0}.small{font-size:13px;color:#aebed0}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}
+.stat{background:#081727;border:1px solid #213a54;border-radius:13px;padding:13px;text-align:center}
+.progress-wrap{height:11px;background:#172c43;border-radius:20px;overflow:hidden}.progress{height:100%;width:0;background:#3e95ff;transition:.3s}
+.lesson-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.lesson{background:#0a1828;border:1px solid #233d59;border-radius:15px;padding:17px}
+.lesson p{color:#c1cedc}.badge{display:inline-block;font-size:12px;padding:4px 8px;border-radius:20px;background:#173b5f;color:#9fd0ff}
+.example,.exercise,.tip{background:#081726;border-left:3px solid #4b9df5;padding:13px 15px;border-radius:8px;margin:10px 0}
+.exercise{border-left-color:#7fe0b5}.tip{border-left-color:#ffd36e}
+.answer{color:#7fe0b5;font-weight:bold}.warn{color:#ffd36e}
+.hidden{display:none!important}
+.choice{display:block;width:100%;text-align:left;margin:7px 0}
+table{width:100%;border-collapse:collapse}th,td{border-bottom:1px solid #243b55;padding:9px;text-align:left}
+input,select,textarea{width:100%;padding:11px;border-radius:9px;border:1px solid #2a4764;background:#081726;color:white;margin:5px 0 12px}
+@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}.lesson-grid{grid-template-columns:1fr}h1{font-size:27px}.wrap{padding:13px}nav button{font-size:13px;padding:9px}}
+</style>
+</head>
+<body>
+<header><div class="wrap header">
+<div class="logo">DeutschStart <span>🇩🇪 A2</span></div>
+<nav>
+<button onclick="show('lessons')">📚 Lessons</button>
+<button onclick="show('grammar')">🧠 Grammar</button>
+<button onclick="show('vocab')">🗣 Vocabulary</button>
+<button onclick="show('speaking')">🎤 Speaking</button>
+<button onclick="show('writing')">✍️ Writing</button>
+<button onclick="show('reading')">📖 Reading</button>
+<button onclick="show('listening')">🎧 Listening</button>
+<button class="primary" onclick="show('quiz')">📝 A2 Quiz</button>
+</nav>
+</div></header>
+
+<main class="wrap">
+<section class="hero">
+<h1>A2 Deutsch — Complete Course</h1>
+<p class="muted">Study the important A2 grammar, vocabulary and exam skills. Each lesson has explanations, examples, exercises, speaking and writing practice.</p>
+<div class="stats">
+<div class="stat"><b id="completedCount">0</b><br><span class="small">Lessons completed</span></div>
+<div class="stat"><b>10</b><br><span class="small">A2 lessons</span></div>
+<div class="stat"><b id="lastScore">—</b><br><span class="small">Last quiz</span></div>
+<div class="stat"><b id="userEmail">—</b><br><span class="small">Student</span></div>
+</div>
+<div class="progress-wrap" style="margin-top:16px"><div id="courseProgress" class="progress"></div></div>
+</section>
+
+<section id="lessons">
+<div class="card">
+<h2>📚 10 Full A2 Lessons</h2>
+<p class="muted">Open each lesson and study the rules before doing the practice.</p>
+<div id="lessonList" class="lesson-grid"></div>
+</div>
+</section>
+
+<section id="lessonDetail" class="hidden"><div class="card" id="lessonContent"></div></section>
+
+<section id="grammar" class="hidden"><div class="card">
+<h2>🧠 A2 Grammar Reference</h2>
+<h3>1. Perfekt und Präteritum</h3>
+<p>Perfekt is very common in spoken German: haben/sein + Partizip II. Präteritum is especially common with sein, haben and modal verbs.</p>
+<div class="example">Ich <b>habe</b> gestern Fußball <b>gespielt</b>.<br>Wir <b>sind</b> nach Berlin <b>gefahren</b>.<br>Ich <b>war</b> müde. Ich <b>musste</b> arbeiten.</div>
+<h3>2. Dativ und Akkusativ</h3>
+<p>Akkusativ often answers wen/was. Dativ often answers wem. With geben, for example, the person is normally Dativ and the thing is Akkusativ.</p>
+<div class="example">Ich gebe <b>dem Mann</b> <b>den Schlüssel</b>.</div>
+<h3>3. Präpositionen</h3>
+<p>Dativ: aus, bei, mit, nach, seit, von, zu. Akkusativ: durch, für, gegen, ohne, um. Two-way prepositions can use Akkusativ for direction and Dativ for location.</p>
+<div class="example">Ich gehe <b>in die Schule</b>. → direction<br>Ich bin <b>in der Schule</b>. → location</div>
+<h3>4. Nebensätze</h3>
+<p>With weil, dass, wenn and obwohl, the conjugated verb normally goes to the end.</p>
+<div class="example">Ich lerne Deutsch, weil ich in Deutschland <b>arbeiten möchte</b>.<br>Ich weiß, dass er heute <b>kommt</b>.</div>
+<h3>5. Adjektivendungen</h3>
+<div class="example">der <b>gute</b> Mann · die <b>schöne</b> Stadt · ein <b>guter</b> Mann · mit einem <b>guten</b> Mann</div>
+<h3>6. Komparativ und Superlativ</h3>
+<div class="example">schnell → schneller → am schnellsten<br>gut → besser → am besten<br>viel → mehr → am meisten</div>
+<h3>7. Reflexive Verben</h3>
+<div class="example">Ich <b>interessiere mich für</b> Musik.<br>Du <b>freust dich auf</b> das Wochenende.<br>Wir <b>treffen uns</b> am Samstag.</div>
+<h3>8. Konjunktiv II</h3>
+<div class="example"><b>Wenn ich Zeit hätte, würde ich</b> mehr lernen.<br><b>Könnten Sie</b> mir helfen?<br>Ich <b>hätte gern</b> einen Kaffee.</div>
+<h3>9. Modalverben</h3>
+<div class="example">Ich <b>muss</b> heute arbeiten. · Du <b>kannst</b> morgen kommen. · Wir <b>dürfen</b> hier nicht rauchen.</div>
+</div></section>
+
+<section id="vocab" class="hidden"><div class="card">
+<h2>🗣 A2 Vocabulary</h2>
+<table><tr><th>German</th><th>English</th><th>Example</th></tr>
+<tr><td>die Erfahrung</td><td>experience</td><td>Ich habe viel Erfahrung.</td></tr>
+<tr><td>die Möglichkeit</td><td>possibility</td><td>Es gibt viele Möglichkeiten.</td></tr>
+<tr><td>die Entscheidung</td><td>decision</td><td>Das ist eine wichtige Entscheidung.</td></tr>
+<tr><td>sich entscheiden</td><td>to decide</td><td>Ich muss mich entscheiden.</td></tr>
+<tr><td>die Gesundheit</td><td>health</td><td>Gesundheit ist wichtig.</td></tr>
+<tr><td>die Umwelt</td><td>environment</td><td>Wir müssen die Umwelt schützen.</td></tr>
+<tr><td>die Ausbildung</td><td>vocational training</td><td>Ich möchte eine Ausbildung machen.</td></tr>
+<tr><td>die Bewerbung</td><td>application</td><td>Ich schreibe eine Bewerbung.</td></tr>
+<tr><td>der Verkehr</td><td>traffic</td><td>Heute gibt es viel Verkehr.</td></tr>
+<tr><td>die Freizeit</td><td>free time</td><td>In meiner Freizeit spiele ich Fußball.</td></tr>
+</table></div></section>
+
+<section id="speaking" class="hidden"><div class="card">
+<h2>🎤 A2 Speaking Practice</h2>
+<h3>Topic: Wochenende</h3><div class="example">Am Wochenende verbringe ich Zeit mit meinen Freunden. Zuerst spiele ich Fußball. Danach gehen wir ins Kino oder essen zusammen. Wenn das Wetter gut ist, gehen wir spazieren.</div>
+<h3>Topic: Stadt oder Land?</h3><div class="example">Meiner Meinung nach hat das Leben in der Stadt viele Vorteile. Es gibt mehr öffentliche Verkehrsmittel und mehr Möglichkeiten. Auf dem Land ist es aber ruhiger und die Natur ist schöner.</div>
+<h3>Useful A2 phrases</h3><ul><li>Meiner Meinung nach ...</li><li>Ich denke, dass ...</li><li>Ein Vorteil ist, dass ...</li><li>Ein Nachteil ist, dass ...</li><li>Zum Beispiel ...</li><li>Deshalb ...</li><li>Auf der einen Seite ..., auf der anderen Seite ...</li></ul>
+</div></section>
+
+<section id="writing" class="hidden"><div class="card">
+<h2>✍️ A2 Writing</h2>
+<h3>Task: Write an email about a meeting</h3>
+<p>Write 60–80 words. Include the date/time, place, reason and a question.</p>
+<div class="example">Hallo Anna,<br>ich möchte am Samstag ein Treffen organisieren. Wir können uns um 15 Uhr im Stadtzentrum treffen. Danach können wir zusammen einen Kaffee trinken. Hast du am Samstag Zeit? Bitte sag mir Bescheid.<br>Liebe Grüße<br>Aswin</div>
+<h3>Useful connectors</h3><p>zuerst · dann · danach · außerdem · aber · deshalb · weil · obwohl · trotzdem · meiner Meinung nach</p>
+</div></section>
+
+<section id="reading" class="hidden"><div class="card">
+<h2>📖 Reading Practice</h2>
+<div class="example"><b>Ein neuer Job</b><br>Maria hat eine neue Arbeit gefunden. Sie arbeitet jetzt in einem Hotel. Jeden Morgen fährt sie mit dem Bus zur Arbeit. Die Arbeit ist manchmal stressig, aber sie hat nette Kollegen. In ihrer Freizeit lernt sie Deutsch, weil sie später eine Ausbildung machen möchte.</div>
+<h3>Questions</h3>
+<p>1. Wo arbeitet Maria? <b>→ In einem Hotel.</b></p>
+<p>2. Wie fährt sie zur Arbeit? <b>→ Mit dem Bus.</b></p>
+<p>3. Warum lernt sie Deutsch? <b>→ Weil sie später eine Ausbildung machen möchte.</b></p>
+</div></section>
+
+<section id="listening" class="hidden"><div class="card">
+<h2>🎧 Listening-Style Practice</h2>
+<p class="muted">Read the short transcript once, then answer without looking back.</p>
+<div class="example">„Hallo, ich bin Lukas. Morgen habe ich einen Termin beim Arzt. Der Termin ist um 10 Uhr. Danach möchte ich einkaufen und am Nachmittag meine Freunde treffen.“</div>
+<p>1. Wann ist der Arzttermin? <b>→ Um 10 Uhr.</b></p>
+<p>2. Was möchte Lukas danach machen? <b>→ Einkaufen.</b></p>
+<p>3. Wen möchte er am Nachmittag treffen? <b>→ Seine Freunde.</b></p>
+</div></section>
+
+<section id="quiz" class="hidden"><div class="card">
+<h2>📝 A2 Quiz</h2>
+<div class="stats" style="margin-bottom:15px">
+<div><label>Difficulty<select id="difficulty"><option value="all">All</option><option value="medium">Medium</option><option value="hard">Hard</option><option value="veryhard">Very Hard</option></select></label></div>
+<div><label>Questions<select id="questionCount"><option>10</option><option>20</option><option>30</option></select></label></div>
+</div>
+<button class="primary" onclick="startQuiz()">Start A2 Quiz</button>
+<div id="quizArea" style="margin-top:15px"></div>
+</div></section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script>
+const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
+let currentUser=null,completedLessons=[],quizQuestions=[],quizIndex=0,quizScore=0;
+
+const lessons=[
+{name:"Perfekt und Präteritum",tag:"Past tense",rules:"Perfekt is common in spoken German. Use haben or sein + Partizip II. Präteritum is especially common with sein, haben and modal verbs.",examples:["Ich habe gestern Fußball gespielt.","Wir sind nach Hause gegangen.","Ich war gestern müde.","Ich musste lange arbeiten.","Sie hat einen Film gesehen.","Wir sind um acht Uhr angekommen.","Er hatte keine Zeit.","Ich wollte früher gehen.","Sie konnte nicht kommen.","Wir haben zusammen gegessen."],practice:"Gestern ___ ich sehr müde.",opts:["bin","war","habe","werde"],ans:1},
+{name:"Dativ und Akkusativ",tag:"Cases",rules:"Akkusativ is often the direct object; Dativ is often the indirect object. Some verbs such as helfen, gefallen, gehören and folgen require Dativ.",examples:["Ich sehe den Mann.","Ich helfe dem Mann.","Das Buch gehört meiner Schwester.","Ich gebe dem Kind den Ball.","Ich danke meinem Lehrer.","Sie folgt ihrem Freund.","Das gefällt mir.","Wir besuchen unseren Onkel.","Er kauft einen Computer.","Ich schenke meiner Mutter Blumen."],practice:"Ich helfe ___ Mann.",opts:["der","den","dem","des"],ans:2},
+{name:"Präpositionen",tag:"Prepositions",rules:"Dativ prepositions include aus, bei, mit, nach, seit, von and zu. Akkusativ prepositions include durch, für, gegen, ohne and um. Two-way prepositions use Akkusativ for direction and Dativ for location.",examples:["Ich fahre mit dem Bus.","Das Geschenk ist für meinen Bruder.","Ich komme aus Indien.","Ich gehe in die Schule.","Ich bin in der Schule.","Das Bild hängt an der Wand.","Ich stelle die Tasche auf den Tisch.","Die Tasche steht auf dem Tisch.","Wir gehen zum Arzt.","Sie kommt von der Arbeit."],practice:"Ich gehe ___ Supermarkt.",opts:["im","in den","in dem","bei"],ans:1},
+{name:"Nebensätze",tag:"Subordinate clauses",rules:"With weil, dass, wenn, obwohl and similar conjunctions, the conjugated verb normally goes to the end of the subordinate clause.",examples:["Ich bleibe zu Hause, weil ich krank bin.","Ich weiß, dass er heute kommt.","Wenn ich Zeit habe, gehe ich spazieren.","Obwohl es regnet, spiele ich Fußball.","Ich lerne Deutsch, weil ich in Deutschland arbeiten möchte.","Ich glaube, dass sie Recht hat.","Wenn du möchtest, können wir zusammen lernen.","Obwohl ich müde bin, mache ich meine Hausaufgaben.","Er sagt, dass er morgen kommt.","Ich bleibe hier, weil ich auf dich warte."],practice:"Ich bleibe zu Hause, weil ich krank ___.",opts:["bin","ist","sein","habe"],ans:0},
+{name:"Adjektivendungen",tag:"Adjectives",rules:"Adjective endings depend on article, gender, case and number. Learn the common patterns with der/die/das, ein/eine and Dativ.",examples:["der gute Freund","die schöne Stadt","das kleine Kind","ein guter Freund","eine schöne Stadt","ein kleines Kind","mit einem guten Freund","mit einer schönen Frau","die neuen Schuhe","einen interessanten Film"],practice:"Das ist ein ___ Film.",opts:["gut","gute","guter","guten"],ans:2},
+{name:"Komparativ und Superlativ",tag:"Comparison",rules:"The comparative normally uses -er + als. The superlative commonly uses am -sten or der/die/das -ste. Important irregular forms include gut → besser → am besten and viel → mehr → am meisten.",examples:["Mein Auto ist schneller als dein Auto.","Heute ist es wärmer.","Sie ist jünger als ich.","Das ist der beste Film.","Er läuft am schnellsten.","Deutsch ist schwieriger als Englisch für mich.","Dieses Hotel ist billiger.","Das ist die schönste Stadt.","Ich habe mehr Zeit.","Das gefällt mir am meisten."],practice:"Mein Bruder ist ___ als ich.",opts:["jung","jünger","am jüngsten","junge"],ans:1},
+{name:"Reflexive Verben A2",tag:"Reflexive verbs",rules:"Some verbs use a reflexive pronoun. The pronoun changes with the person: mich, dich, sich, uns, euch, sich. Some verbs also require a fixed preposition.",examples:["Ich interessiere mich für Fußball.","Du freust dich auf das Wochenende.","Er erinnert sich an den Termin.","Wir treffen uns am Samstag.","Ihr müsst euch beeilen.","Sie fühlt sich gut.","Ich wasche mich jeden Morgen.","Du ärgerst dich über den Lärm.","Wir unterhalten uns.","Ich konzentriere mich auf die Prüfung."],practice:"Ich interessiere ___ für Fußball.",opts:["mir","mich","sich","uns"],ans:1},
+{name:"Konjunktiv II",tag:"Polite & hypothetical",rules:"Konjunktiv II is used for polite requests, wishes and unreal situations. Important forms include hätte, wäre, könnte, müsste, sollte and würde.",examples:["Könnten Sie mir helfen?","Ich hätte gern einen Kaffee.","Wenn ich Zeit hätte, würde ich mehr lernen.","Ich wäre gern in Deutschland.","Du solltest mehr schlafen.","Ich könnte morgen kommen.","Wenn ich reich wäre, würde ich ein Haus kaufen.","Würdest du mir helfen?","Wir müssten früher gehen.","Ich hätte gern ein neues Handy."],practice:"Wenn ich mehr Zeit ___, würde ich mehr Deutsch lernen.",opts:["habe","hatte","hätte","haben"],ans:2},
+{name:"Modalverben A2",tag:"Modal verbs",rules:"Modal verbs change the meaning of another verb. In a main clause, the modal verb is conjugated and the second verb goes to the end in the infinitive.",examples:["Ich muss heute arbeiten.","Du darfst hier nicht rauchen.","Wir können morgen kommen.","Ihr sollt mehr lernen.","Ich möchte Deutsch lernen.","Er will Arzt werden.","Sie muss früh aufstehen.","Wir dürfen hier parken.","Kannst du mir helfen?","Du solltest mehr üben."],practice:"Ich ___ heute Deutsch lernen.",opts:["muss","müssen","musst","müsst"],ans:0},
+{name:"Schreiben und Sprechen",tag:"Communication",rules:"A2 communication becomes stronger when you connect ideas. Use zuerst, dann, danach, außerdem, aber, deshalb, weil, obwohl and meiner Meinung nach.",examples:["Zuerst lerne ich Deutsch. Danach mache ich Sport.","Ich mag die Stadt, weil es dort viele Möglichkeiten gibt.","Meiner Meinung nach ist Sport sehr wichtig.","Außerdem ist die Stadt gut mit dem Bus erreichbar.","Ich bin müde, deshalb gehe ich nach Hause.","Obwohl es regnet, gehe ich spazieren.","Einerseits ist die Stadt interessant, andererseits ist sie laut.","Zum Beispiel spiele ich am Wochenende Fußball.","Ich denke, dass Deutsch wichtig ist.","Am Ende möchte ich meine Meinung zusammenfassen."],practice:"Which connector normally introduces a reason?",opts:["deshalb","weil","danach","trotzdem"],ans:1}
+];
+
+const questions=[
+["medium","Gestern ___ ich Fußball gespielt.","habe","bin","war","werde",0,"Spielen uses haben in the Perfekt."],
+["medium","Wir ___ nach Berlin gefahren.","haben","sind","waren","werden",1,"Movement to another place commonly uses sein in the Perfekt."],
+["medium","Ich helfe ___ Frau.","die","der","den","des",1,"helfen requires the Dativ: der Frau."],
+["medium","Das Geschenk ist ___ meinen Bruder.","mit","bei","für","von",2,"für takes the Akkusativ."],
+["medium","Ich bleibe zu Hause, weil ich krank ___.","bin","ist","sein","habe",0,"In a weil-clause the conjugated verb goes to the end."],
+["medium","Das ist ein ___ Auto.","schnelle","schneller","schnelles","schnellen",2,"Auto is neuter: ein schnelles Auto."],
+["medium","Mein Auto ist ___ als dein Auto.","schnell","schneller","am schnellsten","schnelle",1,"The comparative is schneller + als."],
+["medium","Ich interessiere ___ für Musik.","mir","mich","sich","uns",1,"With ich, the reflexive pronoun is mich."],
+["medium","___ Sie mir bitte helfen?","Würden","Könnten","Hätten","Wären",1,"Könnten Sie is a standard polite request."],
+["medium","Ich ___ heute arbeiten.","muss","müssen","musst","müsst",0,"With ich, müssen becomes muss."],
+["hard","Wenn ich mehr Zeit ___, würde ich mehr lernen.","habe","hatte","hätte","haben",2,"Konjunktiv II uses hätte for an unreal condition."],
+["hard","Ich gebe ___ Kind den Ball.","das","dem","den","des",1,"The recipient is Dativ: dem Kind."],
+["hard","Ich bin ___ Schule.","in die","in der","in den","an die",1,"Location with in takes Dativ: in der Schule."],
+["hard","Obwohl es regnet, ___ ich spazieren.","gehe","gehen","ging","gegangen",0,"The main clause still has normal verb-second order."],
+["hard","Das ist der ___ Film, den ich gesehen habe.","gut","besser","beste","gute",2,"Superlative before a noun with der is beste."],
+["hard","Sie fühlt ___ heute nicht gut.","ihr","mich","sich","uns",2,"sich fühlen uses the reflexive pronoun sich for sie."],
+["hard","Ich weiß, dass er morgen ___.","kommt","kommen","gekommen","komme",0,"In a dass-clause the conjugated verb goes to the end."],
+["hard","Dieser Weg ist ___ als der andere.","kurz","kürzer","am kürzesten","kurze",1,"Comparative: kürzer als."],
+["hard","Ich fahre ___ dem Zug.","für","mit","durch","ohne",1,"mit takes Dativ and means by/with."],
+["hard","Du ___ hier nicht rauchen.","darfst","dürfen","durft","darf",0,"With du, dürfen becomes darfst."],
+["veryhard","Wenn ich reich ___, würde ich ein großes Haus kaufen.","bin","war","wäre","sein",2,"Konjunktiv II of sein is wäre."],
+["veryhard","Ich interessiere mich ___ moderne Technik.","an","auf","für","mit",2,"sich interessieren requires für + Akkusativ."],
+["veryhard","Er hilft ___ alten Mann.","den","dem","der","des",1,"helfen requires Dativ; Mann is masculine: dem alten Mann."],
+["veryhard","Sie sagt, dass sie morgen nicht ___ kann.","kommen","kommt","gekommen","komme",0,"With a modal in a dass-clause, the infinitive comes before the modal at the end: kommen kann."],
+["veryhard","Das ist das ___ Ergebnis.","beste","bessere","gut","am besten",0,"With das + noun, the superlative adjective is beste."],
+["veryhard","Ich würde gern mehr reisen, ___ ich habe nicht genug Geld.","obwohl","weil","aber","deshalb",2,"aber connects contrasting main clauses here."],
+["veryhard","Wir stellen die Tasche ___ Tisch.","auf dem","auf den","in dem","bei dem",1,"Direction/change of position uses Akkusativ: auf den Tisch."],
+["veryhard","Die Tasche steht ___ Tisch.","auf den","auf dem","in den","für den",1,"Location uses Dativ: auf dem Tisch."],
+["veryhard","Er ___ gestern lange arbeiten.","musste","müsste","muss","müssen",0,"Präteritum of müssen with er is musste."],
+["veryhard","Meiner Meinung ___ ist Deutsch wichtig.","nach","zu","für","mit",0,"The fixed phrase is meiner Meinung nach."]
+];
+
+function show(id){
+ document.querySelectorAll("main>section").forEach(s=>s.classList.add("hidden"));
+ document.getElementById(id).classList.remove("hidden");
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+function renderLessons(){
+ const box=document.getElementById("lessonList");
+ box.innerHTML=lessons.map((l,i)=>`<article class="lesson"><span class="badge">Lesson ${i+1} · ${l.tag}</span><h3>${l.name}</h3><p>${l.rules}</p><button class="primary" onclick="openLesson(${i})">Study Lesson →</button> ${completedLessons.includes(l.name)?'<span class="answer"> ✓ Completed</span>':''}</article>`).join("");
+}
+function openLesson(i){
+ const l=lessons[i];
+ document.getElementById("lessonContent").innerHTML=`
+ <button onclick="show('lessons')">← Back to lessons</button>
+ <h2>Lesson ${i+1}: ${l.name}</h2>
+ <p class="muted">${l.tag}</p>
+ <h3>📖 Explanation</h3><p>${l.rules}</p>
+ <h3>🇩🇪 Examples</h3>${l.examples.map(x=>`<div class="example">${x}</div>`).join("")}
+ <h3>✏️ Practice</h3><div class="exercise"><b>${l.practice}</b>${l.opts.map((o,j)=>`<button class="choice" onclick="lessonAnswer(${i},${j})">${String.fromCharCode(65+j)}. ${o}</button>`).join("")}<div id="lessonFeedback"></div></div>
+ <h3>🎤 Speaking task</h3><p>Make 4–6 sentences using this lesson's grammar. Try to connect your ideas with weil, dass, wenn, deshalb or danach where appropriate.</p>
+ <h3>✍️ Writing task</h3><p>Write 60–80 words about a real or imaginary situation and use at least three examples of today's grammar.</p>
+ <div class="tip">💡 A2 exam tip: Don't only make short sentences. Connect your ideas and check the verb position.</div>
+ <button class="primary" onclick="completeLesson(${i})">✅ Mark Lesson Complete</button>`;
+ show("lessonDetail");
+}
+function lessonAnswer(i,j){
+ const l=lessons[i],f=document.getElementById("lessonFeedback");
+ if(j===l.ans)f.innerHTML='<p class="answer">✓ Correct! '+l.opts[j]+' is the correct answer.</p>';
+ else f.innerHTML='<p class="warn">Not quite. Review the explanation and try again.</p>';
+}
+async function completeLesson(i){
+ if(!currentUser){alert("Please login first.");return}
+ const name=lessons[i].name;
+ if(completedLessons.includes(name)){alert("✅ Lesson already completed!");return}
+ try{
+  const {data:existing,error:checkError}=await supabaseClient.from("lesson_progress").select("id").eq("user_id",currentUser.id).eq("lesson_name",name).maybeSingle();
+  if(checkError)throw checkError;
+  if(!existing){
+   const {error}=await supabaseClient.from("lesson_progress").insert({user_id:currentUser.id,lesson_name:name,completed:true});
+   if(error)throw error;
+  }
+  completedLessons.push(name);renderLessons();updateProgress();alert("✅ Lesson completed and progress saved!");
+ }catch(e){alert("❌ Could not save progress.\n\n"+e.message)}
+}
+function updateProgress(){
+ document.getElementById("completedCount").textContent=completedLessons.length;
+ document.getElementById("courseProgress").style.width=(completedLessons.length/10*100)+"%";
+}
+function startQuiz(){
+ const diff=document.getElementById("difficulty").value;
+ const count=Math.min(Number(document.getElementById("questionCount").value)||10,30);
+ let pool=questions.filter(q=>diff==="all"||q[0]===diff);
+ pool.sort(()=>Math.random()-.5);
+ quizQuestions=pool.slice(0,Math.min(count,pool.length));
+ quizIndex=0;quizScore=0;renderQuiz();
+}
+function renderQuiz(){
+ if(quizIndex>=quizQuestions.length){finishQuiz();return}
+ const q=quizQuestions[quizIndex],area=document.getElementById("quizArea");
+ area.innerHTML=`<div class="exercise"><p><b>Question ${quizIndex+1} of ${quizQuestions.length}</b></p><h3>${q[1]}</h3>${[2,3,4,5].map((k,j)=>`<button class="choice" onclick="answerQuiz(${j})">${String.fromCharCode(65+j)}. ${q[k]}</button>`).join("")}</div>`;
+}
+function answerQuiz(choice){
+ const q=quizQuestions[quizIndex],area=document.getElementById("quizArea");
+ area.querySelectorAll(".choice").forEach(b=>b.disabled=true);
+ const correct=choice===q[6];if(correct)quizScore++;
+ area.innerHTML+=`<div class="feedback example"><b class="${correct?'answer':'warn'}">${correct?'✓ Correct':'✗ Incorrect'}</b><p>${q[7]}</p><button class="primary" onclick="nextQuestion()">Next →</button></div>`;
+}
+function nextQuestion(){quizIndex++;renderQuiz()}
+async function finishQuiz(){
+ const total=quizQuestions.length,percent=Math.round(quizScore/total*100);
+ document.getElementById("quizArea").innerHTML=`<div class="exercise"><h2>🎉 Quiz finished!</h2><h3>${quizScore} / ${total} (${percent}%)</h3><p>${percent>=80?'Excellent A2 work!':percent>=60?'Good work! Keep practising.':'Keep practising and review the lessons.'}</p><button class="primary" onclick="startQuiz()">Try Again</button></div>`;
+ document.getElementById("lastScore").textContent=quizScore+"/"+total;
+ if(currentUser){
+  const {error}=await supabaseClient.from("quiz_results").insert({user_id:currentUser.id,score:quizScore,total:total,level:"A2"});
+  if(error)console.error(error);
+ }
+}
+async function loadData(){
+ const {data:{user}}=await supabaseClient.auth.getUser();
+ if(!user){document.getElementById("userEmail").textContent="Not logged in";renderLessons();return}
+ currentUser=user;document.getElementById("userEmail").textContent=user.email;
+ const {data:rows}=await supabaseClient.from("lesson_progress").select("lesson_name").eq("user_id",user.id).eq("completed",true);
+ completedLessons=(rows||[]).map(r=>r.lesson_name).filter(n=>lessons.some(l=>l.name===n));
+ const {data:results}=await supabaseClient.from("quiz_results").select("score,total,level").eq("user_id",user.id);
+ const a2=(results||[]).filter(r=>r.level==="A2");
+ if(a2.length){const r=a2[a2.length-1];document.getElementById("lastScore").textContent=r.score+"/"+r.total}
+ renderLessons();updateProgress();
+}
+renderLessons();loadData();
+</script>
+</body>
+</html>
