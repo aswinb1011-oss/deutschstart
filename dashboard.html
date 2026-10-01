@@ -1,553 +1,734 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>DeutschStart Dashboard</title>
+<title>DeutschStart – Dashboard</title>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+* {
+    box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f6f8;
-      color: #222;
-    }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #172033;
+}
+
+header {
+    background: #111827;
+    color: white;
+    padding: 18px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.logout {
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 25px 15px 50px;
+}
+
+.welcome {
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.06);
+}
+
+.welcome h1 {
+    margin-top: 0;
+}
+
+.email {
+    color: #6b7280;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 18px;
+    margin-bottom: 20px;
+}
+
+.card {
+    background: white;
+    padding: 22px;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.06);
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+.progress {
+    height: 12px;
+    background: #e5e7eb;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 12px 0;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #2563eb;
+    transition: width .4s;
+}
+
+.a2-bar {
+    background: #16a34a;
+}
+
+.stat {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.small {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.level-card {
+    text-align: center;
+}
+
+.level-card h2 {
+    font-size: 28px;
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    border: none;
+    background: #2563eb;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.btn-green {
+    background: #16a34a;
+}
+
+.btn-gray {
+    background: #6b7280;
+}
+
+.result {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.loading {
+    color: #6b7280;
+}
+
+.error {
+    color: #dc2626;
+}
+
+footer {
+    text-align: center;
+    color: #6b7280;
+    padding: 30px 10px;
+}
+
+@media(max-width:600px) {
 
     header {
-      background: #111827;
-      color: white;
-      padding: 25px 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0 0 8px;
-      font-size: 28px;
-    }
-
-    header p {
-      margin: 0;
-      opacity: 0.9;
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .container {
-      max-width: 700px;
-      margin: 30px auto;
-      padding: 20px;
+        padding: 15px 10px 40px;
     }
-
-    .card {
-      background: white;
-      padding: 25px;
-      margin-bottom: 20px;
-      border-radius: 16px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    }
-
-    h2,
-    h3 {
-      margin-top: 0;
-    }
-
-    /* PROGRESS */
-
-    .progress-section {
-      padding: 20px;
-      border-radius: 16px;
-      background: #f5f7fa;
-    }
-
-    .progress-section h3 {
-      margin-bottom: 15px;
-    }
-
-    .progress-bar {
-      width: 100%;
-      height: 18px;
-      background: #ddd;
-      border-radius: 20px;
-      overflow: hidden;
-    }
-
-    #progress-bar-fill {
-      width: 0%;
-      height: 100%;
-      background: #2563eb;
-      border-radius: 20px;
-      transition: width 0.5s ease;
-    }
-
-    #progress-text {
-      text-align: center;
-      font-weight: bold;
-      margin: 10px 0 0;
-    }
-
-    /* LEVELS */
-
-    .levels-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-      margin-top: 15px;
-    }
-
-    .level-card {
-      display: block;
-      padding: 20px;
-      border-radius: 14px;
-      text-decoration: none;
-      color: white;
-      text-align: center;
-      transition: transform 0.2s ease;
-    }
-
-    .level-card:hover {
-      transform: translateY(-3px);
-    }
-
-    .level-card h3 {
-      margin-bottom: 8px;
-      font-size: 22px;
-    }
-
-    .level-card p {
-      margin: 0;
-      font-size: 14px;
-    }
-
-    .a1 {
-      background: #2563eb;
-    }
-
-    .a2 {
-      background: #16a34a;
-    }
-
-    .b1 {
-      background: #9333ea;
-    }
-
-    .b2 {
-      background: #ea580c;
-    }
-
-    /* CONTINUE BUTTON */
-
-    .continue-button {
-      display: block;
-      width: 100%;
-      padding: 14px;
-      border-radius: 10px;
-      background: #2563eb;
-      color: white;
-      text-align: center;
-      text-decoration: none;
-      font-size: 16px;
-      font-weight: bold;
-    }
-
-    .continue-button:hover {
-      background: #1d4ed8;
-    }
-
-    /* QUIZ */
-
-    .quiz-result {
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    /* LOGOUT */
-
-    button {
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 10px;
-      background: #dc2626;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #b91c1c;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 500px) {
-
-      .container {
-        margin: 15px auto;
-        padding: 15px;
-      }
-
-      .card {
-        padding: 20px;
-      }
-
-      .levels-grid {
-        grid-template-columns: 1fr;
-      }
-
-    }
-  </style>
+}
+</style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
+<header>
 
-  <header>
-    <h1>🇩🇪 DeutschStart</h1>
-    <p>Student Dashboard</p>
-  </header>
+    <div class="logo">
+        🇩🇪 DeutschStart
+    </div>
 
+    <button class="logout" onclick="logout()">
+        Logout
+    </button>
 
-  <div class="container">
+</header>
+
+<div class="container">
 
     <!-- WELCOME -->
 
-    <div class="card">
-      <h2>👋 Welcome!</h2>
+    <section class="welcome">
 
-      <p id="user-email">
-        Loading...
-      </p>
-    </div>
+        <h1>Willkommen! 👋</h1>
 
-
-    <!-- A1 PROGRESS -->
-
-    <div class="card">
-
-      <div class="progress-section">
-
-        <h3>📊 A1 Learning Progress</h3>
-
-        <div class="progress-bar">
-          <div id="progress-bar-fill"></div>
-        </div>
-
-        <p id="progress-text">
-          0%
+        <p>
+            Welcome to your German learning dashboard.
         </p>
 
-      </div>
+        <p class="email" id="userEmail">
+            Loading account...
+        </p>
 
-    </div>
+    </section>
+
+
+    <!-- OVERALL STATS -->
+
+    <section class="grid">
+
+        <div class="card">
+
+            <p class="small">
+                A1 Lessons
+            </p>
+
+            <div class="stat" id="a1Lessons">
+                0/7
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <p class="small">
+                A2 Lessons
+            </p>
+
+            <div class="stat" id="a2Lessons">
+                0/10
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <p class="small">
+                A1 Quiz
+            </p>
+
+            <div class="result" id="a1Quiz">
+                —
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <p class="small">
+                A2 Quiz
+            </p>
+
+            <div class="result" id="a2Quiz">
+                —
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- A1 -->
+
+    <section class="card">
+
+        <h2>🟢 A1 German</h2>
+
+        <p>
+            Continue your beginner German lessons.
+        </p>
+
+        <div class="progress">
+
+            <div
+                class="progress-bar"
+                id="a1ProgressBar">
+            </div>
+
+        </div>
+
+        <p class="small" id="a1ProgressText">
+            0 / 7 lessons completed
+        </p>
+
+        <a
+            href="a1.html"
+            class="btn">
+            Continue A1 →
+        </a>
+
+    </section>
+
+    <br>
+
+
+    <!-- A2 -->
+
+    <section class="card">
+
+        <h2>🔵 A2 German</h2>
+
+        <p>
+            Practice difficult A2 grammar, vocabulary,
+            speaking, writing and quizzes.
+        </p>
+
+        <div class="progress">
+
+            <div
+                class="progress-bar a2-bar"
+                id="a2ProgressBar">
+            </div>
+
+        </div>
+
+        <p class="small" id="a2ProgressText">
+            0 / 10 lessons completed
+        </p>
+
+        <a
+            href="a2.html"
+            class="btn btn-green">
+            Continue A2 →
+        </a>
+
+    </section>
+
+    <br>
 
 
     <!-- LEVELS -->
 
-    <div class="card">
+    <section class="grid">
 
-      <h2>🎓 German Levels</h2>
+        <div class="card level-card">
 
-      <p>
-        Choose your German learning level.
-      </p>
+            <h2>🇩🇪 A1</h2>
 
-      <div class="levels-grid">
+            <p>
+                Beginner
+            </p>
 
-        <a href="a1.html" class="level-card a1">
-          <h3>🇩🇪 A1</h3>
-          <p>Beginner</p>
-        </a>
+            <a
+                href="a1.html"
+                class="btn">
+                Open A1
+            </a>
 
-        <a href="#" class="level-card a2">
-          <h3>🇩🇪 A2</h3>
-          <p>Elementary</p>
-        </a>
-
-        <a href="#" class="level-card b1">
-          <h3>🇩🇪 B1</h3>
-          <p>Intermediate</p>
-        </a>
-
-        <a href="#" class="level-card b2">
-          <h3>🇩🇪 B2</h3>
-          <p>Upper Intermediate</p>
-        </a>
-
-      </div>
-
-    </div>
+        </div>
 
 
-    <!-- QUIZ RESULT -->
+        <div class="card level-card">
 
-    <div class="card">
+            <h2>🇩🇪 A2</h2>
 
-      <h2>📝 Latest Quiz Result</h2>
+            <p>
+                Elementary
+            </p>
 
-      <p id="quiz-result" class="quiz-result">
-        Loading...
-      </p>
+            <a
+                href="a2.html"
+                class="btn btn-green">
+                Open A2
+            </a>
 
-    </div>
-
-
-    <!-- CONTINUE LEARNING -->
-
-    <div class="card">
-
-      <h2>📚 Continue Learning</h2>
-
-      <p>
-        Continue your German A1 lessons and improve your skills.
-      </p>
-
-      <a href="a1.html" class="continue-button">
-        🚀 Continue A1 Learning
-      </a>
-
-    </div>
+        </div>
 
 
-    <!-- LOGOUT -->
+        <div class="card level-card">
 
-    <div class="card">
+            <h2>🇩🇪 B1</h2>
 
-      <button onclick="logout()">
-        🚪 Logout
-      </button>
+            <p>
+                Intermediate
+            </p>
 
-    </div>
+            <button
+                class="btn btn-gray"
+                onclick="comingSoon('B1')">
+                Coming Soon
+            </button>
 
-  </div>
-
-
-  <script>
-
-    // -----------------------------
-    // SUPABASE
-    // -----------------------------
-
-    const supabaseClient =
-      window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_PUBLISHABLE_KEY
-      );
+        </div>
 
 
-    // -----------------------------
-    // LOAD DASHBOARD
-    // -----------------------------
+        <div class="card level-card">
 
-    async function loadDashboard() {
+            <h2>🇩🇪 B2</h2>
 
-      const {
-        data: { user }
-      } = await supabaseClient.auth.getUser();
+            <p>
+                Upper Intermediate
+            </p>
+
+            <button
+                class="btn btn-gray"
+                onclick="comingSoon('B2')">
+                Coming Soon
+            </button>
+
+        </div>
+
+    </section>
+
+</div>
 
 
-      // If not logged in
-      if (!user) {
+<footer>
 
-        window.location.href =
-          "login.html";
+    🇩🇪 DeutschStart — Learn German. Speak with Confidence.
+
+</footer>
+
+
+<script>
+
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
+
+let currentUser = null;
+
+
+/* ==========================================
+   LOAD USER
+========================================== */
+
+async function loadDashboard() {
+
+    const {
+        data: { user },
+        error
+    } = await supabaseClient.auth.getUser();
+
+
+    if (error || !user) {
+
+        window.location.href = "login.html";
 
         return;
-      }
+    }
 
 
-      // Show user email
-      document.getElementById(
-        "user-email"
-      ).textContent = user.email;
+    currentUser = user;
 
 
-      // -----------------------------
-      // A1 LESSON PROGRESS
-      // -----------------------------
+    document.getElementById("userEmail").textContent =
+        user.email;
 
-      const {
-        data: lessons,
-        error: lessonError
-      } = await supabaseClient
+
+    await loadLessonProgress();
+
+    await loadQuizResults();
+
+}
+
+
+/* ==========================================
+   LESSON PROGRESS
+========================================== */
+
+async function loadLessonProgress() {
+
+    const { data, error } = await supabaseClient
         .from("lesson_progress")
-        .select(
-          "lesson_name, completed"
-        )
-        .eq(
-          "user_id",
-          user.id
-        )
-        .eq(
-          "completed",
-          true
+        .select("lesson_name, completed")
+        .eq("user_id", currentUser.id)
+        .eq("completed", true);
+
+
+    if (error) {
+
+        console.log(
+            "Progress error:",
+            error
         );
 
+        return;
+    }
 
-      if (lessonError) {
 
-        document.getElementById(
-          "progress-text"
-        ).textContent =
-          "Error loading progress";
+    const lessons = data || [];
 
-      } else {
 
-        const uniqueLessons =
-          new Set(
-            (lessons || []).map(
-              lesson =>
-                lesson.lesson_name
+    /*
+       A1 lesson names
+    */
+
+    const a1Names = [
+
+        "Greetings",
+        "Introduction",
+        "Numbers",
+        "Family",
+        "Home",
+        "Food",
+        "Daily Routine"
+
+    ];
+
+
+    /*
+       A2 lesson names
+    */
+
+    const a2Names = [
+
+        "Perfekt und Präteritum",
+        "Dativ und Akkusativ",
+        "Präpositionen",
+        "Nebensätze",
+        "Adjektivendungen",
+        "Komparativ und Superlativ",
+        "Reflexive Verben A2",
+        "Konjunktiv II",
+        "Modalverben A2",
+        "Schreiben und Sprechen"
+
+    ];
+
+
+    const completedNames = [
+        ...new Set(
+            lessons.map(
+                item => item.lesson_name
             )
-          );
-
-
-        const totalLessons = 7;
-
-
-        let completedLessons =
-          uniqueLessons.size;
-
-
-        if (
-          completedLessons >
-          totalLessons
-        ) {
-
-          completedLessons =
-            totalLessons;
-        }
-
-
-        let percentage =
-          Math.round(
-            (
-              completedLessons /
-              totalLessons
-            ) * 100
-          );
-
-
-        if (percentage > 100) {
-
-          percentage = 100;
-        }
-
-
-        // Progress bar
-        document.getElementById(
-          "progress-bar-fill"
-        ).style.width =
-          percentage + "%";
-
-
-        // Progress text
-        document.getElementById(
-          "progress-text"
-        ).textContent =
-          completedLessons +
-          " / " +
-          totalLessons +
-          " lessons completed — " +
-          percentage +
-          "%";
-      }
-
-
-      // -----------------------------
-      // QUIZ RESULT
-      // -----------------------------
-
-      const {
-        data: quizzes,
-        error: quizError
-      } = await supabaseClient
-        .from("quiz_results")
-        .select(
-          "score, total"
         )
-        .eq(
-          "user_id",
-          user.id
+    ];
+
+
+    const a1Completed =
+        completedNames.filter(
+            name => a1Names.includes(name)
+        ).length;
+
+
+    const a2Completed =
+        completedNames.filter(
+            name => a2Names.includes(name)
+        ).length;
+
+
+    updateA1Progress(a1Completed);
+
+    updateA2Progress(a2Completed);
+
+}
+
+
+/* ==========================================
+   A1 PROGRESS
+========================================== */
+
+function updateA1Progress(completed) {
+
+    const total = 7;
+
+    const percentage =
+        Math.round(
+            (completed / total) * 100
         );
 
 
-      if (quizError) {
-
-        document.getElementById(
-          "quiz-result"
-        ).textContent =
-          "No quiz result yet.";
-
-      } else if (
-        !quizzes ||
-        quizzes.length === 0
-      ) {
-
-        document.getElementById(
-          "quiz-result"
-        ).textContent =
-          "No quiz result yet.";
-
-      } else {
-
-        const latestQuiz =
-          quizzes[
-            quizzes.length - 1
-          ];
+    document.getElementById("a1Lessons").textContent =
+        `${completed}/${total}`;
 
 
-        document.getElementById(
-          "quiz-result"
-        ).textContent =
-          latestQuiz.score +
-          " / " +
-          latestQuiz.total;
-      }
+    document.getElementById("a1ProgressBar").style.width =
+        percentage + "%";
+
+
+    document.getElementById("a1ProgressText").textContent =
+        `${completed} / ${total} lessons completed`;
+
+}
+
+
+/* ==========================================
+   A2 PROGRESS
+========================================== */
+
+function updateA2Progress(completed) {
+
+    const total = 10;
+
+    const percentage =
+        Math.round(
+            (completed / total) * 100
+        );
+
+
+    document.getElementById("a2Lessons").textContent =
+        `${completed}/${total}`;
+
+
+    document.getElementById("a2ProgressBar").style.width =
+        percentage + "%";
+
+
+    document.getElementById("a2ProgressText").textContent =
+        `${completed} / ${total} lessons completed`;
+
+}
+
+
+/* ==========================================
+   QUIZ RESULTS
+========================================== */
+
+async function loadQuizResults() {
+
+    const { data, error } = await supabaseClient
+        .from("quiz_results")
+        .select("score, total, created_at")
+        .eq("user_id", currentUser.id)
+        .order("created_at", {
+            ascending: false
+        });
+
+
+    if (error) {
+
+        console.log(
+            "Quiz result error:",
+            error
+        );
+
+        return;
+    }
+
+
+    const results = data || [];
+
+
+    /*
+       The current quiz_results table does not
+       have a level column.
+
+       We therefore identify the newest result
+       as the latest quiz result and display it
+       in the A2 area when using this dashboard.
+
+       Existing A1 results remain visible through
+       the result list below.
+    */
+
+
+    if (results.length > 0) {
+
+        const latest = results[0];
+
+        document.getElementById("a2Quiz").textContent =
+            `${latest.score}/${latest.total}`;
 
     }
 
 
-    // -----------------------------
-    // LOGOUT
-    // -----------------------------
+    /*
+       Show latest available result for A1
+       if there is a second result.
+    */
 
-    async function logout() {
+    if (results.length > 1) {
 
-      const {
-        error
-      } = await supabaseClient.auth.signOut();
+        const previous = results[1];
+
+        document.getElementById("a1Quiz").textContent =
+            `${previous.score}/${previous.total}`;
+
+    }
+
+}
 
 
-      if (error) {
+/* ==========================================
+   LOGOUT
+========================================== */
+
+async function logout() {
+
+    const { error } =
+        await supabaseClient.auth.signOut();
+
+
+    if (error) {
 
         alert(
-          "Logout error: " +
-          error.message
+            "Logout error: " +
+            error.message
         );
 
         return;
-      }
-
-
-      window.location.href =
-        "login.html";
     }
 
 
-    // -----------------------------
-    // START
-    // -----------------------------
+    window.location.href =
+        "login.html";
 
-    loadDashboard();
+}
 
-  </script>
+
+/* ==========================================
+   COMING SOON
+========================================== */
+
+function comingSoon(level) {
+
+    alert(
+        level +
+        " German is coming soon! 🇩🇪"
+    );
+
+}
+
+
+/* ==========================================
+   START
+========================================== */
+
+loadDashboard();
+
+</script>
 
 </body>
 </html>
