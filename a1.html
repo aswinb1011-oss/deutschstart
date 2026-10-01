@@ -7,6 +7,7 @@
 <title>DeutschStart A1 🇩🇪</title>
 
 <style>
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -75,8 +76,8 @@ header h1 {
     cursor: pointer;
 }
 
-.menu-button:hover {
-    background: #eef2f8;
+.menu-button:active {
+    transform: scale(0.98);
 }
 
 .lesson {
@@ -91,11 +92,6 @@ header h1 {
     margin-bottom: 15px;
 }
 
-.lesson h3 {
-    margin-top: 22px;
-    margin-bottom: 10px;
-}
-
 .lesson p {
     line-height: 1.6;
     margin-bottom: 12px;
@@ -106,44 +102,41 @@ header h1 {
     padding: 15px;
     border-radius: 10px;
     line-height: 2;
-    margin-bottom: 15px;
 }
 
-.example {
-    background: #f8f9fc;
-    border-left: 4px solid #3157a5;
-    padding: 15px;
-    margin: 15px 0;
-    border-radius: 8px;
-    line-height: 1.8;
-}
-
-.conversation {
-    background: #f1f5f9;
-    padding: 18px;
-    border-radius: 10px;
-    line-height: 2;
+.number-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
     margin-top: 15px;
 }
 
+.number-item {
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #d5dbea;
+}
+
 .complete-button {
-    background: #172033;
-    color: white;
+    background: #ffcc00;
+    color: #172033;
     border: none;
-    padding: 13px 18px;
+    padding: 12px 18px;
     border-radius: 9px;
     font-weight: bold;
     cursor: pointer;
-    margin: 10px 0 18px;
+    margin-bottom: 18px;
 }
 
-.complete-button:hover {
-    background: #3157a5;
+.quiz-question {
+    margin-top: 20px;
+    font-weight: bold;
 }
 
 .option {
     width: 100%;
-    padding: 14px;
+    padding: 13px;
     margin-top: 10px;
     border: 1px solid #d5dbea;
     background: white;
@@ -181,15 +174,8 @@ footer {
     margin-top: 30px;
 }
 
-.quiz-progress {
-    background: #eef2f8;
-    padding: 12px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    font-weight: bold;
-}
-
 @media (max-width: 600px) {
+
     .lesson-menu {
         grid-template-columns: 1fr;
     }
@@ -198,10 +184,11 @@ footer {
         font-size: 27px;
     }
 
-    .lesson {
-        padding: 20px;
+    .number-grid {
+        grid-template-columns: 1fr;
     }
 }
+
 </style>
 </head>
 
@@ -278,10 +265,10 @@ footer {
 
 <div id="lesson-area">
 
-<div class="lesson">
-    <h2>👋 Welcome to A1!</h2>
-    <p>Select a lesson above to start learning German.</p>
-</div>
+    <div class="lesson">
+        <h2>👋 Welcome to A1!</h2>
+        <p>Select a lesson above to start learning German.</p>
+    </div>
 
 </div>
 
@@ -298,9 +285,13 @@ footer {
 
 
 <!-- SUPABASE -->
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script src="config.js"></script>
+
 <script src="a1-questions.js"></script>
+
 
 <script>
 
@@ -311,14 +302,8 @@ const supabaseClient = window.supabase.createClient(
 
 let currentUser = null;
 
-let quizQuestions = [];
-let currentQuestion = 0;
-let quizScore = 0;
 
-
-/* =========================
-   LOGIN CHECK
-========================= */
+/* LOAD USER */
 
 async function loadUser() {
 
@@ -337,261 +322,95 @@ async function loadUser() {
 loadUser();
 
 
-/* =========================
-   COMPLETE LESSON
-========================= */
-
-async function completeLesson(lessonName) {
-
-    if (!currentUser) {
-        alert("Please login first.");
-        return;
-    }
-
-    const { error } = await supabaseClient
-        .from("lesson_progress")
-        .upsert({
-            user_id: currentUser.id,
-            lesson_name: lessonName,
-            completed: true
-        });
-
-    if (error) {
-        alert("Error: " + error.message);
-        return;
-    }
-
-    alert("✅ Lesson completed!");
-}
-
-
-/* =========================
-   SHOW LESSON
-========================= */
+/* SHOW LESSON */
 
 function showLesson(lesson) {
 
     const area = document.getElementById("lesson-area");
 
 
-    /* =========================
-       GREETINGS
-    ========================= */
+    /* GREETINGS */
 
     if (lesson === "greetings") {
 
         area.innerHTML = `
+
         <div class="lesson">
 
             <h2>👋 Greetings</h2>
 
             <p>
-                Learn common German greetings for different situations.
+                Learn common German greetings.
             </p>
-
-            <h3>🌅 Morning</h3>
-
-            <div class="words">
-                <b>Guten Morgen!</b> — Good morning!<br>
-                <b>Morgen!</b> — Morning!<br>
-                <b>Einen schönen guten Morgen!</b> — Have a nice morning!
-            </div>
-
-
-            <h3>☀️ During the Day</h3>
-
-            <div class="words">
-                <b>Hallo!</b> — Hello!<br>
-                <b>Guten Tag!</b> — Good day!<br>
-                <b>Hi!</b> — Hi!<br>
-                <b>Hey!</b> — Hey!<br>
-                <b>Grüß dich!</b> — Hello!<br>
-                <b>Grüß Gott!</b> — Hello!<br>
-                <b>Mahlzeit!</b> — Hello / enjoy your meal!
-            </div>
-
-
-            <h3>🌆 Evening</h3>
-
-            <div class="words">
-                <b>Guten Abend!</b> — Good evening!<br>
-                <b>Einen schönen Abend!</b> — Have a nice evening!<br>
-                <b>Schönen Abend noch!</b> — Have a nice evening!
-            </div>
-
-
-            <h3>🌙 Night</h3>
-
-            <div class="words">
-                <b>Gute Nacht!</b> — Good night!<br>
-                <b>Schlaf gut!</b> — Sleep well!<br>
-                <b>Träum schön!</b> — Sweet dreams!
-            </div>
-
-
-            <h3>👋 Saying Goodbye</h3>
-
-            <div class="words">
-                <b>Auf Wiedersehen!</b> — Goodbye!<br>
-                <b>Tschüss!</b> — Bye!<br>
-                <b>Ciao!</b> — Bye!<br>
-                <b>Bis bald!</b> — See you soon!<br>
-                <b>Bis später!</b> — See you later!<br>
-                <b>Bis morgen!</b> — See you tomorrow!<br>
-                <b>Bis gleich!</b> — See you soon!<br>
-                <b>Bis nächste Woche!</b> — See you next week!<br>
-                <b>Mach's gut!</b> — Take care!<br>
-                <b>Macht's gut!</b> — Take care!<br>
-                <b>Auf Wiederhören!</b> — Goodbye on the phone!
-            </div>
-
-
-            <h3>😊 Asking How Someone Is</h3>
-
-            <div class="words">
-                <b>Wie geht es dir?</b> — How are you?<br>
-                <b>Wie geht's dir?</b> — How are you?<br>
-                <b>Wie geht es Ihnen?</b> — How are you? (formal)<br>
-                <b>Wie geht's?</b> — How are you?<br>
-                <b>Alles gut?</b> — Everything good?<br>
-                <b>Wie geht's euch?</b> — How are you all?
-            </div>
-
-
-            <h3>❤️ Answers</h3>
-
-            <div class="words">
-                <b>Mir geht es gut.</b> — I am fine.<br>
-                <b>Mir geht's gut.</b> — I'm fine.<br>
-                <b>Sehr gut, danke!</b> — Very good, thanks!<br>
-                <b>Danke, gut.</b> — Thanks, good.<br>
-                <b>Es geht.</b> — So-so.<br>
-                <b>Nicht schlecht.</b> — Not bad.<br>
-                <b>Mir geht es sehr gut.</b> — I am very well.<br>
-                <b>Mir geht es nicht so gut.</b> — I'm not so well.<br>
-                <b>Danke der Nachfrage.</b> — Thanks for asking.
-            </div>
-
-
-            <h3>🤝 Meeting Someone</h3>
-
-            <div class="words">
-                <b>Wie heißt du?</b> — What is your name?<br>
-                <b>Wie heißen Sie?</b> — What is your name? (formal)<br>
-                <b>Ich heiße Aswin.</b> — My name is Aswin.<br>
-                <b>Freut mich!</b> — Nice to meet you!<br>
-                <b>Sehr erfreut!</b> — Pleased to meet you!<br>
-                <b>Schön, dich kennenzulernen.</b> — Nice to meet you.<br>
-                <b>Schön, Sie kennenzulernen.</b> — Nice to meet you. (formal)
-            </div>
-
-
-            <h3>👔 Formal vs Informal</h3>
-
-            <div class="example">
-
-                <b>Informal:</b><br>
-                Hallo! Wie geht's dir?<br><br>
-
-                <b>Formal:</b><br>
-                Guten Tag! Wie geht es Ihnen?
-
-            </div>
-
-
-            <h3>🗣️ Mini Conversation</h3>
-
-            <div class="conversation">
-
-                <b>A:</b> Guten Morgen!<br>
-                <b>B:</b> Guten Morgen!<br><br>
-
-                <b>A:</b> Wie geht's dir?<br>
-                <b>B:</b> Mir geht's gut, danke. Und dir?<br><br>
-
-                <b>A:</b> Auch gut, danke!<br>
-                <b>B:</b> Bis später!<br>
-                <b>A:</b> Bis später!
-
-            </div>
-
 
             <button class="complete-button"
                 onclick="completeLesson('Greetings')">
                 ✅ Complete Lesson
             </button>
 
+            <div class="words">
+
+                <b>Hallo!</b> — Hello!<br>
+
+                <b>Guten Morgen!</b> — Good morning!<br>
+
+                <b>Guten Tag!</b> — Good day!<br>
+
+                <b>Guten Abend!</b> — Good evening!<br>
+
+                <b>Gute Nacht!</b> — Good night!<br>
+
+                <b>Auf Wiedersehen!</b> — Goodbye!<br>
+
+                <b>Tschüss!</b> — Bye!<br>
+
+                <b>Bis bald!</b> — See you soon!<br>
+
+                <b>Bis später!</b> — See you later!<br>
+
+                <b>Bis morgen!</b> — See you tomorrow!
+
+            </div>
+
         </div>`;
+
     }
 
 
-    /* =========================
-       INTRODUCTION
-    ========================= */
+    /* INTRODUCTION */
 
     else if (lesson === "intro") {
 
         area.innerHTML = `
+
         <div class="lesson">
 
             <h2>🙋 Introduction</h2>
 
-            <p>
-                Learn how to introduce yourself in German.
-            </p>
-
-
-            <h3>👤 Name</h3>
+            <button class="complete-button"
+                onclick="completeLesson('Introduction')">
+                ✅ Complete Lesson
+            </button>
 
             <div class="words">
 
                 <b>Wie heißt du?</b><br>
                 What is your name?<br><br>
 
-                <b>Wie heißen Sie?</b><br>
-                What is your name? (formal)<br><br>
-
                 <b>Ich heiße Aswin.</b><br>
                 My name is Aswin.<br><br>
-
-                <b>Mein Name ist Aswin.</b><br>
-                My name is Aswin.
-
-            </div>
-
-
-            <h3>🎂 Age</h3>
-
-            <div class="words">
 
                 <b>Wie alt bist du?</b><br>
                 How old are you?<br><br>
 
                 <b>Ich bin 18 Jahre alt.</b><br>
-                I am 18 years old.
-
-            </div>
-
-
-            <h3>🌍 Country</h3>
-
-            <div class="words">
+                I am 18 years old.<br><br>
 
                 <b>Woher kommst du?</b><br>
                 Where are you from?<br><br>
 
-                <b>Woher kommen Sie?</b><br>
-                Where are you from? (formal)<br><br>
-
                 <b>Ich komme aus Indien.</b><br>
-                I come from India.
-
-            </div>
-
-
-            <h3>🏠 Where You Live</h3>
-
-            <div class="words">
+                I come from India.<br><br>
 
                 <b>Wo wohnst du?</b><br>
                 Where do you live?<br><br>
@@ -599,384 +418,188 @@ function showLesson(lesson) {
                 <b>Ich wohne in Wayanad.</b><br>
                 I live in Wayanad.<br><br>
 
-                <b>Ich lebe in Indien.</b><br>
-                I live in India.
-
-            </div>
-
-
-            <h3>🇮🇳 Nationality</h3>
-
-            <div class="words">
-
-                <b>Ich bin Inder.</b> — I am Indian. (male)<br>
-                <b>Ich bin Inderin.</b> — I am Indian. (female)<br>
-                <b>Ich komme aus Indien.</b> — I come from India.
-
-            </div>
-
-
-            <h3>🗣️ Languages</h3>
-
-            <div class="words">
-
-                <b>Welche Sprachen sprichst du?</b><br>
-                Which languages do you speak?<br><br>
-
-                <b>Ich spreche Malayalam.</b><br>
-                I speak Malayalam.<br><br>
-
-                <b>Ich spreche Englisch.</b><br>
-                I speak English.<br><br>
-
-                <b>Ich lerne Deutsch.</b><br>
-                I am learning German.<br><br>
-
-                <b>Ich spreche ein bisschen Deutsch.</b><br>
-                I speak a little German.
-
-            </div>
-
-
-            <h3>🎓 School / Work</h3>
-
-            <div class="words">
-
-                <b>Was machst du?</b><br>
-                What do you do?<br><br>
-
-                <b>Was sind Sie von Beruf?</b><br>
-                What is your profession? (formal)<br><br>
-
-                <b>Ich bin Student.</b><br>
-                I am a student.<br><br>
-
-                <b>Ich bin Schüler.</b><br>
-                I am a school student.<br><br>
-
-                <b>Ich arbeite.</b><br>
-                I work.
-
-            </div>
-
-
-            <h3>⚽ Hobbies</h3>
-
-            <div class="words">
-
                 <b>Was sind deine Hobbys?</b><br>
                 What are your hobbies?<br><br>
 
                 <b>Meine Hobbys sind Fußball spielen und Musik hören.</b><br>
-                My hobbies are playing football and listening to music.<br><br>
-
-                <b>Ich spiele gern Fußball.</b><br>
-                I like playing football.<br><br>
-
-                <b>Ich höre gern Musik.</b><br>
-                I like listening to music.<br><br>
-
-                <b>Ich lese gern.</b><br>
-                I like reading.
+                My hobbies are playing football and listening to music.
 
             </div>
 
+        </div>`;
 
-            <h3>👨‍👩‍👧 Family</h3>
-
-            <div class="words">
-
-                <b>Wie groß ist deine Familie?</b><br>
-                How big is your family?<br><br>
-
-                <b>Meine Familie hat fünf Personen.</b><br>
-                My family has five people.<br><br>
-
-                <b>Wir sind fünf Personen in meiner Familie.</b><br>
-                There are five people in my family.
-
-            </div>
+    }
 
 
-            <h3>❤️ Favorite Person</h3>
+    /* NUMBERS 1–100 */
 
-            <div class="words">
+    else if (lesson === "numbers") {
 
-                <b>Wer ist deine Lieblingsperson?</b><br>
-                Who is your favorite person?<br><br>
+        area.innerHTML = `
 
-                <b>Meine Lieblingsperson ist mein Vater.</b><br>
-                My favorite person is my father.
+        <div class="lesson">
 
-            </div>
+            <h2>🔢 German Numbers 1–100</h2>
 
-
-            <h3>📚 How Long Have You Learned German?</h3>
-
-            <div class="words">
-
-                <b>Wie lange lernst du Deutsch?</b><br>
-                How long have you been learning German?<br><br>
-
-                <b>Ich lerne seit zwei Monaten Deutsch.</b><br>
-                I have been learning German for two months.
-
-            </div>
-
-
-            <h3>📝 Complete Self-Introduction</h3>
-
-            <div class="example">
-
-                <b>Hallo! Ich heiße Aswin.</b><br>
-                <b>Ich bin 18 Jahre alt.</b><br>
-                <b>Ich komme aus Indien.</b><br>
-                <b>Ich wohne in Wayanad.</b><br>
-                <b>Ich bin Student.</b><br>
-                <b>Meine Familie hat fünf Personen.</b><br>
-                <b>Meine Hobbys sind Fußball spielen und Musik hören.</b><br>
-                <b>Ich lerne seit zwei Monaten Deutsch.</b>
-
-            </div>
-
-
-            <h3>🗣️ Introduction Dialogue</h3>
-
-            <div class="conversation">
-
-                <b>A:</b> Hallo! Wie heißt du?<br>
-                <b>B:</b> Ich heiße Aswin.<br><br>
-
-                <b>A:</b> Wie alt bist du?<br>
-                <b>B:</b> Ich bin 18 Jahre alt.<br><br>
-
-                <b>A:</b> Woher kommst du?<br>
-                <b>B:</b> Ich komme aus Indien.<br><br>
-
-                <b>A:</b> Wo wohnst du?<br>
-                <b>B:</b> Ich wohne in Wayanad.<br><br>
-
-                <b>A:</b> Was machst du?<br>
-                <b>B:</b> Ich bin Student.<br><br>
-
-                <b>A:</b> Was sind deine Hobbys?<br>
-                <b>B:</b> Meine Hobbys sind Fußball spielen und Musik hören.
-
-            </div>
-
-
-            <h3>🎤 Speaking Practice</h3>
-
-            <div class="example">
-
-                <b>Try to speak about yourself:</b><br><br>
-
-                1. Wie heißt du?<br>
-                2. Wie alt bist du?<br>
-                3. Woher kommst du?<br>
-                4. Wo wohnst du?<br>
-                5. Was machst du?<br>
-                6. Was sind deine Hobbys?<br>
-                7. Wie groß ist deine Familie?<br>
-                8. Welche Sprachen sprichst du?<br>
-                9. Wie lange lernst du Deutsch?
-
-            </div>
-
+            <p>
+                Learn German numbers from 1 to 100.
+            </p>
 
             <button class="complete-button"
-                onclick="completeLesson('Introduction')">
+                onclick="completeLesson('Numbers')">
                 ✅ Complete Lesson
             </button>
 
+            <div class="number-grid">
+
+                <div class="number-item">1 — eins</div>
+                <div class="number-item">2 — zwei</div>
+                <div class="number-item">3 — drei</div>
+                <div class="number-item">4 — vier</div>
+                <div class="number-item">5 — fünf</div>
+                <div class="number-item">6 — sechs</div>
+                <div class="number-item">7 — sieben</div>
+                <div class="number-item">8 — acht</div>
+                <div class="number-item">9 — neun</div>
+                <div class="number-item">10 — zehn</div>
+
+                <div class="number-item">11 — elf</div>
+                <div class="number-item">12 — zwölf</div>
+                <div class="number-item">13 — dreizehn</div>
+                <div class="number-item">14 — vierzehn</div>
+                <div class="number-item">15 — fünfzehn</div>
+                <div class="number-item">16 — sechzehn</div>
+                <div class="number-item">17 — siebzehn</div>
+                <div class="number-item">18 — achtzehn</div>
+                <div class="number-item">19 — neunzehn</div>
+                <div class="number-item">20 — zwanzig</div>
+
+                <div class="number-item">21 — einundzwanzig</div>
+                <div class="number-item">22 — zweiundzwanzig</div>
+                <div class="number-item">23 — dreiundzwanzig</div>
+                <div class="number-item">24 — vierundzwanzig</div>
+                <div class="number-item">25 — fünfundzwanzig</div>
+                <div class="number-item">26 — sechsundzwanzig</div>
+                <div class="number-item">27 — siebenundzwanzig</div>
+                <div class="number-item">28 — achtundzwanzig</div>
+                <div class="number-item">29 — neunundzwanzig</div>
+                <div class="number-item">30 — dreißig</div>
+
+                <div class="number-item">31 — einunddreißig</div>
+                <div class="number-item">32 — zweiunddreißig</div>
+                <div class="number-item">33 — dreiunddreißig</div>
+                <div class="number-item">34 — vierunddreißig</div>
+                <div class="number-item">35 — fünfunddreißig</div>
+                <div class="number-item">36 — sechsunddreißig</div>
+                <div class="number-item">37 — siebenunddreißig</div>
+                <div class="number-item">38 — achtunddreißig</div>
+                <div class="number-item">39 — neununddreißig</div>
+                <div class="number-item">40 — vierzig</div>
+
+                <div class="number-item">41 — einundvierzig</div>
+                <div class="number-item">42 — zweiundvierzig</div>
+                <div class="number-item">43 — dreiundvierzig</div>
+                <div class="number-item">44 — vierundvierzig</div>
+                <div class="number-item">45 — fünfundvierzig</div>
+                <div class="number-item">46 — sechsundvierzig</div>
+                <div class="number-item">47 — siebenundvierzig</div>
+                <div class="number-item">48 — achtundvierzig</div>
+                <div class="number-item">49 — neunundvierzig</div>
+                <div class="number-item">50 — fünfzig</div>
+
+                <div class="number-item">51 — einundfünfzig</div>
+                <div class="number-item">52 — zweiundfünfzig</div>
+                <div class="number-item">53 — dreiundfünfzig</div>
+                <div class="number-item">54 — vierundfünfzig</div>
+                <div class="number-item">55 — fünfundfünfzig</div>
+                <div class="number-item">56 — sechsundfünfzig</div>
+                <div class="number-item">57 — siebenundfünfzig</div>
+                <div class="number-item">58 — achtundfünfzig</div>
+                <div class="number-item">59 — neunundfünfzig</div>
+                <div class="number-item">60 — sechzig</div>
+
+                <div class="number-item">61 — einundsechzig</div>
+                <div class="number-item">62 — zweiundsechzig</div>
+                <div class="number-item">63 — dreiundsechzig</div>
+                <div class="number-item">64 — vierundsechzig</div>
+                <div class="number-item">65 — fünfundsechzig</div>
+                <div class="number-item">66 — sechsundsechzig</div>
+                <div class="number-item">67 — siebenundsechzig</div>
+                <div class="number-item">68 — achtundsechzig</div>
+                <div class="number-item">69 — neunundsechzig</div>
+                <div class="number-item">70 — siebzig</div>
+
+                <div class="number-item">71 — einundsiebzig</div>
+                <div class="number-item">72 — zweiundsiebzig</div>
+                <div class="number-item">73 — dreiundsiebzig</div>
+                <div class="number-item">74 — vierundsiebzig</div>
+                <div class="number-item">75 — fünfundsiebzig</div>
+                <div class="number-item">76 — sechsundsiebzig</div>
+                <div class="number-item">77 — siebenundsiebzig</div>
+                <div class="number-item">78 — achtundsiebzig</div>
+                <div class="number-item">79 — neunundsiebzig</div>
+                <div class="number-item">80 — achtzig</div>
+
+                <div class="number-item">81 — einundachtzig</div>
+                <div class="number-item">82 — zweiundachtzig</div>
+                <div class="number-item">83 — dreiundachtzig</div>
+                <div class="number-item">84 — vierundachtzig</div>
+                <div class="number-item">85 — fünfundachtzig</div>
+                <div class="number-item">86 — sechsundachtzig</div>
+                <div class="number-item">87 — siebenundachtzig</div>
+                <div class="number-item">88 — achtundachtzig</div>
+                <div class="number-item">89 — neunundachtzig</div>
+                <div class="number-item">90 — neunzig</div>
+
+                <div class="number-item">91 — einundneunzig</div>
+                <div class="number-item">92 — zweiundneunzig</div>
+                <div class="number-item">93 — dreiundneunzig</div>
+                <div class="number-item">94 — vierundneunzig</div>
+                <div class="number-item">95 — fünfundneunzig</div>
+                <div class="number-item">96 — sechsundneunzig</div>
+                <div class="number-item">97 — siebenundneunzig</div>
+                <div class="number-item">98 — achtundneunzig</div>
+                <div class="number-item">99 — neunundneunzig</div>
+                <div class="number-item">100 — einhundert</div>
+
+            </div>
+
+            <br>
+
+            <div class="words">
+
+                <b>Example:</b><br><br>
+
+                Wie viel kostet das?<br>
+                — How much does that cost?<br><br>
+
+                Das kostet 25 Euro.<br>
+                — That costs 25 euros.<br><br>
+
+                Ich bin 18 Jahre alt.<br>
+                — I am 18 years old.
+
+            </div>
+
         </div>`;
+
     }
 
 
-    /* =========================
-       NUMBERS
-    ========================= */
-else if (lesson === "numbers") {
-    area.innerHTML = `
-    <div class="lesson">
-        <h2>🔢 Numbers 1–100</h2>
-
-        <p>Learn German numbers from 1 to 100.</p>
-
-        <button onclick="completeLesson('Numbers')">
-          ✅ Complete Lesson
-        </button>
-
-        <h3 style="margin-top:20px;">1–20</h3>
-
-        <div class="words">
-            1 — eins<br>
-            2 — zwei<br>
-            3 — drei<br>
-            4 — vier<br>
-            5 — fünf<br>
-            6 — sechs<br>
-            7 — sieben<br>
-            8 — acht<br>
-            9 — neun<br>
-            10 — zehn<br>
-            11 — elf<br>
-            12 — zwölf<br>
-            13 — dreizehn<br>
-            14 — vierzehn<br>
-            15 — fünfzehn<br>
-            16 — sechzehn<br>
-            17 — siebzehn<br>
-            18 — achtzehn<br>
-            19 — neunzehn<br>
-            20 — zwanzig
-        </div>
-
-        <h3 style="margin-top:20px;">21–40</h3>
-
-        <div class="words">
-            21 — einundzwanzig<br>
-            22 — zweiundzwanzig<br>
-            23 — dreiundzwanzig<br>
-            24 — vierundzwanzig<br>
-            25 — fünfundzwanzig<br>
-            26 — sechsundzwanzig<br>
-            27 — siebenundzwanzig<br>
-            28 — achtundzwanzig<br>
-            29 — neunundzwanzig<br>
-            30 — dreißig<br>
-            31 — einunddreißig<br>
-            32 — zweiunddreißig<br>
-            33 — dreiunddreißig<br>
-            34 — vierunddreißig<br>
-            35 — fünfunddreißig<br>
-            36 — sechsunddreißig<br>
-            37 — siebenunddreißig<br>
-            38 — achtunddreißig<br>
-            39 — neununddreißig<br>
-            40 — vierzig
-        </div>
-
-        <h3 style="margin-top:20px;">41–60</h3>
-
-        <div class="words">
-            41 — einundvierzig<br>
-            42 — zweiundvierzig<br>
-            43 — dreiundvierzig<br>
-            44 — vierundvierzig<br>
-            45 — fünfundvierzig<br>
-            46 — sechsundvierzig<br>
-            47 — siebenundvierzig<br>
-            48 — achtundvierzig<br>
-            49 — neunundvierzig<br>
-            50 — fünfzig<br>
-            51 — einundfünfzig<br>
-            52 — zweiundfünfzig<br>
-            53 — dreiundfünfzig<br>
-            54 — vierundfünfzig<br>
-            55 — fünfundfünfzig<br>
-            56 — sechsundfünfzig<br>
-            57 — siebenundfünfzig<br>
-            58 — achtundfünfzig<br>
-            59 — neunundfünfzig<br>
-            60 — sechzig
-        </div>
-
-        <h3 style="margin-top:20px;">61–80</h3>
-
-        <div class="words">
-            61 — einundsechzig<br>
-            62 — zweiundsechzig<br>
-            63 — dreiundsechzig<br>
-            64 — vierundsechzig<br>
-            65 — fünfundsechzig<br>
-            66 — sechsundsechzig<br>
-            67 — siebenundsechzig<br>
-            68 — achtundsechzig<br>
-            69 — neunundsechzig<br>
-            70 — siebzig<br>
-            71 — einundsiebzig<br>
-            72 — zweiundsiebzig<br>
-            73 — dreiundsiebzig<br>
-            74 — vierundsiebzig<br>
-            75 — fünfundsiebzig<br>
-            76 — sechsundsiebzig<br>
-            77 — siebenundsiebzig<br>
-            78 — achtundsiebzig<br>
-            79 — neunundsiebzig<br>
-            80 — achtzig
-        </div>
-
-        <h3 style="margin-top:20px;">81–100</h3>
-
-        <div class="words">
-            81 — einundachtzig<br>
-            82 — zweiundachtzig<br>
-            83 — dreiundachtzig<br>
-            84 — vierundachtzig<br>
-            85 — fünfundachtzig<br>
-            86 — sechsundachtzig<br>
-            87 — siebenundachtzig<br>
-            88 — achtundachtzig<br>
-            89 — neunundachtzig<br>
-            90 — neunzig<br>
-            91 — einundneunzig<br>
-            92 — zweiundneunzig<br>
-            93 — dreiundneunzig<br>
-            94 — vierundneunzig<br>
-            95 — fünfundneunzig<br>
-            96 — sechsundneunzig<br>
-            97 — siebenundneunzig<br>
-            98 — achtundneunzig<br>
-            99 — neunundneunzig<br>
-            100 — einhundert
-        </div>
-
-        <h3 style="margin-top:20px;">🧠 Important Rule</h3>
-
-        <div class="words">
-            <b>21 = einundzwanzig</b><br>
-            one + and + twenty<br><br>
-
-            <b>35 = fünfunddreißig</b><br>
-            five + and + thirty<br><br>
-
-            <b>78 = achtundsiebzig</b><br>
-            eight + and + seventy
-        </div>
-
-        <h3 style="margin-top:20px;">💰 Useful Examples</h3>
-
-        <div class="words">
-            <b>Wie viel kostet das?</b><br>
-            How much does that cost?<br><br>
-
-            <b>Das kostet 25 Euro.</b><br>
-            That costs 25 euros.<br><br>
-
-            <b>Ich bin 18 Jahre alt.</b><br>
-            I am 18 years old.<br><br>
-
-            <b>Meine Telefonnummer ist ...</b><br>
-            My telephone number is ...
-        </div>
-
-    </div>`;
-}
-    
-    }
-
-
-    /* =========================
-       FAMILY
-    ========================= */
+    /* FAMILY */
 
     else if (lesson === "family") {
 
         area.innerHTML = `
+
         <div class="lesson">
 
             <h2>👨‍👩‍👧 Family</h2>
+
+            <button class="complete-button"
+                onclick="completeLesson('Family')">
+                ✅ Complete Lesson
+            </button>
 
             <div class="words">
 
@@ -985,33 +608,29 @@ else if (lesson === "numbers") {
                 die Mutter — mother<br>
                 der Bruder — brother<br>
                 die Schwester — sister<br>
-                der Sohn — son<br>
-                die Tochter — daughter<br>
-                der Großvater — grandfather<br>
-                die Großmutter — grandmother<br>
                 das Kind — child
 
             </div>
 
-            <button class="complete-button"
-                onclick="completeLesson('Family')">
-                ✅ Complete Lesson
-            </button>
-
         </div>`;
+
     }
 
 
-    /* =========================
-       HOME
-    ========================= */
+    /* HOME */
 
     else if (lesson === "home") {
 
         area.innerHTML = `
+
         <div class="lesson">
 
             <h2>🏠 Home</h2>
+
+            <button class="complete-button"
+                onclick="completeLesson('Home')">
+                ✅ Complete Lesson
+            </button>
 
             <div class="words">
 
@@ -1020,33 +639,29 @@ else if (lesson === "numbers") {
                 das Zimmer — room<br>
                 die Küche — kitchen<br>
                 das Bad — bathroom<br>
-                das Schlafzimmer — bedroom<br>
-                das Wohnzimmer — living room<br>
-                der Tisch — table<br>
-                der Stuhl — chair<br>
-                das Bett — bed
+                das Schlafzimmer — bedroom
 
             </div>
 
-            <button class="complete-button"
-                onclick="completeLesson('Home')">
-                ✅ Complete Lesson
-            </button>
-
         </div>`;
+
     }
 
 
-    /* =========================
-       FOOD
-    ========================= */
+    /* FOOD */
 
     else if (lesson === "food") {
 
         area.innerHTML = `
+
         <div class="lesson">
 
             <h2>🍎 Food</h2>
+
+            <button class="complete-button"
+                onclick="completeLesson('Food')">
+                ✅ Complete Lesson
+            </button>
 
             <div class="words">
 
@@ -1055,44 +670,37 @@ else if (lesson === "numbers") {
                 das Wasser — water<br>
                 der Kaffee — coffee<br>
                 der Apfel — apple<br>
-                das Essen — food<br>
-                die Milch — milk<br>
-                der Saft — juice<br>
-                das Fleisch — meat<br>
-                das Gemüse — vegetables
+                das Essen — food
 
             </div>
 
-            <button class="complete-button"
-                onclick="completeLesson('Food')">
-                ✅ Complete Lesson
-            </button>
-
         </div>`;
+
     }
 
 
-    /* =========================
-       DAILY ROUTINE
-    ========================= */
+    /* DAILY ROUTINE */
 
     else if (lesson === "routine") {
 
         area.innerHTML = `
+
         <div class="lesson">
 
             <h2>🕐 Daily Routine</h2>
 
-            <div class="example">
+            <button class="complete-button"
+                onclick="completeLesson('Daily Routine')">
+                ✅ Complete Lesson
+            </button>
+
+            <div class="words">
 
                 <b>Ich stehe um 7 Uhr auf.</b><br>
                 I get up at 7 o'clock.<br><br>
 
                 <b>Ich frühstücke.</b><br>
                 I have breakfast.<br><br>
-
-                <b>Ich gehe zur Schule.</b><br>
-                I go to school.<br><br>
 
                 <b>Ich spiele Fußball.</b><br>
                 I play football.<br><br>
@@ -1102,27 +710,27 @@ else if (lesson === "numbers") {
 
             </div>
 
-            <button class="complete-button"
-                onclick="completeLesson('Daily Routine')">
-                ✅ Complete Lesson
-            </button>
-
         </div>`;
+
     }
 
 
-    /* =========================
-       GRAMMAR
-    ========================= */
+    /* GRAMMAR */
 
     else if (lesson === "grammar") {
 
         area.innerHTML = `
+
         <div class="lesson">
 
             <h2>📚 Basic Grammar</h2>
 
-            <h3>Personal Pronouns</h3>
+            <button class="complete-button"
+                onclick="completeLesson('Grammar')">
+                ✅ Complete Lesson
+            </button>
+
+            <p><b>Personal Pronouns:</b></p>
 
             <div class="words">
 
@@ -1132,202 +740,111 @@ else if (lesson === "numbers") {
                 sie — she<br>
                 es — it<br>
                 wir — we<br>
-                ihr — you (plural)<br>
-                sie — they<br>
-                Sie — you (formal)
+                ihr — you plural<br>
+                sie — they
 
             </div>
 
-            <div class="example">
-
-                <b>Ich bin Student.</b><br>
-                I am a student.<br><br>
-
-                <b>Du bist mein Freund.</b><br>
-                You are my friend.
-
-            </div>
-
-            <button class="complete-button"
-                onclick="completeLesson('Grammar')">
-                ✅ Complete Lesson
-            </button>
+            <p style="margin-top:15px;">
+                Example: <b>Ich bin Student.</b>
+            </p>
 
         </div>`;
+
     }
 
 
-    /* =========================
-       SPEAKING
-    ========================= */
+    /* SPEAKING */
 
     else if (lesson === "speaking") {
 
         area.innerHTML = `
+
         <div class="lesson">
 
             <h2>🗣️ Speaking Practice</h2>
 
+            <button class="complete-button"
+                onclick="completeLesson('Speaking')">
+                ✅ Complete Lesson
+            </button>
+
             <p>
-                Practice introducing yourself.
+                <b>Frage:</b> Wie heißt du?
             </p>
 
-            <div class="conversation">
+            <p>
+                <b>Antwort:</b> Ich heiße Aswin.
+            </p>
 
-                <b>Frage:</b> Wie heißt du?<br>
-                <b>Antwort:</b> Ich heiße Aswin.<br><br>
+            <p>
+                <b>Frage:</b> Woher kommst du?
+            </p>
 
-                <b>Frage:</b> Wie alt bist du?<br>
-                <b>Antwort:</b> Ich bin 18 Jahre alt.<br><br>
+            <p>
+                <b>Antwort:</b> Ich komme aus Indien.
+            </p>
 
-                <b>Frage:</b> Woher kommst du?<br>
-                <b>Antwort:</b> Ich komme aus Indien.<br><br>
+            <p>
+                <b>Frage:</b> Was sind deine Hobbys?
+            </p>
 
-                <b>Frage:</b> Wo wohnst du?<br>
-                <b>Antwort:</b> Ich wohne in Wayanad.<br><br>
-
-                <b>Frage:</b> Was sind deine Hobbys?<br>
-                <b>Antwort:</b> Meine Hobbys sind Fußball spielen und Musik hören.
-
-            </div>
+            <p>
+                <b>Antwort:</b>
+                Meine Hobbys sind Fußball spielen und Musik hören.
+            </p>
 
         </div>`;
+
     }
 
 
-    /* =========================
-       QUIZ
-    ========================= */
+    /* QUIZ */
 
     else if (lesson === "quiz") {
 
-        startQuiz();
+        area.innerHTML = `
 
-    }
-
-}
-
-
-/* =========================
-   RANDOM QUIZ
-========================= */
-
-function startQuiz() {
-
-    if (
-        typeof A1_QUESTIONS === "undefined" ||
-        !Array.isArray(A1_QUESTIONS) ||
-        A1_QUESTIONS.length === 0
-    ) {
-
-        document.getElementById("lesson-area").innerHTML = `
         <div class="lesson">
 
             <h2>📝 A1 Quiz</h2>
 
-            <p>
-                Quiz questions could not be loaded.
+            <p class="quiz-question">
+                What does "Guten Morgen" mean?
             </p>
 
-            <p>
-                Please check that <b>a1-questions.js</b> is uploaded.
-            </p>
+            <button class="option"
+                onclick="answer(false)">
+                Good night
+            </button>
+
+            <button class="option"
+                onclick="answer(true)">
+                Good morning
+            </button>
+
+            <button class="option"
+                onclick="answer(false)">
+                Goodbye
+            </button>
+
+            <p id="quiz-result" class="result"></p>
 
         </div>`;
 
-        return;
     }
 
-
-    const shuffled = [...A1_QUESTIONS];
-
-    for (let i = shuffled.length - 1; i > 0; i--) {
-
-        const j = Math.floor(Math.random() * (i + 1));
-
-        [shuffled[i], shuffled[j]] =
-        [shuffled[j], shuffled[i]];
-
-    }
-
-
-    const quizSize = Math.min(10, shuffled.length);
-
-    quizQuestions = shuffled.slice(0, quizSize);
-
-    currentQuestion = 0;
-    quizScore = 0;
-
-    showQuizQuestion();
 }
 
 
-/* =========================
-   SHOW QUIZ QUESTION
-========================= */
+/* QUIZ ANSWER */
 
-function showQuizQuestion() {
+async function answer(correct) {
 
-    const question = quizQuestions[currentQuestion];
+    const result =
+        document.getElementById("quiz-result");
 
-    const area = document.getElementById("lesson-area");
-
-    let optionsHTML = "";
-
-    question.options.forEach((option, index) => {
-
-        optionsHTML += `
-        <button class="option"
-            onclick="checkAnswer(${index})">
-            ${option}
-        </button>
-        `;
-
-    });
-
-
-    area.innerHTML = `
-    <div class="lesson">
-
-        <h2>📝 A1 Quiz</h2>
-
-        <div class="quiz-progress">
-            Question ${currentQuestion + 1}
-            / ${quizQuestions.length}
-        </div>
-
-        <p class="quiz-question">
-            ${question.question}
-        </p>
-
-        ${optionsHTML}
-
-        <p id="quiz-result" class="result"></p>
-
-    </div>`;
-}
-
-
-/* =========================
-   CHECK ANSWER
-========================= */
-
-function checkAnswer(selected) {
-
-    const question = quizQuestions[currentQuestion];
-
-    const result = document.getElementById("quiz-result");
-
-    const buttons = document.querySelectorAll(".option");
-
-    buttons.forEach(button => {
-        button.disabled = true;
-    });
-
-
-    if (selected === question.answer) {
-
-        quizScore++;
+    if (correct) {
 
         result.innerHTML =
             "✅ Correct! Sehr gut!";
@@ -1337,76 +854,30 @@ function checkAnswer(selected) {
     } else {
 
         result.innerHTML =
-            "❌ Incorrect. Keep practicing!";
+            "❌ Try again!";
 
         result.style.color = "red";
+
     }
 
-
-    setTimeout(() => {
-
-        currentQuestion++;
-
-        if (currentQuestion < quizQuestions.length) {
-
-            showQuizQuestion();
-
-        } else {
-
-            finishQuiz();
-
-        }
-
-    }, 900);
-}
-
-
-/* =========================
-   FINISH QUIZ
-========================= */
-
-async function finishQuiz() {
-
-    const total = quizQuestions.length;
-
-    const area = document.getElementById("lesson-area");
-
-    area.innerHTML = `
-    <div class="lesson">
-
-        <h2>🎉 Quiz Finished!</h2>
-
-        <div class="example">
-
-            <h3>Your Score</h3>
-
-            <p style="font-size:24px;">
-                <b>${quizScore} / ${total}</b>
-            </p>
-
-        </div>
-
-        <button class="complete-button"
-            onclick="startQuiz()">
-            🔄 Try Another Quiz
-        </button>
-
-    </div>`;
-
-
     if (!currentUser) {
+        console.log("User not logged in");
         return;
     }
 
+    const score = correct ? 1 : 0;
+    const total = 1;
 
-    const { error } = await supabaseClient
+    const { error } =
+        await supabaseClient
         .from("quiz_results")
         .insert({
-            user_id: currentUser.id,
-            score: quizScore,
-            total: total
-        });
 
+            user_id: currentUser.id,
+            score: score,
+            total: total
+
+        });
 
     if (error) {
 
@@ -1422,6 +893,43 @@ async function finishQuiz() {
         );
 
     }
+
+}
+
+
+/* COMPLETE LESSON */
+
+async function completeLesson(lessonName) {
+
+    if (!currentUser) {
+
+        alert("Please login first.");
+
+        return;
+    }
+
+    const { error } =
+        await supabaseClient
+        .from("lesson_progress")
+        .upsert({
+
+            user_id: currentUser.id,
+            lesson_name: lessonName,
+            completed: true
+
+        });
+
+    if (error) {
+
+        alert(
+            "Error: " + error.message
+        );
+
+        return;
+    }
+
+    alert("✅ Lesson completed!");
+
 }
 
 </script>
