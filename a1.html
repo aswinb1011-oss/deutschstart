@@ -796,43 +796,174 @@ function showLesson(lesson) {
     /* =========================
        NUMBERS
     ========================= */
+else if (lesson === "numbers") {
+    area.innerHTML = `
+    <div class="lesson">
+        <h2>🔢 Numbers 1–100</h2>
 
-    else if (lesson === "numbers") {
+        <p>Learn German numbers from 1 to 100.</p>
 
-        area.innerHTML = `
-        <div class="lesson">
+        <button onclick="completeLesson('Numbers')">
+          ✅ Complete Lesson
+        </button>
 
-            <h2>🔢 Numbers 1–20</h2>
+        <h3 style="margin-top:20px;">1–20</h3>
 
-            <div class="words">
-                eins — 1<br>
-                zwei — 2<br>
-                drei — 3<br>
-                vier — 4<br>
-                fünf — 5<br>
-                sechs — 6<br>
-                sieben — 7<br>
-                acht — 8<br>
-                neun — 9<br>
-                zehn — 10<br>
-                elf — 11<br>
-                zwölf — 12<br>
-                dreizehn — 13<br>
-                vierzehn — 14<br>
-                fünfzehn — 15<br>
-                sechzehn — 16<br>
-                siebzehn — 17<br>
-                achtzehn — 18<br>
-                neunzehn — 19<br>
-                zwanzig — 20
-            </div>
+        <div class="words">
+            1 — eins<br>
+            2 — zwei<br>
+            3 — drei<br>
+            4 — vier<br>
+            5 — fünf<br>
+            6 — sechs<br>
+            7 — sieben<br>
+            8 — acht<br>
+            9 — neun<br>
+            10 — zehn<br>
+            11 — elf<br>
+            12 — zwölf<br>
+            13 — dreizehn<br>
+            14 — vierzehn<br>
+            15 — fünfzehn<br>
+            16 — sechzehn<br>
+            17 — siebzehn<br>
+            18 — achtzehn<br>
+            19 — neunzehn<br>
+            20 — zwanzig
+        </div>
 
-            <button class="complete-button"
-                onclick="completeLesson('Numbers')">
-                ✅ Complete Lesson
-            </button>
+        <h3 style="margin-top:20px;">21–40</h3>
 
-        </div>`;
+        <div class="words">
+            21 — einundzwanzig<br>
+            22 — zweiundzwanzig<br>
+            23 — dreiundzwanzig<br>
+            24 — vierundzwanzig<br>
+            25 — fünfundzwanzig<br>
+            26 — sechsundzwanzig<br>
+            27 — siebenundzwanzig<br>
+            28 — achtundzwanzig<br>
+            29 — neunundzwanzig<br>
+            30 — dreißig<br>
+            31 — einunddreißig<br>
+            32 — zweiunddreißig<br>
+            33 — dreiunddreißig<br>
+            34 — vierunddreißig<br>
+            35 — fünfunddreißig<br>
+            36 — sechsunddreißig<br>
+            37 — siebenunddreißig<br>
+            38 — achtunddreißig<br>
+            39 — neununddreißig<br>
+            40 — vierzig
+        </div>
+
+        <h3 style="margin-top:20px;">41–60</h3>
+
+        <div class="words">
+            41 — einundvierzig<br>
+            42 — zweiundvierzig<br>
+            43 — dreiundvierzig<br>
+            44 — vierundvierzig<br>
+            45 — fünfundvierzig<br>
+            46 — sechsundvierzig<br>
+            47 — siebenundvierzig<br>
+            48 — achtundvierzig<br>
+            49 — neunundvierzig<br>
+            50 — fünfzig<br>
+            51 — einundfünfzig<br>
+            52 — zweiundfünfzig<br>
+            53 — dreiundfünfzig<br>
+            54 — vierundfünfzig<br>
+            55 — fünfundfünfzig<br>
+            56 — sechsundfünfzig<br>
+            57 — siebenundfünfzig<br>
+            58 — achtundfünfzig<br>
+            59 — neunundfünfzig<br>
+            60 — sechzig
+        </div>
+
+        <h3 style="margin-top:20px;">61–80</h3>
+
+        <div class="words">
+            61 — einundsechzig<br>
+            62 — zweiundsechzig<br>
+            63 — dreiundsechzig<br>
+            64 — vierundsechzig<br>
+            65 — fünfundsechzig<br>
+            66 — sechsundsechzig<br>
+            67 — siebenundsechzig<br>
+            68 — achtundsechzig<br>
+            69 — neunundsechzig<br>
+            70 — siebzig<br>
+            71 — einundsiebzig<br>
+            72 — zweiundsiebzig<br>
+            73 — dreiundsiebzig<br>
+            74 — vierundsiebzig<br>
+            75 — fünfundsiebzig<br>
+            76 — sechsundsiebzig<br>
+            77 — siebenundsiebzig<br>
+            78 — achtundsiebzig<br>
+            79 — neunundsiebzig<br>
+            80 — achtzig
+        </div>
+
+        <h3 style="margin-top:20px;">81–100</h3>
+
+        <div class="words">
+            81 — einundachtzig<br>
+            82 — zweiundachtzig<br>
+            83 — dreiundachtzig<br>
+            84 — vierundachtzig<br>
+            85 — fünfundachtzig<br>
+            86 — sechsundachtzig<br>
+            87 — siebenundachtzig<br>
+            88 — achtundachtzig<br>
+            89 — neunundachtzig<br>
+            90 — neunzig<br>
+            91 — einundneunzig<br>
+            92 — zweiundneunzig<br>
+            93 — dreiundneunzig<br>
+            94 — vierundneunzig<br>
+            95 — fünfundneunzig<br>
+            96 — sechsundneunzig<br>
+            97 — siebenundneunzig<br>
+            98 — achtundneunzig<br>
+            99 — neunundneunzig<br>
+            100 — einhundert
+        </div>
+
+        <h3 style="margin-top:20px;">🧠 Important Rule</h3>
+
+        <div class="words">
+            <b>21 = einundzwanzig</b><br>
+            one + and + twenty<br><br>
+
+            <b>35 = fünfunddreißig</b><br>
+            five + and + thirty<br><br>
+
+            <b>78 = achtundsiebzig</b><br>
+            eight + and + seventy
+        </div>
+
+        <h3 style="margin-top:20px;">💰 Useful Examples</h3>
+
+        <div class="words">
+            <b>Wie viel kostet das?</b><br>
+            How much does that cost?<br><br>
+
+            <b>Das kostet 25 Euro.</b><br>
+            That costs 25 euros.<br><br>
+
+            <b>Ich bin 18 Jahre alt.</b><br>
+            I am 18 years old.<br><br>
+
+            <b>Meine Telefonnummer ist ...</b><br>
+            My telephone number is ...
+        </div>
+
+    </div>`;
+}
+    
     }
 
 
