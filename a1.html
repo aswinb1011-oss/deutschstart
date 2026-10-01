@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>DeutschStart A1 🇩🇪</title>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="config.js"></script>
-
 <style>
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -97,8 +92,8 @@ header h1 {
 }
 
 .lesson h3 {
-    margin-top: 25px;
-    margin-bottom: 12px;
+    margin-top: 22px;
+    margin-bottom: 10px;
 }
 
 .lesson p {
@@ -108,42 +103,63 @@ header h1 {
 
 .words {
     background: #eef2f8;
-    padding: 18px;
+    padding: 15px;
     border-radius: 10px;
     line-height: 2;
     margin-bottom: 15px;
 }
 
 .example {
-    background: #f8f9fb;
-    border-left: 5px solid #3157a5;
-    padding: 18px;
-    margin-top: 15px;
+    background: #f8f9fc;
+    border-left: 4px solid #3157a5;
+    padding: 15px;
+    margin: 15px 0;
     border-radius: 8px;
+    line-height: 1.8;
 }
 
 .conversation {
-    background: #eef2f8;
+    background: #f1f5f9;
     padding: 18px;
     border-radius: 10px;
-    line-height: 1.9;
+    line-height: 2;
+    margin-top: 15px;
 }
 
 .complete-button {
-    width: 100%;
-    padding: 14px;
-    margin-top: 20px;
-    border: none;
-    border-radius: 10px;
-    background: #16a34a;
+    background: #172033;
     color: white;
-    font-size: 16px;
+    border: none;
+    padding: 13px 18px;
+    border-radius: 9px;
     font-weight: bold;
     cursor: pointer;
+    margin: 10px 0 18px;
 }
 
 .complete-button:hover {
-    background: #15803d;
+    background: #3157a5;
+}
+
+.option {
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+    border: 1px solid #d5dbea;
+    background: white;
+    border-radius: 9px;
+    text-align: left;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.option:hover {
+    background: #eef2f8;
+}
+
+.result {
+    margin-top: 15px;
+    font-weight: bold;
 }
 
 .home-button {
@@ -165,29 +181,15 @@ footer {
     margin-top: 30px;
 }
 
-.option {
-    width: 100%;
-    padding: 13px;
-    margin-top: 10px;
-    border: 1px solid #d5dbea;
-    background: white;
-    border-radius: 9px;
-    text-align: left;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.option:hover {
+.quiz-progress {
     background: #eef2f8;
-}
-
-.result {
-    margin-top: 15px;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
     font-weight: bold;
 }
 
 @media (max-width: 600px) {
-
     .lesson-menu {
         grid-template-columns: 1fr;
     }
@@ -196,11 +198,12 @@ footer {
         font-size: 27px;
     }
 
+    .lesson {
+        padding: 20px;
+    }
 }
-
 </style>
 </head>
-
 
 <body>
 
@@ -208,29 +211,16 @@ footer {
     <h1>🇩🇪 DeutschStart</h1>
 </header>
 
-
 <section class="hero">
-
     <h2>A1 German</h2>
-
-    <p>
-        Learn German step by step.
-    </p>
-
+    <p>Learn German step by step.</p>
 </section>
-
 
 <div class="container">
 
-<a class="back" href="index.html">
-    ← Back to Home
-</a>
+<a class="back" href="index.html">← Back to Home</a>
 
-
-<h2 style="margin-bottom:15px;">
-    📚 A1 Lessons
-</h2>
-
+<h2 style="margin-bottom:15px;">📚 A1 Lessons</h2>
 
 <div class="lesson-menu">
 
@@ -286,23 +276,14 @@ footer {
 
 </div>
 
-
 <div id="lesson-area">
 
-    <div class="lesson">
-
-        <h2>
-            👋 Welcome to A1!
-        </h2>
-
-        <p>
-            Select a lesson above to start learning German.
-        </p>
-
-    </div>
-
+<div class="lesson">
+    <h2>👋 Welcome to A1!</h2>
+    <p>Select a lesson above to start learning German.</p>
 </div>
 
+</div>
 
 <a class="home-button" href="index.html">
     🏠 Home
@@ -310,30 +291,34 @@ footer {
 
 </div>
 
-
 <footer>
-
-    <p>
-        © 2026 DeutschStart 🇩🇪
-    </p>
-
-    <p>
-        Learn German A1 → B2
-    </p>
-
+    <p>© 2026 DeutschStart 🇩🇪</p>
+    <p>Learn German A1 → B2</p>
 </footer>
 
 
+<!-- SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="a1-questions.js"></script>
+
 <script>
 
-const supabaseClient =
-    window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_PUBLISHABLE_KEY
-    );
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
 
 let currentUser = null;
 
+let quizQuestions = [];
+let currentQuestion = 0;
+let quizScore = 0;
+
+
+/* =========================
+   LOGIN CHECK
+========================= */
 
 async function loadUser() {
 
@@ -342,10 +327,7 @@ async function loadUser() {
     } = await supabaseClient.auth.getUser();
 
     if (!user) {
-
-        window.location.href =
-            "login.html";
-
+        window.location.href = "login.html";
         return;
     }
 
@@ -355,17 +337,18 @@ async function loadUser() {
 loadUser();
 
 
+/* =========================
+   COMPLETE LESSON
+========================= */
+
 async function completeLesson(lessonName) {
 
     if (!currentUser) {
-
         alert("Please login first.");
-
         return;
     }
 
-    const { error } =
-        await supabaseClient
+    const { error } = await supabaseClient
         .from("lesson_progress")
         .upsert({
             user_id: currentUser.id,
@@ -374,29 +357,21 @@ async function completeLesson(lessonName) {
         });
 
     if (error) {
-
-        alert(
-            "Error: " +
-            error.message
-        );
-
+        alert("Error: " + error.message);
         return;
     }
 
-    alert(
-        "✅ " +
-        lessonName +
-        " lesson completed!"
-    );
+    alert("✅ Lesson completed!");
 }
 
 
+/* =========================
+   SHOW LESSON
+========================= */
+
 function showLesson(lesson) {
 
-    const area =
-        document.getElementById(
-            "lesson-area"
-        );
+    const area = document.getElementById("lesson-area");
 
 
     /* =========================
@@ -406,319 +381,147 @@ function showLesson(lesson) {
     if (lesson === "greetings") {
 
         area.innerHTML = `
-
         <div class="lesson">
 
-            <h2>
-                👋 Greetings – Begrüßungen
-            </h2>
+            <h2>👋 Greetings</h2>
 
             <p>
-                Learn common German greetings,
-                questions and ways to say goodbye.
+                Learn common German greetings for different situations.
             </p>
 
-
-            <h3>
-                🌅 Morning
-            </h3>
+            <h3>🌅 Morning</h3>
 
             <div class="words">
-
-                <b>Guten Morgen!</b>
-                — Good morning!<br>
-
-                <b>Morgen!</b>
-                — Morning! (informal)<br>
-
-                <b>Einen schönen guten Morgen!</b>
-                — Have a nice morning!
-
+                <b>Guten Morgen!</b> — Good morning!<br>
+                <b>Morgen!</b> — Morning!<br>
+                <b>Einen schönen guten Morgen!</b> — Have a nice morning!
             </div>
 
 
-            <h3>
-                ☀️ During the Day
-            </h3>
+            <h3>☀️ During the Day</h3>
 
             <div class="words">
-
-                <b>Hallo!</b>
-                — Hello!<br>
-
-                <b>Guten Tag!</b>
-                — Good day!<br>
-
-                <b>Hi!</b>
-                — Hi!<br>
-
-                <b>Hey!</b>
-                — Hey!<br>
-
-                <b>Grüß dich!</b>
-                — Hello! (informal)<br>
-
-                <b>Grüß Gott!</b>
-                — Hello! (formal/regional)<br>
-
-                <b>Mahlzeit!</b>
-                — Hello / Good day!
-
+                <b>Hallo!</b> — Hello!<br>
+                <b>Guten Tag!</b> — Good day!<br>
+                <b>Hi!</b> — Hi!<br>
+                <b>Hey!</b> — Hey!<br>
+                <b>Grüß dich!</b> — Hello!<br>
+                <b>Grüß Gott!</b> — Hello!<br>
+                <b>Mahlzeit!</b> — Hello / enjoy your meal!
             </div>
 
 
-            <h3>
-                🌆 Evening
-            </h3>
+            <h3>🌆 Evening</h3>
 
             <div class="words">
-
-                <b>Guten Abend!</b>
-                — Good evening!<br>
-
-                <b>Einen schönen Abend!</b>
-                — Have a nice evening!<br>
-
-                <b>Schönen Abend noch!</b>
-                — Have a nice evening!
-
+                <b>Guten Abend!</b> — Good evening!<br>
+                <b>Einen schönen Abend!</b> — Have a nice evening!<br>
+                <b>Schönen Abend noch!</b> — Have a nice evening!
             </div>
 
 
-            <h3>
-                🌙 Night
-            </h3>
+            <h3>🌙 Night</h3>
 
             <div class="words">
-
-                <b>Gute Nacht!</b>
-                — Good night!<br>
-
-                <b>Schlaf gut!</b>
-                — Sleep well!<br>
-
-                <b>Träum schön!</b>
-                — Sweet dreams!
-
+                <b>Gute Nacht!</b> — Good night!<br>
+                <b>Schlaf gut!</b> — Sleep well!<br>
+                <b>Träum schön!</b> — Sweet dreams!
             </div>
 
 
-            <h3>
-                👋 Saying Goodbye
-            </h3>
+            <h3>👋 Saying Goodbye</h3>
 
             <div class="words">
-
-                <b>Auf Wiedersehen!</b>
-                — Goodbye!<br>
-
-                <b>Tschüss!</b>
-                — Bye!<br>
-
-                <b>Ciao!</b>
-                — Bye!<br>
-
-                <b>Bis bald!</b>
-                — See you soon!<br>
-
-                <b>Bis später!</b>
-                — See you later!<br>
-
-                <b>Bis morgen!</b>
-                — See you tomorrow!<br>
-
-                <b>Bis gleich!</b>
-                — See you shortly!<br>
-
-                <b>Bis nächste Woche!</b>
-                — See you next week!<br>
-
-                <b>Mach's gut!</b>
-                — Take care!<br>
-
-                <b>Macht's gut!</b>
-                — Take care! (plural)<br>
-
-                <b>Auf Wiederhören!</b>
-                — Goodbye! (on the phone)
-
+                <b>Auf Wiedersehen!</b> — Goodbye!<br>
+                <b>Tschüss!</b> — Bye!<br>
+                <b>Ciao!</b> — Bye!<br>
+                <b>Bis bald!</b> — See you soon!<br>
+                <b>Bis später!</b> — See you later!<br>
+                <b>Bis morgen!</b> — See you tomorrow!<br>
+                <b>Bis gleich!</b> — See you soon!<br>
+                <b>Bis nächste Woche!</b> — See you next week!<br>
+                <b>Mach's gut!</b> — Take care!<br>
+                <b>Macht's gut!</b> — Take care!<br>
+                <b>Auf Wiederhören!</b> — Goodbye on the phone!
             </div>
 
 
-            <h3>
-                😊 Asking How Someone Is
-            </h3>
+            <h3>😊 Asking How Someone Is</h3>
 
             <div class="words">
-
-                <b>Wie geht es dir?</b>
-                — How are you? (informal)<br>
-
-                <b>Wie geht's dir?</b>
-                — How are you?<br>
-
-                <b>Wie geht es Ihnen?</b>
-                — How are you? (formal)<br>
-
-                <b>Wie geht's?</b>
-                — How are things?<br>
-
-                <b>Alles gut?</b>
-                — Everything okay?<br>
-
-                <b>Wie geht's euch?</b>
-                — How are you all?
-
+                <b>Wie geht es dir?</b> — How are you?<br>
+                <b>Wie geht's dir?</b> — How are you?<br>
+                <b>Wie geht es Ihnen?</b> — How are you? (formal)<br>
+                <b>Wie geht's?</b> — How are you?<br>
+                <b>Alles gut?</b> — Everything good?<br>
+                <b>Wie geht's euch?</b> — How are you all?
             </div>
 
 
-            <h3>
-                ❤️ Answers
-            </h3>
+            <h3>❤️ Answers</h3>
 
             <div class="words">
-
-                <b>Mir geht es gut.</b>
-                — I'm doing well.<br>
-
-                <b>Mir geht's gut.</b>
-                — I'm doing well.<br>
-
-                <b>Sehr gut, danke!</b>
-                — Very well, thank you!<br>
-
-                <b>Danke, gut.</b>
-                — Good, thanks.<br>
-
-                <b>Es geht.</b>
-                — So-so.<br>
-
-                <b>Nicht schlecht.</b>
-                — Not bad.<br>
-
-                <b>Mir geht es sehr gut.</b>
-                — I'm doing very well.<br>
-
-                <b>Mir geht es nicht so gut.</b>
-                — I'm not doing so well.<br>
-
-                <b>Danke der Nachfrage.</b>
-                — Thanks for asking.
-
+                <b>Mir geht es gut.</b> — I am fine.<br>
+                <b>Mir geht's gut.</b> — I'm fine.<br>
+                <b>Sehr gut, danke!</b> — Very good, thanks!<br>
+                <b>Danke, gut.</b> — Thanks, good.<br>
+                <b>Es geht.</b> — So-so.<br>
+                <b>Nicht schlecht.</b> — Not bad.<br>
+                <b>Mir geht es sehr gut.</b> — I am very well.<br>
+                <b>Mir geht es nicht so gut.</b> — I'm not so well.<br>
+                <b>Danke der Nachfrage.</b> — Thanks for asking.
             </div>
 
 
-            <h3>
-                🤝 Meeting Someone
-            </h3>
+            <h3>🤝 Meeting Someone</h3>
 
             <div class="words">
-
-                <b>Wie heißt du?</b>
-                — What's your name?<br>
-
-                <b>Wie heißen Sie?</b>
-                — What's your name? (formal)<br>
-
-                <b>Ich heiße Aswin.</b>
-                — My name is Aswin.<br>
-
-                <b>Freut mich!</b>
-                — Nice to meet you!<br>
-
-                <b>Sehr erfreut!</b>
-                — Pleased to meet you!<br>
-
-                <b>Schön, dich kennenzulernen.</b>
-                — Nice to meet you.<br>
-
-                <b>Schön, Sie kennenzulernen.</b>
-                — Nice to meet you. (formal)
-
+                <b>Wie heißt du?</b> — What is your name?<br>
+                <b>Wie heißen Sie?</b> — What is your name? (formal)<br>
+                <b>Ich heiße Aswin.</b> — My name is Aswin.<br>
+                <b>Freut mich!</b> — Nice to meet you!<br>
+                <b>Sehr erfreut!</b> — Pleased to meet you!<br>
+                <b>Schön, dich kennenzulernen.</b> — Nice to meet you.<br>
+                <b>Schön, Sie kennenzulernen.</b> — Nice to meet you. (formal)
             </div>
 
 
-            <h3>
-                👔 Formal vs Informal
-            </h3>
+            <h3>👔 Formal vs Informal</h3>
 
             <div class="example">
 
-                <p>
-                    <b>Informal:</b>
-                </p>
+                <b>Informal:</b><br>
+                Hallo! Wie geht's dir?<br><br>
 
-                <p>
-                    Hallo! Wie geht's dir?
-                </p>
-
-                <p>
-                    Tschüss! Bis morgen!
-                </p>
-
-
-                <p>
-                    <b>Formal:</b>
-                </p>
-
-                <p>
-                    Guten Tag! Wie geht es Ihnen?
-                </p>
-
-                <p>
-                    Auf Wiedersehen!
-                </p>
+                <b>Formal:</b><br>
+                Guten Tag! Wie geht es Ihnen?
 
             </div>
 
 
-            <h3>
-                🗣️ Mini Conversation
-            </h3>
+            <h3>🗣️ Mini Conversation</h3>
 
             <div class="conversation">
 
-                <p>
-                    <b>A:</b> Guten Morgen!
-                </p>
+                <b>A:</b> Guten Morgen!<br>
+                <b>B:</b> Guten Morgen!<br><br>
 
-                <p>
-                    <b>B:</b>
-                    Guten Morgen! Wie geht es dir?
-                </p>
+                <b>A:</b> Wie geht's dir?<br>
+                <b>B:</b> Mir geht's gut, danke. Und dir?<br><br>
 
-                <p>
-                    <b>A:</b>
-                    Mir geht es gut, danke. Und dir?
-                </p>
-
-                <p>
-                    <b>B:</b>
-                    Auch gut, danke!
-                </p>
-
-                <p>
-                    <b>A:</b> Bis später!
-                </p>
-
-                <p>
-                    <b>B:</b> Bis später!
-                </p>
+                <b>A:</b> Auch gut, danke!<br>
+                <b>B:</b> Bis später!<br>
+                <b>A:</b> Bis später!
 
             </div>
 
 
-            <button
-                class="complete-button"
+            <button class="complete-button"
                 onclick="completeLesson('Greetings')">
-
-                ✅ Mark Greetings as Completed
-
+                ✅ Complete Lesson
             </button>
 
-        </div>
-
-        `;
+        </div>`;
     }
 
 
@@ -729,41 +532,264 @@ function showLesson(lesson) {
     else if (lesson === "intro") {
 
         area.innerHTML = `
-
         <div class="lesson">
 
             <h2>🙋 Introduction</h2>
 
+            <p>
+                Learn how to introduce yourself in German.
+            </p>
+
+
+            <h3>👤 Name</h3>
+
             <div class="words">
+
+                <b>Wie heißt du?</b><br>
+                What is your name?<br><br>
+
+                <b>Wie heißen Sie?</b><br>
+                What is your name? (formal)<br><br>
 
                 <b>Ich heiße Aswin.</b><br>
                 My name is Aswin.<br><br>
 
+                <b>Mein Name ist Aswin.</b><br>
+                My name is Aswin.
+
+            </div>
+
+
+            <h3>🎂 Age</h3>
+
+            <div class="words">
+
+                <b>Wie alt bist du?</b><br>
+                How old are you?<br><br>
+
                 <b>Ich bin 18 Jahre alt.</b><br>
-                I am 18 years old.<br><br>
+                I am 18 years old.
+
+            </div>
+
+
+            <h3>🌍 Country</h3>
+
+            <div class="words">
+
+                <b>Woher kommst du?</b><br>
+                Where are you from?<br><br>
+
+                <b>Woher kommen Sie?</b><br>
+                Where are you from? (formal)<br><br>
 
                 <b>Ich komme aus Indien.</b><br>
-                I come from India.<br><br>
+                I come from India.
+
+            </div>
+
+
+            <h3>🏠 Where You Live</h3>
+
+            <div class="words">
+
+                <b>Wo wohnst du?</b><br>
+                Where do you live?<br><br>
 
                 <b>Ich wohne in Wayanad.</b><br>
                 I live in Wayanad.<br><br>
 
-                <b>Ich bin Student.</b><br>
-                I am a student.
+                <b>Ich lebe in Indien.</b><br>
+                I live in India.
 
             </div>
 
-            <button
-                class="complete-button"
+
+            <h3>🇮🇳 Nationality</h3>
+
+            <div class="words">
+
+                <b>Ich bin Inder.</b> — I am Indian. (male)<br>
+                <b>Ich bin Inderin.</b> — I am Indian. (female)<br>
+                <b>Ich komme aus Indien.</b> — I come from India.
+
+            </div>
+
+
+            <h3>🗣️ Languages</h3>
+
+            <div class="words">
+
+                <b>Welche Sprachen sprichst du?</b><br>
+                Which languages do you speak?<br><br>
+
+                <b>Ich spreche Malayalam.</b><br>
+                I speak Malayalam.<br><br>
+
+                <b>Ich spreche Englisch.</b><br>
+                I speak English.<br><br>
+
+                <b>Ich lerne Deutsch.</b><br>
+                I am learning German.<br><br>
+
+                <b>Ich spreche ein bisschen Deutsch.</b><br>
+                I speak a little German.
+
+            </div>
+
+
+            <h3>🎓 School / Work</h3>
+
+            <div class="words">
+
+                <b>Was machst du?</b><br>
+                What do you do?<br><br>
+
+                <b>Was sind Sie von Beruf?</b><br>
+                What is your profession? (formal)<br><br>
+
+                <b>Ich bin Student.</b><br>
+                I am a student.<br><br>
+
+                <b>Ich bin Schüler.</b><br>
+                I am a school student.<br><br>
+
+                <b>Ich arbeite.</b><br>
+                I work.
+
+            </div>
+
+
+            <h3>⚽ Hobbies</h3>
+
+            <div class="words">
+
+                <b>Was sind deine Hobbys?</b><br>
+                What are your hobbies?<br><br>
+
+                <b>Meine Hobbys sind Fußball spielen und Musik hören.</b><br>
+                My hobbies are playing football and listening to music.<br><br>
+
+                <b>Ich spiele gern Fußball.</b><br>
+                I like playing football.<br><br>
+
+                <b>Ich höre gern Musik.</b><br>
+                I like listening to music.<br><br>
+
+                <b>Ich lese gern.</b><br>
+                I like reading.
+
+            </div>
+
+
+            <h3>👨‍👩‍👧 Family</h3>
+
+            <div class="words">
+
+                <b>Wie groß ist deine Familie?</b><br>
+                How big is your family?<br><br>
+
+                <b>Meine Familie hat fünf Personen.</b><br>
+                My family has five people.<br><br>
+
+                <b>Wir sind fünf Personen in meiner Familie.</b><br>
+                There are five people in my family.
+
+            </div>
+
+
+            <h3>❤️ Favorite Person</h3>
+
+            <div class="words">
+
+                <b>Wer ist deine Lieblingsperson?</b><br>
+                Who is your favorite person?<br><br>
+
+                <b>Meine Lieblingsperson ist mein Vater.</b><br>
+                My favorite person is my father.
+
+            </div>
+
+
+            <h3>📚 How Long Have You Learned German?</h3>
+
+            <div class="words">
+
+                <b>Wie lange lernst du Deutsch?</b><br>
+                How long have you been learning German?<br><br>
+
+                <b>Ich lerne seit zwei Monaten Deutsch.</b><br>
+                I have been learning German for two months.
+
+            </div>
+
+
+            <h3>📝 Complete Self-Introduction</h3>
+
+            <div class="example">
+
+                <b>Hallo! Ich heiße Aswin.</b><br>
+                <b>Ich bin 18 Jahre alt.</b><br>
+                <b>Ich komme aus Indien.</b><br>
+                <b>Ich wohne in Wayanad.</b><br>
+                <b>Ich bin Student.</b><br>
+                <b>Meine Familie hat fünf Personen.</b><br>
+                <b>Meine Hobbys sind Fußball spielen und Musik hören.</b><br>
+                <b>Ich lerne seit zwei Monaten Deutsch.</b>
+
+            </div>
+
+
+            <h3>🗣️ Introduction Dialogue</h3>
+
+            <div class="conversation">
+
+                <b>A:</b> Hallo! Wie heißt du?<br>
+                <b>B:</b> Ich heiße Aswin.<br><br>
+
+                <b>A:</b> Wie alt bist du?<br>
+                <b>B:</b> Ich bin 18 Jahre alt.<br><br>
+
+                <b>A:</b> Woher kommst du?<br>
+                <b>B:</b> Ich komme aus Indien.<br><br>
+
+                <b>A:</b> Wo wohnst du?<br>
+                <b>B:</b> Ich wohne in Wayanad.<br><br>
+
+                <b>A:</b> Was machst du?<br>
+                <b>B:</b> Ich bin Student.<br><br>
+
+                <b>A:</b> Was sind deine Hobbys?<br>
+                <b>B:</b> Meine Hobbys sind Fußball spielen und Musik hören.
+
+            </div>
+
+
+            <h3>🎤 Speaking Practice</h3>
+
+            <div class="example">
+
+                <b>Try to speak about yourself:</b><br><br>
+
+                1. Wie heißt du?<br>
+                2. Wie alt bist du?<br>
+                3. Woher kommst du?<br>
+                4. Wo wohnst du?<br>
+                5. Was machst du?<br>
+                6. Was sind deine Hobbys?<br>
+                7. Wie groß ist deine Familie?<br>
+                8. Welche Sprachen sprichst du?<br>
+                9. Wie lange lernst du Deutsch?
+
+            </div>
+
+
+            <button class="complete-button"
                 onclick="completeLesson('Introduction')">
-
-                ✅ Mark Introduction as Completed
-
+                ✅ Complete Lesson
             </button>
 
-        </div>
-
-        `;
+        </div>`;
     }
 
 
@@ -774,13 +800,11 @@ function showLesson(lesson) {
     else if (lesson === "numbers") {
 
         area.innerHTML = `
-
         <div class="lesson">
 
-            <h2>🔢 Numbers</h2>
+            <h2>🔢 Numbers 1–20</h2>
 
             <div class="words">
-
                 eins — 1<br>
                 zwei — 2<br>
                 drei — 3<br>
@@ -801,20 +825,14 @@ function showLesson(lesson) {
                 achtzehn — 18<br>
                 neunzehn — 19<br>
                 zwanzig — 20
-
             </div>
 
-            <button
-                class="complete-button"
+            <button class="complete-button"
                 onclick="completeLesson('Numbers')">
-
-                ✅ Mark Numbers as Completed
-
+                ✅ Complete Lesson
             </button>
 
-        </div>
-
-        `;
+        </div>`;
     }
 
 
@@ -825,7 +843,6 @@ function showLesson(lesson) {
     else if (lesson === "family") {
 
         area.innerHTML = `
-
         <div class="lesson">
 
             <h2>👨‍👩‍👧 Family</h2>
@@ -841,22 +858,16 @@ function showLesson(lesson) {
                 die Tochter — daughter<br>
                 der Großvater — grandfather<br>
                 die Großmutter — grandmother<br>
-                die Eltern — parents<br>
                 das Kind — child
 
             </div>
 
-            <button
-                class="complete-button"
+            <button class="complete-button"
                 onclick="completeLesson('Family')">
-
-                ✅ Mark Family as Completed
-
+                ✅ Complete Lesson
             </button>
 
-        </div>
-
-        `;
+        </div>`;
     }
 
 
@@ -867,7 +878,6 @@ function showLesson(lesson) {
     else if (lesson === "home") {
 
         area.innerHTML = `
-
         <div class="lesson">
 
             <h2>🏠 Home</h2>
@@ -883,23 +893,16 @@ function showLesson(lesson) {
                 das Wohnzimmer — living room<br>
                 der Tisch — table<br>
                 der Stuhl — chair<br>
-                das Bett — bed<br>
-                die Tür — door<br>
-                das Fenster — window
+                das Bett — bed
 
             </div>
 
-            <button
-                class="complete-button"
+            <button class="complete-button"
                 onclick="completeLesson('Home')">
-
-                ✅ Mark Home as Completed
-
+                ✅ Complete Lesson
             </button>
 
-        </div>
-
-        `;
+        </div>`;
     }
 
 
@@ -910,7 +913,6 @@ function showLesson(lesson) {
     else if (lesson === "food") {
 
         area.innerHTML = `
-
         <div class="lesson">
 
             <h2>🍎 Food</h2>
@@ -921,27 +923,21 @@ function showLesson(lesson) {
                 der Reis — rice<br>
                 das Wasser — water<br>
                 der Kaffee — coffee<br>
-                der Tee — tea<br>
                 der Apfel — apple<br>
-                die Banane — banana<br>
+                das Essen — food<br>
+                die Milch — milk<br>
+                der Saft — juice<br>
                 das Fleisch — meat<br>
-                der Fisch — fish<br>
-                das Gemüse — vegetables<br>
-                das Essen — food
+                das Gemüse — vegetables
 
             </div>
 
-            <button
-                class="complete-button"
+            <button class="complete-button"
                 onclick="completeLesson('Food')">
-
-                ✅ Mark Food as Completed
-
+                ✅ Complete Lesson
             </button>
 
-        </div>
-
-        `;
+        </div>`;
     }
 
 
@@ -952,12 +948,11 @@ function showLesson(lesson) {
     else if (lesson === "routine") {
 
         area.innerHTML = `
-
         <div class="lesson">
 
             <h2>🕐 Daily Routine</h2>
 
-            <div class="words">
+            <div class="example">
 
                 <b>Ich stehe um 7 Uhr auf.</b><br>
                 I get up at 7 o'clock.<br><br>
@@ -976,17 +971,12 @@ function showLesson(lesson) {
 
             </div>
 
-            <button
-                class="complete-button"
+            <button class="complete-button"
                 onclick="completeLesson('Daily Routine')">
-
-                ✅ Mark Daily Routine as Completed
-
+                ✅ Complete Lesson
             </button>
 
-        </div>
-
-        `;
+        </div>`;
     }
 
 
@@ -997,7 +987,6 @@ function showLesson(lesson) {
     else if (lesson === "grammar") {
 
         area.innerHTML = `
-
         <div class="lesson">
 
             <h2>📚 Basic Grammar</h2>
@@ -1018,39 +1007,22 @@ function showLesson(lesson) {
 
             </div>
 
-            <h3>Examples</h3>
-
             <div class="example">
 
-                <p>
-                    Ich bin Student.
-                </p>
+                <b>Ich bin Student.</b><br>
+                I am a student.<br><br>
 
-                <p>
-                    Du bist nett.
-                </p>
-
-                <p>
-                    Er ist mein Freund.
-                </p>
-
-                <p>
-                    Wir sind glücklich.
-                </p>
+                <b>Du bist mein Freund.</b><br>
+                You are my friend.
 
             </div>
 
-            <button
-                class="complete-button"
+            <button class="complete-button"
                 onclick="completeLesson('Grammar')">
-
-                ✅ Mark Grammar as Completed
-
+                ✅ Complete Lesson
             </button>
 
-        </div>
-
-        `;
+        </div>`;
     }
 
 
@@ -1061,56 +1033,34 @@ function showLesson(lesson) {
     else if (lesson === "speaking") {
 
         area.innerHTML = `
-
         <div class="lesson">
 
             <h2>🗣️ Speaking Practice</h2>
 
-            <h3>Question 1</h3>
-
             <p>
-                <b>Wie heißt du?</b>
+                Practice introducing yourself.
             </p>
 
-            <p>
-                Ich heiße Aswin.
-            </p>
+            <div class="conversation">
 
+                <b>Frage:</b> Wie heißt du?<br>
+                <b>Antwort:</b> Ich heiße Aswin.<br><br>
 
-            <h3>Question 2</h3>
+                <b>Frage:</b> Wie alt bist du?<br>
+                <b>Antwort:</b> Ich bin 18 Jahre alt.<br><br>
 
-            <p>
-                <b>Woher kommst du?</b>
-            </p>
+                <b>Frage:</b> Woher kommst du?<br>
+                <b>Antwort:</b> Ich komme aus Indien.<br><br>
 
-            <p>
-                Ich komme aus Indien.
-            </p>
+                <b>Frage:</b> Wo wohnst du?<br>
+                <b>Antwort:</b> Ich wohne in Wayanad.<br><br>
 
+                <b>Frage:</b> Was sind deine Hobbys?<br>
+                <b>Antwort:</b> Meine Hobbys sind Fußball spielen und Musik hören.
 
-            <h3>Question 3</h3>
+            </div>
 
-            <p>
-                <b>Was sind deine Hobbys?</b>
-            </p>
-
-            <p>
-                Meine Hobbys sind Fußball spielen
-                und Musik hören.
-            </p>
-
-
-            <button
-                class="complete-button"
-                onclick="completeLesson('Speaking')">
-
-                ✅ Mark Speaking as Completed
-
-            </button>
-
-        </div>
-
-        `;
+        </div>`;
     }
 
 
@@ -1120,79 +1070,227 @@ function showLesson(lesson) {
 
     else if (lesson === "quiz") {
 
-        area.innerHTML = `
+        startQuiz();
 
-        <div class="lesson">
-
-            <h2>📝 A1 Quiz</h2>
-
-            <p>
-                What does
-                <b>"Guten Morgen"</b>
-                mean?
-            </p>
-
-            <button
-                class="option"
-                onclick="showQuizResult(false)">
-
-                Good night
-
-            </button>
-
-            <button
-                class="option"
-                onclick="showQuizResult(true)">
-
-                Good morning
-
-            </button>
-
-            <button
-                class="option"
-                onclick="showQuizResult(false)">
-
-                Goodbye
-
-            </button>
-
-            <p
-                id="quiz-result"
-                class="result">
-            </p>
-
-        </div>
-
-        `;
     }
 
 }
 
 
-function showQuizResult(correct) {
+/* =========================
+   RANDOM QUIZ
+========================= */
 
-    const result =
-        document.getElementById(
-            "quiz-result"
-        );
+function startQuiz() {
 
-    if (correct) {
+    if (
+        typeof A1_QUESTIONS === "undefined" ||
+        !Array.isArray(A1_QUESTIONS) ||
+        A1_QUESTIONS.length === 0
+    ) {
+
+        document.getElementById("lesson-area").innerHTML = `
+        <div class="lesson">
+
+            <h2>📝 A1 Quiz</h2>
+
+            <p>
+                Quiz questions could not be loaded.
+            </p>
+
+            <p>
+                Please check that <b>a1-questions.js</b> is uploaded.
+            </p>
+
+        </div>`;
+
+        return;
+    }
+
+
+    const shuffled = [...A1_QUESTIONS];
+
+    for (let i = shuffled.length - 1; i > 0; i--) {
+
+        const j = Math.floor(Math.random() * (i + 1));
+
+        [shuffled[i], shuffled[j]] =
+        [shuffled[j], shuffled[i]];
+
+    }
+
+
+    const quizSize = Math.min(10, shuffled.length);
+
+    quizQuestions = shuffled.slice(0, quizSize);
+
+    currentQuestion = 0;
+    quizScore = 0;
+
+    showQuizQuestion();
+}
+
+
+/* =========================
+   SHOW QUIZ QUESTION
+========================= */
+
+function showQuizQuestion() {
+
+    const question = quizQuestions[currentQuestion];
+
+    const area = document.getElementById("lesson-area");
+
+    let optionsHTML = "";
+
+    question.options.forEach((option, index) => {
+
+        optionsHTML += `
+        <button class="option"
+            onclick="checkAnswer(${index})">
+            ${option}
+        </button>
+        `;
+
+    });
+
+
+    area.innerHTML = `
+    <div class="lesson">
+
+        <h2>📝 A1 Quiz</h2>
+
+        <div class="quiz-progress">
+            Question ${currentQuestion + 1}
+            / ${quizQuestions.length}
+        </div>
+
+        <p class="quiz-question">
+            ${question.question}
+        </p>
+
+        ${optionsHTML}
+
+        <p id="quiz-result" class="result"></p>
+
+    </div>`;
+}
+
+
+/* =========================
+   CHECK ANSWER
+========================= */
+
+function checkAnswer(selected) {
+
+    const question = quizQuestions[currentQuestion];
+
+    const result = document.getElementById("quiz-result");
+
+    const buttons = document.querySelectorAll(".option");
+
+    buttons.forEach(button => {
+        button.disabled = true;
+    });
+
+
+    if (selected === question.answer) {
+
+        quizScore++;
 
         result.innerHTML =
             "✅ Correct! Sehr gut!";
 
-        result.style.color =
-            "green";
+        result.style.color = "green";
 
     } else {
 
         result.innerHTML =
-            "❌ Try again!";
+            "❌ Incorrect. Keep practicing!";
 
-        result.style.color =
-            "red";
+        result.style.color = "red";
     }
 
+
+    setTimeout(() => {
+
+        currentQuestion++;
+
+        if (currentQuestion < quizQuestions.length) {
+
+            showQuizQuestion();
+
+        } else {
+
+            finishQuiz();
+
+        }
+
+    }, 900);
+}
+
+
+/* =========================
+   FINISH QUIZ
+========================= */
+
+async function finishQuiz() {
+
+    const total = quizQuestions.length;
+
+    const area = document.getElementById("lesson-area");
+
+    area.innerHTML = `
+    <div class="lesson">
+
+        <h2>🎉 Quiz Finished!</h2>
+
+        <div class="example">
+
+            <h3>Your Score</h3>
+
+            <p style="font-size:24px;">
+                <b>${quizScore} / ${total}</b>
+            </p>
+
+        </div>
+
+        <button class="complete-button"
+            onclick="startQuiz()">
+            🔄 Try Another Quiz
+        </button>
+
+    </div>`;
+
+
+    if (!currentUser) {
+        return;
+    }
+
+
+    const { error } = await supabaseClient
+        .from("quiz_results")
+        .insert({
+            user_id: currentUser.id,
+            score: quizScore,
+            total: total
+        });
+
+
+    if (error) {
+
+        console.log(
+            "Quiz save error:",
+            error.message
+        );
+
+    } else {
+
+        console.log(
+            "Quiz result saved!"
+        );
+
+    }
 }
 
 </script>
