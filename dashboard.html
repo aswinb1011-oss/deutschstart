@@ -1,183 +1,312 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>DeutschStart – Dashboard</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script src="config.js"></script>
 
+
 <style>
+
 * {
     box-sizing: border-box;
 }
 
 body {
+
     margin: 0;
+
     font-family: Arial, sans-serif;
+
     background: #f4f7fb;
+
     color: #172033;
+
 }
+
 
 header {
+
     background: #111827;
+
     color: white;
+
     padding: 18px 20px;
+
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
+
     gap: 15px;
+
 }
+
 
 .logo {
+
     font-size: 22px;
+
     font-weight: bold;
+
 }
+
 
 .logout {
+
     background: #dc2626;
+
     color: white;
+
     border: none;
+
     padding: 10px 15px;
+
     border-radius: 8px;
+
     cursor: pointer;
+
     font-weight: bold;
+
 }
+
 
 .container {
+
     max-width: 1100px;
+
     margin: auto;
+
     padding: 25px 15px 50px;
+
 }
+
 
 .welcome {
+
     background: white;
+
     padding: 25px;
+
     border-radius: 16px;
+
     margin-bottom: 20px;
+
     box-shadow: 0 5px 20px rgba(0,0,0,.06);
+
 }
+
 
 .welcome h1 {
+
     margin-top: 0;
+
 }
+
 
 .email {
+
     color: #6b7280;
+
 }
+
 
 .grid {
+
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
     gap: 18px;
+
     margin-bottom: 20px;
+
 }
+
 
 .card {
+
     background: white;
+
     padding: 22px;
+
     border-radius: 16px;
+
     box-shadow: 0 5px 20px rgba(0,0,0,.06);
+
 }
+
 
 .card h2 {
+
     margin-top: 0;
+
 }
+
 
 .progress {
+
     height: 12px;
+
     background: #e5e7eb;
+
     border-radius: 20px;
+
     overflow: hidden;
+
     margin: 12px 0;
+
 }
+
 
 .progress-bar {
+
     height: 100%;
+
     width: 0%;
+
     background: #2563eb;
+
     transition: width .4s;
+
 }
+
 
 .a2-bar {
+
     background: #16a34a;
+
 }
+
 
 .stat {
+
     font-size: 32px;
+
     font-weight: bold;
+
 }
+
 
 .small {
+
     color: #6b7280;
+
     font-size: 14px;
+
 }
+
 
 .level-card {
+
     text-align: center;
+
 }
+
 
 .level-card h2 {
+
     font-size: 28px;
+
 }
+
 
 .btn {
+
     display: inline-block;
+
     text-decoration: none;
+
     border: none;
+
     background: #2563eb;
+
     color: white;
+
     padding: 12px 18px;
+
     border-radius: 9px;
+
     cursor: pointer;
+
     font-weight: bold;
+
     margin-top: 8px;
+
 }
+
 
 .btn-green {
+
     background: #16a34a;
+
 }
+
 
 .btn-gray {
+
     background: #6b7280;
+
 }
+
 
 .result {
+
     font-size: 20px;
+
     font-weight: bold;
+
 }
 
-.loading {
-    color: #6b7280;
-}
-
-.error {
-    color: #dc2626;
-}
 
 footer {
+
     text-align: center;
+
     color: #6b7280;
+
     padding: 30px 10px;
+
 }
+
 
 @media(max-width:600px) {
 
     header {
+
         flex-direction: column;
+
         align-items: flex-start;
+
     }
 
     .container {
+
         padding: 15px 10px 40px;
+
     }
+
 }
+
 </style>
+
 </head>
 
+
 <body>
+
 
 <header>
 
@@ -185,283 +314,389 @@ footer {
         🇩🇪 DeutschStart
     </div>
 
-    <button class="logout" onclick="logout()">
+    <button
+        class="logout"
+        onclick="logout()">
+
         Logout
+
     </button>
 
 </header>
 
+
+
 <div class="container">
 
-    <!-- WELCOME -->
 
-    <section class="welcome">
+<!-- WELCOME -->
 
-        <h1>Willkommen! 👋</h1>
+<section class="welcome">
 
-        <p>
-            Welcome to your German learning dashboard.
-        </p>
+    <h1>
+        Willkommen! 👋
+    </h1>
 
-        <p class="email" id="userEmail">
-            Loading account...
-        </p>
+    <p>
+        Welcome to your German learning dashboard.
+    </p>
 
-    </section>
+    <p
+        class="email"
+        id="userEmail">
 
+        Loading account...
 
-    <!-- OVERALL STATS -->
+    </p>
 
-    <section class="grid">
+</section>
 
-        <div class="card">
 
-            <p class="small">
-                A1 Lessons
-            </p>
 
-            <div class="stat" id="a1Lessons">
-                0/7
-            </div>
+<!-- STATS -->
 
-        </div>
+<section class="grid">
 
 
-        <div class="card">
+<div class="card">
 
-            <p class="small">
-                A2 Lessons
-            </p>
+    <p class="small">
+        A1 Lessons
+    </p>
 
-            <div class="stat" id="a2Lessons">
-                0/10
-            </div>
+    <div
+        class="stat"
+        id="a1Lessons">
 
-        </div>
+        0/7
 
-
-        <div class="card">
-
-            <p class="small">
-                A1 Quiz
-            </p>
-
-            <div class="result" id="a1Quiz">
-                —
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <p class="small">
-                A2 Quiz
-            </p>
-
-            <div class="result" id="a2Quiz">
-                —
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- A1 -->
-
-    <section class="card">
-
-        <h2>🟢 A1 German</h2>
-
-        <p>
-            Continue your beginner German lessons.
-        </p>
-
-        <div class="progress">
-
-            <div
-                class="progress-bar"
-                id="a1ProgressBar">
-            </div>
-
-        </div>
-
-        <p class="small" id="a1ProgressText">
-            0 / 7 lessons completed
-        </p>
-
-        <a
-            href="a1.html"
-            class="btn">
-            Continue A1 →
-        </a>
-
-    </section>
-
-    <br>
-
-
-    <!-- A2 -->
-
-    <section class="card">
-
-        <h2>🔵 A2 German</h2>
-
-        <p>
-            Practice difficult A2 grammar, vocabulary,
-            speaking, writing and quizzes.
-        </p>
-
-        <div class="progress">
-
-            <div
-                class="progress-bar a2-bar"
-                id="a2ProgressBar">
-            </div>
-
-        </div>
-
-        <p class="small" id="a2ProgressText">
-            0 / 10 lessons completed
-        </p>
-
-        <a
-            href="a2.html"
-            class="btn btn-green">
-            Continue A2 →
-        </a>
-
-    </section>
-
-    <br>
-
-
-    <!-- LEVELS -->
-
-    <section class="grid">
-
-        <div class="card level-card">
-
-            <h2>🇩🇪 A1</h2>
-
-            <p>
-                Beginner
-            </p>
-
-            <a
-                href="a1.html"
-                class="btn">
-                Open A1
-            </a>
-
-        </div>
-
-
-        <div class="card level-card">
-
-            <h2>🇩🇪 A2</h2>
-
-            <p>
-                Elementary
-            </p>
-
-            <a
-                href="a2.html"
-                class="btn btn-green">
-                Open A2
-            </a>
-
-        </div>
-
-
-        <div class="card level-card">
-
-            <h2>🇩🇪 B1</h2>
-
-            <p>
-                Intermediate
-            </p>
-
-            <button
-                class="btn btn-gray"
-                onclick="comingSoon('B1')">
-                Coming Soon
-            </button>
-
-        </div>
-
-
-        <div class="card level-card">
-
-            <h2>🇩🇪 B2</h2>
-
-            <p>
-                Upper Intermediate
-            </p>
-
-            <button
-                class="btn btn-gray"
-                onclick="comingSoon('B2')">
-                Coming Soon
-            </button>
-
-        </div>
-
-    </section>
+    </div>
 
 </div>
 
 
+
+<div class="card">
+
+    <p class="small">
+        A2 Lessons
+    </p>
+
+    <div
+        class="stat"
+        id="a2Lessons">
+
+        0/10
+
+    </div>
+
+</div>
+
+
+
+<div class="card">
+
+    <p class="small">
+        A1 Quiz
+    </p>
+
+    <div
+        class="result"
+        id="a1Quiz">
+
+        —
+
+    </div>
+
+</div>
+
+
+
+<div class="card">
+
+    <p class="small">
+        A2 Quiz
+    </p>
+
+    <div
+        class="result"
+        id="a2Quiz">
+
+        —
+
+    </div>
+
+</div>
+
+
+</section>
+
+
+
+<!-- A1 -->
+
+<section class="card">
+
+    <h2>
+        🟢 A1 German
+    </h2>
+
+    <p>
+        Continue your beginner German lessons.
+    </p>
+
+
+    <div class="progress">
+
+        <div
+            class="progress-bar"
+            id="a1ProgressBar">
+        </div>
+
+    </div>
+
+
+    <p
+        class="small"
+        id="a1ProgressText">
+
+        0 / 7 lessons completed
+
+    </p>
+
+
+    <a
+        href="a1.html"
+        class="btn">
+
+        Continue A1 →
+
+    </a>
+
+</section>
+
+
+
+<br>
+
+
+
+<!-- A2 -->
+
+<section class="card">
+
+    <h2>
+        🔵 A2 German
+    </h2>
+
+    <p>
+        Practice difficult A2 grammar,
+        vocabulary, speaking, writing and quizzes.
+    </p>
+
+
+    <div class="progress">
+
+        <div
+            class="progress-bar a2-bar"
+            id="a2ProgressBar">
+        </div>
+
+    </div>
+
+
+    <p
+        class="small"
+        id="a2ProgressText">
+
+        0 / 10 lessons completed
+
+    </p>
+
+
+    <a
+        href="a2.html"
+        class="btn btn-green">
+
+        Continue A2 →
+
+    </a>
+
+</section>
+
+
+
+<br>
+
+
+
+<!-- LEVELS -->
+
+<section class="grid">
+
+
+<div class="card level-card">
+
+    <h2>
+        🇩🇪 A1
+    </h2>
+
+    <p>
+        Beginner
+    </p>
+
+    <a
+        href="a1.html"
+        class="btn">
+
+        Open A1
+
+    </a>
+
+</div>
+
+
+
+<div class="card level-card">
+
+    <h2>
+        🇩🇪 A2
+    </h2>
+
+    <p>
+        Elementary
+    </p>
+
+    <a
+        href="a2.html"
+        class="btn btn-green">
+
+        Open A2
+
+    </a>
+
+</div>
+
+
+
+<div class="card level-card">
+
+    <h2>
+        🇩🇪 B1
+    </h2>
+
+    <p>
+        Intermediate
+    </p>
+
+    <button
+        class="btn btn-gray"
+        onclick="comingSoon('B1')">
+
+        Coming Soon
+
+    </button>
+
+</div>
+
+
+
+<div class="card level-card">
+
+    <h2>
+        🇩🇪 B2
+    </h2>
+
+    <p>
+        Upper Intermediate
+    </p>
+
+    <button
+        class="btn btn-gray"
+        onclick="comingSoon('B2')">
+
+        Coming Soon
+
+    </button>
+
+</div>
+
+
+</section>
+
+
+</div>
+
+
+
 <footer>
 
-    🇩🇪 DeutschStart — Learn German. Speak with Confidence.
+    🇩🇪 DeutschStart —
+    Learn German. Speak with Confidence.
 
 </footer>
 
 
+
 <script>
 
-const supabaseClient = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
-);
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
 
 let currentUser = null;
 
 
+
 /* ==========================================
-   LOAD USER
+   LOAD DASHBOARD
 ========================================== */
 
 async function loadDashboard() {
 
+
     const {
+
         data: { user },
+
         error
+
     } = await supabaseClient.auth.getUser();
+
 
 
     if (error || !user) {
 
-        window.location.href = "login.html";
+        window.location.href =
+            "login.html";
 
         return;
+
     }
+
 
 
     currentUser = user;
 
 
-    document.getElementById("userEmail").textContent =
-        user.email;
+
+    document.getElementById(
+        "userEmail"
+    ).textContent = user.email;
+
 
 
     await loadLessonProgress();
 
     await loadQuizResults();
 
+
 }
+
 
 
 /* ==========================================
@@ -470,11 +705,26 @@ async function loadDashboard() {
 
 async function loadLessonProgress() {
 
-    const { data, error } = await supabaseClient
+
+    const { data, error } =
+        await supabaseClient
+
         .from("lesson_progress")
-        .select("lesson_name, completed")
-        .eq("user_id", currentUser.id)
-        .eq("completed", true);
+
+        .select(
+            "lesson_name, completed"
+        )
+
+        .eq(
+            "user_id",
+            currentUser.id
+        )
+
+        .eq(
+            "completed",
+            true
+        );
+
 
 
     if (error) {
@@ -485,84 +735,124 @@ async function loadLessonProgress() {
         );
 
         return;
+
     }
+
 
 
     const lessons = data || [];
 
 
-    /*
-       A1 lesson names
-    */
 
     const a1Names = [
 
         "Greetings",
+
         "Introduction",
+
         "Numbers",
+
         "Family",
+
         "Home",
+
         "Food",
+
         "Daily Routine"
 
     ];
 
 
-    /*
-       A2 lesson names
-    */
 
     const a2Names = [
 
         "Perfekt und Präteritum",
+
         "Dativ und Akkusativ",
+
         "Präpositionen",
+
         "Nebensätze",
+
         "Adjektivendungen",
+
         "Komparativ und Superlativ",
+
         "Reflexive Verben A2",
+
         "Konjunktiv II",
+
         "Modalverben A2",
+
         "Schreiben und Sprechen"
 
     ];
 
 
-    const completedNames = [
-        ...new Set(
-            lessons.map(
-                item => item.lesson_name
+
+    const completedNames =
+        [
+
+            ...new Set(
+
+                lessons.map(
+
+                    item =>
+                        item.lesson_name
+
+                )
+
             )
-        )
-    ];
+
+        ];
+
 
 
     const a1Completed =
         completedNames.filter(
-            name => a1Names.includes(name)
+
+            name =>
+                a1Names.includes(name)
+
         ).length;
+
 
 
     const a2Completed =
         completedNames.filter(
-            name => a2Names.includes(name)
+
+            name =>
+                a2Names.includes(name)
+
         ).length;
 
 
-    updateA1Progress(a1Completed);
 
-    updateA2Progress(a2Completed);
+    updateA1Progress(
+        a1Completed
+    );
+
+
+    updateA2Progress(
+        a2Completed
+    );
+
 
 }
+
 
 
 /* ==========================================
    A1 PROGRESS
 ========================================== */
 
-function updateA1Progress(completed) {
+function updateA1Progress(
+    completed
+) {
+
 
     const total = 7;
+
 
     const percentage =
         Math.round(
@@ -570,27 +860,41 @@ function updateA1Progress(completed) {
         );
 
 
-    document.getElementById("a1Lessons").textContent =
+
+    document.getElementById(
+        "a1Lessons"
+    ).textContent =
         `${completed}/${total}`;
 
 
-    document.getElementById("a1ProgressBar").style.width =
+
+    document.getElementById(
+        "a1ProgressBar"
+    ).style.width =
         percentage + "%";
 
 
-    document.getElementById("a1ProgressText").textContent =
+
+    document.getElementById(
+        "a1ProgressText"
+    ).textContent =
         `${completed} / ${total} lessons completed`;
 
 }
+
 
 
 /* ==========================================
    A2 PROGRESS
 ========================================== */
 
-function updateA2Progress(completed) {
+function updateA2Progress(
+    completed
+) {
+
 
     const total = 10;
+
 
     const percentage =
         Math.round(
@@ -598,18 +902,28 @@ function updateA2Progress(completed) {
         );
 
 
-    document.getElementById("a2Lessons").textContent =
+
+    document.getElementById(
+        "a2Lessons"
+    ).textContent =
         `${completed}/${total}`;
 
 
-    document.getElementById("a2ProgressBar").style.width =
+
+    document.getElementById(
+        "a2ProgressBar"
+    ).style.width =
         percentage + "%";
 
 
-    document.getElementById("a2ProgressText").textContent =
+
+    document.getElementById(
+        "a2ProgressText"
+    ).textContent =
         `${completed} / ${total} lessons completed`;
 
 }
+
 
 
 /* ==========================================
@@ -618,13 +932,28 @@ function updateA2Progress(completed) {
 
 async function loadQuizResults() {
 
-    const { data, error } = await supabaseClient
+
+    const { data, error } =
+        await supabaseClient
+
         .from("quiz_results")
-        .select("score, total, created_at")
-        .eq("user_id", currentUser.id)
-        .order("created_at", {
-            ascending: false
-        });
+
+        .select(
+            "score, total, created_at, level"
+        )
+
+        .eq(
+            "user_id",
+            currentUser.id
+        )
+
+        .order(
+            "created_at",
+            {
+                ascending: false
+            }
+        );
+
 
 
     if (error) {
@@ -635,50 +964,77 @@ async function loadQuizResults() {
         );
 
         return;
+
     }
 
 
-    const results = data || [];
+
+    const results =
+        data || [];
+
 
 
     /*
-       The current quiz_results table does not
-       have a level column.
-
-       We therefore identify the newest result
-       as the latest quiz result and display it
-       in the A2 area when using this dashboard.
-
-       Existing A1 results remain visible through
-       the result list below.
+       Find latest A1 result
     */
 
+    const a1Results =
+        results.filter(
 
-    if (results.length > 0) {
+            result =>
+                result.level === "A1"
 
-        const latest = results[0];
+        );
 
-        document.getElementById("a2Quiz").textContent =
-            `${latest.score}/${latest.total}`;
+
+
+    if (a1Results.length > 0) {
+
+        const latestA1 =
+            a1Results[0];
+
+
+        document.getElementById(
+            "a1Quiz"
+        ).textContent =
+
+            `${latestA1.score}/${latestA1.total}`;
 
     }
+
 
 
     /*
-       Show latest available result for A1
-       if there is a second result.
+       Find latest A2 result
     */
 
-    if (results.length > 1) {
+    const a2Results =
+        results.filter(
 
-        const previous = results[1];
+            result =>
+                result.level === "A2"
 
-        document.getElementById("a1Quiz").textContent =
-            `${previous.score}/${previous.total}`;
+        );
+
+
+
+    if (a2Results.length > 0) {
+
+        const latestA2 =
+            a2Results[0];
+
+
+        document.getElementById(
+            "a2Quiz"
+        ).textContent =
+
+            `${latestA2.score}/${latestA2.total}`;
 
     }
+
 
 }
+
 
 
 /* ==========================================
@@ -687,8 +1043,10 @@ async function loadQuizResults() {
 
 async function logout() {
 
+
     const { error } =
         await supabaseClient.auth.signOut();
+
 
 
     if (error) {
@@ -699,13 +1057,17 @@ async function logout() {
         );
 
         return;
+
     }
+
 
 
     window.location.href =
         "login.html";
 
+
 }
+
 
 
 /* ==========================================
@@ -714,12 +1076,15 @@ async function logout() {
 
 function comingSoon(level) {
 
+
     alert(
         level +
         " German is coming soon! 🇩🇪"
     );
 
+
 }
+
 
 
 /* ==========================================
@@ -728,7 +1093,10 @@ function comingSoon(level) {
 
 loadDashboard();
 
+
 </script>
 
+
 </body>
+
 </html>
