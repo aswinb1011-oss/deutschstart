@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -92,6 +93,10 @@ header h1 {
     margin-bottom: 15px;
 }
 
+.lesson h3 {
+    margin: 20px 0 12px;
+}
+
 .lesson p {
     line-height: 1.6;
     margin-bottom: 12px;
@@ -102,6 +107,17 @@ header h1 {
     padding: 15px;
     border-radius: 10px;
     line-height: 2;
+}
+
+.complete-button {
+    background: #ffcc00;
+    color: #172033;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 9px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 18px;
 }
 
 .number-grid {
@@ -116,17 +132,6 @@ header h1 {
     padding: 10px;
     border-radius: 8px;
     border: 1px solid #d5dbea;
-}
-
-.complete-button {
-    background: #ffcc00;
-    color: #172033;
-    border: none;
-    padding: 12px 18px;
-    border-radius: 9px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-bottom: 18px;
 }
 
 .quiz-question {
@@ -205,9 +210,13 @@ footer {
 
 <div class="container">
 
-<a class="back" href="index.html">← Back to Home</a>
+<a class="back" href="index.html">
+    ← Back to Home
+</a>
 
-<h2 style="margin-bottom:15px;">📚 A1 Lessons</h2>
+<h2 style="margin-bottom:15px;">
+    📚 A1 Lessons
+</h2>
 
 <div class="lesson-menu">
 
@@ -266,8 +275,13 @@ footer {
 <div id="lesson-area">
 
     <div class="lesson">
+
         <h2>👋 Welcome to A1!</h2>
-        <p>Select a lesson above to start learning German.</p>
+
+        <p>
+            Select a lesson above to start learning German.
+        </p>
+
     </div>
 
 </div>
@@ -279,8 +293,13 @@ footer {
 </div>
 
 <footer>
+
     <p>© 2026 DeutschStart 🇩🇪</p>
-    <p>Learn German A1 → B2</p>
+
+    <p>
+        Learn German A1 → B2
+    </p>
+
 </footer>
 
 
@@ -303,7 +322,7 @@ const supabaseClient = window.supabase.createClient(
 let currentUser = null;
 
 
-/* LOAD USER */
+/* USER */
 
 async function loadUser() {
 
@@ -312,7 +331,9 @@ async function loadUser() {
     } = await supabaseClient.auth.getUser();
 
     if (!user) {
+
         window.location.href = "login.html";
+
         return;
     }
 
@@ -326,7 +347,8 @@ loadUser();
 
 function showLesson(lesson) {
 
-    const area = document.getElementById("lesson-area");
+    const area =
+        document.getElementById("lesson-area");
 
 
     /* GREETINGS */
@@ -431,7 +453,7 @@ function showLesson(lesson) {
     }
 
 
-    /* NUMBERS 1–100 */
+    /* NUMBERS 1-100 */
 
     else if (lesson === "numbers") {
 
@@ -568,16 +590,14 @@ function showLesson(lesson) {
 
             <div class="words">
 
-                <b>Example:</b><br><br>
+                <b>Wie viel kostet das?</b><br>
+                How much does that cost?<br><br>
 
-                Wie viel kostet das?<br>
-                — How much does that cost?<br><br>
+                <b>Das kostet 25 Euro.</b><br>
+                That costs 25 euros.<br><br>
 
-                Das kostet 25 Euro.<br>
-                — That costs 25 euros.<br><br>
-
-                Ich bin 18 Jahre alt.<br>
-                — I am 18 years old.
+                <b>Ich bin 18 Jahre alt.</b><br>
+                I am 18 years old.
 
             </div>
 
@@ -601,14 +621,79 @@ function showLesson(lesson) {
                 ✅ Complete Lesson
             </button>
 
+            <h3>👨‍👩‍👧 Family Vocabulary</h3>
+
             <div class="words">
 
                 die Familie — family<br>
                 der Vater — father<br>
                 die Mutter — mother<br>
+                die Eltern — parents<br>
+                der Sohn — son<br>
+                die Tochter — daughter<br>
                 der Bruder — brother<br>
                 die Schwester — sister<br>
-                das Kind — child
+                der Großvater — grandfather<br>
+                die Großmutter — grandmother<br>
+                der Onkel — uncle<br>
+                die Tante — aunt<br>
+                der Cousin — male cousin<br>
+                die Cousine — female cousin<br>
+                der Ehemann — husband<br>
+                die Ehefrau — wife<br>
+                das Kind — child<br>
+                die Kinder — children
+
+            </div>
+
+            <h3>🗣️ Useful Sentences</h3>
+
+            <div class="words">
+
+                <b>Wie groß ist deine Familie?</b><br>
+                How big is your family?<br><br>
+
+                <b>Meine Familie hat fünf Personen.</b><br>
+                My family has five people.<br><br>
+
+                <b>Ich habe einen Bruder.</b><br>
+                I have a brother.<br><br>
+
+                <b>Ich habe eine Schwester.</b><br>
+                I have a sister.<br><br>
+
+                <b>Das ist mein Vater.</b><br>
+                This is my father.<br><br>
+
+                <b>Das ist meine Mutter.</b><br>
+                This is my mother.<br><br>
+
+                <b>Mein Vater heißt ...</b><br>
+                My father's name is ...<br><br>
+
+                <b>Meine Mutter heißt ...</b><br>
+                My mother's name is ...<br><br>
+
+                <b>Ich liebe meine Familie.</b><br>
+                I love my family.
+
+            </div>
+
+            <h3>💬 Mini Conversation</h3>
+
+            <div class="words">
+
+                <b>A:</b> Wie groß ist deine Familie?<br>
+
+                <b>B:</b> Meine Familie hat fünf Personen.<br><br>
+
+                <b>A:</b> Hast du Geschwister?<br>
+
+                <b>B:</b> Ja, ich habe einen Bruder.<br><br>
+
+                <b>A:</b> Wie heißt dein Vater?<br>
+
+                <b>B:</b> Mein Vater heißt ...
 
             </div>
 
@@ -730,7 +815,9 @@ function showLesson(lesson) {
                 ✅ Complete Lesson
             </button>
 
-            <p><b>Personal Pronouns:</b></p>
+            <p>
+                <b>Personal Pronouns:</b>
+            </p>
 
             <div class="words">
 
@@ -746,7 +833,10 @@ function showLesson(lesson) {
             </div>
 
             <p style="margin-top:15px;">
-                Example: <b>Ich bin Student.</b>
+
+                Example:
+                <b>Ich bin Student.</b>
+
             </p>
 
         </div>`;
@@ -770,28 +860,34 @@ function showLesson(lesson) {
             </button>
 
             <p>
-                <b>Frage:</b> Wie heißt du?
-            </p>
-
-            <p>
-                <b>Antwort:</b> Ich heiße Aswin.
-            </p>
-
-            <p>
-                <b>Frage:</b> Woher kommst du?
-            </p>
-
-            <p>
-                <b>Antwort:</b> Ich komme aus Indien.
-            </p>
-
-            <p>
-                <b>Frage:</b> Was sind deine Hobbys?
+                <b>Frage:</b>
+                Wie heißt du?
             </p>
 
             <p>
                 <b>Antwort:</b>
-                Meine Hobbys sind Fußball spielen und Musik hören.
+                Ich heiße Aswin.
+            </p>
+
+            <p>
+                <b>Frage:</b>
+                Woher kommst du?
+            </p>
+
+            <p>
+                <b>Antwort:</b>
+                Ich komme aus Indien.
+            </p>
+
+            <p>
+                <b>Frage:</b>
+                Was sind deine Hobbys?
+            </p>
+
+            <p>
+                <b>Antwort:</b>
+                Meine Hobbys sind Fußball spielen
+                und Musik hören.
             </p>
 
         </div>`;
@@ -828,7 +924,9 @@ function showLesson(lesson) {
                 Goodbye
             </button>
 
-            <p id="quiz-result" class="result"></p>
+            <p id="quiz-result"
+                class="result">
+            </p>
 
         </div>`;
 
@@ -837,7 +935,7 @@ function showLesson(lesson) {
 }
 
 
-/* QUIZ ANSWER */
+/* QUIZ */
 
 async function answer(correct) {
 
@@ -861,11 +959,14 @@ async function answer(correct) {
     }
 
     if (!currentUser) {
+
         console.log("User not logged in");
+
         return;
     }
 
     const score = correct ? 1 : 0;
+
     const total = 1;
 
     const { error } =
@@ -874,7 +975,9 @@ async function answer(correct) {
         .insert({
 
             user_id: currentUser.id,
+
             score: score,
+
             total: total
 
         });
@@ -914,7 +1017,9 @@ async function completeLesson(lessonName) {
         .upsert({
 
             user_id: currentUser.id,
+
             lesson_name: lessonName,
+
             completed: true
 
         });
@@ -928,11 +1033,14 @@ async function completeLesson(lessonName) {
         return;
     }
 
-    alert("✅ Lesson completed!");
+    alert(
+        "✅ Lesson completed!"
+    );
 
 }
 
 </script>
 
 </body>
+
 </html>
