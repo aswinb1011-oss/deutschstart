@@ -3,280 +3,265 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>DeutschStart A2 🇩🇪</title>
+<title>DeutschStart — A2 Deutschkurs</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{
+    box-sizing:border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f7fb;
-    color: #172033;
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#07111f;
+    color:#eef5ff;
+    line-height:1.6;
 }
 
-header {
-    background: linear-gradient(135deg, #172033, #3157a5);
-    color: white;
-    text-align: center;
-    padding: 28px 18px;
+header{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:#0b1728ee;
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid #243650;
 }
 
-header h1 {
-    font-size: 30px;
-    margin-bottom: 8px;
+.header{
+    max-width:1100px;
+    margin:auto;
+    padding:14px 18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
 }
 
-header p {
-    opacity: 0.9;
+.logo{
+    font-size:22px;
+    font-weight:800;
 }
 
-.container {
-    max-width: 1000px;
-    margin: auto;
-    padding: 25px 18px;
+.logo span{
+    color:#65a9ff;
 }
 
-.back {
-    display: inline-block;
-    margin-bottom: 20px;
-    color: #3157a5;
-    text-decoration: none;
-    font-weight: bold;
+nav{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+    justify-content:flex-end;
 }
 
-.menu {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    margin-bottom: 30px;
+button{
+    border:0;
+    border-radius:10px;
+    padding:10px 14px;
+    background:#18304e;
+    color:#fff;
+    font-weight:700;
+    cursor:pointer;
 }
 
-.menu button {
-    border: none;
-    background: white;
-    padding: 18px;
-    border-radius: 14px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #172033;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    cursor: pointer;
+button:hover{
+    background:#24466e;
 }
 
-.menu button:hover {
-    background: #eef3ff;
+button.primary{
+    background:#2477ff;
 }
 
-.section {
-    background: white;
-    border-radius: 18px;
-    padding: 28px;
-    margin-bottom: 25px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+button.done{
+    background:#16805d;
 }
 
-.section h2 {
-    font-size: 28px;
-    margin-bottom: 15px;
+main{
+    max-width:1100px;
+    margin:auto;
+    padding:24px 16px 60px;
 }
 
-.section h3 {
-    margin: 20px 0 10px;
+.hero{
+    background:linear-gradient(135deg,#102b4b,#0b1728);
+    border:1px solid #284361;
+    border-radius:22px;
+    padding:28px;
+    margin-bottom:20px;
 }
 
-.section p {
-    line-height: 1.7;
-    margin-bottom: 12px;
+h1{
+    font-size:34px;
+    margin:0 0 8px;
 }
 
-.lesson-card {
-    background: white;
-    border: 1px solid #dce2ee;
-    border-radius: 16px;
-    padding: 25px;
-    margin-bottom: 18px;
+h2{
+    font-size:25px;
+    margin-top:0;
 }
 
-.lesson-card h3 {
-    margin-top: 0;
-    font-size: 23px;
+h3{
+    color:#8fc0ff;
 }
 
-.lesson-card p {
-    color: #46516a;
+.muted{
+    color:#a9b8cc;
 }
 
-.complete-btn {
-    background: #3157a5;
-    color: white;
-    border: none;
-    padding: 13px 20px;
-    border-radius: 10px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 10px;
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:16px;
 }
 
-.complete-btn:hover {
-    background: #24468d;
+.card{
+    background:#0d1b2e;
+    border:1px solid #253b56;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:16px;
 }
 
-.completed {
-    background: #198754;
+.lesson-list{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
 }
 
-.words {
-    background: #f0f4fa;
-    border-radius: 12px;
-    padding: 18px;
-    margin-top: 15px;
-    line-height: 2;
+.lesson-card{
+    padding:16px;
+    border:1px solid #29415e;
+    background:#101f33;
+    border-radius:14px;
 }
 
-.example {
-    background: #eef5ff;
-    border-left: 5px solid #3157a5;
-    padding: 15px;
-    margin: 15px 0;
-    border-radius: 8px;
+.lesson-card button{
+    margin-top:8px;
 }
 
-.quiz-controls {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 20px 0;
+.tag{
+    display:inline-block;
+    padding:4px 9px;
+    border-radius:20px;
+    background:#17365d;
+    color:#9bc9ff;
+    font-size:12px;
+    margin:2px;
 }
 
-.quiz-controls select,
-.quiz-controls button {
-    padding: 12px 15px;
-    border-radius: 10px;
-    border: 1px solid #ccd4e3;
-    font-size: 15px;
+.example{
+    background:#071523;
+    border-left:4px solid #4b94ff;
+    padding:12px 15px;
+    border-radius:8px;
+    margin:10px 0;
 }
 
-.quiz-controls button {
-    background: #3157a5;
-    color: white;
-    border: none;
-    font-weight: bold;
+.exercise{
+    background:#111f32;
+    border:1px solid #2a405b;
+    border-radius:14px;
+    padding:16px;
+    margin:12px 0;
 }
 
-.quiz-question {
-    border: 1px solid #dce2ee;
-    border-radius: 15px;
-    padding: 20px;
-    margin: 18px 0;
+.option{
+    display:block;
+    width:100%;
+    text-align:left;
+    margin:7px 0;
+    background:#172940;
 }
 
-.quiz-question h3 {
-    margin-bottom: 15px;
+.feedback{
+    margin-top:10px;
+    padding:10px;
+    border-radius:9px;
+    background:#102d28;
 }
 
-.option {
-    display: block;
-    width: 100%;
-    text-align: left;
-    padding: 13px;
-    margin: 8px 0;
-    background: white;
-    border: 1px solid #ccd4e3;
-    border-radius: 9px;
-    font-size: 16px;
-    cursor: pointer;
+input,
+textarea,
+select{
+    width:100%;
+    padding:11px;
+    border-radius:9px;
+    border:1px solid #38516d;
+    background:#071523;
+    color:#fff;
+    font-size:16px;
 }
 
-.option:hover {
-    background: #eef3ff;
+textarea{
+    min-height:120px;
 }
 
-.option.correct {
-    background: #d9f7e5;
-    border-color: #198754;
+.progress-wrap{
+    height:12px;
+    background:#1b2b40;
+    border-radius:20px;
+    overflow:hidden;
 }
 
-.option.wrong {
-    background: #ffe0e0;
-    border-color: #dc3545;
+.progress{
+    height:100%;
+    background:#3d91ff;
+    width:0;
+    transition:.3s;
 }
 
-.feedback {
-    margin-top: 10px;
-    font-weight: bold;
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
 }
 
-#quizResult {
-    background: #172033;
-    color: white;
-    padding: 20px;
-    border-radius: 14px;
-    margin-top: 20px;
-    display: none;
+.stat{
+    background:#101f33;
+    border:1px solid #29415e;
+    border-radius:14px;
+    padding:15px;
+    text-align:center;
 }
 
-textarea {
-    width: 100%;
-    min-height: 180px;
-    padding: 15px;
-    border: 1px solid #ccd4e3;
-    border-radius: 12px;
-    font-size: 16px;
-    resize: vertical;
+.hidden{
+    display:none!important;
 }
 
-.speak-box {
-    background: #f0f4fa;
-    padding: 20px;
-    border-radius: 14px;
-    margin-top: 15px;
+.answer{
+    color:#7fe0b5;
+    font-weight:700;
 }
 
-.home-button {
-    display: inline-block;
-    background: #ffcc00;
-    color: #172033;
-    padding: 13px 22px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: bold;
-    margin-top: 10px;
+.warn{
+    color:#ffd27d;
 }
 
-.status {
-    margin-top: 10px;
-    font-weight: bold;
+.small{
+    font-size:14px;
 }
 
-footer {
-    background: #172033;
-    color: white;
-    text-align: center;
-    padding: 30px 20px;
-    margin-top: 30px;
-}
+@media(max-width:750px){
 
-@media (max-width: 600px) {
-
-    .menu {
-        grid-template-columns: 1fr;
+    .grid,
+    .lesson-list{
+        grid-template-columns:1fr;
     }
 
-    .section {
-        padding: 20px;
+    .stats{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    header h1 {
-        font-size: 25px;
+    h1{
+        font-size:27px;
     }
 
-    .section h2 {
-        font-size: 24px;
+    nav{
+        width:100%;
+        justify-content:flex-start;
+    }
+
+    .header{
+        flex-wrap:wrap;
     }
 }
 </style>
@@ -285,576 +270,1054 @@ footer {
 <body>
 
 <header>
-    <h1>🇩🇪 DeutschStart A2</h1>
-    <p>Build stronger German skills step by step.</p>
-</header>
 
-<div class="container">
+<div class="header">
 
-<a class="back" href="dashboard.html">← Back to Dashboard</a>
+<div class="logo">
+DeutschStart <span>🇩🇪 A2</span>
+</div>
 
-<div class="menu">
+<nav>
 
-    <button onclick="showSection('lessons')">
-        📚 Lessons
-    </button>
+<button onclick="show('lessons')">
+Lessons
+</button>
 
-    <button onclick="showSection('grammar')">
-        📖 Grammar
-    </button>
+<button onclick="show('grammar')">
+Grammar
+</button>
 
-    <button onclick="showSection('vocabulary')">
-        🧠 Vocabulary
-    </button>
+<button onclick="show('vocab')">
+Vocabulary
+</button>
 
-    <button onclick="showSection('speaking')">
-        🗣️ Speaking
-    </button>
+<button onclick="show('speaking')">
+Speaking
+</button>
 
-    <button onclick="showSection('writing')">
-        ✍️ Writing
-    </button>
+<button onclick="show('writing')">
+Writing
+</button>
 
-    <button onclick="showSection('reading')">
-        📄 Reading
-    </button>
+<button onclick="show('reading')">
+Reading
+</button>
 
-    <button onclick="showSection('quiz')">
-        🎯 A2 Quiz
-    </button>
+<button onclick="show('listening')">
+Listening
+</button>
+
+<button class="primary" onclick="show('quiz')">
+A2 Quiz
+</button>
+
+</nav>
 
 </div>
+
+</header>
+
+
+<main>
+
+
+<section class="hero">
+
+<h1>
+A2 Deutsch — Complete Course
+</h1>
+
+<p class="muted">
+Learn, practise and test the most important A2 German grammar,
+vocabulary, speaking, writing, reading and listening skills.
+</p>
+
+<div class="stats">
+
+<div class="stat">
+<b id="completedCount">0</b>
+<br>
+<span class="small">
+Lessons completed
+</span>
+</div>
+
+<div class="stat">
+<b>10</b>
+<br>
+<span class="small">
+A2 lessons
+</span>
+</div>
+
+<div class="stat">
+<b id="lastScore">—</b>
+<br>
+<span class="small">
+Last quiz
+</span>
+</div>
+
+<div class="stat">
+<b id="userEmail">—</b>
+<br>
+<span class="small">
+Student
+</span>
+</div>
+
+</div>
+
+<div style="margin-top:15px"
+class="progress-wrap">
+
+<div id="courseProgress"
+class="progress">
+</div>
+
+</div>
+
+</section>
+
 
 <!-- LESSONS -->
 
-<div id="lessons" class="section">
+<section id="lessons">
 
-<h2>📚 A2 Lessons</h2>
+<div class="card">
 
-<p>
-Complete the lessons one by one. Your progress will be saved to your account.
+<h2>
+📚 10 Complete A2 Lessons
+</h2>
+
+<p class="muted">
+Open a lesson, study the explanation and examples,
+then complete its practice.
 </p>
 
-<div class="lesson-card">
-
-<h3>1. Perfekt und Präteritum</h3>
-
-<p>
-Learn how to talk about past events using Perfekt and common Präteritum forms.
-</p>
-
-<div class="example">
-<b>Perfekt:</b><br>
-Ich habe Fußball gespielt.<br><br>
-
-<b>Präteritum:</b><br>
-Ich war gestern zu Hause.
-</div>
-
-<div class="words">
-<b>sein → war</b><br>
-<b>haben → hatte</b><br>
-<b>gehen → ging</b><br>
-<b>kommen → kam</b><br>
-<b>sehen → sah</b>
-</div>
-
-<button
-class="complete-btn"
-onclick="saveLessonProgress('Perfekt und Präteritum')">
-✅ Complete
-</button>
-
-</div>
-
-
-<div class="lesson-card">
-
-<h3>2. Dativ & Akkusativ</h3>
-
-<p>
-Use cases correctly with verbs and objects.
-</p>
-
-<div class="example">
-Ich gebe <b>dem Mann</b> den Schlüssel.<br>
-Ich sehe <b>den Mann</b>.
-</div>
-
-<div class="words">
-<b>Akkusativ:</b> den, die, das, die<br>
-<b>Dativ:</b> dem, der, dem, den
-</div>
-
-<button
-class="complete-btn"
-onclick="saveLessonProgress('Dativ und Akkusativ')">
-✅ Complete
-</button>
-
-</div>
-
-
-<div class="lesson-card">
-
-<h3>3. Präpositionen</h3>
-
-<p>
-Learn important A2 prepositions and their cases.
-</p>
-
-<div class="words">
-<b>mit</b> + Dativ<br>
-<b>bei</b> + Dativ<br>
-<b>nach</b> + Dativ<br>
-<b>für</b> + Akkusativ<br>
-<b>ohne</b> + Akkusativ<br>
-<b>gegen</b> + Akkusativ
-</div>
-
-<div class="example">
-Ich fahre <b>mit dem Bus</b>.<br>
-Das Geschenk ist <b>für meinen Freund</b>.
-</div>
-
-<button
-class="complete-btn"
-onclick="saveLessonProgress('Präpositionen')">
-✅ Complete
-</button>
-
-</div>
-
-
-<div class="lesson-card">
-
-<h3>4. Nebensätze</h3>
-
-<p>
-Learn how to build subordinate clauses with weil, dass, wenn and obwohl.
-</p>
-
-<div class="example">
-Ich bleibe zu Hause,
-<b>weil ich krank bin.</b>
-<br><br>
-
-Ich weiß,
-<b>dass er heute kommt.</b>
-</div>
-
-<button
-class="complete-btn"
-onclick="saveLessonProgress('Nebensätze')">
-✅ Complete
-</button>
-
-</div>
-
-
-<div class="lesson-card">
-
-<h3>5. Adjektivendungen</h3>
-
-<p>
-Practice adjective endings after articles.
-</p>
-
-<div class="example">
-Der <b>kleine</b> Hund ist süß.<br>
-Ich sehe einen <b>kleinen</b> Hund.<br>
-Ich helfe einem <b>kleinen</b> Hund.
-</div>
-
-<button
-class="complete-btn"
-onclick="saveLessonProgress('Adjektivendungen')">
-✅ Complete
-</button>
-
-</div>
-
-
-<div class="lesson-card">
-
-<h3>6. Komparativ und Superlativ</h3>
-
-<p>
-Compare people, objects and situations.
-</p>
-
-<div class="words">
-schnell → schneller → am schnellsten<br>
-groß → größer → am größten<br>
-gut → besser → am besten<br>
-viel → mehr → am meisten
-</div>
-
-<div class="example">
-Mein Auto ist <b>schneller als</b> dein Auto.
-</div>
-
-<button
-class="complete-btn"
-onclick="saveLessonProgress('Komparativ und Superlativ')">
-✅ Complete
-</button>
-
-</div>
-
-
-<div class="lesson-card">
-
-<h3>7. Reflexive Verben A2</h3>
-
-<p>
-Practice reflexive verbs in everyday situations.
-</p>
-
-<div class="words">
-sich erinnern an<br>
-sich freuen auf<br>
-sich interessieren für<br>
-sich beeilen<br>
-sich treffen
-</div>
-
-<div class="example">
-Ich <b>freue mich auf</b> das Wochenende.
-</div>
-
-<button
-class="complete-btn"
-onclick="saveLessonProgress('Reflexive Verben A2')">
-✅ Complete
-</button>
-
-</div>
-
-
-<div class="lesson-card">
-
-<h3>8. Konjunktiv II</h3>
-
-<p>
-Use Konjunktiv II for wishes, polite requests and hypothetical situations.
-</p>
-
-<div class="example">
-Ich <b>würde</b> gern nach Deutschland reisen.<br><br>
-
-Wenn ich mehr Geld hätte,
-<b>würde ich</b> ein Auto kaufen.
-</div>
-
-<div class="words">
-haben → hätte<br>
-sein → wäre<br>
-können → könnte<br>
-müssen → müsste<br>
-würde + Infinitiv
-</div>
-
-<button
-class="complete-btn"
-onclick="saveLessonProgress('Konjunktiv II')">
-✅ Complete
-</button>
-
-</div>
-
-
-<div class="lesson-card">
-
-<h3>9. Modalverben A2</h3>
-
-<p>
-Practice modal verbs in different tenses and situations.
-</p>
-
-<div class="words">
-können — can<br>
-müssen — must<br>
-dürfen — may<br>
-sollen — should<br>
-wollen — want<br>
-möchten — would like
-</div>
-
-<div class="example">
-Ich <b>muss</b> morgen arbeiten.<br>
-Ich <b>kann</b> heute nicht kommen.
-</div>
-
-<button
-class="complete-btn"
-onclick="saveLessonProgress('Modalverben A2')">
-✅ Complete
-</button>
-
-</div>
-
-
-<div class="lesson-card">
-
-<h3>10. Schreiben und Sprechen</h3>
-
-<p>
-Prepare for A2 speaking and writing tasks.
-</p>
-
-<div class="example">
-Thema: Stadtleben oder Landleben?<br><br>
-
-Ich lebe lieber in der Stadt,
-weil es dort viele Möglichkeiten gibt.
-Außerdem gibt es gute Verkehrsmittel.
-</div>
-
-<button
-class="complete-btn"
-onclick="saveLessonProgress('Schreiben und Sprechen')">
-✅ Complete
-</button>
-
+<div id="lessonList"
+class="lesson-list">
 </div>
 
 </div>
+
+</section>
 
 
 <!-- GRAMMAR -->
 
-<div id="grammar" class="section" style="display:none;">
+<section id="grammar"
+class="hidden">
 
-<h2>📖 A2 Grammar</h2>
+<div class="card">
 
-<h3>1. Weil</h3>
+<h2>
+🧠 A2 Grammar Reference
+</h2>
+
+
+<h3>
+1. Perfekt und Präteritum
+</h3>
 
 <p>
-With <b>weil</b>, the conjugated verb goes to the end.
+Perfekt is used very often in conversation.
+Build it with haben or sein plus Partizip II.
+Use sein especially with movement or a change of state.
+Präteritum is common with sein, haben and modal verbs.
 </p>
 
 <div class="example">
+
+Ich <b>habe</b> gestern Fußball <b>gespielt</b>.
+
+<br>
+
+Wir <b>sind</b> nach Hause <b>gegangen</b>.
+
+<br>
+
+Ich <b>war</b> gestern müde.
+
+<br>
+
+Ich <b>musste</b> lange arbeiten.
+
+</div>
+
+
+<h3>
+2. Dativ und Akkusativ
+</h3>
+
+<p>
+The Akkusativ is often the direct object.
+The Dativ is often the indirect object.
+Some verbs such as helfen, gefallen, gehören and folgen require Dativ.
+</p>
+
+<div class="example">
+
+Ich sehe <b>den Mann</b>.
+
+<br>
+
+Ich helfe <b>dem Mann</b>.
+
+<br>
+
+Das Buch gehört <b>meiner Schwester</b>.
+
+<br>
+
+Ich gebe <b>dem Kind</b> <b>den Ball</b>.
+
+</div>
+
+
+<h3>
+3. Präpositionen
+</h3>
+
+<p>
+Common Dativ prepositions:
+aus, bei, mit, nach, seit, von, zu.
+</p>
+
+<p>
+Common Akkusativ prepositions:
+durch, für, gegen, ohne, um.
+</p>
+
+<p>
+Two-way prepositions include:
+an, auf, hinter, in, neben, über, unter, vor and zwischen.
+</p>
+
+<div class="example">
+
+Ich gehe <b>in die Schule</b>.
+→ direction
+
+<br>
+
+Ich bin <b>in der Schule</b>.
+→ location
+
+</div>
+
+
+<h3>
+4. Nebensätze
+</h3>
+
+<p>
+With weil, dass, wenn, obwohl and similar conjunctions,
+the conjugated verb normally goes to the end.
+</p>
+
+<div class="example">
+
 Ich bleibe zu Hause,
 weil ich <b>krank bin</b>.
+
+<br>
+
+Ich weiß,
+dass er morgen <b>kommt</b>.
+
+<br>
+
+Wenn ich Zeit <b>habe</b>,
+gehe ich spazieren.
+
 </div>
 
-<h3>2. Dass</h3>
+
+<h3>
+5. Adjektivendungen
+</h3>
+
+<p>
+Adjective endings depend on the article,
+gender, case and number.
+</p>
 
 <div class="example">
-Ich glaube, dass er heute <b>kommt</b>.
+
+der <b>gute</b> Mann
+
+<br>
+
+die <b>schöne</b> Stadt
+
+<br>
+
+ein <b>guter</b> Freund
+
+<br>
+
+eine <b>schöne</b> Stadt
+
+<br>
+
+mit einem <b>guten</b> Freund
+
 </div>
 
-<h3>3. Wenn</h3>
+
+<h3>
+6. Komparativ und Superlativ
+</h3>
 
 <div class="example">
-Wenn ich Zeit habe, spiele ich Fußball.
+
+schnell → schneller → am schnellsten
+
+<br>
+
+gut → besser → am besten
+
+<br>
+
+viel → mehr → am meisten
+
 </div>
 
-<h3>4. Dativ</h3>
+
+<h3>
+7. Reflexive Verben
+</h3>
 
 <div class="example">
-Ich helfe <b>meinem Freund</b>.
+
+Ich interessiere <b>mich</b> für Musik.
+
+<br>
+
+Du freust <b>dich</b> auf das Wochenende.
+
+<br>
+
+Wir treffen <b>uns</b> am Samstag.
+
+<br>
+
+Ihr müsst <b>euch</b> beeilen.
+
 </div>
 
-<h3>5. Akkusativ</h3>
+
+<h3>
+8. Konjunktiv II
+</h3>
+
+<p>
+Konjunktiv II is used for polite requests,
+wishes and unreal situations.
+</p>
 
 <div class="example">
-Ich sehe <b>meinen Freund</b>.
+
+Ich <b>würde</b> gern nach Deutschland reisen.
+
+<br>
+
+<b>Könnten</b> Sie mir bitte helfen?
+
+<br>
+
+Wenn ich Zeit hätte,
+<b>würde</b> ich mehr lernen.
+
 </div>
 
-<h3>6. Konjunktiv II</h3>
+
+<h3>
+9. Modalverben
+</h3>
 
 <div class="example">
-Wenn ich reich wäre, würde ich viel reisen.
-</div>
+
+Ich <b>muss</b> heute lernen.
+
+<br>
+
+Du <b>sollst</b> mehr Wasser trinken.
+
+<br>
+
+Wir <b>dürfen</b> hier nicht parken.
+
+<br>
+
+Ich <b>kann</b> morgen kommen.
 
 </div>
+
+
+<h3>
+10. Schreiben und Sprechen
+</h3>
+
+<p>
+Use connectors to make your A2 answers longer:
+zuerst, dann, danach, deshalb, aber, weil,
+obwohl, außerdem, zum Beispiel,
+meiner Meinung nach.
+</p>
+
+</div>
+
+</section>
 
 
 <!-- VOCABULARY -->
 
-<div id="vocabulary" class="section" style="display:none;">
+<section id="vocab"
+class="hidden">
 
-<h2>🧠 A2 Vocabulary</h2>
+<div class="card">
 
-<div class="words">
+<h2>
+🗂️ A2 Vocabulary
+</h2>
 
-<b>die Gesundheit</b> — health<br>
-<b>die Ernährung</b> — nutrition<br>
-<b>der Verkehr</b> — traffic<br>
-<b>die Umwelt</b> — environment<br>
-<b>die Ausbildung</b> — vocational training<br>
-<b>die Arbeit</b> — work<br>
-<b>die Freizeit</b> — free time<br>
-<b>die Erfahrung</b> — experience<br>
-<b>die Möglichkeit</b> — possibility<br>
-<b>die Entscheidung</b> — decision<br>
-<b>die Meinung</b> — opinion<br>
-<b>die Zukunft</b> — future
+<div class="grid">
+
+
+<div>
+
+<h3>
+Daily life
+</h3>
+
+<p>
+aufstehen — get up
+<br>
+einkaufen — shop
+<br>
+erledigen — take care of
+<br>
+vereinbaren — arrange
+<br>
+sich ausruhen — relax
+<br>
+sich beeilen — hurry
+<br>
+vergessen — forget
+<br>
+versprechen — promise
+</p>
+
+</div>
+
+
+<div>
+
+<h3>
+Work & Education
+</h3>
+
+<p>
+die Ausbildung — vocational training
+<br>
+die Bewerbung — application
+<br>
+der Lebenslauf — CV
+<br>
+die Erfahrung — experience
+<br>
+der Beruf — profession
+<br>
+die Prüfung — exam
+<br>
+die Aufgabe — task
+<br>
+die Möglichkeit — possibility
+</p>
+
+</div>
+
+
+<div>
+
+<h3>
+Health
+</h3>
+
+<p>
+die Gesundheit — health
+<br>
+die Krankheit — illness
+<br>
+der Schmerz — pain
+<br>
+der Rücken — back
+<br>
+die Ernährung — nutrition
+<br>
+sich fühlen — feel
+<br>
+untersuchen — examine
+<br>
+die Apotheke — pharmacy
+</p>
+
+</div>
+
+
+<div>
+
+<h3>
+Travel
+</h3>
+
+<p>
+die Sehenswürdigkeit — attraction
+<br>
+die Unterkunft — accommodation
+<br>
+die Reise — trip
+<br>
+die Fahrkarte — ticket
+<br>
+der Bahnhof — station
+<br>
+ankommen — arrive
+<br>
+abfahren — depart
+<br>
+umsteigen — change trains
+</p>
+
+</div>
+
+
+<div>
+
+<h3>
+Environment
+</h3>
+
+<p>
+die Umwelt — environment
+<br>
+der Müll — rubbish
+<br>
+recyceln — recycle
+<br>
+Strom sparen — save electricity
+<br>
+verschmutzen — pollute
+<br>
+nachhaltig — sustainable
+<br>
+die Energie — energy
+<br>
+das Klima — climate
+</p>
+
+</div>
+
+
+<div>
+
+<h3>
+Useful Connectors
+</h3>
+
+<p>
+deshalb — therefore
+<br>
+trotzdem — nevertheless
+<br>
+außerdem — additionally
+<br>
+während — while
+<br>
+obwohl — although
+<br>
+weil — because
+<br>
+damit — so that
+<br>
+zuerst — first
+</p>
 
 </div>
 
 </div>
+
+</div>
+
+</section>
 
 
 <!-- SPEAKING -->
 
-<div id="speaking" class="section" style="display:none;">
+<section id="speaking"
+class="hidden">
 
-<h2>🗣️ A2 Speaking</h2>
+<div class="card">
 
-<p>Practice speaking about everyday topics.</p>
+<h2>
+🗣️ A2 Speaking Practice
+</h2>
 
-<div class="speak-box">
 
-<h3>Topic 1: Wochenende</h3>
+<h3>
+Topic 1: Stadt oder Land?
+</h3>
 
-<p>
-Was machst du am Wochenende?
-</p>
+<div class="example">
 
-<p>
-Try to speak for 30–60 seconds.
-</p>
+Ich lebe lieber in der Stadt,
+weil es dort viele Möglichkeiten gibt.
+Es gibt gute Verkehrsmittel,
+Geschäfte und Freizeitangebote.
 
-</div>
+Auf dem Land ist es ruhiger
+und die Natur ist schöner.
 
-<div class="speak-box">
-
-<h3>Topic 2: Stadt oder Land</h3>
-
-<p>
-Wo möchtest du lieber leben: in der Stadt oder auf dem Land?
-Warum?
-</p>
+Meiner Meinung nach hat beides Vorteile.
 
 </div>
 
-<div class="speak-box">
 
-<h3>Topic 3: Freizeit</h3>
+<h3>
+Topic 2: Wochenende
+</h3>
 
-<p>
-Was machst du in deiner Freizeit?
-</p>
+<div class="example">
 
-</div>
+Am Wochenende verbringe ich gern Zeit
+mit meinen Freunden.
 
-<div class="speak-box">
+Am Samstag spiele ich Fußball.
 
-<h3>Useful phrases</h3>
+Danach gehen wir manchmal ins Kino
+oder essen zusammen.
 
-<div class="words">
-Meiner Meinung nach ...<br>
-Ich denke, dass ...<br>
-Ich persönlich finde ...<br>
-Ein Vorteil ist ...<br>
-Ein Nachteil ist ...<br>
-Zum Beispiel ...<br>
-Außerdem ...<br>
-Deshalb ...
-</div>
+Am Sonntag ruhe ich mich aus
+und lerne Deutsch.
 
 </div>
 
+
+<h3>
+Topic 3: Gesundheit
+</h3>
+
+<div class="example">
+
+Gesundheit ist für mich sehr wichtig.
+
+Ich versuche, gesund zu essen
+und genug Wasser zu trinken.
+
+Außerdem mache ich regelmäßig Sport.
+
+Wenn ich Stress habe,
+gehe ich spazieren.
+
 </div>
+
+
+<h3>
+Useful Speaking Questions
+</h3>
+
+<ul>
+
+<li>
+Was machen Sie normalerweise am Wochenende?
+</li>
+
+<li>
+Was ist Ihnen im Beruf wichtig?
+</li>
+
+<li>
+Wie lernen Sie Deutsch?
+</li>
+
+<li>
+Welche Verkehrsmittel benutzen Sie?
+</li>
+
+<li>
+Was machen Sie für Ihre Gesundheit?
+</li>
+
+<li>
+Was möchten Sie in Zukunft machen?
+</li>
+
+</ul>
+
+</div>
+
+</section>
 
 
 <!-- WRITING -->
 
-<div id="writing" class="section" style="display:none;">
+<section id="writing"
+class="hidden">
 
-<h2>✍️ A2 Writing</h2>
+<div class="card">
 
-<h3>Task</h3>
+<h2>
+✍️ A2 Schreiben
+</h2>
+
+
+<h3>
+Task 1 — Einladung
+</h3>
 
 <p>
-Du möchtest mit deinem Freund einen Ausflug machen.
-Schreibe eine kurze Nachricht.
+Schreiben Sie eine Nachricht an einen Freund.
+Laden Sie ihn zu einer Feier ein.
+Schreiben Sie wann, wo und was Sie machen.
 </p>
 
-<div class="words">
-Schreibe über:<br>
-• Wann?<br>
-• Wohin?<br>
-• Wie fahren?<br>
-• Was mitnehmen?
+<div class="example">
+
+Hallo Tom,
+
+<br><br>
+
+ich möchte dich am Samstag
+zu meiner Geburtstagsfeier einladen.
+
+Die Feier beginnt um 18 Uhr
+bei mir zu Hause.
+
+Wir essen zusammen und hören Musik.
+
+Ich würde mich sehr freuen,
+wenn du kommen könntest.
+
+<br><br>
+
+Viele Grüße
+
+<br>
+
+Aswin
+
 </div>
+
+
+<h3>
+Task 2 — Termin verschieben
+</h3>
+
+<p>
+Schreiben Sie eine E-Mail.
+Sie können einen Termin nicht besuchen.
+Entschuldigen Sie sich und schlagen Sie
+einen neuen Termin vor.
+</p>
+
+<div class="example">
+
+Sehr geehrte Frau Müller,
+
+<br><br>
+
+leider kann ich am Montag
+nicht zu unserem Termin kommen,
+weil ich einen wichtigen Termin habe.
+
+Könnten wir den Termin
+auf Mittwoch verschieben?
+
+Vielen Dank für Ihr Verständnis.
+
+<br><br>
+
+Mit freundlichen Grüßen
+
+<br>
+
+Aswin
+
+</div>
+
+
+<h3>
+Task 3 — Opinion
+</h3>
+
+<p>
+Schreiben Sie 80–100 Wörter über:
+"Online lernen oder im Kurs lernen?"
+</p>
 
 <textarea
 id="writingBox"
-placeholder="Schreibe deine Antwort auf Deutsch...">
-</textarea>
+placeholder="Schreiben Sie hier Ihre Antwort..."
+></textarea>
+
+<br><br>
 
 <button
-class="complete-btn"
-onclick="checkWriting()">
-Check Writing
+class="primary"
+onclick="checkWriting()"
+>
+Check my writing
 </button>
 
-<p id="writingResult" class="status"></p>
+<p id="writingFeedback"></p>
 
 </div>
+
+</section>
 
 
 <!-- READING -->
 
-<div id="reading" class="section" style="display:none;">
+<section id="reading"
+class="hidden">
 
-<h2>📄 A2 Reading</h2>
+<div class="card">
+
+<h2>
+📖 Reading Practice
+</h2>
 
 <div class="example">
 
-<b>Ein Wochenende in Köln</b><br><br>
+<b>Ein neuer Alltag</b>
 
-Am Samstag fährt Anna mit ihrer Freundin nach Köln.
-Sie besuchen das Stadtzentrum und sehen den Dom.
-Am Abend essen sie in einem Restaurant.
-Am Sonntag fahren sie wieder nach Hause.
+<br><br>
+
+Lena ist vor drei Monaten
+in eine neue Stadt gezogen.
+
+Am Anfang war alles schwierig,
+weil sie niemanden kannte.
+
+Deshalb hat sie einen Sprachkurs besucht.
+
+Dort hat sie viele neue Leute
+kennengelernt.
+
+Jetzt trifft sie ihre Freunde
+zweimal pro Woche.
+
+In ihrer Freizeit geht sie gern
+spazieren und besucht Cafés.
+
+Am Wochenende fährt sie manchmal
+mit dem Zug in eine andere Stadt.
 
 </div>
 
-<h3>Question</h3>
+
+<div class="exercise">
 
 <p>
-Wohin fährt Anna am Samstag?
+<b>
+1. Warum hat Lena einen Sprachkurs besucht?
+</b>
 </p>
 
 <button
 class="option"
-onclick="readingAnswer(this,false)">
-Nach Berlin
+onclick="readingAnswer(1)"
+>
+A. Weil sie niemanden kannte.
 </button>
 
 <button
 class="option"
-onclick="readingAnswer(this,true)">
-Nach Köln
+onclick="readingAnswer(2)"
+>
+B. Weil sie keine Arbeit hatte.
 </button>
 
 <button
 class="option"
-onclick="readingAnswer(this,false)">
-Nach München
+onclick="readingAnswer(3)"
+>
+C. Weil sie reisen wollte.
 </button>
 
-<p id="readingResult" class="status"></p>
+<p id="readFeedback"></p>
 
 </div>
+
+
+<div class="exercise">
+
+<p>
+<b>
+2. Wie oft trifft sie ihre Freunde?
+</b>
+</p>
+
+<p>
+Write the answer in German.
+</p>
+
+<input
+id="readInput"
+placeholder="Ihre Antwort"
+>
+
+<br><br>
+
+<button
+class="primary"
+onclick="checkReading()"
+>
+Check
+</button>
+
+<p id="readInputFeedback"></p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- LISTENING -->
+
+<section id="listening"
+class="hidden">
+
+<div class="card">
+
+<h2>
+🎧 Listening-style Practice
+</h2>
+
+<p class="muted">
+Read the short transcript as if you heard it once.
+Then answer the questions.
+</p>
+
+<div class="example">
+
+<b>Audio transcript:</b>
+
+<br><br>
+
+„Hallo Maria,
+ich kann heute leider nicht
+zum Deutschkurs kommen.
+
+Ich muss länger arbeiten.
+
+Können wir uns morgen
+um sechs Uhr vor dem Bahnhof treffen?
+
+Danach können wir gemeinsam
+essen gehen.“
+
+</div>
+
+
+<div class="exercise">
+
+<p>
+<b>
+1. Warum kann die Person heute
+nicht zum Deutschkurs kommen?
+</b>
+</p>
+
+<button
+class="option"
+onclick="listenAnswer(1)"
+>
+A. Sie ist krank.
+</button>
+
+<button
+class="option"
+onclick="listenAnswer(2)"
+>
+B. Sie muss länger arbeiten.
+</button>
+
+<button
+class="option"
+onclick="listenAnswer(3)"
+>
+C. Sie ist unterwegs.
+</button>
+
+<p id="listenFeedback"></p>
+
+</div>
+
+
+<div class="exercise">
+
+<p>
+<b>
+2. Wo treffen sie sich?
+</b>
+</p>
+
+<button
+class="option"
+onclick="listenAnswer(4)"
+>
+A. Vor dem Bahnhof.
+</button>
+
+<button
+class="option"
+onclick="listenAnswer(5)"
+>
+B. Im Deutschkurs.
+</button>
+
+<button
+class="option"
+onclick="listenAnswer(6)"
+>
+C. Im Restaurant.
+</button>
+
+</div>
+
+</div>
+
+</section>
 
 
 <!-- QUIZ -->
 
-<div id="quiz" class="section" style="display:none;">
+<section id="quiz"
+class="hidden">
 
-<h2>🎯 A2 Quiz</h2>
+<div class="card">
+
+<h2>
+🔥 A2 Quiz
+</h2>
 
 <p>
-Choose your difficulty and number of questions.
+Choose difficulty and number of questions.
 </p>
 
-<div class="quiz-controls">
+
+<div class="grid">
+
+<div>
+
+<label>
+Difficulty
+</label>
 
 <select id="difficulty">
 
@@ -876,1500 +1339,1764 @@ Very Hard
 
 </select>
 
+</div>
+
+
+<div>
+
+<label>
+Questions
+</label>
 
 <select id="questionCount">
 
 <option value="10">
-10 Questions
+10
 </option>
 
 <option value="20">
-20 Questions
+20
 </option>
 
 <option value="30">
-30 Questions
+30
 </option>
 
 </select>
 
-<button onclick="startQuiz()">
+</div>
+
+</div>
+
+<br>
+
+<button
+class="primary"
+onclick="startQuiz()"
+>
 Start Quiz
 </button>
 
-</div>
-
 <div id="quizArea"></div>
 
-<div id="quizResult"></div>
-
 </div>
 
-
-<a class="home-button" href="dashboard.html">
-🏠 Dashboard
-</a>
-
-</div>
+</section>
 
 
-<footer>
-
-<p>© 2026 DeutschStart 🇩🇪</p>
-
-<p>
-A1 → A2 → B1 → B2
-</p>
-
-</footer>
+</main>
 
 
 <!-- SUPABASE -->
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+</script>
 
-<script src="config.js"></script>
+<script src="config.js">
+</script>
 
 
 <script>
 
-let supabaseClient;
+const supabaseClient =
+window.supabase.createClient(
+SUPABASE_URL,
+SUPABASE_PUBLISHABLE_KEY
+);
+
+
 let currentUser = null;
 
+let completedLessons = [];
 
-/* -----------------------------
-   INITIALIZE SUPABASE
------------------------------ */
+let quizQuestions = [];
 
-try {
+let quizIndex = 0;
 
-    supabaseClient = window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_PUBLISHABLE_KEY
-    );
+let quizScore = 0;
 
-} catch (error) {
 
-    console.error("Supabase initialization error:", error);
+/* =========================
+   LESSON DATA
+========================= */
 
-}
-
-
-/* -----------------------------
-   CHECK LOGIN
------------------------------ */
-
-async function loadUser() {
-
-    try {
-
-        const {
-            data,
-            error
-        } = await supabaseClient.auth.getUser();
-
-        if (error) {
-
-            console.error(error);
-            return;
-
-        }
-
-        currentUser = data.user;
-
-        if (!currentUser) {
-
-            alert("Please login first.");
-            window.location.href = "login.html";
-            return;
-
-        }
-
-    } catch (error) {
-
-        console.error("User error:", error);
-
-    }
-
-}
-
-
-loadUser();
-
-
-/* -----------------------------
-   SECTION SWITCHER
------------------------------ */
-
-function showSection(sectionName) {
-
-    const sections = [
-        "lessons",
-        "grammar",
-        "vocabulary",
-        "speaking",
-        "writing",
-        "reading",
-        "quiz"
-    ];
-
-    sections.forEach(function(section) {
-
-        const element =
-            document.getElementById(section);
-
-        if (element) {
-
-            element.style.display =
-                section === sectionName
-                    ? "block"
-                    : "none";
-
-        }
-
-    });
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
-}
-
-
-/* -----------------------------
-   SAVE LESSON PROGRESS
-   FIXED VERSION
------------------------------ */
-
-async function saveLessonProgress(lessonName) {
-
-    if (!currentUser) {
-
-        alert("Please login first.");
-        return;
-
-    }
-
-    try {
-
-        /*
-         Check whether the lesson
-         already exists.
-        */
-
-        const {
-            data: existing,
-            error: checkError
-        } = await supabaseClient
-
-            .from("lesson_progress")
-
-            .select("id")
-
-            .eq(
-                "user_id",
-                currentUser.id
-            )
-
-            .eq(
-                "lesson_name",
-                lessonName
-            )
-
-            .maybeSingle();
-
-
-        if (checkError) {
-
-            throw checkError;
-
-        }
-
-
-        /*
-         Already completed
-        */
-
-        if (existing) {
-
-            alert(
-                "✅ Lesson already completed!"
-            );
-
-            return;
-
-        }
-
-
-        /*
-         Insert new progress
-        */
-
-        const {
-            error: insertError
-        } = await supabaseClient
-
-            .from("lesson_progress")
-
-            .insert({
-
-                user_id:
-                    currentUser.id,
-
-                lesson_name:
-                    lessonName,
-
-                completed:
-                    true
-
-            });
-
-
-        if (insertError) {
-
-            throw insertError;
-
-        }
-
-
-        alert(
-            "✅ Lesson completed and progress saved!"
-        );
-
-
-        /*
-         Refresh dashboard progress
-        */
-
-        location.reload();
-
-
-    } catch (error) {
-
-        console.error(
-            "Progress save error:",
-            error
-        );
-
-
-        alert(
-            "❌ Could not save progress.\n\n" +
-            error.message
-        );
-
-    }
-
-}
-
-
-/* -----------------------------
-   WRITING
------------------------------ */
-
-function checkWriting() {
-
-    const text =
-        document.getElementById(
-            "writingBox"
-        ).value.trim();
-
-    const result =
-        document.getElementById(
-            "writingResult"
-        );
-
-    if (!text) {
-
-        result.textContent =
-            "✍️ Please write something first.";
-
-        return;
-
-    }
-
-    const words =
-        text.split(/\s+/).length;
-
-    if (words < 10) {
-
-        result.textContent =
-            "⚠️ Try to write at least 10 words.";
-
-    } else {
-
-        result.textContent =
-            "✅ Good! You wrote " +
-            words +
-            " words. Keep practicing!";
-
-    }
-
-}
-
-
-/* -----------------------------
-   READING
------------------------------ */
-
-function readingAnswer(button, correct) {
-
-    const result =
-        document.getElementById(
-            "readingResult"
-        );
-
-    if (correct) {
-
-        button.classList.add("correct");
-
-        result.textContent =
-            "✅ Correct! Anna fährt nach Köln.";
-
-    } else {
-
-        button.classList.add("wrong");
-
-        result.textContent =
-            "❌ Not correct. Read the text again.";
-
-    }
-
-}
-
-
-/* -----------------------------
-   A2 QUIZ QUESTIONS
------------------------------ */
-
-const A2_QUESTIONS = [
+const lessons = [
 
 {
-question:
-"Ich bleibe zu Hause, ___ ich krank bin.",
+name:"Perfekt und Präteritum",
+tag:"Past tense",
 
-options:
-[
-"aber",
-"weil",
-"oder",
-"und"
+text:
+`Perfekt is used very often in conversation.
+Build it with haben or sein plus Partizip II.
+Use sein especially with movement or a change of state.
+Präteritum is common with sein, haben and modal verbs.`,
+
+examples:[
+"Ich habe gestern Fußball gespielt.",
+"Wir sind nach Hause gegangen.",
+"Ich war gestern müde.",
+"Ich musste lange arbeiten."
 ],
 
-answer:
-1,
+exercise:
+"Choose: Gestern ___ ich sehr müde.",
 
-difficulty:
-"medium",
+options:[
+"bin",
+"war",
+"habe",
+"werde"
+],
 
-explanation:
-"Nach weil steht das konjugierte Verb am Ende: weil ich krank bin."
+answer:1
 },
 
 
 {
-question:
-"Ich helfe ___ Mann.",
+name:"Dativ und Akkusativ",
+tag:"Cases",
 
-options:
-[
-"den",
+text:
+`The Akkusativ is often the direct object.
+The Dativ is often the indirect object.
+Some verbs such as helfen, gefallen, gehören and folgen require Dativ.`,
+
+examples:[
+"Ich sehe den Mann.",
+"Ich helfe dem Mann.",
+"Das Buch gehört meiner Schwester.",
+"Ich gebe dem Kind den Ball."
+],
+
+exercise:
+"Welche Form ist richtig? Ich helfe ___ Mann.",
+
+options:[
 "der",
+"den",
 "dem",
 "des"
 ],
 
-answer:
-2,
-
-difficulty:
-"medium",
-
-explanation:
-"helfen verlangt den Dativ: dem Mann."
+answer:2
 },
 
 
 {
-question:
-"Ich sehe ___ Mann.",
+name:"Präpositionen",
+tag:"Prepositions",
 
-options:
-[
-"dem",
-"den",
-"der",
-"des"
+text:
+`Learn common fixed-case prepositions and the two-way prepositions.
+Direction with in, an, auf and similar prepositions normally takes Akkusativ.
+Location normally takes Dativ.`,
+
+examples:[
+"Ich fahre mit dem Bus.",
+"Das Geschenk ist für meinen Bruder.",
+"Ich gehe in die Schule.",
+"Ich bin in der Schule."
 ],
 
-answer:
-1,
+exercise:
+"Ich gehe ___ Supermarkt.",
 
-difficulty:
-"medium",
+options:[
+"im",
+"in den",
+"in dem",
+"bei"
+],
 
-explanation:
-"sehen verlangt den Akkusativ: den Mann."
+answer:1
 },
 
 
 {
-question:
-"Wenn ich Zeit ___, würde ich reisen.",
+name:"Nebensätze",
+tag:"Subordinate clauses",
 
-options:
-[
+text:
+`With weil, dass, wenn, obwohl and similar conjunctions,
+the conjugated verb normally goes to the end of the subordinate clause.`,
+
+examples:[
+"Ich lerne Deutsch, weil ich in Deutschland arbeiten möchte.",
+"Ich weiß, dass er heute kommt.",
+"Wenn ich Zeit habe, gehe ich spazieren.",
+"Obwohl es regnet, spiele ich Fußball."
+],
+
+exercise:
+"Ich bleibe zu Hause, weil ich krank ___.",
+
+options:[
+"bin",
+"ist",
+"sein",
+"habe"
+],
+
+answer:0
+},
+
+
+{
+name:"Adjektivendungen",
+tag:"Adjectives",
+
+text:
+`Adjective endings depend on the article, gender, case and number.
+At A2, learn common patterns with definite and indefinite articles.`,
+
+examples:[
+"der gute Freund",
+"die schöne Stadt",
+"ein guter Freund",
+"eine schöne Stadt",
+"mit einem guten Freund"
+],
+
+exercise:
+"Das ist ein ___ Film.",
+
+options:[
+"gut",
+"gute",
+"guter",
+"guten"
+],
+
+answer:2
+},
+
+
+{
+name:"Komparativ und Superlativ",
+tag:"Comparison",
+
+text:
+`Use -er for the comparative and am -sten for the superlative.
+Some common forms are irregular.`,
+
+examples:[
+"Mein Auto ist schneller als dein Auto.",
+"Heute ist es wärmer.",
+"Das ist der beste Film.",
+"Sie läuft am schnellsten."
+],
+
+exercise:
+"Mein Bruder ist ___ als ich.",
+
+options:[
+"groß",
+"größer",
+"am größten",
+"größte"
+],
+
+answer:1
+},
+
+
+{
+name:"Reflexive Verben A2",
+tag:"Reflexive verbs",
+
+text:
+`Reflexive verbs use pronouns such as mich, dich, sich, uns and euch.
+Some verbs require reflexive pronouns with a fixed preposition.`,
+
+examples:[
+"Ich interessiere mich für Musik.",
+"Du freust dich auf das Wochenende.",
+"Wir treffen uns am Samstag.",
+"Ihr müsst euch beeilen."
+],
+
+exercise:
+"Ich interessiere ___ für Fußball.",
+
+options:[
+"mir",
+"mich",
+"sich",
+"uns"
+],
+
+answer:1
+},
+
+
+{
+name:"Konjunktiv II",
+tag:"Polite & hypothetical",
+
+text:
+`Konjunktiv II is used for polite requests,
+wishes and unreal situations.
+Important forms include hätte, wäre, könnte, müsste,
+sollte and würde.`,
+
+examples:[
+"Könnten Sie mir helfen?",
+"Ich hätte gern einen Kaffee.",
+"Wenn ich Zeit hätte, würde ich mehr lernen.",
+"Ich wäre gern in Deutschland."
+],
+
+exercise:
+"Wenn ich mehr Zeit ___, würde ich mehr Deutsch lernen.",
+
+options:[
 "habe",
 "hatte",
 "hätte",
 "haben"
 ],
 
-answer:
-2,
-
-difficulty:
-"hard",
-
-explanation:
-"Für eine hypothetische Situation verwendet man hier Konjunktiv II: hätte."
+answer:2
 },
 
 
 {
-question:
-"Das ist der Mann, ___ ich gestern gesehen habe.",
+name:"Modalverben A2",
+tag:"Modal verbs",
 
-options:
-[
-"dem",
-"den",
-"der",
-"dessen"
+text:
+`Modal verbs change the meaning of another verb.
+In a main clause, the modal verb is conjugated
+and the other verb goes to the end in the infinitive.`,
+
+examples:[
+"Ich muss heute arbeiten.",
+"Du darfst hier nicht rauchen.",
+"Wir können morgen kommen.",
+"Ihr sollt mehr lernen."
 ],
 
-answer:
-1,
+exercise:
+"Ich ___ heute Deutsch lernen.",
 
-difficulty:
-"hard",
-
-explanation:
-"sehen nimmt Akkusativ: den Mann."
-},
-
-
-{
-question:
-"Mein Auto ist ___ als dein Auto.",
-
-options:
-[
-"schnell",
-"schneller",
-"am schnellsten",
-"schnelle"
-],
-
-answer:
-1,
-
-difficulty:
-"medium",
-
-explanation:
-"Bei einem Vergleich mit als verwendet man den Komparativ: schneller als."
-},
-
-
-{
-question:
-"Das ist ___ Buch, das ich gelesen habe.",
-
-options:
-[
-"interessant",
-"interessanter",
-"das interessanteste",
-"am interessantesten"
-],
-
-answer:
-2,
-
-difficulty:
-"hard",
-
-explanation:
-"Vor einem Substantiv mit bestimmtem Artikel braucht man hier den Superlativ: das interessanteste Buch."
-},
-
-
-{
-question:
-"Ich freue mich ___ das Wochenende.",
-
-options:
-[
-"an",
-"für",
-"auf",
-"mit"
-],
-
-answer:
-2,
-
-difficulty:
-"medium",
-
-explanation:
-"sich freuen auf + Akkusativ."
-},
-
-
-{
-question:
-"Ich interessiere mich ___ Fußball.",
-
-options:
-[
-"für",
-"auf",
-"mit",
-"bei"
-],
-
-answer:
-0,
-
-difficulty:
-"medium",
-
-explanation:
-"sich interessieren für + Akkusativ."
-},
-
-
-{
-question:
-"Er sagt, dass er morgen ___ .",
-
-options:
-[
-"kommt",
-"kommen",
-"kam",
-"gekommen"
-],
-
-answer:
-0,
-
-difficulty:
-"medium",
-
-explanation:
-"Im dass-Satz steht das konjugierte Verb am Ende: dass er morgen kommt."
-},
-
-
-{
-question:
-"Ich ___ gestern lange gearbeitet.",
-
-options:
-[
-"habe",
-"bin",
-"hatte",
-"werde"
-],
-
-answer:
-0,
-
-difficulty:
-"medium",
-
-explanation:
-"arbeiten bildet das Perfekt mit haben: Ich habe gearbeitet."
-},
-
-
-{
-question:
-"Gestern ___ ich sehr müde.",
-
-options:
-[
-"bin",
-"war",
-"habe",
-"werde"
-],
-
-answer:
-1,
-
-difficulty:
-"medium",
-
-explanation:
-"Die Präteritumform von sein ist war."
-},
-
-
-{
-question:
-"Ich würde gern nach Deutschland ___ .",
-
-options:
-[
-"gereist",
-"reisen",
-"reiste",
-"gereisen"
-],
-
-answer:
-1,
-
-difficulty:
-"medium",
-
-explanation:
-"Nach würde steht der Infinitiv: würde gern reisen."
-},
-
-
-{
-question:
-"Wenn ich reich wäre, ___ ich ein großes Haus kaufen.",
-
-options:
-[
-"kann",
-"würde",
-"bin",
-"habe"
-],
-
-answer:
-1,
-
-difficulty:
-"hard",
-
-explanation:
-"Konjunktiv II wird hier mit würde + Infinitiv gebildet."
-},
-
-
-{
-question:
-"Ich fahre morgen ___ meinem Freund.",
-
-options:
-[
-"für",
-"mit",
-"ohne",
-"gegen"
-],
-
-answer:
-1,
-
-difficulty:
-"medium",
-
-explanation:
-"mit verlangt den Dativ: mit meinem Freund."
-},
-
-
-{
-question:
-"Das Geschenk ist ___ meine Mutter.",
-
-options:
-[
-"mit",
-"bei",
-"für",
-"nach"
-],
-
-answer:
-2,
-
-difficulty:
-"medium",
-
-explanation:
-"für verlangt den Akkusativ."
-},
-
-
-{
-question:
-"Er hat ___ neuen Computer gekauft.",
-
-options:
-[
-"ein",
-"einen",
-"einem",
-"einer"
-],
-
-answer:
-1,
-
-difficulty:
-"medium",
-
-explanation:
-"Computer ist maskulin und steht hier im Akkusativ: einen neuen Computer."
-},
-
-
-{
-question:
-"Ich spreche mit ___ Lehrerin.",
-
-options:
-[
-"die",
-"der",
-"den",
-"das"
-],
-
-answer:
-1,
-
-difficulty:
-"hard",
-
-explanation:
-"mit verlangt Dativ: mit der Lehrerin."
-},
-
-
-{
-question:
-"Sie ___ sich jeden Morgen.",
-
-options:
-[
-"beeilt",
-"beeilen",
-"beeilst",
-"beeilte"
-],
-
-answer:
-0,
-
-difficulty:
-"medium",
-
-explanation:
-"Bei sie lautet die Form: Sie beeilt sich."
-},
-
-
-{
-question:
-"Ich erinnere mich ___ meinen ersten Deutschkurs.",
-
-options:
-[
-"an",
-"auf",
-"mit",
-"bei"
-],
-
-answer:
-0,
-
-difficulty:
-"hard",
-
-explanation:
-"sich erinnern an + Akkusativ."
-},
-
-
-{
-question:
-"Du ___ heute früher gehen.",
-
-options:
-[
-"kannst",
-"kann",
-"können",
-"könnt"
-],
-
-answer:
-0,
-
-difficulty:
-"medium",
-
-explanation:
-"Bei du lautet können: du kannst."
-},
-
-
-{
-question:
-"Wir ___ morgen arbeiten.",
-
-options:
-[
-"müssen",
+options:[
 "muss",
+"müssen",
 "musst",
 "müsst"
 ],
 
-answer:
-0,
-
-difficulty:
-"medium",
-
-explanation:
-"Bei wir lautet müssen: wir müssen."
+answer:0
 },
 
 
 {
-question:
-"Ich glaube, ___ er Recht hat.",
+name:"Schreiben und Sprechen",
+tag:"Communication",
 
-options:
-[
+text:
+`A2 communication becomes stronger when you connect ideas.
+Use zuerst, dann, danach, außerdem, aber, deshalb,
+weil, obwohl and meiner Meinung nach.`,
+
+examples:[
+"Zuerst lerne ich Deutsch. Danach mache ich Sport.",
+"Ich mag die Stadt, weil es dort viele Möglichkeiten gibt.",
+"Meiner Meinung nach ist Sport sehr wichtig."
+],
+
+exercise:
+"Which connector normally introduces a reason?",
+
+options:[
+"deshalb",
 "weil",
-"dass",
-"wenn",
-"obwohl"
+"danach",
+"trotzdem"
 ],
 
-answer:
-1,
-
-difficulty:
-"medium",
-
-explanation:
-"Nach glauben wird häufig ein dass-Satz verwendet."
-},
-
-
-{
-question:
-"Obwohl es regnet, ___ ich Fußball.",
-
-options:
-[
-"spiele",
-"spielen",
-"gespielt",
-"spielte"
-],
-
-answer:
-0,
-
-difficulty:
-"hard",
-
-explanation:
-"Bei ich lautet die Präsensform: ich spiele."
-},
-
-
-{
-question:
-"Der Zug ist ___ als der Bus.",
-
-options:
-[
-"schnell",
-"schneller",
-"am schnellsten",
-"schnelle"
-],
-
-answer:
-1,
-
-difficulty:
-"medium",
-
-explanation:
-"Der Komparativ wird mit als verwendet."
-},
-
-
-{
-question:
-"Das ist der ___ Tag meines Lebens.",
-
-options:
-[
-"schön",
-"schöner",
-"schönste",
-"am schönsten"
-],
-
-answer:
-2,
-
-difficulty:
-"hard",
-
-explanation:
-"Vor einem Substantiv verwendet man: der schönste Tag."
-},
-
-
-{
-question:
-"Ich habe keine Zeit, ___ ich muss arbeiten.",
-
-options:
-[
-"weil",
-"denn",
-"dass",
-"obwohl"
-],
-
-answer:
-1,
-
-difficulty:
-"hard",
-
-explanation:
-"denn verbindet zwei Hauptsätze, daher bleibt die normale Wortstellung erhalten."
-},
-
-
-{
-question:
-"Ich weiß nicht, ___ er heute kommt.",
-
-options:
-[
-"ob",
-"dass",
-"weil",
-"denn"
-],
-
-answer:
-0,
-
-difficulty:
-"hard",
-
-explanation:
-"Bei einer indirekten Ja/Nein-Frage verwendet man ob."
-},
-
-
-{
-question:
-"Er ___ gestern nach Berlin gefahren.",
-
-options:
-[
-"hat",
-"ist",
-"war",
-"wird"
-],
-
-answer:
-1,
-
-difficulty:
-"hard",
-
-explanation:
-"fahren verwendet bei einer Ortsveränderung im Perfekt normalerweise sein: ist gefahren."
-},
-
-
-{
-question:
-"Ich ___ gern einen Kaffee.",
-
-options:
-[
-"hätte",
-"habe",
-"hatte",
-"bin"
-],
-
-answer:
-0,
-
-difficulty:
-"veryhard",
-
-explanation:
-"hätte gern" ist eine höfliche Form für einen Wunsch."
+answer:1
 }
 
 ];
 
 
-/* -----------------------------
-   QUIZ VARIABLES
------------------------------ */
-
-let quizQuestions = [];
-let currentQuestion = 0;
-let quizScore = 0;
-let quizAnswered = false;
-
-
-/* -----------------------------
-   SHUFFLE
------------------------------ */
-
-function shuffle(array) {
-
-    return array
-        .map(value => ({
-            value,
-            sort: Math.random()
-        }))
-        .sort((a, b) =>
-            a.sort - b.sort
-        )
-        .map(obj => obj.value);
-
-}
-
-
-/* -----------------------------
-   START QUIZ
------------------------------ */
-
-function startQuiz() {
-
-    const difficulty =
-        document.getElementById(
-            "difficulty"
-        ).value;
-
-    const count =
-        Number(
-            document.getElementById(
-                "questionCount"
-            ).value
-        );
-
-
-    let available =
-        A2_QUESTIONS.filter(
-            question => {
-
-                if (
-                    difficulty === "all"
-                ) {
-
-                    return true;
-
-                }
-
-                return question.difficulty ===
-                    difficulty;
-
-            }
-        );
-
-
-    /*
-     If selected difficulty has
-     fewer questions, use all
-     available questions.
-    */
-
-    if (available.length < count) {
-
-        available = A2_QUESTIONS.slice();
-
-    }
-
-
-    quizQuestions =
-        shuffle(available).slice(
-            0,
-            Math.min(
-                count,
-                available.length
-            )
-        );
-
-
-    currentQuestion = 0;
-    quizScore = 0;
-
-
-    document.getElementById(
-        "quizResult"
-    ).style.display = "none";
-
-
-    showQuizQuestion();
-
-}
-
-
-/* -----------------------------
-   SHOW QUESTION
------------------------------ */
-
-function showQuizQuestion() {
-
-    const area =
-        document.getElementById(
-            "quizArea"
-        );
-
-
-    if (
-        currentQuestion >=
-        quizQuestions.length
-    ) {
-
-        finishQuiz();
-        return;
-
-    }
-
-
-    quizAnswered = false;
-
-
-    const q =
-        quizQuestions[
-            currentQuestion
-        ];
-
-
-    let html = "";
-
-    html += `
-        <div class="quiz-question">
-
-            <p>
-                Question
-                ${currentQuestion + 1}
-                /
-                ${quizQuestions.length}
-            </p>
-
-            <h3>
-                ${q.question}
-            </h3>
-    `;
-
-
-    q.options.forEach(
-        function(option, index) {
-
-            html += `
-                <button
-                    class="option"
-                    onclick="answerQuiz(${index})">
-                    ${option}
-                </button>
-            `;
-
-        }
-    );
-
-
-    html += `
-            <div
-                id="questionFeedback"
-                class="feedback">
-            </div>
-
-        </div>
-    `;
-
-
-    area.innerHTML = html;
-
-}
-
-
-/* -----------------------------
-   ANSWER QUIZ
------------------------------ */
-
-function answerQuiz(selected) {
-
-    if (quizAnswered) {
-        return;
-    }
-
-
-    quizAnswered = true;
-
-
-    const q =
-        quizQuestions[
-            currentQuestion
-        ];
-
-
-    const buttons =
-        document.querySelectorAll(
-            ".quiz-question .option"
-        );
-
-
-    buttons.forEach(
-        function(button, index) {
-
-            if (
-                index === q.answer
-            ) {
-
-                button.classList.add(
-                    "correct"
-                );
-
-            }
-
-            if (
-                index === selected &&
-                index !== q.answer
-            ) {
-
-                button.classList.add(
-                    "wrong"
-                );
-
-            }
-
-            button.disabled = true;
-
-        }
-    );
-
-
-    const feedback =
-        document.getElementById(
-            "questionFeedback"
-        );
-
-
-    if (
-        selected === q.answer
-    ) {
-
-        quizScore++;
-
-        feedback.textContent =
-            "✅ Correct! " +
-            q.explanation;
-
-    } else {
-
-        feedback.textContent =
-            "❌ " +
-            q.explanation;
-
-    }
-
-
-    setTimeout(
-        function() {
-
-            currentQuestion++;
-
-            showQuizQuestion();
-
-        },
-        1200
-    );
-
-}
-
-
-/* -----------------------------
-   FINISH QUIZ
------------------------------ */
-
-async function finishQuiz() {
-
-    const area =
-        document.getElementById(
-            "quizArea"
-        );
-
-
-    const result =
-        document.getElementById(
-            "quizResult"
-        );
-
-
-    const total =
-        quizQuestions.length;
-
-
-    const percentage =
-        total > 0
-            ? Math.round(
-                (quizScore / total) * 100
-            )
-            : 0;
-
-
-    area.innerHTML = "";
-
-
-    result.style.display = "block";
-
-
-    result.innerHTML = `
-        <h2>🎉 Quiz Complete!</h2>
-
-        <p>
-            Score:
-            <strong>
-                ${quizScore} / ${total}
-            </strong>
-        </p>
-
-        <p>
-            Result:
-            <strong>
-                ${percentage}%
-            </strong>
-        </p>
-
-        <button
-            class="complete-btn"
-            onclick="startQuiz()">
-            🔄 Try Again
-        </button>
-    `;
-
-
-    /*
-     Save quiz result
-     */
-
-    if (!currentUser) {
-
-        return;
-
-    }
-
-
-    try {
-
-        const {
-            error
-        } = await supabaseClient
-
-            .from("quiz_results")
-
-            .insert({
-
-                user_id:
-                    currentUser.id,
-
-                score:
-                    quizScore,
-
-                total:
-                    total,
-
-                level:
-                    "A2"
-
-            });
-
-
-        if (error) {
-
-            console.error(
-                "Quiz result save error:",
-                error
-            );
-
-        }
-
-    } catch (error) {
-
-        console.error(
-            "Quiz save error:",
-            error
-        );
-
-    }
-
-}
-
-
-/* -----------------------------
-   KEYBOARD SUPPORT
------------------------------ */
-
-document.addEventListener(
-    "keydown",
-    function(event) {
-
-        if (
-            event.key === "1" ||
-            event.key === "2" ||
-            event.key === "3" ||
-            event.key === "4"
-        ) {
-
-            const number =
-                Number(event.key) - 1;
-
-            const buttons =
-                document.querySelectorAll(
-                    ".quiz-question .option"
-                );
-
-
-            if (
-                buttons[number] &&
-                !quizAnswered
-            ) {
-
-                buttons[number].click();
-
-            }
-
-        }
-
-    }
+/* =========================
+   QUIZ QUESTIONS
+========================= */
+
+const questions = [
+
+[
+"medium",
+"Welche Form ist richtig? Ich ___ gestern Fußball gespielt.",
+"habe",
+"bin",
+"war",
+"werde",
+0,
+"Perfekt with spielen uses haben."
+],
+
+[
+"medium",
+"Wir ___ gestern nach Berlin gefahren.",
+"haben",
+"sind",
+"waren",
+"werden",
+1,
+"Movement to another place uses sein in the Perfekt."
+],
+
+[
+"medium",
+"Ich helfe ___ Frau.",
+"die",
+"der",
+"den",
+"des",
+1,
+"helfen requires Dativ."
+],
+
+[
+"medium",
+"Das Geschenk ist ___ meinen Bruder.",
+"mit",
+"bei",
+"für",
+"von",
+2,
+"für takes Akkusativ."
+],
+
+[
+"medium",
+"Ich bleibe zu Hause, weil ich krank ___.",
+"bin",
+"ist",
+"sein",
+"habe",
+0,
+"The conjugated verb goes to the end."
+],
+
+[
+"medium",
+"Das ist ein ___ Auto.",
+"schnelle",
+"schneller",
+"schnelles",
+"schnellen",
+2,
+"Auto is neuter: ein schnelles Auto."
+],
+
+[
+"medium",
+"Mein Auto ist ___ als dein Auto.",
+"schnell",
+"schneller",
+"am schnellsten",
+"schnelle",
+1,
+"Comparative uses -er with als."
+],
+
+[
+"medium",
+"Ich interessiere ___ für Musik.",
+"mir",
+"mich",
+"sich",
+"uns",
+1,
+"sich interessieren für uses mich with ich."
+],
+
+[
+"medium",
+"___ Sie mir bitte helfen?",
+"Würden",
+"Könnten",
+"Hätten",
+"Wären",
+1,
+"Könnten Sie is a common polite request."
+],
+
+[
+"medium",
+"Ich ___ heute arbeiten.",
+"muss",
+"müssen",
+"musst",
+"müsst",
+0,
+"Ich takes muss."
+],
+
+
+[
+"hard",
+"Wenn ich Zeit ___, würde ich mehr lesen.",
+"habe",
+"hatte",
+"hätte",
+"haben",
+2,
+"Unreal condition: wenn ich Zeit hätte."
+],
+
+[
+"hard",
+"Ich gebe ___ Kind ___ Ball.",
+"das / den",
+"dem / den",
+"dem / der",
+"den / dem",
+1,
+"The indirect object is Dativ; the direct object is Akkusativ."
+],
+
+[
+"hard",
+"Ich bin ___ Bahnhof.",
+"an den",
+"an dem",
+"auf den",
+"in die",
+1,
+"Location at the station uses Dativ: an dem Bahnhof."
+],
+
+[
+"hard",
+"Obwohl es regnet, ___ wir spazieren.",
+"gehen",
+"geht",
+"ging",
+"gegangen",
+0,
+"The main clause has the conjugated verb in second position."
+],
+
+[
+"hard",
+"Das ist die ___ Stadt in Deutschland.",
+"größer",
+"größte",
+"am größten",
+"groß",
+1,
+"With a noun and definite article, superlative is größte."
+],
+
+[
+"hard",
+"Er hat sich ___ seine Prüfung vorbereitet.",
+"für",
+"mit",
+"bei",
+"nach",
+0,
+"sich vorbereiten takes für + Akkusativ."
+],
+
+[
+"hard",
+"Ich ___ gern einen Kaffee.",
+"wäre",
+"hätte",
+"würde",
+"hätte gern",
+3,
+"hätte gern is the standard polite expression for ordering or wanting."
+],
+
+[
+"hard",
+"Wir ___ früher gehen müssen.",
+"haben",
+"sind",
+"waren",
+"werden",
+0,
+"Modal verb in Perfekt: haben + infinitive + modal infinitive."
+],
+
+[
+"hard",
+"Sie sagt, dass sie morgen ___.",
+"kommt",
+"kommen",
+"kam",
+"gekommen",
+0,
+"Conjugated verb goes to the end of the dass-clause."
+],
+
+[
+"hard",
+"Mit ___ neuen Auto fahren wir nach Köln.",
+"der",
+"dem",
+"den",
+"einem",
+1,
+"Mit requires Dativ; Auto is neuter: dem neuen Auto."
+],
+
+
+[
+"veryhard",
+"Wenn ich an deiner Stelle ___, würde ich mehr üben.",
+"bin",
+"war",
+"wäre",
+"sein",
+2,
+"Unreal advice uses wäre."
+],
+
+[
+"veryhard",
+"Der Mann, ___ ich geholfen habe, wohnt nebenan.",
+"den",
+"dem",
+"der",
+"dessen",
+1,
+"helfen requires Dativ: dem Mann."
+],
+
+[
+"veryhard",
+"Ich weiß nicht, ___ er heute kommen kann.",
+"ob",
+"weil",
+"dass",
+"wenn",
+0,
+"ob introduces an indirect yes/no question."
+],
+
+[
+"veryhard",
+"Obwohl ich wenig Zeit habe, ___ ich jeden Tag Deutsch.",
+"lerne",
+"lernen",
+"gelernt",
+"lernte",
+0,
+"Main clause after a subordinate clause uses normal verb-second order."
+],
+
+[
+"veryhard",
+"Das ist ein Thema, über ___ wir lange gesprochen haben.",
+"den",
+"das",
+"dem",
+"dessen",
+1,
+"über + Akkusativ: über das Thema."
+],
+
+[
+"veryhard",
+"Er fährt ___ Arbeit, obwohl er krank ist.",
+"zur",
+"zum",
+"in die",
+"bei der",
+0,
+"zur = zu der; Arbeit is feminine."
+],
+
+[
+"veryhard",
+"Ich würde gern wissen, ___ der Zug abfährt.",
+"wann",
+"weil",
+"dass",
+"obwohl",
+0,
+"wann introduces an indirect question about time."
+],
+
+[
+"veryhard",
+"Sie hat ___ Schwester ein Geschenk gegeben.",
+"ihre",
+"ihrer",
+"ihrem",
+"ihren",
+1,
+"Schwester is Dativ after geben: ihrer Schwester."
+],
+
+[
+"veryhard",
+"Je mehr du lernst, ___ besser wird dein Deutsch.",
+"desto",
+"weil",
+"obwohl",
+"damit",
+0,
+"The paired comparative construction is je ..., desto ... ."
+],
+
+[
+"veryhard",
+"Er hat vergessen, die Tür ___.",
+"schließt",
+"geschlossen",
+"zu schließen",
+"schließen zu",
+2,
+"After vergessen, zu + infinitive is used here."
+]
+
+];
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function show(id){
+
+document
+.querySelectorAll("main>section")
+.forEach(
+section => section.classList.add("hidden")
 );
+
+document
+.getElementById(id)
+.classList.remove("hidden");
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* =========================
+   RENDER LESSONS
+========================= */
+
+function renderLessons(){
+
+const box =
+document.getElementById("lessonList");
+
+box.innerHTML="";
+
+lessons.forEach((lesson,index)=>{
+
+const completed =
+completedLessons.includes(
+lesson.name
+);
+
+box.innerHTML += `
+
+<div class="lesson-card">
+
+<span class="tag">
+Lesson ${index+1}
+</span>
+
+<span class="tag">
+${lesson.tag}
+</span>
+
+<h3>
+${lesson.name}
+</h3>
+
+<p>
+${lesson.text}
+</p>
+
+<div class="example">
+
+<b>Examples:</b>
+
+<br>
+
+${lesson.examples.join("<br>")}
+
+</div>
+
+
+<div class="exercise">
+
+<b>
+Practice:
+</b>
+
+<p>
+${lesson.exercise}
+</p>
+
+${lesson.options.map(
+(option,j)=>
+`
+<button
+class="option"
+onclick="lessonAnswer(${index},${j})"
+>
+${String.fromCharCode(65+j)}. ${option}
+</button>
+`
+).join("")}
+
+<p id="lessonFeedback${index}">
+</p>
+
+</div>
+
+
+<button
+class="${completed?'done':'primary'}"
+onclick="completeLesson(${index})"
+>
+
+${completed
+?"✅ Completed"
+:"Mark lesson complete"}
+
+</button>
+
+</div>
+
+`;
+
+});
+
+}
+
+
+/* =========================
+   LESSON ANSWER
+========================= */
+
+function lessonAnswer(index,choice){
+
+const lesson =
+lessons[index];
+
+const feedback =
+document.getElementById(
+"lessonFeedback"+index
+);
+
+if(choice === lesson.answer){
+
+feedback.innerHTML = `
+
+<span class="answer">
+✓ Correct!
+</span>
+
+${lesson.options[choice]}
+is the correct form.
+
+`;
+
+}else{
+
+feedback.innerHTML = `
+
+<span class="warn">
+Not quite.
+</span>
+
+Check the grammar explanation
+and try again.
+
+`;
+
+}
+
+}
+
+
+/* =========================
+   SAVE LESSON
+========================= */
+
+async function completeLesson(index){
+
+if(!currentUser){
+
+alert("Please login first.");
+
+return;
+
+}
+
+const lessonName =
+lessons[index].name;
+
+
+if(
+completedLessons.includes(
+lessonName
+)
+){
+
+alert(
+"✅ Lesson already completed!"
+);
+
+return;
+
+}
+
+
+try{
+
+const {
+data:existing,
+error:checkError
+}
+=
+await supabaseClient
+.from("lesson_progress")
+.select("id")
+.eq("user_id",currentUser.id)
+.eq("lesson_name",lessonName)
+.maybeSingle();
+
+
+if(checkError)
+throw checkError;
+
+
+if(existing){
+
+completedLessons.push(
+lessonName
+);
+
+renderLessons();
+
+updateProgress();
+
+return;
+
+}
+
+
+const {
+error
+}
+=
+await supabaseClient
+.from("lesson_progress")
+.insert({
+
+user_id:
+currentUser.id,
+
+lesson_name:
+lessonName,
+
+completed:true
+
+});
+
+
+if(error)
+throw error;
+
+
+completedLessons.push(
+lessonName
+);
+
+renderLessons();
+
+updateProgress();
+
+
+alert(
+"✅ Lesson completed and progress saved!"
+);
+
+
+}catch(error){
+
+alert(
+"❌ Could not save progress.\n\n"
++
+error.message
+);
+
+}
+
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+function updateProgress(){
+
+const count =
+completedLessons.length;
+
+document
+.getElementById(
+"completedCount"
+)
+.textContent =
+count;
+
+document
+.getElementById(
+"courseProgress"
+)
+.style.width =
+(count / 10 * 100)
++
+"%";
+
+}
+
+
+/* =========================
+   START QUIZ
+========================= */
+
+function startQuiz(){
+
+const difficulty =
+document.getElementById(
+"difficulty"
+).value;
+
+
+const count =
+Math.min(
+Number(
+document.getElementById(
+"questionCount"
+).value
+) || 10,
+30
+);
+
+
+let pool =
+questions.filter(
+question =>
+difficulty === "all"
+||
+question[0] === difficulty
+);
+
+
+pool.sort(
+() =>
+Math.random()-0.5
+);
+
+
+quizQuestions =
+pool.slice(
+0,
+count
+);
+
+quizIndex=0;
+
+quizScore=0;
+
+renderQuizQuestion();
+
+}
+
+
+/* =========================
+   QUIZ QUESTION
+========================= */
+
+function renderQuizQuestion(){
+
+const area =
+document.getElementById(
+"quizArea"
+);
+
+
+if(
+quizIndex >=
+quizQuestions.length
+){
+
+finishQuiz();
+
+return;
+
+}
+
+
+const question =
+quizQuestions[
+quizIndex
+];
+
+
+area.innerHTML = `
+
+<div class="exercise">
+
+<p>
+
+<b>
+Question
+${quizIndex+1}
+of
+${quizQuestions.length}
+</b>
+
+</p>
+
+
+<h3>
+${question[1]}
+</h3>
+
+
+${[2,3,4,5].map(
+(k,j)=>
+`
+
+<button
+class="option"
+onclick="answerQuiz(${j})"
+>
+
+${String.fromCharCode(65+j)}.
+${question[k]}
+
+</button>
+
+`
+).join("")}
+
+
+<p class="muted small">
+
+Choose one answer.
+
+</p>
+
+</div>
+
+`;
+
+}
+
+
+/* =========================
+   ANSWER QUIZ
+========================= */
+
+function answerQuiz(choice){
+
+const question =
+quizQuestions[
+quizIndex
+];
+
+
+const area =
+document.getElementById(
+"quizArea"
+);
+
+
+const buttons =
+area.querySelectorAll(
+".option"
+);
+
+
+buttons.forEach(
+button =>
+button.disabled=true
+);
+
+
+if(
+choice === question[6]
+){
+
+quizScore++;
+
+}
+
+
+const feedback =
+document.createElement(
+"div"
+);
+
+
+feedback.className =
+"feedback";
+
+
+feedback.innerHTML = `
+
+<b>
+${
+choice === question[6]
+?
+"✓ Correct"
+:
+"✗ Incorrect"
+}
+</b>
+
+<br>
+
+${question[7]}
+
+<br><br>
+
+<button
+class="primary"
+onclick="nextQuestion()"
+>
+Next
+</button>
+
+`;
+
+
+area.appendChild(
+feedback
+);
+
+}
+
+
+/* =========================
+   NEXT QUESTION
+========================= */
+
+function nextQuestion(){
+
+quizIndex++;
+
+renderQuizQuestion();
+
+}
+
+
+/* =========================
+   FINISH QUIZ
+========================= */
+
+async function finishQuiz(){
+
+const total =
+quizQuestions.length;
+
+
+const percent =
+total
+?
+Math.round(
+quizScore / total * 100
+)
+:
+0;
+
+
+document
+.getElementById(
+"quizArea"
+)
+.innerHTML = `
+
+<div class="exercise">
+
+<h2>
+🎉 Quiz Complete
+</h2>
+
+<p>
+
+Your score:
+
+<b>
+${quizScore}/${total}
+</b>
+
+(${percent}%)
+
+</p>
+
+
+<button
+class="primary"
+onclick="startQuiz()"
+>
+Try Again
+</button>
+
+</div>
+
+`;
+
+
+document
+.getElementById(
+"lastScore"
+)
+.textContent =
+quizScore +
+"/" +
+total;
+
+
+if(
+currentUser &&
+total
+){
+
+const {
+error
+}
+=
+await supabaseClient
+.from("quiz_results")
+.insert({
+
+user_id:
+currentUser.id,
+
+score:
+quizScore,
+
+total:
+total,
+
+level:
+"A2"
+
+});
+
+
+if(error){
+
+console.error(
+"Quiz save error:",
+error
+);
+
+}
+
+}
+
+}
+
+
+/* =========================
+   WRITING
+========================= */
+
+function checkWriting(){
+
+const text =
+document
+.getElementById(
+"writingBox"
+)
+.value
+.trim();
+
+
+const words =
+text
+?
+text.split(/\s+/).length
+:
+0;
+
+
+let message;
+
+
+if(words < 40){
+
+message =
+"Try to write more. For A2, aim for a clear paragraph with reasons and examples.";
+
+}
+
+else if(words < 80){
+
+message =
+"Good start. Add more connectors such as weil, deshalb, außerdem or obwohl.";
+
+}
+
+else{
+
+message =
+"Good length. Now check verb position, articles, adjective endings and spelling.";
+
+}
+
+
+document
+.getElementById(
+"writingFeedback"
+)
+.textContent =
+words +
+" words. " +
+message;
+
+}
+
+
+/* =========================
+   READING
+========================= */
+
+function readingAnswer(answer){
+
+const feedback =
+document.getElementById(
+"readFeedback"
+);
+
+
+if(answer === 1){
+
+feedback.innerHTML = `
+
+<span class="answer">
+✓ Correct!
+</span>
+
+Lena knew nobody
+in the new city.
+
+`;
+
+}else{
+
+feedback.innerHTML = `
+
+<span class="warn">
+Try again.
+</span>
+
+Read the first half
+of the text again.
+
+`;
+
+}
+
+}
+
+
+function checkReading(){
+
+const value =
+document
+.getElementById(
+"readInput"
+)
+.value
+.toLowerCase()
+.trim();
+
+
+const feedback =
+document.getElementById(
+"readInputFeedback"
+);
+
+
+if(
+value.includes("zweimal")
+||
+value.includes("2")
+){
+
+feedback.innerHTML = `
+
+<span class="answer">
+✓ Correct!
+</span>
+
+Sie trifft ihre Freunde
+zweimal pro Woche.
+
+`;
+
+}else{
+
+feedback.innerHTML = `
+
+<span class="warn">
+Not quite.
+</span>
+
+Look for the sentence
+about how often she meets
+her friends.
+
+`;
+
+}
+
+}
+
+
+/* =========================
+   LISTENING
+========================= */
+
+function listenAnswer(answer){
+
+const feedback =
+document.getElementById(
+"listenFeedback"
+);
+
+
+if(answer === 2){
+
+feedback.innerHTML = `
+
+<span class="answer">
+✓ Correct!
+</span>
+
+Er/Sie muss länger arbeiten.
+
+`;
+
+}
+
+else if(
+answer === 1 ||
+answer === 3
+){
+
+feedback.innerHTML = `
+
+<span class="warn">
+Not quite.
+</span>
+
+The transcript gives
+a different reason.
+
+`;
+
+}
+
+else if(answer === 4){
+
+feedback.innerHTML = `
+
+<span class="answer">
+✓ Correct!
+</span>
+
+Sie treffen sich
+vor dem Bahnhof.
+
+`;
+
+}
+
+else{
+
+feedback.innerHTML = `
+
+<span class="warn">
+Not quite.
+</span>
+
+Check the meeting place
+in the transcript.
+
+`;
+
+}
+
+}
+
+
+/* =========================
+   LOAD USER
+========================= */
+
+async function loadUser(){
+
+try{
+
+const {
+data:{
+user
+}
+}
+=
+await supabaseClient
+.auth
+.getUser();
+
+
+if(!user){
+
+window.location.href =
+"login.html";
+
+return;
+
+}
+
+
+currentUser =
+user;
+
+
+document
+.getElementById(
+"userEmail"
+)
+.textContent =
+user.email ||
+"Student";
+
+
+const {
+data:progress,
+error
+}
+=
+await supabaseClient
+.from("lesson_progress")
+.select(
+"lesson_name,completed"
+)
+.eq(
+"user_id",
+user.id
+);
+
+
+if(
+!error &&
+progress
+){
+
+completedLessons =
+progress
+.filter(
+item =>
+item.completed
+)
+.map(
+item =>
+item.lesson_name
+);
+
+}
+
+
+renderLessons();
+
+updateProgress();
+
+
+const {
+data:results
+}
+=
+await supabaseClient
+.from("quiz_results")
+.select(
+"score,total,level"
+)
+.eq(
+"user_id",
+user.id
+);
+
+
+if(results){
+
+const a2Results =
+results.filter(
+result =>
+result.level === "A2"
+);
+
+
+if(a2Results.length){
+
+const last =
+a2Results[
+a2Results.length-1
+];
+
+
+document
+.getElementById(
+"lastScore"
+)
+.textContent =
+last.score +
+"/" +
+last.total;
+
+}
+
+}
+
+
+}catch(error){
+
+console.error(error);
+
+renderLessons();
+
+updateProgress();
+
+}
+
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+renderLessons();
+
+loadUser();
 
 </script>
 
