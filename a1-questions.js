@@ -2943,3 +2943,330 @@ const A1_QUESTIONS = [
     answer: 0,
     category: "A1 Exam Practice"
   }
+  {
+    question: "Ich ___ heute Deutsch.",
+    options: ["lerne", "lernst", "lernt", "lernen"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "Du ___ jeden Tag Fußball.",
+    options: ["spiele", "spielt", "spielst", "spielen"],
+    answer: 2,
+    category: "Grammar"
+  },
+  {
+    question: "Maria ___ in Berlin.",
+    options: ["wohnen", "wohne", "wohnst", "wohnt"],
+    answer: 3,
+    category: "Grammar"
+  },
+  {
+    question: "Wir ___ heute Pizza.",
+    options: ["essen", "isst", "esse", "esst"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "Ihr ___ sehr schnell.",
+    options: ["laufen", "lauft", "läuft", "laufe"],
+    answer: 1,
+    category: "Grammar"
+  },
+  {
+    question: "Meine Eltern ___ in Indien.",
+    options: ["wohne", "wohnt", "wohnen", "wohnst"],
+    answer: 2,
+    category: "Grammar"
+  },
+  {
+    question: "Mein Bruder ___ gern Musik.",
+    options: ["hören", "hörst", "höre", "hört"],
+    answer: 3,
+    category: "Grammar"
+  },
+  {
+    question: "Ich ___ morgen nach Berlin.",
+    options: ["fahre", "fährst", "fährt", "fahren"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "Du ___ sehr gut Deutsch.",
+    options: ["spreche", "sprichst", "spricht", "sprechen"],
+    answer: 1,
+    category: "Grammar"
+  },
+  {
+    question: "Wir ___ einen Film.",
+    options: ["seht", "sehen", "sieht", "sehe"],
+    answer: 1,
+    category: "Grammar"
+  },
+
+  {
+    question: "___ du heute Zeit?",
+    options: ["Hast", "Habe", "Hat", "Haben"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "Er ___ einen Hund.",
+    options: ["haben", "hast", "hat", "habe"],
+    answer: 2,
+    category: "Grammar"
+  },
+  {
+    question: "Wir ___ zwei Geschwister.",
+    options: ["habe", "hat", "hast", "haben"],
+    answer: 3,
+    category: "Grammar"
+  },
+  {
+    question: "Ich ___ heute müde.",
+    options: ["bin", "bist", "ist", "sind"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "Du ___ sehr nett.",
+    options: ["bin", "bist", "ist", "sind"],
+    answer: 1,
+    category: "Grammar"
+  },
+  {
+    question: "Meine Schwester ___ 20 Jahre alt.",
+    options: ["bin", "bist", "ist", "sind"],
+    answer: 2,
+    category: "Grammar"
+  },
+  {
+    question: "Wir ___ Studenten.",
+    options: ["bin", "bist", "ist", "sind"],
+    answer: 3,
+    category: "Grammar"
+  },
+  {
+    question: "Ihr ___ aus Deutschland.",
+    options: ["seid", "sind", "bist", "ist"],
+    answer: 0,
+    category: "Grammar"
+  },
+  {
+    question: "Sie ___ meine Freunde.",
+    options: ["bin", "bist", "sind", "ist"],
+    answer: 2,
+    category: "Grammar"
+  },
+  {
+    question: "Der Mann ___ Arzt.",
+    options: ["sind", "bin", "bist", "ist"],
+    answer: 3,
+    category: "Grammar"
+  },
+
+  {
+    question: "Ich kaufe ___ Apfel.",
+    options: ["einen", "eine", "ein", "einem"],
+    answer: 0,
+    category: "Articles"
+  },
+  {
+    question: "Sie kauft ___ Banane.",
+    options: ["ein", "eine", "einen", "einem"],
+    answer: 1,
+    category: "Articles"
+  },
+  {
+    question: "Er kauft ___ Brot.",
+    options: ["eine", "einen", "ein", "einem"],
+    answer: 2,
+    category: "Articles"
+  },
+  {
+    question: "Wir brauchen ___ Computer.",
+    options: ["ein", "eine", "einen", "einem"],
+    answer: 2,
+    category: "Articles"
+  },
+  {
+    question: "Ich möchte ___ Wasser.",
+    options: ["eine", "einen", "einem", "ein"],
+    answer: 3,
+    category: "Articles"
+  },
+  {
+    question: "Sie hat ___ Schwester.",
+    options: ["eine", "ein", "einen", "einem"],
+    answer: 0,
+    category: "Articles"
+  },
+  {
+    question: "Er hat ___ Bruder.",
+    options: ["eine", "einen", "ein", "einem"],
+    answer: 1,
+    category: "Articles"
+  },
+  {
+    question: "Ich sehe ___ Kind.",
+    options: ["eine", "einen", "ein", "einem"],
+    answer: 2,
+    category: "Articles"
+  },
+  {
+    question: "Du brauchst ___ Tasche.",
+    options: ["ein", "einen", "einem", "eine"],
+    answer: 3,
+    category: "Articles"
+  },
+  {
+    question: "Wir kaufen ___ Stuhl.",
+    options: ["einen", "eine", "ein", "einem"],
+    answer: 0,
+    category: "Articles"
+  },
+
+  {
+    question: "___ Mann steht vor dem Haus.",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 0,
+    category: "Articles"
+  },
+  {
+    question: "___ Frau arbeitet heute.",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 1,
+    category: "Articles"
+  },
+  {
+    question: "___ Kind spielt im Garten.",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 2,
+    category: "Articles"
+  },
+  {
+    question: "Ich kenne ___ Mann.",
+    options: ["der", "die", "das", "den"],
+    answer: 3,
+    category: "Articles"
+  },
+  {
+    question: "Ich kenne ___ Frau.",
+    options: ["die", "der", "das", "den"],
+    answer: 0,
+    category: "Articles"
+  },
+  {
+    question: "Ich sehe ___ Kind.",
+    options: ["der", "die", "das", "den"],
+    answer: 2,
+    category: "Articles"
+  },
+  {
+    question: "___ Auto ist alt.",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 2,
+    category: "Articles"
+  },
+  {
+    question: "___ Bücher sind neu.",
+    options: ["Der", "Die", "Das", "Den"],
+    answer: 1,
+    category: "Articles"
+  },
+  {
+    question: "Ich kaufe ___ Stift.",
+    options: ["der", "die", "das", "den"],
+    answer: 3,
+    category: "Articles"
+  },
+  {
+    question: "___ Lampe ist schön.",
+    options: ["Die", "Der", "Das", "Den"],
+    answer: 0,
+    category: "Articles"
+  },
+
+  {
+    question: "Was bedeutet „der Bahnhof“?",
+    options: ["train station", "airport", "school", "hospital"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „der Flughafen“?",
+    options: ["station", "airport", "hotel", "restaurant"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „das Krankenhaus“?",
+    options: ["school", "station", "hospital", "office"],
+    answer: 2,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „die Schule“?",
+    options: ["school", "hospital", "station", "shop"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „der Supermarkt“?",
+    options: ["restaurant", "supermarket", "bank", "hotel"],
+    answer: 1,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „die Apotheke“?",
+    options: ["pharmacy", "school", "station", "library"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „die Bank“?",
+    options: ["bank", "shop", "hospital", "hotel"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „das Hotel“?",
+    options: ["hotel", "house", "school", "office"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „das Restaurant“?",
+    options: ["restaurant", "supermarket", "station", "airport"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „die Post“?",
+    options: ["post office/mail", "hospital", "school", "bank"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+
+  {
+    question: "Was bedeutet „der Arzt“?",
+    options: ["doctor", "teacher", "driver", "student"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „die Ärztin“?",
+    options: ["female doctor", "female teacher", "student", "nurse"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „der Fahrer“?",
+    options: ["driver", "doctor", "teacher", "waiter"],
+    answer: 0,
+    category: "Vocabulary"
+  },
+  {
+    question: "Was bedeutet „die Verkäuferin“?",
+    options: ["saleswoman", "doctor", "teacher", "student"],
+    answer
