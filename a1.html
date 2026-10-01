@@ -27,14 +27,14 @@ header {
 }
 
 header h1 {
-    font-size: 25px;
+    font-size: 24px;
 }
 
 .hero {
     background: linear-gradient(135deg, #172033, #31456b);
     color: white;
     text-align: center;
-    padding: 45px 20px;
+    padding: 40px 20px;
 }
 
 .hero h2 {
@@ -42,12 +42,8 @@ header h1 {
     margin-bottom: 10px;
 }
 
-.hero p {
-    font-size: 17px;
-}
-
 .container {
-    max-width: 950px;
+    max-width: 900px;
     margin: auto;
     padding: 25px 18px;
 }
@@ -64,7 +60,7 @@ header h1 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 .menu-button {
@@ -79,6 +75,10 @@ header h1 {
     cursor: pointer;
 }
 
+.menu-button:hover {
+    background: #eef2f8;
+}
+
 .lesson {
     background: white;
     padding: 25px;
@@ -88,80 +88,66 @@ header h1 {
 }
 
 .lesson h2 {
-    margin-bottom: 18px;
-}
-
-.lesson h3 {
-    margin-top: 22px;
-    margin-bottom: 12px;
-}
-
-.lesson p {
-    line-height: 1.7;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
 }
 
 .words {
     background: #eef2f8;
-    padding: 18px;
+    padding: 15px;
     border-radius: 10px;
     line-height: 2;
-    margin-top: 15px;
 }
 
-.example {
-    background: #f8f9fc;
-    border-left: 4px solid #3157a5;
-    padding: 15px;
-    margin: 12px 0;
-    border-radius: 6px;
-    line-height: 1.7;
-}
-
-.complete-button {
+.complete {
+    margin-top: 18px;
     background: #172033;
     color: white;
     border: none;
-    padding: 12px 18px;
-    border-radius: 8px;
-    font-weight: bold;
+    padding: 13px 18px;
+    border-radius: 9px;
     cursor: pointer;
-    margin-bottom: 15px;
 }
 
-.question {
-    background: #f8f9fc;
-    padding: 15px;
-    margin: 12px 0;
+.quiz-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.badge {
+    background: #eef2f8;
+    padding: 9px 13px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.start-button {
+    background: #172033;
+    color: white;
+    border: none;
+    padding: 15px 22px;
     border-radius: 10px;
-}
-
-.question strong {
-    display: block;
-    margin-bottom: 8px;
-}
-
-.number-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
+    font-size: 17px;
+    cursor: pointer;
     margin-top: 15px;
 }
 
-.number {
-    background: #eef2f8;
-    padding: 10px;
-    border-radius: 7px;
-    text-align: center;
+.quiz-question {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin: 20px 0;
 }
 
 .option {
     width: 100%;
-    padding: 14px;
+    padding: 15px;
     margin-top: 10px;
     border: 1px solid #d5dbea;
     background: white;
-    border-radius: 9px;
+    border-radius: 10px;
     text-align: left;
     font-size: 16px;
     cursor: pointer;
@@ -171,46 +157,60 @@ header h1 {
     background: #eef2f8;
 }
 
-.quiz-question {
-    margin-top: 20px;
-    font-size: 19px;
-    font-weight: bold;
-    line-height: 1.5;
+.option.correct {
+    background: #dff6e4;
+    border-color: #36a354;
 }
 
-.result {
+.option.wrong {
+    background: #ffe1e1;
+    border-color: #d64545;
+}
+
+.option:disabled {
+    cursor: default;
+}
+
+.quiz-feedback {
     margin-top: 15px;
     font-weight: bold;
-    font-size: 17px;
+    min-height: 25px;
 }
 
 .next-button {
     background: #3157a5;
     color: white;
     border: none;
-    padding: 13px 22px;
+    padding: 13px 20px;
     border-radius: 9px;
-    margin-top: 18px;
+    margin-top: 15px;
     cursor: pointer;
-    font-weight: bold;
+    display: none;
 }
 
-.score-box {
-    background: #eef2f8;
-    padding: 20px;
-    border-radius: 12px;
+.progress {
+    height: 9px;
+    background: #e1e5ed;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #3157a5;
+    transition: width 0.3s;
+}
+
+.final-score {
     text-align: center;
-    margin-top: 20px;
+    padding: 25px;
 }
 
-.correct {
-    background: #dff5e5;
-    border: 1px solid #62b875;
-}
-
-.wrong {
-    background: #fde1e1;
-    border: 1px solid #d66;
+.final-score h2 {
+    font-size: 30px;
+    margin-bottom: 12px;
 }
 
 .home-button {
@@ -221,7 +221,7 @@ header h1 {
     border-radius: 9px;
     text-decoration: none;
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 footer {
@@ -233,6 +233,7 @@ footer {
 }
 
 @media (max-width: 600px) {
+
     .lesson-menu {
         grid-template-columns: 1fr;
     }
@@ -241,12 +242,8 @@ footer {
         font-size: 27px;
     }
 
-    .number-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .lesson {
-        padding: 18px;
+    .quiz-question {
+        font-size: 18px;
     }
 }
 </style>
@@ -259,7 +256,7 @@ footer {
 </header>
 
 <section class="hero">
-    <h2>A1 German</h2>
+    <h2>German A1</h2>
     <p>Learn German step by step.</p>
 </section>
 
@@ -267,91 +264,112 @@ footer {
 
 <a class="back" href="index.html">← Back to Home</a>
 
-<h2 style="margin-bottom:15px;">📚 A1 German Lessons</h2>
+<h2 style="margin-bottom:15px;">📚 A1 Lessons</h2>
 
 <div class="lesson-menu">
 
-<button class="menu-button" onclick="showLesson('greetings')">👋 Greetings</button>
-<button class="menu-button" onclick="showLesson('intro')">🙋 Introduction</button>
-<button class="menu-button" onclick="showLesson('numbers')">🔢 Numbers</button>
-<button class="menu-button" onclick="showLesson('family')">👨‍👩‍👧 Family</button>
-<button class="menu-button" onclick="showLesson('home')">🏠 Home</button>
-<button class="menu-button" onclick="showLesson('food')">🍎 Food</button>
-<button class="menu-button" onclick="showLesson('routine')">🕐 Daily Routine</button>
-<button class="menu-button" onclick="showLesson('grammar')">📚 Grammar</button>
-<button class="menu-button" onclick="showLesson('speaking')">🗣️ Speaking</button>
-<button class="menu-button" onclick="showLesson('quiz')">📝 A1 Quiz</button>
+<button class="menu-button"
+onclick="showLesson('greetings')">
+👋 Greetings
+</button>
 
-</div>
+<button class="menu-button"
+onclick="showLesson('intro')">
+🙋 Introduction
+</button>
 
-<div id="lesson-area">
+<button class="menu-button"
+onclick="showLesson('numbers')">
+🔢 Numbers
+</button>
 
-<div class="lesson">
+<button class="menu-button"
+onclick="showLesson('family')">
+👨‍👩‍👧 Family
+</button>
 
-<h2>👋 Welcome to A1!</h2>
-
-<p>Willkommen bei DeutschStart! 🇩🇪</p>
-
-<p>Select a lesson above and start learning German.</p>
-
-<div class="example">
-<b>Deutsch:</b> Ich lerne Deutsch.<br>
-<b>English:</b> I am learning German.
-</div>
-
-</div>
-
-</div>
-
-<a class="home-button" href="index.html">
+<button class="menu-button"
+onclick="showLesson('home')">
 🏠 Home
-</a>
+</button>
+
+<button class="menu-button"
+onclick="showLesson('food')">
+🍎 Food
+</button>
+
+<button class="menu-button"
+onclick="showLesson('routine')">
+🕐 Daily Routine
+</button>
+
+<button class="menu-button"
+onclick="showLesson('grammar')">
+📚 Grammar
+</button>
+
+<button class="menu-button"
+onclick="showLesson('speaking')">
+🗣️ Speaking
+</button>
+
+<button class="menu-button"
+onclick="showLesson('quiz')">
+📝 A1 Quiz
+</button>
+
+</div>
+
+<div id="lesson-area"></div>
 
 </div>
 
 <footer>
-<p>© 2026 DeutschStart 🇩🇪</p>
-<p>Learn German A1 → B2</p>
+DeutschStart 🇩🇪 — Learn German from A1 to B2
 </footer>
 
-
-<!-- SUPABASE -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="config.js"></script>
 
 <script>
 
-/* =========================
+/* =========================================================
    SUPABASE
-========================= */
+========================================================= */
 
 let supabaseClient = null;
-
-if (
-    window.supabase &&
-    typeof SUPABASE_URL !== "undefined" &&
-    typeof SUPABASE_PUBLISHABLE_KEY !== "undefined"
-) {
-    supabaseClient = window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_PUBLISHABLE_KEY
-    );
-}
-
 let currentUser = null;
 
+try {
 
-/* =========================
-   LOAD USER
-========================= */
+    if (
+        window.supabase &&
+        typeof SUPABASE_URL !== "undefined" &&
+        typeof SUPABASE_PUBLISHABLE_KEY !== "undefined"
+    ) {
+
+        supabaseClient = window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_PUBLISHABLE_KEY
+        );
+
+    }
+
+} catch (error) {
+
+    console.log("Supabase not available.");
+
+}
+
+
+/* =========================================================
+   USER
+========================================================= */
 
 async function loadUser() {
 
-    if (!supabaseClient) {
-        console.log("Supabase not available.");
-        return;
-    }
+    if (!supabaseClient) return;
 
     try {
 
@@ -359,40 +377,49 @@ async function loadUser() {
             data: { user }
         } = await supabaseClient.auth.getUser();
 
-        currentUser = user || null;
+        currentUser = user;
 
     } catch (error) {
 
-        console.log("User loading error:", error);
+        console.log(error);
 
     }
+
 }
 
 loadUser();
 
 
-/* =========================
-   LESSON PROGRESS
-========================= */
+/* =========================================================
+   LESSON COMPLETION
+========================================================= */
 
 async function completeLesson(lessonName) {
 
     if (!supabaseClient || !currentUser) {
-        alert("Lesson completed! Please login to save progress.");
+
+        alert("Lesson completed! Please login to save your progress.");
+
         return;
+
     }
 
     const { error } = await supabaseClient
         .from("lesson_progress")
         .upsert({
+
             user_id: currentUser.id,
             lesson_name: lessonName,
             completed: true
+
         });
 
     if (error) {
-        alert("Progress error: " + error.message);
+
+        alert("Error: " + error.message);
+
         return;
+
     }
 
     alert("✅ Lesson completed!");
@@ -400,1515 +427,1613 @@ async function completeLesson(lessonName) {
 }
 
 
-/* =========================
+/* =========================================================
    LESSONS
-========================= */
+========================================================= */
 
 function showLesson(lesson) {
 
-const area = document.getElementById("lesson-area");
+    const area = document.getElementById("lesson-area");
 
+    if (lesson === "greetings") {
 
-/* GREETINGS */
+        area.innerHTML = `
 
-if (lesson === "greetings") {
+        <div class="lesson">
 
-area.innerHTML = `
+        <h2>👋 Greetings</h2>
 
-<div class="lesson">
+        <div class="words">
 
-<h2>👋 Greetings</h2>
+        Guten Morgen! — Good morning<br>
+        Guten Tag! — Good afternoon / Hello<br>
+        Guten Abend! — Good evening<br>
+        Gute Nacht! — Good night<br>
+        Hallo! — Hello<br>
+        Tschüss! — Bye<br>
+        Auf Wiedersehen! — Goodbye<br>
+        Bis bald! — See you soon<br>
+        Wie geht es dir? — How are you?<br>
+        Mir geht es gut. — I am fine.<br>
+        Danke! — Thank you<br>
+        Bitte! — Please / You're welcome
 
-<button class="complete-button"
-onclick="completeLesson('Greetings')">
-✅ Complete Lesson
-</button>
+        </div>
 
-<h3>🌅 Morning</h3>
+        <button class="complete"
+        onclick="completeLesson('Greetings')">
+        ✅ Complete Lesson
+        </button>
 
-<div class="words">
+        </div>
 
-<b>Guten Morgen!</b> — Good morning!<br>
-<b>Morgen!</b> — Morning!<br>
-<b>Einen schönen guten Morgen!</b> — Have a nice morning!
-
-</div>
-
-<h3>☀️ During the Day</h3>
-
-<div class="words">
-
-<b>Hallo!</b> — Hello!<br>
-<b>Guten Tag!</b> — Good day!<br>
-<b>Hi!</b> — Hi!<br>
-<b>Hey!</b> — Hey!<br>
-<b>Grüß dich!</b> — Hello!<br>
-<b>Grüß Gott!</b> — Hello!<br>
-<b>Mahlzeit!</b> — Hello / lunchtime greeting!
-
-</div>
-
-<h3>🌆 Evening</h3>
-
-<div class="words">
-
-<b>Guten Abend!</b> — Good evening!<br>
-<b>Einen schönen Abend!</b> — Have a nice evening!<br>
-<b>Schönen Abend noch!</b> — Have a nice evening!
-
-</div>
-
-<h3>🌙 Night</h3>
-
-<div class="words">
-
-<b>Gute Nacht!</b> — Good night!<br>
-<b>Schlaf gut!</b> — Sleep well!<br>
-<b>Träum schön!</b> — Sweet dreams!
-
-</div>
-
-<h3>👋 Saying Goodbye</h3>
-
-<div class="words">
-
-<b>Auf Wiedersehen!</b> — Goodbye!<br>
-<b>Tschüss!</b> — Bye!<br>
-<b>Ciao!</b> — Bye!<br>
-<b>Bis bald!</b> — See you soon!<br>
-<b>Bis später!</b> — See you later!<br>
-<b>Bis morgen!</b> — See you tomorrow!<br>
-<b>Bis gleich!</b> — See you soon!<br>
-<b>Mach's gut!</b> — Take care!
-
-</div>
-
-<h3>😊 How are you?</h3>
-
-<div class="words">
-
-<b>Wie geht es dir?</b> — How are you?<br>
-<b>Wie geht's dir?</b> — How are you?<br>
-<b>Wie geht es Ihnen?</b> — How are you? (formal)<br>
-<b>Wie geht's?</b> — How are you?<br>
-<b>Alles gut?</b> — Everything good?
-
-</div>
-
-<h3>❤️ Answers</h3>
-
-<div class="words">
-
-<b>Mir geht es gut.</b> — I am fine.<br>
-<b>Sehr gut, danke!</b> — Very good, thanks!<br>
-<b>Danke, gut.</b> — Fine, thanks.<br>
-<b>Es geht.</b> — So-so.<br>
-<b>Nicht schlecht.</b> — Not bad.<br>
-<b>Mir geht es nicht so gut.</b> — I'm not so well.
-
-</div>
-
-</div>
-
-`;
-
-}
-
-
-/* INTRODUCTION */
-
-else if (lesson === "intro") {
-
-area.innerHTML = `
-
-<div class="lesson">
-
-<h2>🙋 Introduction</h2>
-
-<button class="complete-button"
-onclick="completeLesson('Introduction')">
-✅ Complete Lesson
-</button>
-
-<h3>👤 Name</h3>
-
-<div class="words">
-
-<b>Wie heißt du?</b> — What's your name?<br><br>
-<b>Wie heißen Sie?</b> — What's your name? (formal)<br><br>
-<b>Ich heiße Aswin.</b><br>
-<b>Mein Name ist Aswin.</b>
-
-</div>
-
-<h3>🎂 Age</h3>
-
-<div class="words">
-
-<b>Wie alt bist du?</b><br>
-<b>Ich bin 18 Jahre alt.</b>
-
-</div>
-
-<h3>🌍 Country</h3>
-
-<div class="words">
-
-<b>Woher kommst du?</b><br>
-<b>Ich komme aus Indien.</b>
-
-</div>
-
-<h3>🏠 Where You Live</h3>
-
-<div class="words">
-
-<b>Wo wohnst du?</b><br>
-<b>Ich wohne in Wayanad.</b><br>
-<b>Ich lebe in Indien.</b>
-
-</div>
-
-<h3>🗣️ Languages</h3>
-
-<div class="words">
-
-<b>Welche Sprachen sprichst du?</b><br>
-<b>Ich spreche Malayalam.</b><br>
-<b>Ich spreche Englisch.</b><br>
-<b>Ich lerne Deutsch.</b><br>
-<b>Ich spreche ein bisschen Deutsch.</b>
-
-</div>
-
-<h3>🎓 School / Work</h3>
-
-<div class="words">
-
-<b>Was machst du?</b><br>
-<b>Ich bin Student.</b><br>
-<b>Ich arbeite.</b>
-
-</div>
-
-<h3>⚽ Hobbies</h3>
-
-<div class="words">
-
-<b>Was sind deine Hobbys?</b><br>
-<b>Meine Hobbys sind Fußball spielen und Musik hören.</b><br>
-<b>Ich spiele gern Fußball.</b><br>
-<b>Ich höre gern Musik.</b>
-
-</div>
-
-<h3>👨‍👩‍👧 Family</h3>
-
-<div class="words">
-
-<b>Wie groß ist deine Familie?</b><br>
-<b>Meine Familie hat fünf Personen.</b>
-
-</div>
-
-<h3>📚 Learning German</h3>
-
-<div class="words">
-
-<b>Wie lange lernst du Deutsch?</b><br>
-<b>Ich lerne seit zwei Monaten Deutsch.</b>
-
-</div>
-
-<h3>📝 Complete Self-Introduction</h3>
-
-<div class="example">
-
-Hallo!<br><br>
-
-Ich heiße Aswin.<br>
-Ich bin 18 Jahre alt.<br>
-Ich komme aus Indien.<br>
-Ich wohne in Wayanad.<br>
-Ich bin Student.<br>
-Ich spreche Malayalam und Englisch.<br>
-Ich lerne Deutsch.<br>
-Meine Hobbys sind Fußball spielen und Musik hören.<br>
-Meine Familie hat fünf Personen.
-
-</div>
-
-</div>
-
-`;
-
-}
-
-
-/* NUMBERS */
-
-else if (lesson === "numbers") {
-
-const numbers = [
-
-"1 — eins","2 — zwei","3 — drei","4 — vier","5 — fünf",
-"6 — sechs","7 — sieben","8 — acht","9 — neun","10 — zehn",
-"11 — elf","12 — zwölf","13 — dreizehn","14 — vierzehn","15 — fünfzehn",
-"16 — sechzehn","17 — siebzehn","18 — achtzehn","19 — neunzehn","20 — zwanzig",
-"21 — einundzwanzig","22 — zweiundzwanzig","23 — dreiundzwanzig",
-"24 — vierundzwanzig","25 — fünfundzwanzig","26 — sechsundzwanzig",
-"27 — siebenundzwanzig","28 — achtundzwanzig","29 — neunundzwanzig",
-"30 — dreißig","31 — einunddreißig","32 — zweiunddreißig",
-"33 — dreiunddreißig","34 — vierunddreißig","35 — fünfunddreißig",
-"36 — sechsunddreißig","37 — siebenunddreißig","38 — achtunddreißig",
-"39 — neununddreißig","40 — vierzig","41 — einundvierzig",
-"42 — zweiundvierzig","43 — dreiundvierzig","44 — vierundvierzig",
-"45 — fünfundvierzig","46 — sechsundvierzig","47 — siebenundvierzig",
-"48 — achtundvierzig","49 — neunundvierzig","50 — fünfzig",
-"51 — einundfünfzig","52 — zweiundfünfzig","53 — dreiundfünfzig",
-"54 — vierundfünfzig","55 — fünfundfünfzig","56 — sechsundfünfzig",
-"57 — siebenundfünfzig","58 — achtundfünfzig","59 — neunundfünfzig",
-"60 — sechzig","61 — einundsechzig","62 — zweiundsechzig",
-"63 — dreiundsechzig","64 — vierundsechzig","65 — fünfundsechzig",
-"66 — sechsundsechzig","67 — siebenundsechzig","68 — achtundsechzig",
-"69 — neunundsechzig","70 — siebzig","71 — einundsiebzig",
-"72 — zweiundsiebzig","73 — dreiundsiebzig","74 — vierundsiebzig",
-"75 — fünfundsiebzig","76 — sechsundsiebzig","77 — siebenundsiebzig",
-"78 — achtundsiebzig","79 — neunundsiebzig","80 — achtzig",
-"81 — einundachtzig","82 — zweiundachtzig","83 — dreiundachtzig",
-"84 — vierundachtzig","85 — fünfundachtzig","86 — sechsundachtzig",
-"87 — siebenundachtzig","88 — achtundachtzig","89 — neunundachtzig",
-"90 — neunzig","91 — einundneunzig","92 — zweiundneunzig",
-"93 — dreiundneunzig","94 — vierundneunzig","95 — fünfundneunzig",
-"96 — sechsundneunzig","97 — siebenundneunzig","98 — achtundneunzig",
-"99 — neunundneunzig","100 — einhundert"
-
-];
-
-area.innerHTML = `
-
-<div class="lesson">
-
-<h2>🔢 Numbers 1–100</h2>
-
-<button class="complete-button"
-onclick="completeLesson('Numbers')">
-✅ Complete Lesson
-</button>
-
-<div class="number-grid">
-
-${numbers.map(n => `<div class="number">${n}</div>`).join("")}
-
-</div>
-
-<h3>💡 Examples</h3>
-
-<div class="example">
-
-21 = <b>einundzwanzig</b><br>
-35 = <b>fünfunddreißig</b><br>
-78 = <b>achtundsiebzig</b><br><br>
-
-<b>Wie viel kostet das?</b><br>
-Das kostet 25 Euro.
-
-</div>
-
-</div>
-
-`;
-
-}
-
-
-/* FAMILY */
-
-else if (lesson === "family") {
-
-area.innerHTML = `
-
-<div class="lesson">
-
-<h2>👨‍👩‍👧 Family</h2>
-
-<button class="complete-button"
-onclick="completeLesson('Family')">
-✅ Complete Lesson
-</button>
-
-<div class="words">
-
-<b>die Familie</b> — family<br>
-<b>der Vater</b> — father<br>
-<b>die Mutter</b> — mother<br>
-<b>die Eltern</b> — parents<br>
-<b>der Sohn</b> — son<br>
-<b>die Tochter</b> — daughter<br>
-<b>der Bruder</b> — brother<br>
-<b>die Schwester</b> — sister<br>
-<b>der Großvater</b> — grandfather<br>
-<b>die Großmutter</b> — grandmother<br>
-<b>der Onkel</b> — uncle<br>
-<b>die Tante</b> — aunt<br>
-<b>der Cousin</b> — cousin<br>
-<b>die Cousine</b> — cousin<br>
-<b>das Kind</b> — child<br>
-<b>die Kinder</b> — children
-
-</div>
-
-<h3>🗣️ Useful Sentences</h3>
-
-<div class="words">
-
-<b>Wie groß ist deine Familie?</b><br>
-<b>Meine Familie hat fünf Personen.</b><br>
-<b>Ich habe einen Bruder.</b><br>
-<b>Ich habe eine Schwester.</b><br>
-<b>Das ist mein Vater.</b><br>
-<b>Das ist meine Mutter.</b><br>
-<b>Ich liebe meine Familie.</b>
-
-</div>
-
-</div>
-
-`;
-
-}
-
-
-/* HOME */
-
-else if (lesson === "home") {
-
-area.innerHTML = `
-
-<div class="lesson">
-
-<h2>🏠 Home</h2>
-
-<button class="complete-button"
-onclick="completeLesson('Home')">
-✅ Complete Lesson
-</button>
-
-<h3>🏠 Rooms</h3>
-
-<div class="words">
-
-<b>das Haus</b> — house<br>
-<b>die Wohnung</b> — apartment<br>
-<b>das Zimmer</b> — room<br>
-<b>das Schlafzimmer</b> — bedroom<br>
-<b>das Wohnzimmer</b> — living room<br>
-<b>die Küche</b> — kitchen<br>
-<b>das Bad</b> — bathroom<br>
-<b>der Balkon</b> — balcony<br>
-<b>der Garten</b> — garden
-
-</div>
-
-<h3>🪑 Furniture</h3>
-
-<div class="words">
-
-<b>der Tisch</b> — table<br>
-<b>der Stuhl</b> — chair<br>
-<b>das Bett</b> — bed<br>
-<b>das Sofa</b> — sofa<br>
-<b>der Schrank</b> — cupboard<br>
-<b>die Tür</b> — door<br>
-<b>das Fenster</b> — window
-
-</div>
-
-</div>
-
-`;
-
-}
-
-
-/* FOOD */
-
-else if (lesson === "food") {
-
-area.innerHTML = `
-
-<div class="lesson">
-
-<h2>🍎 Food</h2>
-
-<button class="complete-button"
-onclick="completeLesson('Food')">
-✅ Complete Lesson
-</button>
-
-<div class="words">
-
-<b>das Brot</b> — bread<br>
-<b>der Reis</b> — rice<br>
-<b>die Kartoffel</b> — potato<br>
-<b>das Fleisch</b> — meat<br>
-<b>der Fisch</b> — fish<br>
-<b>das Hähnchen</b> — chicken<br>
-<b>das Ei</b> — egg<br>
-<b>die Suppe</b> — soup<br>
-<b>der Salat</b> — salad<br>
-<b>der Apfel</b> — apple<br>
-<b>die Banane</b> — banana<br>
-<b>die Orange</b> — orange<br>
-<b>das Wasser</b> — water<br>
-<b>der Kaffee</b> — coffee<br>
-<b>der Tee</b> — tea<br>
-<b>der Saft</b> — juice
-
-</div>
-
-<h3>🍴 Useful Sentences</h3>
-
-<div class="words">
-
-<b>Ich habe Hunger.</b><br>
-<b>Ich habe Durst.</b><br>
-<b>Ich möchte Wasser.</b><br>
-<b>Ich möchte Kaffee.</b><br>
-<b>Ich esse gern Reis.</b><br>
-<b>Mein Lieblingsessen ist Mandi.</b><br>
-<b>Das Essen ist lecker.</b>
-
-</div>
-
-</div>
-
-`;
-
-}
-
-
-/* ROUTINE */
-
-else if (lesson === "routine") {
-
-area.innerHTML = `
-
-<div class="lesson">
-
-<h2>🕐 Daily Routine</h2>
-
-<button class="complete-button"
-onclick="completeLesson('Daily Routine')">
-✅ Complete Lesson
-</button>
-
-<h3>🌅 Morning</h3>
-
-<div class="words">
-
-<b>Ich stehe um 7 Uhr auf.</b><br>
-<b>Ich dusche.</b><br>
-<b>Ich putze meine Zähne.</b><br>
-<b>Ich frühstücke.</b><br>
-<b>Ich trinke Kaffee.</b>
-
-</div>
-
-<h3>☀️ Afternoon</h3>
-
-<div class="words">
-
-<b>Ich lerne Deutsch.</b><br>
-<b>Ich esse zu Mittag.</b><br>
-<b>Ich spiele Fußball.</b>
-
-</div>
-
-<h3>🌙 Night</h3>
-
-<div class="words">
-
-<b>Ich komme nach Hause.</b><br>
-<b>Ich höre Musik.</b><br>
-<b>Ich gehe um 22 Uhr schlafen.</b><br>
-<b>Ich schlafe um zehn Uhr ein.</b>
-
-</div>
-
-<div class="example">
-
-Normalerweise stehe ich um 7 Uhr auf.<br>
-Dann dusche ich und putze meine Zähne.<br>
-Danach frühstücke ich.<br>
-Am Nachmittag spiele ich Fußball.<br>
-Am Abend höre ich Musik.<br>
-Um 22 Uhr gehe ich schlafen.
-
-</div>
-
-</div>
-
-`;
-
-}
-
-
-/* GRAMMAR */
-
-else if (lesson === "grammar") {
-
-area.innerHTML = `
-
-<div class="lesson">
-
-<h2>📚 A1 Grammar</h2>
-
-<button class="complete-button"
-onclick="completeLesson('Grammar')">
-✅ Complete Lesson
-</button>
-
-<h3>👤 Personal Pronouns</h3>
-
-<div class="words">
-
-<b>ich</b> — I<br>
-<b>du</b> — you<br>
-<b>er</b> — he<br>
-<b>sie</b> — she<br>
-<b>es</b> — it<br>
-<b>wir</b> — we<br>
-<b>ihr</b> — you plural<br>
-<b>sie</b> — they<br>
-<b>Sie</b> — you formal
-
-</div>
-
-<h3>🔤 sein</h3>
-
-<div class="words">
-
-ich <b>bin</b><br>
-du <b>bist</b><br>
-er/sie/es <b>ist</b><br>
-wir <b>sind</b><br>
-ihr <b>seid</b><br>
-sie/Sie <b>sind</b>
-
-</div>
-
-<h3>📚 haben</h3>
-
-<div class="words">
-
-ich <b>habe</b><br>
-du <b>hast</b><br>
-er/sie/es <b>hat</b><br>
-wir <b>haben</b><br>
-ihr <b>habt</b><br>
-sie/Sie <b>haben</b>
-
-</div>
-
-<h3>📌 Articles</h3>
-
-<div class="words">
-
-<b>der</b> — masculine<br>
-<b>die</b> — feminine<br>
-<b>das</b> — neuter<br>
-<b>die</b> — plural
-
-</div>
-
-<h3>❓ Question Words</h3>
-
-<div class="words">
-
-<b>Wer?</b> — Who?<br>
-<b>Was?</b> — What?<br>
-<b>Wo?</b> — Where?<br>
-<b>Woher?</b> — Where from?<br>
-<b>Wohin?</b> — Where to?<br>
-<b>Wann?</b> — When?<br>
-<b>Wie?</b> — How?<br>
-<b>Warum?</b> — Why?
-
-</div>
-
-<h3>🚫 Negation</h3>
-
-<div class="example">
-
-Ich bin <b>nicht</b> müde.<br>
-Ich habe <b>kein</b> Auto.
-
-</div>
-
-</div>
-
-`;
-
-}
-
-
-/* SPEAKING */
-
-else if (lesson === "speaking") {
-
-area.innerHTML = `
-
-<div class="lesson">
-
-<h2>🗣️ A1 Speaking Practice</h2>
-
-<button class="complete-button"
-onclick="completeLesson('Speaking')">
-✅ Complete Lesson
-</button>
-
-<div class="question">
-<strong>Wie heißt du?</strong>
-Antwort: Ich heiße Aswin.
-</div>
-
-<div class="question">
-<strong>Wie alt bist du?</strong>
-Antwort: Ich bin 18 Jahre alt.
-</div>
-
-<div class="question">
-<strong>Woher kommst du?</strong>
-Antwort: Ich komme aus Indien.
-</div>
-
-<div class="question">
-<strong>Wo wohnst du?</strong>
-Antwort: Ich wohne in Wayanad.
-</div>
-
-<div class="question">
-<strong>Was machst du?</strong>
-Antwort: Ich bin Student.
-</div>
-
-<div class="question">
-<strong>Was sind deine Hobbys?</strong>
-Antwort: Meine Hobbys sind Fußball spielen und Musik hören.
-</div>
-
-<div class="question">
-<strong>Was machst du am Wochenende?</strong>
-Antwort: Am Wochenende spiele ich Fußball mit meinen Freunden.
-</div>
-
-<div class="question">
-<strong>Was ist dein Lieblingsessen?</strong>
-Antwort: Mein Lieblingsessen ist Mandi.
-</div>
-
-<div class="question">
-<strong>Wann stehst du auf?</strong>
-Antwort: Ich stehe um 7 Uhr auf.
-</div>
-
-</div>
-
-`;
-
-}
-
-
-/* QUIZ */
-
-else if (lesson === "quiz") {
-
-area.innerHTML = `
-
-<div class="lesson">
-
-<h2>📝 A1 Quiz</h2>
-
-<p>
-Test your German with random A1 questions.
-</p>
-
-<button class="next-button"
-onclick="startQuiz()">
-🚀 Start A1 Quiz
-</button>
-
-<div id="quiz-container"></div>
-
-</div>
-
-`;
-
-}
-
-}
-
-
-/* =========================
-   BUILT-IN A1 QUESTION BANK
-========================= */
-
-const A1_QUESTIONS = [
-
-{
-question: "Wie heißt du?",
-options: [
-"Ich heiße Aswin.",
-"Ich bin 18.",
-"Ich komme aus Indien.",
-"Ich wohne in Wayanad."
-],
-answer: 0
-},
-
-{
-question: "Wie alt bist du?",
-options: [
-"Ich heiße 18.",
-"Ich bin 18 Jahre alt.",
-"Ich habe 18.",
-"Ich wohne 18."
-],
-answer: 1
-},
-
-{
-question: "Woher kommst du?",
-options: [
-"Ich komme aus Indien.",
-"Ich wohne aus Indien.",
-"Ich bin Indien.",
-"Ich habe Indien."
-],
-answer: 0
-},
-
-{
-question: "Wo wohnst du?",
-options: [
-"Ich komme Wayanad.",
-"Ich bin Wayanad.",
-"Ich wohne in Wayanad.",
-"Ich habe Wayanad."
-],
-answer: 2
-},
-
-{
-question: "Was bedeutet „Hallo“?",
-options: [
-"Goodbye",
-"Hello",
-"Thanks",
-"Please"
-],
-answer: 1
-},
-
-{
-question: "Was bedeutet „Danke“?",
-options: [
-"Thanks",
-"Hello",
-"Goodbye",
-"Morning"
-],
-answer: 0
-},
-
-{
-question: "Was bedeutet „Guten Morgen“?",
-options: [
-"Good night",
-"Goodbye",
-"Good morning",
-"Good evening"
-],
-answer: 2
-},
-
-{
-question: "Was bedeutet „Gute Nacht“?",
-options: [
-"Good night",
-"Good morning",
-"Hello",
-"Goodbye"
-],
-answer: 0
-},
-
-{
-question: "Was bedeutet „Tschüss“?",
-options: [
-"Hello",
-"Goodbye",
-"Thanks",
-"Sorry"
-],
-answer: 1
-},
-
-{
-question: "Was ist der richtige Artikel: ___ Vater?",
-options: [
-"die",
-"das",
-"der",
-"den"
-],
-answer: 2
-},
-
-{
-question: "Was ist der richtige Artikel: ___ Mutter?",
-options: [
-"der",
-"die",
-"das",
-"den"
-],
-answer: 1
-},
-
-{
-question: "Was ist der richtige Artikel: ___ Kind?",
-options: [
-"der",
-"die",
-"das",
-"den"
-],
-answer: 2
-},
-
-{
-question: "Ich ___ Deutsch.",
-options: [
-"lerne",
-"lernen",
-"lernst",
-"lernt"
-],
-answer: 0
-},
-
-{
-question: "Du ___ Fußball.",
-options: [
-"spiele",
-"spielst",
-"spielt",
-"spielen"
-],
-answer: 1
-},
-
-{
-question: "Er ___ in Deutschland.",
-options: [
-"wohne",
-"wohnst",
-"wohnt",
-"wohnen"
-],
-answer: 2
-},
-
-{
-question: "Wir ___ Deutsch.",
-options: [
-"lernt",
-"lerne",
-"lernen",
-"lernst"
-],
-answer: 2
-},
-
-{
-question: "Ihr ___ Musik.",
-options: [
-"hört",
-"höre",
-"hörst",
-"hören"
-],
-answer: 0
-},
-
-{
-question: "Ich ___ Kaffee.",
-options: [
-"trinke",
-"trinkst",
-"trinkt",
-"trinken"
-],
-answer: 0
-},
-
-{
-question: "Ich ___ müde.",
-options: [
-"bin",
-"bist",
-"ist",
-"sind"
-],
-answer: 0
-},
-
-{
-question: "Du ___ nett.",
-options: [
-"bin",
-"bist",
-"ist",
-"sind"
-],
-answer: 1
-},
-
-{
-question: "Wir ___ Freunde.",
-options: [
-"bin",
-"bist",
-"ist",
-"sind"
-],
-answer: 3
-},
-
-{
-question: "Ihr ___ Studenten.",
-options: [
-"seid",
-"sind",
-"ist",
-"bist"
-],
-answer: 0
-},
-
-{
-question: "Sie ___ Lehrer.",
-options: [
-"ist",
-"sind",
-"bist",
-"seid"
-],
-answer: 1
-},
-
-{
-question: "Was ist „der Bruder“?",
-options: [
-"sister",
-"brother",
-"father",
-"uncle"
-],
-answer: 1
-},
-
-{
-question: "Was ist „die Schwester“?",
-options: [
-"mother",
-"daughter",
-"sister",
-"aunt"
-],
-answer: 2
-},
-
-{
-question: "Was ist „der Vater“?",
-options: [
-"father",
-"brother",
-"son",
-"grandfather"
-],
-answer: 0
-},
-
-{
-question: "Was ist „die Mutter“?",
-options: [
-"daughter",
-"mother",
-"sister",
-"wife"
-],
-answer: 1
-},
-
-{
-question: "Was bedeutet „Wasser“?",
-options: [
-"water",
-"milk",
-"bread",
-"coffee"
-],
-answer: 0
-},
-
-{
-question: "Was bedeutet „Brot“?",
-options: [
-"rice",
-"bread",
-"meat",
-"apple"
-],
-answer: 1
-},
-
-{
-question: "Was bedeutet „Apfel“?",
-options: [
-"orange",
-"banana",
-"apple",
-"potato"
-],
-answer: 2
-},
-
-{
-question: "Was bedeutet „Fußball spielen“?",
-options: [
-"to watch football",
-"to play football",
-"to buy football",
-"to teach football"
-],
-answer: 1
-},
-
-{
-question: "Was bedeutet „Musik hören“?",
-options: [
-"to make music",
-"to listen to music",
-"to buy music",
-"to write music"
-],
-answer: 1
-},
-
-{
-question: "Ich ___ gern Fußball.",
-options: [
-"spiele",
-"spielst",
-"spielt",
-"spielen"
-],
-answer: 0
-},
-
-{
-question: "Meine Familie ___ fünf Personen.",
-options: [
-"haben",
-"hat",
-"hast",
-"habe"
-],
-answer: 1
-},
-
-{
-question: "Ich habe ___ Bruder.",
-options: [
-"ein",
-"eine",
-"einen",
-"einem"
-],
-answer: 2
-},
-
-{
-question: "Ich habe ___ Schwester.",
-options: [
-"ein",
-"eine",
-"einen",
-"einem"
-],
-answer: 1
-},
-
-{
-question: "___ du Deutsch?",
-options: [
-"Sprichst",
-"Spreche",
-"Spricht",
-"Sprechen"
-],
-answer: 0
-},
-
-{
-question: "___ Sie Englisch?",
-options: [
-"Sprichst",
-"Spreche",
-"Sprechen",
-"Spricht"
-],
-answer: 2
-},
-
-{
-question: "Wie geht es dir?",
-options: [
-"Mir geht es gut.",
-"Ich heiße gut.",
-"Ich wohne gut.",
-"Ich habe gut."
-],
-answer: 0
-},
-
-{
-question: "Was machst du?",
-options: [
-"Ich bin Student.",
-"Ich heiße Aswin.",
-"Ich komme aus Indien.",
-"Ich bin 18 Jahre."
-],
-answer: 0
-},
-
-{
-question: "Wie lange lernst du Deutsch?",
-options: [
-"Seit zwei Monaten.",
-"Um zwei Uhr.",
-"Zwei Personen.",
-"Zwei Euro."
-],
-answer: 0
-},
-
-{
-question: "Wie sagt man 18 auf Deutsch?",
-options: [
-"achtzehn",
-"achtzig",
-"siebzehn",
-"neunzehn"
-],
-answer: 0
-},
-
-{
-question: "Wie sagt man 25 auf Deutsch?",
-options: [
-"fünfzehn",
-"fünfundzwanzig",
-"fünfunddreißig",
-"zweihundertfünf"
-],
-answer: 1
-},
-
-{
-question: "Wie sagt man 40 auf Deutsch?",
-options: [
-"vierzehn",
-"vierzig",
-"vierundzwanzig",
-"vierhundert"
-],
-answer: 1
-},
-
-{
-question: "Was bedeutet „Guten Abend“?",
-options: [
-"Good morning",
-"Good night",
-"Good evening",
-"Goodbye"
-],
-answer: 2
-},
-
-{
-question: "Was bedeutet „Bis bald“?",
-options: [
-"See you soon",
-"Good morning",
-"Thank you",
-"Good night"
-],
-answer: 0
-},
-
-{
-question: "Ich ___ um 7 Uhr auf.",
-options: [
-"stehe",
-"stehst",
-"steht",
-"stehen"
-],
-answer: 0
-},
-
-{
-question: "Ich ___ um 22 Uhr schlafen.",
-options: [
-"gehe",
-"gehst",
-"geht",
-"gehen"
-],
-answer: 0
-},
-
-{
-question: "Was bedeutet „das Haus“?",
-options: [
-"house",
-"school",
-"car",
-"shop"
-],
-answer: 0
-},
-
-{
-question: "Was bedeutet „die Küche“?",
-options: [
-"bedroom",
-"kitchen",
-"bathroom",
-"garden"
-],
-answer: 1
-},
-
-{
-question: "Was bedeutet „das Bett“?",
-options: [
-"table",
-"chair",
-"bed",
-"door"
-],
-answer: 2
-},
-
-{
-question: "Ich ___ Hunger.",
-options: [
-"habe",
-"bin",
-"ist",
-"sind"
-],
-answer: 0
-},
-
-{
-question: "Ich ___ Durst.",
-options: [
-"habe",
-"bin",
-"ist",
-"sind"
-],
-answer: 0
-},
-
-{
-question: "Mein Lieblingsessen ___ Mandi.",
-options: [
-"bin",
-"bist",
-"ist",
-"sind"
-],
-answer: 2
-},
-
-{
-question: "Was trinkst du gern?",
-options: [
-"Ich trinke gern Wasser.",
-"Ich spiele Fußball.",
-"Ich wohne in Indien.",
-"Ich bin Student."
-],
-answer: 0
-},
-
-{
-question: "Was ist dein Lieblingsessen?",
-options: [
-"Mein Lieblingsessen ist Mandi.",
-"Ich bin 18 Jahre alt.",
-"Ich komme aus Indien.",
-"Ich heiße Aswin."
-],
-answer: 0
-},
-
-{
-question: "Wann stehst du auf?",
-options: [
-"Ich stehe um 7 Uhr auf.",
-"Ich heiße Aswin.",
-"Ich komme aus Indien.",
-"Ich spiele Fußball."
-],
-answer: 0
-},
-
-{
-question: "Welche Sprache lernst du?",
-options: [
-"Ich lerne Deutsch.",
-"Ich wohne in Wayanad.",
-"Ich bin Student.",
-"Ich spiele Fußball."
-],
-answer: 0
-},
-
-{
-question: "Wer ist deine Lieblingsperson?",
-options: [
-"Meine Lieblingsperson ist mein Vater.",
-"Ich bin Student.",
-"Ich wohne in Wayanad.",
-"Ich lerne Deutsch."
-],
-answer: 0
-}
-
-];
-
-
-/* =========================
-   QUIZ
-========================= */
-
-let quizQuestions = [];
-let currentQuestion = 0;
-let quizScore = 0;
-
-
-/* START QUIZ */
-
-function startQuiz() {
-
-    const container =
-        document.getElementById("quiz-container");
-
-    if (!container) return;
-
-    const shuffled =
-        [...A1_QUESTIONS];
-
-    for (
-        let i = shuffled.length - 1;
-        i > 0;
-        i--
-    ) {
-
-        const j =
-            Math.floor(Math.random() * (i + 1));
-
-        [
-            shuffled[i],
-            shuffled[j]
-        ] = [
-            shuffled[j],
-            shuffled[i]
-        ];
+        `;
 
     }
 
-    quizQuestions =
-        shuffled.slice(
-            0,
-            Math.min(10, shuffled.length)
+
+    else if (lesson === "intro") {
+
+        area.innerHTML = `
+
+        <div class="lesson">
+
+        <h2>🙋 Introduction</h2>
+
+        <div class="words">
+
+        Wie heißt du?<br>
+        Ich heiße Aswin.<br><br>
+
+        Wie alt bist du?<br>
+        Ich bin 18 Jahre alt.<br><br>
+
+        Woher kommst du?<br>
+        Ich komme aus Indien.<br><br>
+
+        Wo wohnst du?<br>
+        Ich wohne in Indien.<br><br>
+
+        Was machst du?<br>
+        Ich bin Student.<br><br>
+
+        Was sind deine Hobbys?<br>
+        Meine Hobbys sind Fußball spielen und Musik hören.
+
+        </div>
+
+        <button class="complete"
+        onclick="completeLesson('Introduction')">
+        ✅ Complete Lesson
+        </button>
+
+        </div>
+
+        `;
+
+    }
+
+
+    else if (lesson === "numbers") {
+
+        area.innerHTML = `
+
+        <div class="lesson">
+
+        <h2>🔢 Numbers 1–100</h2>
+
+        <div class="words">
+
+        eins, zwei, drei, vier, fünf, sechs, sieben, acht, neun, zehn<br>
+        elf, zwölf, dreizehn, vierzehn, fünfzehn, sechzehn<br>
+        siebzehn, achtzehn, neunzehn, zwanzig<br>
+        dreißig, vierzig, fünfzig, sechzig, siebzig<br>
+        achtzig, neunzig, einhundert
+
+        </div>
+
+        <button class="complete"
+        onclick="completeLesson('Numbers')">
+        ✅ Complete Lesson
+        </button>
+
+        </div>
+
+        `;
+
+    }
+
+
+    else if (lesson === "family") {
+
+        area.innerHTML = `
+
+        <div class="lesson">
+
+        <h2>👨‍👩‍👧 Family</h2>
+
+        <div class="words">
+
+        die Familie — family<br>
+        der Vater — father<br>
+        die Mutter — mother<br>
+        die Eltern — parents<br>
+        der Sohn — son<br>
+        die Tochter — daughter<br>
+        der Bruder — brother<br>
+        die Schwester — sister<br>
+        der Großvater — grandfather<br>
+        die Großmutter — grandmother<br>
+        der Onkel — uncle<br>
+        die Tante — aunt<br>
+        der Cousin — male cousin<br>
+        die Cousine — female cousin<br>
+        das Kind — child<br>
+        die Kinder — children
+
+        </div>
+
+        <button class="complete"
+        onclick="completeLesson('Family')">
+        ✅ Complete Lesson
+        </button>
+
+        </div>
+
+        `;
+
+    }
+
+
+    else if (lesson === "home") {
+
+        area.innerHTML = `
+
+        <div class="lesson">
+
+        <h2>🏠 Home</h2>
+
+        <div class="words">
+
+        das Haus — house<br>
+        die Wohnung — apartment<br>
+        das Zimmer — room<br>
+        das Schlafzimmer — bedroom<br>
+        das Wohnzimmer — living room<br>
+        die Küche — kitchen<br>
+        das Bad — bathroom<br>
+        der Balkon — balcony<br>
+        der Garten — garden<br>
+        der Tisch — table<br>
+        der Stuhl — chair<br>
+        das Bett — bed<br>
+        das Sofa — sofa<br>
+        der Schrank — cupboard<br>
+        die Tür — door<br>
+        das Fenster — window
+
+        </div>
+
+        <button class="complete"
+        onclick="completeLesson('Home')">
+        ✅ Complete Lesson
+        </button>
+
+        </div>
+
+        `;
+
+    }
+
+
+    else if (lesson === "food") {
+
+        area.innerHTML = `
+
+        <div class="lesson">
+
+        <h2>🍎 Food</h2>
+
+        <div class="words">
+
+        das Brot — bread<br>
+        der Reis — rice<br>
+        die Kartoffel — potato<br>
+        das Fleisch — meat<br>
+        der Fisch — fish<br>
+        das Hähnchen — chicken<br>
+        das Ei — egg<br>
+        die Suppe — soup<br>
+        der Salat — salad<br>
+        der Apfel — apple<br>
+        die Banane — banana<br>
+        die Orange — orange<br>
+        das Wasser — water<br>
+        der Kaffee — coffee<br>
+        der Tee — tea<br>
+        der Saft — juice
+
+        </div>
+
+        <button class="complete"
+        onclick="completeLesson('Food')">
+        ✅ Complete Lesson
+        </button>
+
+        </div>
+
+        `;
+
+    }
+
+
+    else if (lesson === "routine") {
+
+        area.innerHTML = `
+
+        <div class="lesson">
+
+        <h2>🕐 Daily Routine</h2>
+
+        <div class="words">
+
+        Ich stehe um 7 Uhr auf.<br>
+        Ich dusche.<br>
+        Ich putze meine Zähne.<br>
+        Ich frühstücke.<br>
+        Ich trinke Kaffee.<br>
+        Ich lerne Deutsch.<br>
+        Ich esse zu Mittag.<br>
+        Ich spiele Fußball.<br>
+        Ich komme nach Hause.<br>
+        Ich höre Musik.<br>
+        Ich gehe um 22 Uhr schlafen.<br>
+        Ich schlafe um zehn Uhr ein.
+
+        </div>
+
+        <button class="complete"
+        onclick="completeLesson('Daily Routine')">
+        ✅ Complete Lesson
+        </button>
+
+        </div>
+
+        `;
+
+    }
+
+
+    else if (lesson === "grammar") {
+
+        area.innerHTML = `
+
+        <div class="lesson">
+
+        <h2>📚 A1 Grammar</h2>
+
+        <div class="words">
+
+        ich — I<br>
+        du — you<br>
+        er — he<br>
+        sie — she<br>
+        es — it<br>
+        wir — we<br>
+        ihr — you plural<br>
+        sie — they<br><br>
+
+        der — masculine<br>
+        die — feminine<br>
+        das — neuter<br>
+        die — plural<br><br>
+
+        nicht — not<br>
+        kein — no / not a
+
+        </div>
+
+        <button class="complete"
+        onclick="completeLesson('Grammar')">
+        ✅ Complete Lesson
+        </button>
+
+        </div>
+
+        `;
+
+    }
+
+
+    else if (lesson === "speaking") {
+
+        area.innerHTML = `
+
+        <div class="lesson">
+
+        <h2>🗣️ A1 Speaking</h2>
+
+        <p><b>Wie heißt du?</b></p>
+        <p>Ich heiße Aswin.</p>
+
+        <p><b>Wie alt bist du?</b></p>
+        <p>Ich bin 18 Jahre alt.</p>
+
+        <p><b>Woher kommst du?</b></p>
+        <p>Ich komme aus Indien.</p>
+
+        <p><b>Was sind deine Hobbys?</b></p>
+        <p>Meine Hobbys sind Fußball spielen und Musik hören.</p>
+
+        <button class="complete"
+        onclick="completeLesson('Speaking')">
+        ✅ Complete Lesson
+        </button>
+
+        </div>
+
+        `;
+
+    }
+
+
+    else if (lesson === "quiz") {
+
+        showQuiz();
+
+    }
+
+}
+
+
+/* =========================================================
+   A1 QUESTION GENERATOR
+   ========================================================= */
+
+const vocabulary = [
+
+["Haus","house","das"],
+["Wohnung","apartment","die"],
+["Zimmer","room","das"],
+["Küche","kitchen","die"],
+["Bad","bathroom","das"],
+["Schlafzimmer","bedroom","das"],
+["Wohnzimmer","living room","das"],
+["Balkon","balcony","der"],
+["Garten","garden","der"],
+["Tisch","table","der"],
+["Stuhl","chair","der"],
+["Bett","bed","das"],
+["Sofa","sofa","das"],
+["Tür","door","die"],
+["Fenster","window","das"],
+["Brot","bread","das"],
+["Reis","rice","der"],
+["Kartoffel","potato","die"],
+["Fleisch","meat","das"],
+["Fisch","fish","der"],
+["Hähnchen","chicken","das"],
+["Ei","egg","das"],
+["Suppe","soup","die"],
+["Salat","salad","der"],
+["Apfel","apple","der"],
+["Banane","banana","die"],
+["Orange","orange","die"],
+["Wasser","water","das"],
+["Kaffee","coffee","der"],
+["Tee","tea","der"],
+["Saft","juice","der"],
+["Vater","father","der"],
+["Mutter","mother","die"],
+["Bruder","brother","der"],
+["Schwester","sister","die"],
+["Sohn","son","der"],
+["Tochter","daughter","die"],
+["Kind","child","das"],
+["Onkel","uncle","der"],
+["Tante","aunt","die"],
+["Freund","friend","der"],
+["Freundin","female friend","die"],
+["Lehrer","teacher","der"],
+["Lehrerin","teacher","die"],
+["Student","student","der"],
+["Studentin","student","die"],
+["Arzt","doctor","der"],
+["Ärztin","doctor","die"],
+["Auto","car","das"],
+["Bus","bus","der"],
+["Zug","train","der"],
+["Bahnhof","station","der"],
+["Fahrrad","bicycle","das"],
+["Straße","street","die"],
+["Stadt","city","die"],
+["Dorf","village","das"],
+["Schule","school","die"],
+["Universität","university","die"],
+["Buch","book","das"],
+["Stift","pen","der"],
+["Tasche","bag","die"],
+["Handy","mobile phone","das"],
+["Computer","computer","der"],
+["Telefon","telephone","das"],
+["Musik","music","die"],
+["Film","film","der"],
+["Fußball","football","der"],
+["Ball","ball","der"],
+["Spiel","game","das"],
+["Arbeit","work","die"],
+["Beruf","profession","der"],
+["Büro","office","das"],
+["Firma","company","die"],
+["Geld","money","das"],
+["Zeit","time","die"],
+["Tag","day","der"],
+["Woche","week","die"],
+["Monat","month","der"],
+["Jahr","year","das"],
+["Morgen","morning","der"],
+["Abend","evening","der"],
+["Nacht","night","die"],
+["Heute","today",""],
+["Morgen","tomorrow","der"],
+["Wetter","weather","das"],
+["Sonne","sun","die"],
+["Regen","rain","der"],
+["Schnee","snow","der"],
+["Sommer","summer","der"],
+["Winter","winter","der"],
+["Frühling","spring","der"],
+["Herbst","autumn","der"],
+["Hand","hand","die"],
+["Kopf","head","der"],
+["Auge","eye","das"],
+["Nase","nose","die"],
+["Mund","mouth","der"],
+["Fuß","foot","der"],
+["Hemd","shirt","das"],
+["Hose","trousers","die"],
+["Schuh","shoe","der"],
+["Jacke","jacket","die"],
+["Kleid","dress","das"],
+["Uhr","clock","die"],
+["Preis","price","der"],
+["Geschäft","shop","das"],
+["Markt","market","der"],
+["Restaurant","restaurant","das"],
+["Hotel","hotel","das"],
+["Reise","trip","die"],
+["Urlaub","holiday","der"],
+["Flughafen","airport","der"],
+["Ticket","ticket","das"],
+["Pass","passport","der"],
+["Name","name","der"],
+["Adresse","address","die"],
+["Nummer","number","die"],
+["Frage","question","die"],
+["Antwort","answer","die"],
+["Sprache","language","die"],
+["Deutsch","German",""],
+["Englisch","English",""],
+["Land","country","das"],
+["Deutschland","Germany",""],
+["Indien","India",""],
+["Familie","family","die"],
+["Eltern","parents","die"],
+["Mädchen","girl","das"],
+["Junge","boy","der"],
+["Mann","man","der"],
+["Frau","woman","die"],
+["Baby","baby","das"],
+["Tier","animal","das"],
+["Hund","dog","der"],
+["Katze","cat","die"],
+["Vogel","bird","der"],
+["Apotheke","pharmacy","die"],
+["Krankenhaus","hospital","das"],
+["Supermarkt","supermarket","der"],
+["Post","post office","die"],
+["Bank","bank","die"],
+["Park","park","der"],
+["Bahnhof","train station","der"],
+["Platz","square","der"],
+["Brücke","bridge","die"],
+["Fluss","river","der"],
+["Meer","sea","das"],
+["Berg","mountain","der"],
+["See","lake","der"],
+["Weg","way","der"],
+["Tür","door","die"],
+["Schlüssel","key","der"],
+["Lampe","lamp","die"],
+["Wand","wall","die"],
+["Boden","floor","der"],
+["Stadtzentrum","city centre","das"],
+["Nachbar","neighbour","der"],
+["Nachbarin","neighbour","die"]
+
+];
+
+
+/* =========================================================
+   VERBS
+========================================================= */
+
+const verbs = [
+
+["machen","make/do","mache","machst","macht"],
+["lernen","learn","lerne","lernst","lernt"],
+["spielen","play","spiele","spielst","spielt"],
+["wohnen","live","wohne","wohnst","wohnt"],
+["kommen","come","komme","kommst","kommt"],
+["machen","do","mache","machst","macht"],
+["arbeiten","work","arbeite","arbeitest","arbeitet"],
+["kaufen","buy","kaufe","kaufst","kauft"],
+["kochen","cook","koche","kochst","kocht"],
+["trinken","drink","trinke","trinkst","trinkt"],
+["essen","eat","esse","isst","isst"],
+["lesen","read","lese","liest","liest"],
+["schreiben","write","schreibe","schreibst","schreibt"],
+["sprechen","speak","spreche","sprichst","spricht"],
+["fahren","drive/go","fahre","fährst","fährt"],
+["gehen","go","gehe","gehst","geht"],
+["sehen","see","sehe","siehst","sieht"],
+["hören","hear","höre","hörst","hört"],
+["schlafen","sleep","schlafe","schläfst","schläft"],
+["laufen","run/walk","laufe","läufst","läuft"],
+["helfen","help","helfe","hilfst","hilft"],
+["geben","give","gebe","gibst","gibt"],
+["nehmen","take","nehme","nimmst","nimmt"],
+["finden","find","finde","findest","findet"],
+["fragen","ask","frage","fragst","fragt"],
+["antworten","answer","antworte","antwortest","antwortet"],
+["öffnen","open","öffne","öffnest","öffnet"],
+["schließen","close","schließe","schließt","schließt"],
+["leben","live","lebe","lebst","lebt"],
+["lieben","love","liebe","liebst","liebt"],
+["brauchen","need","brauche","brauchst","braucht"],
+["kaufen","buy","kaufe","kaufst","kauft"],
+["suchen","search","suche","suchst","sucht"],
+["wohnen","live","wohne","wohnst","wohnt"],
+["reisen","travel","reise","reist","reist"],
+["tanzen","dance","tanze","tanzt","tanzt"],
+["singen","sing","singe","singst","singt"],
+["schwimmen","swim","schwimme","schwimmst","schwimmt"],
+["warten","wait","warte","wartest","wartet"],
+["zeigen","show","zeige","zeigst","zeigt"],
+["fragen","ask","frage","fragst","fragt"],
+["erklären","explain","erkläre","erklärst","erklärt"]
+
+];
+
+
+/* =========================================================
+   BASIC A1 DATA
+========================================================= */
+
+const pronouns = [
+    ["ich","I"],
+    ["du","you"],
+    ["er","he"],
+    ["sie","she"],
+    ["es","it"],
+    ["wir","we"],
+    ["ihr","you plural"],
+    ["sie","they"]
+];
+
+const questionWords = [
+    ["Wer","who"],
+    ["Was","what"],
+    ["Wo","where"],
+    ["Woher","where from"],
+    ["Wohin","where to"],
+    ["Wann","when"],
+    ["Wie","how"],
+    ["Warum","why"],
+    ["Wie viel","how much"],
+    ["Wie viele","how many"]
+];
+
+const seinForms = [
+    ["ich","bin"],
+    ["du","bist"],
+    ["er","ist"],
+    ["sie","ist"],
+    ["es","ist"],
+    ["wir","sind"],
+    ["ihr","seid"],
+    ["sie","sind"]
+];
+
+const habenForms = [
+    ["ich","habe"],
+    ["du","hast"],
+    ["er","hat"],
+    ["sie","hat"],
+    ["es","hat"],
+    ["wir","haben"],
+    ["ihr","habt"],
+    ["sie","haben"]
+];
+
+const colors = [
+    ["rot","red"],
+    ["blau","blue"],
+    ["grün","green"],
+    ["gelb","yellow"],
+    ["schwarz","black"],
+    ["weiß","white"],
+    ["braun","brown"],
+    ["orange","orange"],
+    ["rosa","pink"],
+    ["grau","grey"]
+];
+
+const days = [
+    ["Montag","Monday"],
+    ["Dienstag","Tuesday"],
+    ["Mittwoch","Wednesday"],
+    ["Donnerstag","Thursday"],
+    ["Freitag","Friday"],
+    ["Samstag","Saturday"],
+    ["Sonntag","Sunday"]
+];
+
+const opposites = [
+    ["groß","klein"],
+    ["klein","groß"],
+    ["alt","jung"],
+    ["jung","alt"],
+    ["gut","schlecht"],
+    ["schlecht","gut"],
+    ["schnell","langsam"],
+    ["langsam","schnell"],
+    ["warm","kalt"],
+    ["kalt","warm"],
+    ["teuer","billig"],
+    ["billig","teuer"],
+    ["neu","alt"],
+    ["hell","dunkel"],
+    ["dunkel","hell"],
+    ["lang","kurz"],
+    ["kurz","lang"],
+    ["schön","hässlich"],
+    ["leicht","schwer"],
+    ["schwer","leicht"]
+];
+
+
+/* =========================================================
+   NUMBER WORDS
+========================================================= */
+
+const ones = [
+    "",
+    "eins",
+    "zwei",
+    "drei",
+    "vier",
+    "fünf",
+    "sechs",
+    "sieben",
+    "acht",
+    "neun"
+];
+
+function germanNumber(n) {
+
+    if (n === 100) return "einhundert";
+
+    if (n < 10) return ones[n];
+
+    if (n === 10) return "zehn";
+    if (n === 11) return "elf";
+    if (n === 12) return "zwölf";
+    if (n === 13) return "dreizehn";
+    if (n === 14) return "vierzehn";
+    if (n === 15) return "fünfzehn";
+    if (n === 16) return "sechzehn";
+    if (n === 17) return "siebzehn";
+    if (n === 18) return "achtzehn";
+    if (n === 19) return "neunzehn";
+    if (n === 20) return "zwanzig";
+    if (n === 30) return "dreißig";
+    if (n === 40) return "vierzig";
+    if (n === 50) return "fünfzig";
+    if (n === 60) return "sechzig";
+    if (n === 70) return "siebzig";
+    if (n === 80) return "achtzig";
+    if (n === 90) return "neunzig";
+
+    const tens = Math.floor(n / 10) * 10;
+    const one = n % 10;
+
+    return ones[one] + "und" + germanNumber(tens);
+
+}
+
+
+/* =========================================================
+   QUESTION STORAGE
+========================================================= */
+
+const A1_QUESTIONS = [];
+
+function addQuestion(question, correct, wrong) {
+
+    let options = [
+        correct,
+        wrong[0],
+        wrong[1],
+        wrong[2]
+    ];
+
+    options = [...new Set(options)];
+
+    while (options.length < 4) {
+        options.push("—");
+    }
+
+    shuffle(options);
+
+    A1_QUESTIONS.push({
+
+        question: question,
+        options: options,
+        answer: correct
+
+    });
+
+}
+
+
+/* =========================================================
+   SHUFFLE
+========================================================= */
+
+function shuffle(array) {
+
+    for (let i = array.length - 1; i > 0; i--) {
+
+        const j = Math.floor(Math.random() * (i + 1));
+
+        [array[i], array[j]] =
+        [array[j], array[i]];
+
+    }
+
+    return array;
+
+}
+
+
+/* =========================================================
+   VOCABULARY QUESTIONS
+========================================================= */
+
+function generateVocabularyQuestions() {
+
+    vocabulary.forEach((item, index) => {
+
+        const german = item[0];
+        const english = item[1];
+
+        const wrongEnglish = vocabulary
+            .filter((x, i) => i !== index)
+            .slice(0, 3)
+            .map(x => x[1]);
+
+        addQuestion(
+            `Was bedeutet „${german}“?`,
+            english,
+            wrongEnglish
         );
 
-    currentQuestion = 0;
-    quizScore = 0;
 
-    showQuizQuestion();
+        const wrongGerman = vocabulary
+            .filter((x, i) => i !== index)
+            .slice(0, 3)
+            .map(x => x[0]);
+
+        addQuestion(
+            `Was heißt „${english}“ auf Deutsch?`,
+            german,
+            wrongGerman
+        );
+
+    });
 
 }
 
 
-/* SHOW QUESTION */
+/* =========================================================
+   ARTICLE QUESTIONS
+========================================================= */
 
-function showQuizQuestion() {
+function generateArticleQuestions() {
 
-    const container =
-        document.getElementById("quiz-container");
+    vocabulary.forEach((item, index) => {
 
-    if (!container) return;
+        const word = item[0];
+        const article = item[2];
 
-    if (
-        currentQuestion >=
-        quizQuestions.length
-    ) {
+        if (!article) return;
 
-        finishQuiz();
-        return;
+        const articles = ["der","die","das"];
+
+        const wrong = articles.filter(x => x !== article);
+
+        addQuestion(
+            `Welcher Artikel ist richtig: ___ ${word}?`,
+            article,
+            wrong
+        );
+
+        addQuestion(
+            `Wie heißt es richtig: „${article} ${word}“ oder ein anderer Artikel?`,
+            `${article} ${word}`,
+            [
+                `${wrong[0]} ${word}`,
+                `${wrong[1]} ${word}`,
+                `kein Artikel`
+            ]
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   NUMBER QUESTIONS
+========================================================= */
+
+function generateNumberQuestions() {
+
+    for (let n = 1; n <= 100; n++) {
+
+        const correct = germanNumber(n);
+
+        const wrongNumbers = [];
+
+        for (let i = 1; i <= 3; i++) {
+
+            let wrongNumber = n + i;
+
+            if (wrongNumber > 100) {
+                wrongNumber = n - i;
+            }
+
+            wrongNumbers.push(germanNumber(wrongNumber));
+
+        }
+
+        addQuestion(
+            `Wie heißt die Zahl ${n} auf Deutsch?`,
+            correct,
+            wrongNumbers
+        );
+
+
+        const wrongDigits = [];
+
+        for (let i = 1; i <= 3; i++) {
+
+            let wrong = n + i;
+
+            if (wrong > 100) {
+                wrong = n - i;
+            }
+
+            wrongDigits.push(String(wrong));
+
+        }
+
+        addQuestion(
+            `Welche Zahl bedeutet „${correct}“?`,
+            String(n),
+            wrongDigits
+        );
 
     }
 
-    const q =
-        quizQuestions[currentQuestion];
+}
 
-    let html = `
 
-    <div class="score-box">
+/* =========================================================
+   VERB QUESTIONS
+========================================================= */
 
-    Question ${currentQuestion + 1}
-    / ${quizQuestions.length}
+function generateVerbQuestions() {
+
+    verbs.forEach((verb, index) => {
+
+        const infinitive = verb[0];
+        const english = verb[1];
+        const ich = verb[2];
+        const du = verb[3];
+        const er = verb[4];
+
+        addQuestion(
+            `Was bedeutet „${infinitive}“?`,
+            english,
+            verbs
+                .filter((x, i) => i !== index)
+                .slice(0,3)
+                .map(x => x[1])
+        );
+
+
+        addQuestion(
+            `Ich ___ ${infinitive}.`,
+            ich,
+            [du, er, "sind"]
+        );
+
+
+        addQuestion(
+            `Du ___ ${infinitive}.`,
+            du,
+            [ich, er, "haben"]
+        );
+
+
+        addQuestion(
+            `Er ___ ${infinitive}.`,
+            er,
+            [ich, du, "haben"]
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   SEIN
+========================================================= */
+
+function generateSeinQuestions() {
+
+    seinForms.forEach((item, index) => {
+
+        const person = item[0];
+        const correct = item[1];
+
+        const wrong = seinForms
+            .filter((x, i) => i !== index)
+            .slice(0,3)
+            .map(x => x[1]);
+
+        addQuestion(
+            `${person} ___ Student.`,
+            correct,
+            wrong
+        );
+
+        addQuestion(
+            `${person} ___ in Deutschland.`,
+            correct,
+            wrong
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   HABEN
+========================================================= */
+
+function generateHabenQuestions() {
+
+    habenForms.forEach((item, index) => {
+
+        const person = item[0];
+        const correct = item[1];
+
+        const wrong = habenForms
+            .filter((x, i) => i !== index)
+            .slice(0,3)
+            .map(x => x[1]);
+
+        addQuestion(
+            `${person} ___ ein Auto.`,
+            correct,
+            wrong
+        );
+
+        addQuestion(
+            `${person} ___ Zeit.`,
+            correct,
+            wrong
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   QUESTION WORDS
+========================================================= */
+
+function generateQuestionWordQuestions() {
+
+    questionWords.forEach((item, index) => {
+
+        const german = item[0];
+        const english = item[1];
+
+        const wrong = questionWords
+            .filter((x, i) => i !== index)
+            .slice(0,3)
+            .map(x => x[1]);
+
+        addQuestion(
+            `Was bedeutet „${german}“?`,
+            english,
+            wrong
+        );
+
+    });
+
+
+    const sentenceQuestions = [
+
+        ["___ heißt du?", "Wie"],
+        ["___ wohnst du?", "Wo"],
+        ["___ kommst du?", "Woher"],
+        ["___ bist du?", "Wie"],
+        ["___ gehst du nach Hause?", "Wann"],
+        ["___ ist das?", "Was"],
+        ["___ ist dein Vater?", "Wer"],
+        ["___ lernst du Deutsch?", "Warum"],
+        ["___ kostet das?", "Wie viel"],
+        ["___ Geschwister hast du?", "Wie viele"]
+
+    ];
+
+    sentenceQuestions.forEach(item => {
+
+        const wrong = questionWords
+            .filter(x => x[0] !== item[1])
+            .slice(0,3)
+            .map(x => x[0]);
+
+        addQuestion(
+            item[0],
+            item[1],
+            wrong
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   COLORS
+========================================================= */
+
+function generateColorQuestions() {
+
+    colors.forEach((item, index) => {
+
+        const german = item[0];
+        const english = item[1];
+
+        const wrong = colors
+            .filter((x, i) => i !== index)
+            .slice(0,3)
+            .map(x => x[1]);
+
+        addQuestion(
+            `Was bedeutet „${german}“?`,
+            english,
+            wrong
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   DAYS
+========================================================= */
+
+function generateDayQuestions() {
+
+    days.forEach((item, index) => {
+
+        const german = item[0];
+        const english = item[1];
+
+        const wrong = days
+            .filter((x, i) => i !== index)
+            .slice(0,3)
+            .map(x => x[1]);
+
+        addQuestion(
+            `Was bedeutet „${german}“?`,
+            english,
+            wrong
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   OPPOSITES
+========================================================= */
+
+function generateOppositeQuestions() {
+
+    opposites.forEach((item, index) => {
+
+        const word = item[0];
+        const correct = item[1];
+
+        const wrong = opposites
+            .filter((x, i) => i !== index)
+            .slice(0,3)
+            .map(x => x[1]);
+
+        addQuestion(
+            `Was ist das Gegenteil von „${word}“?`,
+            correct,
+            wrong
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   SENTENCE PATTERNS
+========================================================= */
+
+const sentenceSubjects = [
+
+["Ich","spiele"],
+["Du","spielst"],
+["Er","spielt"],
+["Sie","spielt"],
+["Wir","spielen"],
+["Ihr","spielt"],
+["Sie","spielen"]
+
+];
+
+const sentenceObjects = [
+
+"Fußball",
+"Deutsch",
+"Musik",
+"im Park",
+"zu Hause",
+"ein Buch",
+"Kaffee",
+"Pizza",
+"am Wochenende",
+"mit Freunden"
+
+];
+
+function generateSentenceQuestions() {
+
+    sentenceSubjects.forEach((subject, subjectIndex) => {
+
+        sentenceObjects.forEach((object, objectIndex) => {
+
+            const correct =
+                `${subject[0]} ${subject[1]} ${object}.`;
+
+            const wrong1 =
+                `${subject[0]} ${object} ${subject[1]}.`;
+
+            const wrong2 =
+                `${subject[1]} ${subject[0]} ${object}.`;
+
+            const wrong3 =
+                `${subject[0]} ${object} ${subject[1]}.`;
+
+            addQuestion(
+                `Welche Satzstellung ist richtig?`,
+                correct,
+                [wrong1, wrong2, wrong3]
+            );
+
+        });
+
+    });
+
+}
+
+
+/* =========================================================
+   NEGATION
+========================================================= */
+
+const negationExamples = [
+
+["Ich habe ___ Auto.", "kein", ["nicht","keine","keinen"]],
+["Ich bin ___ müde.", "nicht", ["kein","keine","keinen"]],
+["Ich habe ___ Zeit.", "keine", ["nicht","kein","keinen"]],
+["Das ist ___ Buch.", "kein", ["nicht","keine","keinen"]],
+["Das ist ___ Tasche.", "keine", ["nicht","kein","keinen"]],
+["Ich trinke ___ Kaffee.", "keinen", ["nicht","kein","keine"]],
+["Er ist ___ Arzt.", "kein", ["nicht","keine","keinen"]],
+["Sie hat ___ Bruder.", "keinen", ["nicht","kein","keine"]],
+["Wir haben ___ Kinder.", "keine", ["nicht","kein","keinen"]],
+["Ich spiele ___ Fußball.", "nicht", ["kein","keine","keinen"]]
+
+];
+
+function generateNegationQuestions() {
+
+    negationExamples.forEach(item => {
+
+        addQuestion(
+            item[0],
+            item[1],
+            item[2]
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   EVERYDAY QUESTIONS
+========================================================= */
+
+const everyday = [
+
+["Wie geht es dir?","Mir geht es gut.","Gute Nacht.","Ich bin 18.","Ich heiße Aswin."],
+["Wie heißt du?","Ich heiße Aswin.","Ich komme aus Indien.","Ich bin Student.","Mir geht es gut."],
+["Woher kommst du?","Ich komme aus Indien.","Ich wohne in Indien.","Ich bin Student.","Ich spiele Fußball."],
+["Wo wohnst du?","Ich wohne in Indien.","Ich heiße Aswin.","Ich bin 18.","Ich spiele Fußball."],
+["Was machst du?","Ich bin Student.","Ich komme aus Indien.","Ich heiße Aswin.","Ich wohne in Indien."],
+["Was sind deine Hobbys?","Ich spiele gern Fußball.","Ich bin 18.","Ich wohne in Indien.","Ich heiße Aswin."],
+["Was möchtest du trinken?","Ich möchte Wasser.","Ich bin Student.","Ich spiele Fußball.","Ich wohne in Indien."],
+["Was möchtest du essen?","Ich möchte Reis.","Ich heiße Aswin.","Ich bin 18.","Ich lerne Deutsch."],
+["Wann stehst du auf?","Ich stehe um sieben Uhr auf.","Ich komme aus Indien.","Ich bin Student.","Ich spiele Fußball."],
+["Wann gehst du schlafen?","Ich gehe um zehn Uhr schlafen.","Ich heiße Aswin.","Ich trinke Kaffee.","Ich spiele Fußball."],
+["Was ist dein Lieblingsessen?","Mein Lieblingsessen ist Mandi.","Ich bin 18.","Ich wohne in Indien.","Ich lerne Deutsch."],
+["Welche Sprache lernst du?","Ich lerne Deutsch.","Ich spiele Fußball.","Ich trinke Wasser.","Ich bin Student."]
+
+];
+
+function generateEverydayQuestions() {
+
+    everyday.forEach(item => {
+
+        addQuestion(
+            item[0],
+            item[1],
+            [item[2], item[3], item[4]]
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   EXTRA COMBINATION QUESTIONS
+   ========================================================= */
+
+function generateCombinationQuestions() {
+
+    const people = [
+        ["Ich","I"],
+        ["Du","you"],
+        ["Er","he"],
+        ["Sie","she"],
+        ["Wir","we"],
+        ["Ihr","you plural"],
+        ["Sie","they"]
+    ];
+
+    const places = [
+        "zu Hause",
+        "in Deutschland",
+        "in Indien",
+        "im Park",
+        "in der Schule",
+        "im Restaurant",
+        "am Bahnhof",
+        "im Büro",
+        "in der Stadt",
+        "im Supermarkt"
+    ];
+
+    const actions = [
+        ["lerne","Deutsch"],
+        ["spiele","Fußball"],
+        ["trinke","Kaffee"],
+        ["esse","Reis"],
+        ["lese","ein Buch"],
+        ["höre","Musik"],
+        ["sehe","einen Film"],
+        ["kaufe","Brot"],
+        ["mache","Sport"],
+        ["besuche","meine Familie"]
+    ];
+
+
+    people.forEach((person, pIndex) => {
+
+        places.forEach((place, placeIndex) => {
+
+            actions.forEach((action, actionIndex) => {
+
+                let verb = action[0];
+
+                if (person[0] === "Du") {
+
+                    const map = {
+                        "lerne":"lernst",
+                        "spiele":"spielst",
+                        "trinke":"trinkst",
+                        "esse":"isst",
+                        "lese":"liest",
+                        "höre":"hörst",
+                        "sehe":"siehst",
+                        "kaufe":"kaufst",
+                        "mache":"machst",
+                        "besuche":"besuchst"
+                    };
+
+                    verb = map[verb] || verb;
+
+                }
+
+                else if (
+                    person[0] === "Er" ||
+                    person[0] === "Sie"
+                ) {
+
+                    const map = {
+                        "lerne":"lernt",
+                        "spiele":"spielt",
+                        "trinke":"trinkt",
+                        "esse":"isst",
+                        "lese":"liest",
+                        "höre":"hört",
+                        "sehe":"sieht",
+                        "kaufe":"kauft",
+                        "mache":"macht",
+                        "besuche":"besucht"
+                    };
+
+                    verb = map[verb] || verb;
+
+                }
+
+                else if (person[0] === "Wir") {
+
+                    verb = action[0].replace(
+                        "e","en"
+                    );
+
+                }
+
+                else if (person[0] === "Ihr") {
+
+                    const map = {
+                        "lerne":"lernt",
+                        "spiele":"spielt",
+                        "trinke":"trinkt",
+                        "esse":"esst",
+                        "lese":"lest",
+                        "höre":"hört",
+                        "sehe":"seht",
+                        "kaufe":"kauft",
+                        "mache":"macht",
+                        "besuche":"besucht"
+                    };
+
+                    verb = map[verb] || verb;
+
+                }
+
+                const correct =
+                    `${person[0]} ${verb} ${action[1]} ${place}.`;
+
+                addQuestion(
+                    `Welche Aussage ist richtig?`,
+                    correct,
+                    [
+                        `${person[0]} ${action[1]} ${verb} ${place}.`,
+                        `${verb} ${person[0]} ${action[1]} ${place}.`,
+                        `${place} ${person[0]} ${verb} ${action[1]}.`
+                    ]
+                );
+
+            });
+
+        });
+
+    });
+
+}
+
+
+/* =========================================================
+   GENERATE ALL QUESTIONS
+========================================================= */
+
+function buildQuestionBank() {
+
+    A1_QUESTIONS.length = 0;
+
+    generateVocabularyQuestions();
+    generateArticleQuestions();
+    generateNumberQuestions();
+    generateVerbQuestions();
+    generateSeinQuestions();
+    generateHabenQuestions();
+    generateQuestionWordQuestions();
+    generateColorQuestions();
+    generateDayQuestions();
+    generateOppositeQuestions();
+    generateSentenceQuestions();
+    generateNegationQuestions();
+    generateEverydayQuestions();
+    generateCombinationQuestions();
+
+    console.log(
+        "DeutschStart A1 question bank:",
+        A1_QUESTIONS.length,
+        "questions"
+    );
+
+}
+
+buildQuestionBank();
+
+
+/* =========================================================
+   QUIZ STATE
+========================================================= */
+
+let quizQuestions = [];
+let quizIndex = 0;
+let quizScore = 0;
+let quizAnswered = false;
+
+const QUIZ_LENGTH = 10;
+
+
+/* =========================================================
+   START QUIZ
+========================================================= */
+
+function showQuiz() {
+
+    const area = document.getElementById("lesson-area");
+
+    area.innerHTML = `
+
+    <div class="lesson">
+
+        <div class="quiz-top">
+
+            <div class="badge">
+                📝 A1 Quiz
+            </div>
+
+            <div class="badge">
+                ${A1_QUESTIONS.length.toLocaleString()}
+                questions
+            </div>
+
+        </div>
+
+        <h2>🇩🇪 A1 German Quiz</h2>
+
+        <p>
+        You will get 10 random questions from the
+        A1 question bank.
+        </p>
+
+        <p style="margin-top:10px;">
+        Every new quiz can contain different questions.
+        </p>
+
+        <button
+        class="start-button"
+        onclick="startQuiz()">
+        🚀 Start A1 Quiz
+        </button>
 
     </div>
 
-    <p class="quiz-question">
+    `;
 
-    ${q.question}
+}
 
-    </p>
+
+/* =========================================================
+   START RANDOM QUIZ
+========================================================= */
+
+function startQuiz() {
+
+    quizQuestions =
+        [...A1_QUESTIONS]
+        .sort(() => Math.random() - 0.5)
+        .slice(0, QUIZ_LENGTH);
+
+    quizIndex = 0;
+    quizScore = 0;
+    quizAnswered = false;
+
+    showCurrentQuestion();
+
+}
+
+
+/* =========================================================
+   CURRENT QUESTION
+========================================================= */
+
+function showCurrentQuestion() {
+
+    const area =
+        document.getElementById("lesson-area");
+
+    const q =
+        quizQuestions[quizIndex];
+
+    const progress =
+        ((quizIndex) / QUIZ_LENGTH) * 100;
+
+    let html = `
+
+    <div class="lesson">
+
+        <div class="quiz-top">
+
+            <div class="badge">
+                Question ${quizIndex + 1} / ${QUIZ_LENGTH}
+            </div>
+
+            <div class="badge">
+                Score: ${quizScore}
+            </div>
+
+        </div>
+
+        <div class="progress">
+            <div
+            class="progress-bar"
+            style="width:${progress}%">
+            </div>
+        </div>
+
+        <div class="quiz-question">
+            ${q.question}
+        </div>
 
     `;
 
-    q.options.forEach(
-        (option, index) => {
+
+    q.options.forEach(option => {
 
         html += `
 
         <button
         class="option"
-        onclick="selectAnswer(${index})">
+        onclick="selectAnswer(this, '${escapeAttribute(option)}')">
 
         ${option}
 
@@ -1918,128 +2043,255 @@ function showQuizQuestion() {
 
     });
 
-    container.innerHTML = html;
+
+    html += `
+
+        <div
+        id="quiz-feedback"
+        class="quiz-feedback">
+        </div>
+
+        <button
+        id="next-button"
+        class="next-button"
+        onclick="nextQuestion()">
+
+        Next Question →
+
+        </button>
+
+    </div>
+
+    `;
+
+    area.innerHTML = html;
+
+    quizAnswered = false;
 
 }
 
 
-/* ANSWER */
+/* =========================================================
+   ESCAPE ATTRIBUTE
+========================================================= */
 
-function selectAnswer(selected) {
+function escapeAttribute(text) {
 
-    const question =
-        quizQuestions[currentQuestion];
+    return String(text)
+        .replace(/\\/g, "\\\\")
+        .replace(/'/g, "\\'");
+
+}
+
+
+/* =========================================================
+   ANSWER
+========================================================= */
+
+function selectAnswer(button, selected) {
+
+    if (quizAnswered) return;
+
+    quizAnswered = true;
+
+    const q =
+        quizQuestions[quizIndex];
 
     const buttons =
         document.querySelectorAll(".option");
 
-    buttons.forEach(
-        button => button.disabled = true
-    );
+    buttons.forEach(btn => {
 
-    if (
-        selected === question.answer
-    ) {
+        btn.disabled = true;
+
+        const text =
+            btn.textContent.trim();
+
+        if (text === q.answer) {
+
+            btn.classList.add("correct");
+
+        }
+
+    });
+
+
+    const feedback =
+        document.getElementById("quiz-feedback");
+
+    if (selected === q.answer) {
 
         quizScore++;
 
-        buttons[selected].classList.add("correct");
+        button.classList.add("correct");
+
+        feedback.innerHTML =
+            "✅ Correct! Sehr gut!";
+
+        feedback.style.color = "#16833a";
 
     } else {
 
-        buttons[selected].classList.add("wrong");
+        button.classList.add("wrong");
 
-        buttons[
-            question.answer
-        ].classList.add("correct");
+        feedback.innerHTML =
+            "❌ Not quite. Correct answer: " +
+            q.answer;
+
+        feedback.style.color = "#c62828";
 
     }
 
-    setTimeout(
-        () => {
 
-            currentQuestion++;
-
-            showQuizQuestion();
-
-        },
-        600
-    );
+    document.getElementById(
+        "next-button"
+    ).style.display = "inline-block";
 
 }
 
 
-/* FINISH QUIZ */
+/* =========================================================
+   NEXT QUESTION
+========================================================= */
+
+function nextQuestion() {
+
+    quizIndex++;
+
+    if (quizIndex >= QUIZ_LENGTH) {
+
+        finishQuiz();
+
+        return;
+
+    }
+
+    showCurrentQuestion();
+
+}
+
+
+/* =========================================================
+   FINISH QUIZ
+========================================================= */
 
 async function finishQuiz() {
 
-    const container =
-        document.getElementById("quiz-container");
-
-    const total =
-        quizQuestions.length;
+    const area =
+        document.getElementById("lesson-area");
 
     const percentage =
-        total
-        ? Math.round(
-            (quizScore / total) * 100
-        )
-        : 0;
+        Math.round(
+            (quizScore / QUIZ_LENGTH) * 100
+        );
 
-    container.innerHTML = `
 
-    <div class="score-box">
+    let message = "";
 
-    <h2>🎉 Quiz Finished!</h2>
+    if (percentage === 100) {
 
-    <p style="margin-top:10px;">
+        message = "🏆 Perfect! Sehr gut!";
 
-    Score:
-    <strong>
-    ${quizScore} / ${total}
-    </strong>
+    } else if (percentage >= 80) {
 
-    </p>
+        message = "🎉 Excellent A1 work!";
 
-    <p style="margin-top:10px;">
-    ${percentage}%
-    </p>
+    } else if (percentage >= 60) {
 
-    <button
-    class="next-button"
-    onclick="startQuiz()">
+        message = "👍 Good job! Keep practicing.";
 
-    🔄 Try Again
+    } else {
 
-    </button>
+        message = "💪 Keep practicing. You can improve!";
+
+    }
+
+
+    area.innerHTML = `
+
+    <div class="lesson final-score">
+
+        <h2>🎉 Quiz Finished!</h2>
+
+        <p style="font-size:22px;">
+        ${quizScore} / ${QUIZ_LENGTH}
+        </p>
+
+        <p style="font-size:20px;margin-top:10px;">
+        ${percentage}%
+        </p>
+
+        <p style="margin-top:15px;">
+        ${message}
+        </p>
+
+        <p style="margin-top:15px;">
+        Question bank:
+        <b>${A1_QUESTIONS.length.toLocaleString()}</b>
+        questions
+        </p>
+
+        <button
+        class="start-button"
+        onclick="startQuiz()">
+
+        🔄 Try Another Quiz
+
+        </button>
+
+        <br>
+
+        <button
+        class="start-button"
+        onclick="showLesson('quiz')">
+
+        📝 Back to Quiz
+
+        </button>
 
     </div>
 
     `;
 
 
-    /* SAVE RESULT */
+    await saveQuizResult(
+        quizScore,
+        QUIZ_LENGTH
+    );
 
-    if (
-        supabaseClient &&
-        currentUser
-    ) {
+}
+
+
+/* =========================================================
+   SAVE QUIZ RESULT
+========================================================= */
+
+async function saveQuizResult(score, total) {
+
+    if (!supabaseClient || !currentUser) {
+
+        console.log(
+            "Quiz result not saved: user not logged in."
+        );
+
+        return;
+
+    }
+
+
+    try {
 
         const { error } =
             await supabaseClient
             .from("quiz_results")
             .insert({
 
-                user_id:
-                    currentUser.id,
-
-                score:
-                    quizScore,
-
-                total:
-                    total
+                user_id: currentUser.id,
+                score: score,
+                total: total
 
             });
+
 
         if (error) {
 
@@ -2048,11 +2300,31 @@ async function finishQuiz() {
                 error.message
             );
 
+        } else {
+
+            console.log(
+                "Quiz result saved!"
+            );
+
         }
+
+    } catch (error) {
+
+        console.log(
+            "Quiz save error:",
+            error
+        );
 
     }
 
 }
+
+
+/* =========================================================
+   SHOW QUIZ AUTOMATICALLY
+========================================================= */
+
+showLesson("greetings");
 
 </script>
 
