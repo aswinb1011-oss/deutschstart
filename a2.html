@@ -1703,11 +1703,12 @@ async function saveQuizResult(score,total) {
 
     const { error } = await supabaseClient
         .from("quiz_results")
-        .insert({
-            user_id: currentUser.id,
-            score: score,
-            total: total
-        });
+.insert({
+    user_id: currentUser.id,
+    score: score,
+    total: total,
+    level: "A2"
+});
 
     if (error) {
 
