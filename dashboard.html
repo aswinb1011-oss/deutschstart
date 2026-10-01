@@ -5,9 +5,12 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-<title>DeutschStart – Student Dashboard</title>
+<title>DeutschStart – Dashboard</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="config.js"></script>
@@ -19,37 +22,78 @@
 }
 
 body {
+
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #eef6ff, #fff4fb);
-    color: #172033;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #243b55 0%,
+            #101827 35%,
+            #070b13 75%
+        );
+
+    color: #ffffff;
+
+    min-height: 100vh;
 }
 
 
-/* HEADER */
+/* ==========================================
+   HEADER
+========================================== */
 
 header {
-    background: linear-gradient(135deg, #2563eb, #7c3aed);
-    color: white;
-    padding: 18px 20px;
+
+    background: rgba(8, 13, 24, 0.88);
+
+    backdrop-filter: blur(18px);
+
+    border-bottom:
+        1px solid rgba(255,255,255,.08);
+
+    padding: 18px 22px;
 
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 
-    gap: 15px;
+    position: sticky;
+
+    top: 0;
+
+    z-index: 10;
 }
+
 
 .logo {
-    font-size: 23px;
-    font-weight: bold;
+
+    font-size: 22px;
+
+    font-weight: 800;
+
+    letter-spacing: .3px;
 }
 
-.logout {
-    background: rgba(255,255,255,.18);
-    color: white;
 
-    border: 1px solid rgba(255,255,255,.4);
+.logout {
+
+    background:
+        rgba(239,68,68,.14);
+
+    color: #ff8b8b;
+
+    border:
+        1px solid rgba(239,68,68,.35);
 
     padding: 10px 16px;
 
@@ -57,221 +101,345 @@ header {
 
     cursor: pointer;
 
-    font-weight: bold;
+    font-weight: 700;
 }
 
 
-/* MAIN */
+.logout:hover {
+
+    background:
+        rgba(239,68,68,.25);
+}
+
+
+
+/* ==========================================
+   CONTAINER
+========================================== */
 
 .container {
-    max-width: 1100px;
+
+    max-width: 1150px;
 
     margin: auto;
 
-    padding: 25px 15px 50px;
+    padding: 28px 18px 60px;
 }
 
 
-/* WELCOME */
 
-.welcome {
-    background: white;
+/* ==========================================
+   HERO
+========================================== */
 
-    padding: 28px;
+.hero {
 
-    border-radius: 22px;
+    padding: 30px;
 
-    margin-bottom: 22px;
+    border-radius: 24px;
 
-    box-shadow: 0 8px 30px rgba(37,99,235,.10);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(37,99,235,.22),
+            rgba(124,58,237,.18)
+        );
 
-    border-left: 6px solid #2563eb;
-}
-
-.welcome h1 {
-    margin: 0 0 8px;
-
-    font-size: 30px;
-}
-
-.email {
-    color: #6b7280;
-
-    margin-bottom: 0;
-}
-
-
-/* MOTIVATION */
-
-.motivation {
-    background: linear-gradient(
-        135deg,
-        #fef3c7,
-        #fde68a
-    );
-
-    padding: 20px;
-
-    border-radius: 18px;
-
-    margin-bottom: 22px;
-
-    border: 1px solid #fcd34d;
-}
-
-.motivation h2 {
-    margin-top: 0;
-}
-
-
-/* GRID */
-
-.grid {
-    display: grid;
-
-    grid-template-columns:
-    repeat(auto-fit, minmax(220px, 1fr));
-
-    gap: 18px;
-
-    margin-bottom: 22px;
-}
-
-
-/* CARD */
-
-.card {
-    background: white;
-
-    padding: 22px;
-
-    border-radius: 20px;
+    border:
+        1px solid rgba(255,255,255,.1);
 
     box-shadow:
-        0 8px 25px rgba(0,0,0,.07);
-}
+        0 20px 60px rgba(0,0,0,.25);
 
-.card h2 {
-    margin-top: 0;
-}
-
-
-/* STAT CARDS */
-
-.stat-card {
-    position: relative;
-
-    overflow: hidden;
-}
-
-.stat-card::after {
-    content: "";
-
-    position: absolute;
-
-    width: 90px;
-    height: 90px;
-
-    border-radius: 50%;
-
-    right: -25px;
-    top: -25px;
-
-    opacity: .12;
-}
-
-.stat-blue::after {
-    background: #2563eb;
-}
-
-.stat-green::after {
-    background: #16a34a;
-}
-
-.stat-purple::after {
-    background: #7c3aed;
-}
-
-.stat-orange::after {
-    background: #f97316;
+    margin-bottom: 22px;
 }
 
 
-.stat-label {
-    color: #6b7280;
+.hero h1 {
+
+    margin: 0 0 8px;
+
+    font-size: 32px;
+}
+
+
+.hero p {
+
+    margin: 7px 0;
+
+    color: #b8c2d6;
+}
+
+
+.email {
 
     font-size: 14px;
 
-    margin-bottom: 8px;
-}
-
-.stat {
-    font-size: 32px;
-
-    font-weight: bold;
+    color: #8fa1bd !important;
 }
 
 
-/* PROGRESS */
+
+/* ==========================================
+   OVERALL PROGRESS
+========================================== */
+
+.overall {
+
+    background:
+        rgba(255,255,255,.055);
+
+    border:
+        1px solid rgba(255,255,255,.09);
+
+    border-radius: 22px;
+
+    padding: 24px;
+
+    margin-bottom: 22px;
+
+    backdrop-filter: blur(15px);
+}
+
+
+.section-title {
+
+    font-size: 20px;
+
+    font-weight: 800;
+
+    margin: 0 0 18px;
+}
+
+
+.overall-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 12px;
+}
+
+
+.overall-number {
+
+    font-size: 34px;
+
+    font-weight: 900;
+}
+
+
+.muted {
+
+    color: #8fa1bd;
+
+    font-size: 14px;
+}
+
 
 .progress {
-    height: 14px;
 
-    background: #e5e7eb;
+    height: 13px;
+
+    background:
+        rgba(255,255,255,.08);
 
     border-radius: 20px;
 
     overflow: hidden;
-
-    margin: 14px 0;
 }
 
+
 .progress-bar {
+
     height: 100%;
 
     width: 0%;
 
     border-radius: 20px;
 
-    transition: width .5s;
-}
-
-.a1-bar {
     background:
         linear-gradient(
             90deg,
-            #2563eb,
-            #60a5fa
+            #3b82f6,
+            #8b5cf6
         );
+
+    transition:
+        width .5s ease;
 }
 
-.a2-bar {
+
+
+/* ==========================================
+   STATS
+========================================== */
+
+.grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(210px,1fr)
+        );
+
+    gap: 16px;
+
+    margin-bottom: 22px;
+}
+
+
+.stat-card {
+
+    background:
+        rgba(255,255,255,.055);
+
+    border:
+        1px solid rgba(255,255,255,.09);
+
+    border-radius: 20px;
+
+    padding: 22px;
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.15);
+}
+
+
+.stat-label {
+
+    color: #8fa1bd;
+
+    font-size: 14px;
+
+    margin-bottom: 10px;
+}
+
+
+.stat-value {
+
+    font-size: 30px;
+
+    font-weight: 900;
+}
+
+
+
+/* ==========================================
+   LEVEL CARDS
+========================================== */
+
+.level {
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+.level::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 140px;
+
+    height: 140px;
+
+    border-radius: 50%;
+
+    right: -60px;
+
+    top: -60px;
+
+    background:
+        rgba(59,130,246,.12);
+}
+
+
+.level-a2::before {
+
+    background:
+        rgba(34,197,94,.12);
+}
+
+
+.level h2 {
+
+    margin: 0 0 7px;
+
+    font-size: 23px;
+}
+
+
+.level p {
+
+    color: #9aa8bd;
+
+    margin: 0 0 18px;
+}
+
+
+.level-progress {
+
+    margin-bottom: 15px;
+}
+
+
+.level-progress-text {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    font-size: 13px;
+
+    color: #9aa8bd;
+
+    margin-bottom: 7px;
+}
+
+
+.a2-progress {
+
     background:
         linear-gradient(
             90deg,
-            #16a34a,
-            #4ade80
-        );
-}
-
-.overall-bar {
-    background:
-        linear-gradient(
-            90deg,
-            #7c3aed,
-            #ec4899
+            #22c55e,
+            #10b981
         );
 }
 
 
-/* BUTTONS */
+
+/* ==========================================
+   BUTTONS
+========================================== */
 
 .btn {
+
     display: inline-block;
 
     text-decoration: none;
 
     border: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #4f46e5
+        );
 
     color: white;
 
@@ -281,147 +449,238 @@ header {
 
     cursor: pointer;
 
-    font-weight: bold;
+    font-weight: 800;
 
-    margin-top: 8px;
+    transition:
+        transform .2s,
+        opacity .2s;
 }
 
-.btn-blue {
-    background: #2563eb;
+
+.btn:hover {
+
+    transform:
+        translateY(-2px);
+
+    opacity: .92;
 }
+
 
 .btn-green {
-    background: #16a34a;
+
+    background:
+        linear-gradient(
+            135deg,
+            #16a34a,
+            #059669
+        );
 }
 
-.btn-purple {
-    background: #7c3aed;
-}
 
 .btn-gray {
-    background: #6b7280;
+
+    background:
+        rgba(255,255,255,.08);
+
+    color: #aebbd0;
+
+    border:
+        1px solid rgba(255,255,255,.1);
 }
 
 
-/* LEVEL CARDS */
 
-.level-card {
-    text-align: center;
+/* ==========================================
+   QUIZ
+========================================== */
 
-    transition: transform .2s;
+.quiz-card {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
 }
 
-.level-card:hover {
-    transform: translateY(-3px);
-}
-
-.level-icon {
-    font-size: 42px;
-}
-
-.level-card h2 {
-    font-size: 27px;
-}
-
-
-/* QUIZ */
 
 .quiz-score {
-    font-size: 25px;
 
-    font-weight: bold;
+    font-size: 27px;
 
-    margin-top: 8px;
-}
-
-.quiz-a1 {
-    color: #2563eb;
-}
-
-.quiz-a2 {
-    color: #16a34a;
+    font-weight: 900;
 }
 
 
-/* BADGES */
+.quiz-label {
 
-.badge {
-    display: inline-block;
-
-    padding: 9px 13px;
-
-    border-radius: 20px;
-
-    margin: 5px;
-
-    font-size: 14px;
-
-    font-weight: bold;
-
-    background: #f3f4f6;
-}
-
-.badge-blue {
-    background: #dbeafe;
-    color: #1d4ed8;
-}
-
-.badge-green {
-    background: #dcfce7;
-    color: #15803d;
-}
-
-.badge-purple {
-    background: #ede9fe;
-    color: #6d28d9;
-}
-
-.badge-orange {
-    background: #ffedd5;
-    color: #c2410c;
-}
-
-
-/* SMALL */
-
-.small {
-    color: #6b7280;
+    color: #8fa1bd;
 
     font-size: 14px;
 }
 
 
-/* FOOTER */
 
-footer {
+/* ==========================================
+   LEVEL BUTTONS
+========================================== */
+
+.level-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(200px,1fr)
+        );
+
+    gap: 16px;
+
+    margin-top: 22px;
+}
+
+
+.level-box {
+
+    background:
+        rgba(255,255,255,.045);
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    border-radius: 18px;
+
+    padding: 22px;
+
     text-align: center;
 
-    color: #6b7280;
-
-    padding: 30px 10px;
+    transition:
+        transform .2s,
+        background .2s;
 }
 
 
-/* MOBILE */
+.level-box:hover {
+
+    transform:
+        translateY(-3px);
+
+    background:
+        rgba(255,255,255,.07);
+}
+
+
+.level-box h2 {
+
+    margin:
+        0 0 7px;
+
+    font-size: 28px;
+}
+
+
+.level-box p {
+
+    color: #8fa1bd;
+
+    margin:
+        0 0 14px;
+}
+
+
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+footer {
+
+    text-align: center;
+
+    color: #65748c;
+
+    padding:
+        25px 10px 40px;
+
+    font-size: 13px;
+}
+
+
+
+/* ==========================================
+   MOBILE
+========================================== */
 
 @media(max-width:600px) {
 
     header {
-        flex-direction: column;
 
-        align-items: flex-start;
+        padding:
+            15px;
     }
+
+
+    .logo {
+
+        font-size: 19px;
+    }
+
 
     .container {
-        padding: 15px 10px 40px;
+
+        padding:
+            18px 12px 45px;
     }
 
-    .welcome h1 {
-        font-size: 25px;
+
+    .hero {
+
+        padding:
+            23px;
+
+        border-radius:
+            20px;
     }
 
-    .card {
-        padding: 19px;
+
+    .hero h1 {
+
+        font-size:
+            27px;
+    }
+
+
+    .overall {
+
+        padding:
+            20px;
+    }
+
+
+    .overall-number {
+
+        font-size:
+            28px;
+    }
+
+
+    .quiz-card {
+
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+    }
+
+
+    .stat-card {
+
+        padding:
+            19px;
     }
 
 }
@@ -434,19 +693,26 @@ footer {
 <body>
 
 
-<!-- HEADER -->
+<!-- ==========================================
+     HEADER
+========================================== -->
 
 <header>
 
     <div class="logo">
+
         🇩🇪 DeutschStart
+
     </div>
+
 
     <button
         class="logout"
         onclick="logout()"
     >
+
         Logout
+
     </button>
 
 </header>
@@ -456,306 +722,426 @@ footer {
 <div class="container">
 
 
-<!-- WELCOME -->
+<!-- ==========================================
+     HERO
+========================================== -->
 
-<section class="welcome">
+<section class="hero">
 
     <h1>
+
         Willkommen! 👋
+
     </h1>
 
+
     <p>
-        Keep learning German and build your confidence every day! 🇩🇪
+
+        Your personal German learning dashboard.
+
     </p>
+
 
     <p
         class="email"
         id="userEmail"
     >
+
         Loading account...
+
     </p>
 
 </section>
 
 
 
-<!-- MOTIVATION -->
+<!-- ==========================================
+     OVERALL PROGRESS
+========================================== -->
 
-<section class="motivation">
+<section class="overall">
 
-    <h2>
-        🔥 Keep Going!
+    <h2 class="section-title">
+
+        🎯 Overall Learning Progress
+
     </h2>
 
-    <p id="motivationText">
-        Every lesson you complete brings you closer to your German goals.
-    </p>
 
-</section>
+    <div class="overall-top">
+
+        <div>
+
+            <div
+                class="overall-number"
+                id="overallPercent"
+            >
+
+                0%
+
+            </div>
+
+            <div class="muted">
+
+                A1 + A2 lessons completed
+
+            </div>
+
+        </div>
 
 
+        <div
+            class="muted"
+            id="overallLessons"
+        >
 
-<!-- OVERALL PROGRESS -->
+            0 / 17
 
-<section class="card">
+        </div>
 
-    <h2>
-        📊 Your Overall Progress
-    </h2>
+    </div>
 
-    <p class="small">
-        A1 + A2 lesson progress
-    </p>
 
     <div class="progress">
 
         <div
-            class="progress-bar overall-bar"
+            class="progress-bar"
             id="overallProgressBar"
         ></div>
 
     </div>
 
-    <p
-        class="small"
-        id="overallProgressText"
-    >
-        0 / 17 lessons completed
-    </p>
-
 </section>
 
 
-<br>
 
-
-
-<!-- STAT CARDS -->
+<!-- ==========================================
+     STATS
+========================================== -->
 
 <section class="grid">
 
 
-    <div class="card stat-card stat-blue">
+    <div class="stat-card">
 
         <div class="stat-label">
+
             🟢 A1 Lessons
+
         </div>
 
+
         <div
-            class="stat"
+            class="stat-value"
             id="a1Lessons"
         >
+
             0/7
+
         </div>
 
     </div>
 
 
 
-    <div class="card stat-card stat-green">
+    <div class="stat-card">
 
         <div class="stat-label">
+
             🔵 A2 Lessons
+
         </div>
 
+
         <div
-            class="stat"
+            class="stat-value"
             id="a2Lessons"
         >
+
             0/10
+
         </div>
 
     </div>
 
 
 
-    <div class="card stat-card stat-purple">
+    <div class="stat-card">
 
         <div class="stat-label">
+
             📝 A1 Quiz
+
         </div>
 
+
         <div
-            class="quiz-score quiz-a1"
+            class="stat-value"
             id="a1Quiz"
         >
+
             —
+
         </div>
 
     </div>
 
 
 
-    <div class="card stat-card stat-orange">
+    <div class="stat-card">
 
         <div class="stat-label">
+
             📝 A2 Quiz
+
         </div>
 
+
         <div
-            class="quiz-score quiz-a2"
+            class="stat-value"
             id="a2Quiz"
         >
+
             —
+
         </div>
 
     </div>
-
 
 </section>
 
 
 
-<!-- A1 -->
+<!-- ==========================================
+     A1
+========================================== -->
 
-<section class="card">
+<section class="stat-card level">
 
     <h2>
+
         🟢 A1 German
+
     </h2>
 
+
     <p>
-        Beginner German — build your foundation.
+
+        Beginner German
+
     </p>
 
-    <div class="progress">
 
-        <div
-            class="progress-bar a1-bar"
-            id="a1ProgressBar"
-        ></div>
+    <div class="level-progress">
+
+        <div class="level-progress-text">
+
+            <span>
+                Lesson progress
+            </span>
+
+            <span id="a1ProgressText">
+                0 / 7
+            </span>
+
+        </div>
+
+
+        <div class="progress">
+
+            <div
+                class="progress-bar"
+                id="a1ProgressBar"
+            ></div>
+
+        </div>
 
     </div>
 
-    <p
-        class="small"
-        id="a1ProgressText"
-    >
-        0 / 7 lessons completed
-    </p>
 
     <a
         href="a1.html"
-        class="btn btn-blue"
+        class="btn"
     >
+
         Continue A1 →
+
     </a>
 
 </section>
 
 
+
 <br>
 
 
 
-<!-- A2 -->
+<!-- ==========================================
+     A2
+========================================== -->
 
-<section class="card">
+<section class="stat-card level level-a2">
 
     <h2>
+
         🔵 A2 German
+
     </h2>
 
+
     <p>
-        Improve grammar, vocabulary, speaking,
-        writing and reading.
+
+        Elementary German
+
     </p>
 
-    <div class="progress">
 
-        <div
-            class="progress-bar a2-bar"
-            id="a2ProgressBar"
-        ></div>
+    <div class="level-progress">
+
+        <div class="level-progress-text">
+
+            <span>
+                Lesson progress
+            </span>
+
+            <span id="a2ProgressText">
+                0 / 10
+            </span>
+
+        </div>
+
+
+        <div class="progress">
+
+            <div
+                class="progress-bar a2-progress"
+                id="a2ProgressBar"
+            ></div>
+
+        </div>
 
     </div>
 
-    <p
-        class="small"
-        id="a2ProgressText"
-    >
-        0 / 10 lessons completed
-    </p>
 
     <a
         href="a2.html"
         class="btn btn-green"
     >
+
         Continue A2 →
+
     </a>
 
 </section>
 
 
-<br>
+
+<!-- ==========================================
+     QUIZ PERFORMANCE
+========================================== -->
+
+<section
+    class="grid"
+    style="margin-top:22px;"
+>
+
+
+    <div class="stat-card quiz-card">
+
+        <div>
+
+            <div class="quiz-label">
+
+                🟢 A1 Quiz Performance
+
+            </div>
+
+
+            <div
+                class="quiz-score"
+                id="a1QuizLarge"
+            >
+
+                —
+
+            </div>
+
+        </div>
+
+    </div>
 
 
 
-<!-- ACHIEVEMENTS -->
+    <div class="stat-card quiz-card">
 
-<section class="card">
+        <div>
 
-    <h2>
-        🏆 Achievements
-    </h2>
+            <div class="quiz-label">
 
-    <p class="small">
-        Keep learning to unlock more achievements.
-    </p>
+                🔵 A2 Quiz Performance
 
-    <div id="badges">
+            </div>
 
-        <span class="badge">
-            🔒 First Lesson
-        </span>
 
-        <span class="badge">
-            🔒 A1 Explorer
-        </span>
+            <div
+                class="quiz-score"
+                id="a2QuizLarge"
+            >
 
-        <span class="badge">
-            🔒 A2 Explorer
-        </span>
+                —
 
-        <span class="badge">
-            🔒 Quiz Master
-        </span>
+            </div>
+
+        </div>
 
     </div>
 
 </section>
 
 
-<br>
+
+<!-- ==========================================
+     LEVELS
+========================================== -->
+
+<h2
+    class="section-title"
+    style="margin-top:30px;"
+>
+
+    📚 Your German Levels
+
+</h2>
 
 
-
-<!-- LEVELS -->
-
-<section class="grid">
+<section class="level-grid">
 
 
     <!-- A1 -->
 
-    <div class="card level-card">
-
-        <div class="level-icon">
-            🇩🇪
-        </div>
+    <div class="level-box">
 
         <h2>
-            A1
+
+            🇩🇪 A1
+
         </h2>
 
+
         <p>
+
             Beginner
+
         </p>
+
 
         <a
             href="a1.html"
-            class="btn btn-blue"
+            class="btn"
         >
+
             Open A1
+
         </a>
 
     </div>
@@ -764,25 +1150,29 @@ footer {
 
     <!-- A2 -->
 
-    <div class="card level-card">
-
-        <div class="level-icon">
-            🇩🇪
-        </div>
+    <div class="level-box">
 
         <h2>
-            A2
+
+            🇩🇪 A2
+
         </h2>
 
+
         <p>
+
             Elementary
+
         </p>
+
 
         <a
             href="a2.html"
             class="btn btn-green"
         >
+
             Open A2
+
         </a>
 
     </div>
@@ -791,25 +1181,29 @@ footer {
 
     <!-- B1 -->
 
-    <div class="card level-card">
-
-        <div class="level-icon">
-            🚀
-        </div>
+    <div class="level-box">
 
         <h2>
-            B1
+
+            🇩🇪 B1
+
         </h2>
 
+
         <p>
+
             Intermediate
+
         </p>
+
 
         <button
             class="btn btn-gray"
             onclick="comingSoon('B1')"
         >
+
             Coming Soon
+
         </button>
 
     </div>
@@ -818,25 +1212,29 @@ footer {
 
     <!-- B2 -->
 
-    <div class="card level-card">
-
-        <div class="level-icon">
-            🎯
-        </div>
+    <div class="level-box">
 
         <h2>
-            B2
+
+            🇩🇪 B2
+
         </h2>
 
+
         <p>
+
             Upper Intermediate
+
         </p>
+
 
         <button
             class="btn btn-gray"
             onclick="comingSoon('B2')"
         >
+
             Coming Soon
+
         </button>
 
     </div>
@@ -849,9 +1247,16 @@ footer {
 
 
 
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
 <footer>
 
-    🇩🇪 DeutschStart —
+    🇩🇪 DeutschStart
+
+    <br>
+
     Learn German. Speak with Confidence.
 
 </footer>
@@ -874,9 +1279,9 @@ const supabaseClient =
 
 let currentUser = null;
 
-let a1CompletedCount = 0;
+let a1CompletedGlobal = 0;
 
-let a2CompletedCount = 0;
+let a2CompletedGlobal = 0;
 
 
 
@@ -888,8 +1293,11 @@ async function loadDashboard() {
 
 
     const {
+
         data: { user },
+
         error
+
     } = await supabaseClient.auth.getUser();
 
 
@@ -899,6 +1307,7 @@ async function loadDashboard() {
             "login.html";
 
         return;
+
     }
 
 
@@ -907,15 +1316,13 @@ async function loadDashboard() {
 
     document.getElementById(
         "userEmail"
-    ).textContent =
-        user.email;
+    ).textContent = user.email;
 
 
     await loadLessonProgress();
 
     await loadQuizResults();
 
-    updateMotivation();
 
 }
 
@@ -956,6 +1363,7 @@ async function loadLessonProgress() {
         );
 
         return;
+
     }
 
 
@@ -1020,7 +1428,7 @@ async function loadLessonProgress() {
     ];
 
 
-    a1CompletedCount =
+    const a1Completed =
         completedNames.filter(
 
             name =>
@@ -1029,7 +1437,7 @@ async function loadLessonProgress() {
         ).length;
 
 
-    a2CompletedCount =
+    const a2Completed =
         completedNames.filter(
 
             name =>
@@ -1038,13 +1446,28 @@ async function loadLessonProgress() {
         ).length;
 
 
-    updateA1Progress();
+    a1CompletedGlobal =
+        a1Completed;
 
-    updateA2Progress();
 
-    updateOverallProgress();
+    a2CompletedGlobal =
+        a2Completed;
 
-    updateBadges();
+
+    updateA1Progress(
+        a1Completed
+    );
+
+
+    updateA2Progress(
+        a2Completed
+    );
+
+
+    updateOverallProgress(
+        a1Completed,
+        a2Completed
+    );
 
 }
 
@@ -1054,7 +1477,9 @@ async function loadLessonProgress() {
    A1 PROGRESS
 ========================================== */
 
-function updateA1Progress() {
+function updateA1Progress(
+    completed
+) {
 
 
     const total = 7;
@@ -1062,14 +1487,14 @@ function updateA1Progress() {
 
     const percentage =
         Math.round(
-            (a1CompletedCount / total) * 100
+            (completed / total) * 100
         );
 
 
     document.getElementById(
         "a1Lessons"
     ).textContent =
-        `${a1CompletedCount}/${total}`;
+        `${completed}/${total}`;
 
 
     document.getElementById(
@@ -1081,7 +1506,7 @@ function updateA1Progress() {
     document.getElementById(
         "a1ProgressText"
     ).textContent =
-        `${a1CompletedCount} / ${total} lessons completed`;
+        `${completed} / ${total}`;
 
 }
 
@@ -1091,7 +1516,9 @@ function updateA1Progress() {
    A2 PROGRESS
 ========================================== */
 
-function updateA2Progress() {
+function updateA2Progress(
+    completed
+) {
 
 
     const total = 10;
@@ -1099,14 +1526,14 @@ function updateA2Progress() {
 
     const percentage =
         Math.round(
-            (a2CompletedCount / total) * 100
+            (completed / total) * 100
         );
 
 
     document.getElementById(
         "a2Lessons"
     ).textContent =
-        `${a2CompletedCount}/${total}`;
+        `${completed}/${total}`;
 
 
     document.getElementById(
@@ -1118,7 +1545,7 @@ function updateA2Progress() {
     document.getElementById(
         "a2ProgressText"
     ).textContent =
-        `${a2CompletedCount} / ${total} lessons completed`;
+        `${completed} / ${total}`;
 
 }
 
@@ -1128,32 +1555,41 @@ function updateA2Progress() {
    OVERALL PROGRESS
 ========================================== */
 
-function updateOverallProgress() {
+function updateOverallProgress(
+    a1,
+    a2
+) {
 
 
-    const total = 17;
+    const totalLessons = 17;
+
 
     const completed =
-        a1CompletedCount +
-        a2CompletedCount;
+        a1 + a2;
 
 
     const percentage =
         Math.round(
-            (completed / total) * 100
+            (completed / totalLessons) * 100
         );
+
+
+    document.getElementById(
+        "overallPercent"
+    ).textContent =
+        percentage + "%";
+
+
+    document.getElementById(
+        "overallLessons"
+    ).textContent =
+        `${completed} / ${totalLessons}`;
 
 
     document.getElementById(
         "overallProgressBar"
     ).style.width =
         percentage + "%";
-
-
-    document.getElementById(
-        "overallProgressText"
-    ).textContent =
-        `${completed} / ${total} lessons completed — ${percentage}%`;
 
 }
 
@@ -1189,11 +1625,14 @@ async function loadQuizResults() {
         );
 
         return;
+
     }
 
 
     const results = data || [];
 
+
+    /* A1 */
 
     const a1Results =
         results.filter(
@@ -1204,6 +1643,36 @@ async function loadQuizResults() {
         );
 
 
+    if (a1Results.length > 0) {
+
+
+        const latestA1 =
+            a1Results[
+                a1Results.length - 1
+            ];
+
+
+        const score =
+            `${latestA1.score}/${latestA1.total}`;
+
+
+        document.getElementById(
+            "a1Quiz"
+        ).textContent =
+            score;
+
+
+        document.getElementById(
+            "a1QuizLarge"
+        ).textContent =
+            score;
+
+    }
+
+
+
+    /* A2 */
+
     const a2Results =
         results.filter(
 
@@ -1213,24 +1682,8 @@ async function loadQuizResults() {
         );
 
 
-    if (a1Results.length > 0) {
-
-        const latestA1 =
-            a1Results[
-                a1Results.length - 1
-            ];
-
-
-        document.getElementById(
-            "a1Quiz"
-        ).textContent =
-
-            `${latestA1.score}/${latestA1.total}`;
-
-    }
-
-
     if (a2Results.length > 0) {
+
 
         const latestA2 =
             a2Results[
@@ -1238,140 +1691,22 @@ async function loadQuizResults() {
             ];
 
 
+        const score =
+            `${latestA2.score}/${latestA2.total}`;
+
+
         document.getElementById(
             "a2Quiz"
         ).textContent =
-
-            `${latestA2.score}/${latestA2.total}`;
-
-    }
-
-}
+            score;
 
 
-
-/* ==========================================
-   MOTIVATION
-========================================== */
-
-function updateMotivation() {
-
-
-    const completed =
-        a1CompletedCount +
-        a2CompletedCount;
-
-
-    const text =
         document.getElementById(
-            "motivationText"
-        );
-
-
-    if (completed === 0) {
-
-        text.textContent =
-            "🌱 Start your German journey today. Your first lesson is waiting!";
+            "a2QuizLarge"
+        ).textContent =
+            score;
 
     }
-
-    else if (completed < 5) {
-
-        text.textContent =
-            "💪 Great start! Keep going and build your German foundation.";
-
-    }
-
-    else if (completed < 10) {
-
-        text.textContent =
-            "🔥 You're making real progress! Keep your learning streak going.";
-
-    }
-
-    else if (completed < 15) {
-
-        text.textContent =
-            "🚀 Excellent progress! You're getting closer to mastering A2.";
-
-    }
-
-    else {
-
-        text.textContent =
-            "🏆 Fantastic! You've completed almost the entire DeutschStart journey.";
-
-    }
-
-}
-
-
-
-/* ==========================================
-   ACHIEVEMENTS
-========================================== */
-
-function updateBadges() {
-
-
-    const badges =
-        document.getElementById(
-            "badges"
-        );
-
-
-    let html = "";
-
-
-    if (
-        a1CompletedCount >= 1 ||
-        a2CompletedCount >= 1
-    ) {
-
-        html +=
-            '<span class="badge badge-blue">🏅 First Lesson</span>';
-
-    }
-
-    else {
-
-        html +=
-            '<span class="badge">🔒 First Lesson</span>';
-
-    }
-
-
-    if (a1CompletedCount >= 7) {
-
-        html +=
-            '<span class="badge badge-green">🟢 A1 Explorer</span>';
-
-    }
-
-    else {
-
-        html +=
-            '<span class="badge">🔒 A1 Explorer</span>';
-
-    }
-
-
-    if (a2CompletedCount >= 10) {
-
-        html +=
-            '<span class="badge badge-purple">🔵 A2 Explorer</span>';
-
-    }
-
-    else {
-
-        html +=
-            '<span class="badge">🔒 A2 Explorer</span>';
-
-    }
-
-
-    badges.innerHTML = html;
 
 }
 
@@ -1396,6 +1731,7 @@ async function logout() {
         );
 
         return;
+
     }
 
 
@@ -1426,6 +1762,7 @@ function comingSoon(level) {
 ========================================== */
 
 loadDashboard();
+
 
 </script>
 
