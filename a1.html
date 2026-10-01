@@ -79,10 +79,6 @@ header h1 {
     cursor: pointer;
 }
 
-.menu-button:hover {
-    background: #eef2f8;
-}
-
 .lesson {
     background: white;
     padding: 25px;
@@ -113,16 +109,13 @@ header h1 {
     margin-top: 15px;
 }
 
-.words b {
-    color: #172033;
-}
-
 .example {
     background: #f8f9fc;
     border-left: 4px solid #3157a5;
     padding: 15px;
     margin: 12px 0;
     border-radius: 6px;
+    line-height: 1.7;
 }
 
 .complete-button {
@@ -134,10 +127,6 @@ header h1 {
     font-weight: bold;
     cursor: pointer;
     margin-bottom: 15px;
-}
-
-.complete-button:hover {
-    background: #3157a5;
 }
 
 .question {
@@ -184,25 +173,15 @@ header h1 {
 
 .quiz-question {
     margin-top: 20px;
-    font-size: 18px;
+    font-size: 19px;
     font-weight: bold;
+    line-height: 1.5;
 }
 
 .result {
     margin-top: 15px;
     font-weight: bold;
     font-size: 17px;
-}
-
-.home-button {
-    display: inline-block;
-    background: #ffcc00;
-    color: #172033;
-    padding: 13px 22px;
-    border-radius: 9px;
-    text-decoration: none;
-    font-weight: bold;
-    margin-top: 10px;
 }
 
 .next-button {
@@ -224,6 +203,27 @@ header h1 {
     margin-top: 20px;
 }
 
+.correct {
+    background: #dff5e5;
+    border: 1px solid #62b875;
+}
+
+.wrong {
+    background: #fde1e1;
+    border: 1px solid #d66;
+}
+
+.home-button {
+    display: inline-block;
+    background: #ffcc00;
+    color: #172033;
+    padding: 13px 22px;
+    border-radius: 9px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
 footer {
     background: #172033;
     color: white;
@@ -233,7 +233,6 @@ footer {
 }
 
 @media (max-width: 600px) {
-
     .lesson-menu {
         grid-template-columns: 1fr;
     }
@@ -272,55 +271,16 @@ footer {
 
 <div class="lesson-menu">
 
-    <button class="menu-button"
-        onclick="showLesson('greetings')">
-        👋 Greetings
-    </button>
-
-    <button class="menu-button"
-        onclick="showLesson('intro')">
-        🙋 Introduction
-    </button>
-
-    <button class="menu-button"
-        onclick="showLesson('numbers')">
-        🔢 Numbers
-    </button>
-
-    <button class="menu-button"
-        onclick="showLesson('family')">
-        👨‍👩‍👧 Family
-    </button>
-
-    <button class="menu-button"
-        onclick="showLesson('home')">
-        🏠 Home
-    </button>
-
-    <button class="menu-button"
-        onclick="showLesson('food')">
-        🍎 Food
-    </button>
-
-    <button class="menu-button"
-        onclick="showLesson('routine')">
-        🕐 Daily Routine
-    </button>
-
-    <button class="menu-button"
-        onclick="showLesson('grammar')">
-        📚 Grammar
-    </button>
-
-    <button class="menu-button"
-        onclick="showLesson('speaking')">
-        🗣️ Speaking
-    </button>
-
-    <button class="menu-button"
-        onclick="showLesson('quiz')">
-        📝 A1 Quiz
-    </button>
+<button class="menu-button" onclick="showLesson('greetings')">👋 Greetings</button>
+<button class="menu-button" onclick="showLesson('intro')">🙋 Introduction</button>
+<button class="menu-button" onclick="showLesson('numbers')">🔢 Numbers</button>
+<button class="menu-button" onclick="showLesson('family')">👨‍👩‍👧 Family</button>
+<button class="menu-button" onclick="showLesson('home')">🏠 Home</button>
+<button class="menu-button" onclick="showLesson('food')">🍎 Food</button>
+<button class="menu-button" onclick="showLesson('routine')">🕐 Daily Routine</button>
+<button class="menu-button" onclick="showLesson('grammar')">📚 Grammar</button>
+<button class="menu-button" onclick="showLesson('speaking')">🗣️ Speaking</button>
+<button class="menu-button" onclick="showLesson('quiz')">📝 A1 Quiz</button>
 
 </div>
 
@@ -328,45 +288,37 @@ footer {
 
 <div class="lesson">
 
-    <h2>👋 Welcome to A1!</h2>
+<h2>👋 Welcome to A1!</h2>
 
-    <p>
-        Willkommen bei DeutschStart! 🇩🇪
-    </p>
+<p>Willkommen bei DeutschStart! 🇩🇪</p>
 
-    <p>
-        Select a lesson above and start learning German.
-    </p>
+<p>Select a lesson above and start learning German.</p>
 
-    <div class="example">
-        <b>Deutsch:</b> Ich lerne Deutsch.<br>
-        <b>English:</b> I am learning German.
-    </div>
+<div class="example">
+<b>Deutsch:</b> Ich lerne Deutsch.<br>
+<b>English:</b> I am learning German.
+</div>
 
 </div>
 
 </div>
 
 <a class="home-button" href="index.html">
-    🏠 Home
+🏠 Home
 </a>
 
 </div>
 
 <footer>
-    <p>© 2026 DeutschStart 🇩🇪</p>
-    <p>Learn German A1 → B2</p>
+<p>© 2026 DeutschStart 🇩🇪</p>
+<p>Learn German A1 → B2</p>
 </footer>
 
 
 <!-- SUPABASE -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script src="config.js"></script>
-
-<script src="a1-questions.js"></script>
-
 
 <script>
 
@@ -374,10 +326,18 @@ footer {
    SUPABASE
 ========================= */
 
-const supabaseClient = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
-);
+let supabaseClient = null;
+
+if (
+    window.supabase &&
+    typeof SUPABASE_URL !== "undefined" &&
+    typeof SUPABASE_PUBLISHABLE_KEY !== "undefined"
+) {
+    supabaseClient = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+}
 
 let currentUser = null;
 
@@ -388,33 +348,37 @@ let currentUser = null;
 
 async function loadUser() {
 
-    const {
-        data: { user }
-    } = await supabaseClient.auth.getUser();
-
-    if (!user) {
-
-        window.location.href = "login.html";
-
+    if (!supabaseClient) {
+        console.log("Supabase not available.");
         return;
     }
 
-    currentUser = user;
+    try {
+
+        const {
+            data: { user }
+        } = await supabaseClient.auth.getUser();
+
+        currentUser = user || null;
+
+    } catch (error) {
+
+        console.log("User loading error:", error);
+
+    }
 }
 
 loadUser();
 
 
 /* =========================
-   COMPLETE LESSON
+   LESSON PROGRESS
 ========================= */
 
 async function completeLesson(lessonName) {
 
-    if (!currentUser) {
-
-        alert("Please login first.");
-
+    if (!supabaseClient || !currentUser) {
+        alert("Lesson completed! Please login to save progress.");
         return;
     }
 
@@ -427,28 +391,25 @@ async function completeLesson(lessonName) {
         });
 
     if (error) {
-
-        alert("Error: " + error.message);
-
+        alert("Progress error: " + error.message);
         return;
     }
 
     alert("✅ Lesson completed!");
+
 }
 
 
 /* =========================
-   SHOW LESSON
+   LESSONS
 ========================= */
 
 function showLesson(lesson) {
 
-    const area = document.getElementById("lesson-area");
+const area = document.getElementById("lesson-area");
 
 
-/* =========================
-   GREETINGS
-========================= */
+/* GREETINGS */
 
 if (lesson === "greetings") {
 
@@ -457,10 +418,6 @@ area.innerHTML = `
 <div class="lesson">
 
 <h2>👋 Greetings</h2>
-
-<p>
-Learn common German greetings for everyday conversations.
-</p>
 
 <button class="complete-button"
 onclick="completeLesson('Greetings')">
@@ -472,162 +429,93 @@ onclick="completeLesson('Greetings')">
 <div class="words">
 
 <b>Guten Morgen!</b> — Good morning!<br>
-
 <b>Morgen!</b> — Morning!<br>
-
 <b>Einen schönen guten Morgen!</b> — Have a nice morning!
 
 </div>
-
 
 <h3>☀️ During the Day</h3>
 
 <div class="words">
 
 <b>Hallo!</b> — Hello!<br>
-
 <b>Guten Tag!</b> — Good day!<br>
-
 <b>Hi!</b> — Hi!<br>
-
 <b>Hey!</b> — Hey!<br>
-
 <b>Grüß dich!</b> — Hello!<br>
-
 <b>Grüß Gott!</b> — Hello!<br>
-
 <b>Mahlzeit!</b> — Hello / lunchtime greeting!
 
 </div>
-
 
 <h3>🌆 Evening</h3>
 
 <div class="words">
 
 <b>Guten Abend!</b> — Good evening!<br>
-
 <b>Einen schönen Abend!</b> — Have a nice evening!<br>
-
 <b>Schönen Abend noch!</b> — Have a nice evening!
 
 </div>
-
 
 <h3>🌙 Night</h3>
 
 <div class="words">
 
 <b>Gute Nacht!</b> — Good night!<br>
-
 <b>Schlaf gut!</b> — Sleep well!<br>
-
 <b>Träum schön!</b> — Sweet dreams!
 
 </div>
-
 
 <h3>👋 Saying Goodbye</h3>
 
 <div class="words">
 
 <b>Auf Wiedersehen!</b> — Goodbye!<br>
-
 <b>Tschüss!</b> — Bye!<br>
-
 <b>Ciao!</b> — Bye!<br>
-
 <b>Bis bald!</b> — See you soon!<br>
-
 <b>Bis später!</b> — See you later!<br>
-
 <b>Bis morgen!</b> — See you tomorrow!<br>
-
 <b>Bis gleich!</b> — See you soon!<br>
-
 <b>Mach's gut!</b> — Take care!
 
 </div>
 
-
-<h3>😊 Asking How Someone Is</h3>
+<h3>😊 How are you?</h3>
 
 <div class="words">
 
 <b>Wie geht es dir?</b> — How are you?<br>
-
 <b>Wie geht's dir?</b> — How are you?<br>
-
 <b>Wie geht es Ihnen?</b> — How are you? (formal)<br>
-
 <b>Wie geht's?</b> — How are you?<br>
-
 <b>Alles gut?</b> — Everything good?
 
 </div>
-
 
 <h3>❤️ Answers</h3>
 
 <div class="words">
 
 <b>Mir geht es gut.</b> — I am fine.<br>
-
-<b>Mir geht's gut.</b> — I'm fine.<br>
-
 <b>Sehr gut, danke!</b> — Very good, thanks!<br>
-
 <b>Danke, gut.</b> — Fine, thanks.<br>
-
 <b>Es geht.</b> — So-so.<br>
-
 <b>Nicht schlecht.</b> — Not bad.<br>
-
 <b>Mir geht es nicht so gut.</b> — I'm not so well.
 
 </div>
 
-
-<h3>🤝 Meeting Someone</h3>
-
-<div class="words">
-
-<b>Wie heißt du?</b> — What's your name?<br>
-
-<b>Wie heißen Sie?</b> — What's your name? (formal)<br>
-
-<b>Ich heiße Aswin.</b> — My name is Aswin.<br>
-
-<b>Freut mich!</b> — Nice to meet you!<br>
-
-<b>Sehr erfreut!</b> — Pleased to meet you!
-
 </div>
 
-
-<div class="example">
-
-<b>Mini Conversation</b><br><br>
-
-A: Hallo! Guten Morgen!<br>
-
-B: Guten Morgen! Wie geht's dir?<br>
-
-A: Mir geht's gut, danke. Und dir?<br>
-
-B: Auch gut, danke!
-
-</div>
-
-</div>
 `;
 
 }
 
 
-/* =========================
-   INTRODUCTION
-========================= */
+/* INTRODUCTION */
 
 else if (lesson === "intro") {
 
@@ -637,180 +525,100 @@ area.innerHTML = `
 
 <h2>🙋 Introduction</h2>
 
-<p>
-Learn how to introduce yourself in German.
-</p>
-
 <button class="complete-button"
 onclick="completeLesson('Introduction')">
 ✅ Complete Lesson
 </button>
 
-
 <h3>👤 Name</h3>
 
 <div class="words">
 
-<b>Wie heißt du?</b><br>
-What's your name?<br><br>
-
-<b>Wie heißen Sie?</b><br>
-What's your name? (formal)<br><br>
-
+<b>Wie heißt du?</b> — What's your name?<br><br>
+<b>Wie heißen Sie?</b> — What's your name? (formal)<br><br>
 <b>Ich heiße Aswin.</b><br>
-My name is Aswin.<br><br>
-
-<b>Mein Name ist Aswin.</b><br>
-My name is Aswin.
+<b>Mein Name ist Aswin.</b>
 
 </div>
-
 
 <h3>🎂 Age</h3>
 
 <div class="words">
 
 <b>Wie alt bist du?</b><br>
-How old are you?<br><br>
-
-<b>Ich bin 18 Jahre alt.</b><br>
-I am 18 years old.
+<b>Ich bin 18 Jahre alt.</b>
 
 </div>
-
 
 <h3>🌍 Country</h3>
 
 <div class="words">
 
 <b>Woher kommst du?</b><br>
-Where are you from?<br><br>
-
-<b>Woher kommen Sie?</b><br>
-Where are you from? (formal)<br><br>
-
-<b>Ich komme aus Indien.</b><br>
-I come from India.
+<b>Ich komme aus Indien.</b>
 
 </div>
-
 
 <h3>🏠 Where You Live</h3>
 
 <div class="words">
 
 <b>Wo wohnst du?</b><br>
-Where do you live?<br><br>
-
 <b>Ich wohne in Wayanad.</b><br>
-I live in Wayanad.<br><br>
-
-<b>Ich lebe in Indien.</b><br>
-I live in India.
+<b>Ich lebe in Indien.</b>
 
 </div>
-
-
-<h3>🇮🇳 Nationality</h3>
-
-<div class="words">
-
-<b>Ich bin Inder.</b><br>
-I am Indian. (male)<br><br>
-
-<b>Ich komme aus Indien.</b><br>
-I come from India.
-
-</div>
-
 
 <h3>🗣️ Languages</h3>
 
 <div class="words">
 
 <b>Welche Sprachen sprichst du?</b><br>
-Which languages do you speak?<br><br>
-
 <b>Ich spreche Malayalam.</b><br>
-
 <b>Ich spreche Englisch.</b><br>
-
 <b>Ich lerne Deutsch.</b><br>
-
 <b>Ich spreche ein bisschen Deutsch.</b>
 
 </div>
-
 
 <h3>🎓 School / Work</h3>
 
 <div class="words">
 
 <b>Was machst du?</b><br>
-What do you do?<br><br>
-
 <b>Ich bin Student.</b><br>
-I am a student.<br><br>
-
-<b>Ich arbeite.</b><br>
-I work.
+<b>Ich arbeite.</b>
 
 </div>
-
 
 <h3>⚽ Hobbies</h3>
 
 <div class="words">
 
 <b>Was sind deine Hobbys?</b><br>
-What are your hobbies?<br><br>
-
 <b>Meine Hobbys sind Fußball spielen und Musik hören.</b><br>
-
 <b>Ich spiele gern Fußball.</b><br>
-
-<b>Ich höre gern Musik.</b><br>
-
-<b>Ich lese gern.</b>
+<b>Ich höre gern Musik.</b>
 
 </div>
-
 
 <h3>👨‍👩‍👧 Family</h3>
 
 <div class="words">
 
 <b>Wie groß ist deine Familie?</b><br>
-How big is your family?<br><br>
-
-<b>Meine Familie hat fünf Personen.</b><br>
-
-<b>Wir sind fünf Personen in meiner Familie.</b>
+<b>Meine Familie hat fünf Personen.</b>
 
 </div>
-
-
-<h3>❤️ Favorite Person</h3>
-
-<div class="words">
-
-<b>Wer ist deine Lieblingsperson?</b><br>
-
-<b>Meine Lieblingsperson ist mein Vater.</b>
-
-</div>
-
 
 <h3>📚 Learning German</h3>
 
 <div class="words">
 
 <b>Wie lange lernst du Deutsch?</b><br>
-
 <b>Ich lerne seit zwei Monaten Deutsch.</b>
 
 </div>
-
 
 <h3>📝 Complete Self-Introduction</h3>
 
@@ -819,150 +627,61 @@ How big is your family?<br><br>
 Hallo!<br><br>
 
 Ich heiße Aswin.<br>
-
 Ich bin 18 Jahre alt.<br>
-
 Ich komme aus Indien.<br>
-
 Ich wohne in Wayanad.<br>
-
 Ich bin Student.<br>
-
 Ich spreche Malayalam und Englisch.<br>
-
 Ich lerne Deutsch.<br>
-
 Meine Hobbys sind Fußball spielen und Musik hören.<br>
-
-Meine Familie hat fünf Personen.<br><br>
-
-Das ist meine Vorstellung.
+Meine Familie hat fünf Personen.
 
 </div>
 
 </div>
+
 `;
 
 }
 
 
-/* =========================
-   NUMBERS
-========================= */
+/* NUMBERS */
 
 else if (lesson === "numbers") {
 
 const numbers = [
 
-"1 — eins",
-"2 — zwei",
-"3 — drei",
-"4 — vier",
-"5 — fünf",
-"6 — sechs",
-"7 — sieben",
-"8 — acht",
-"9 — neun",
-"10 — zehn",
-
-"11 — elf",
-"12 — zwölf",
-"13 — dreizehn",
-"14 — vierzehn",
-"15 — fünfzehn",
-"16 — sechzehn",
-"17 — siebzehn",
-"18 — achtzehn",
-"19 — neunzehn",
-"20 — zwanzig",
-
-"21 — einundzwanzig",
-"22 — zweiundzwanzig",
-"23 — dreiundzwanzig",
-"24 — vierundzwanzig",
-"25 — fünfundzwanzig",
-"26 — sechsundzwanzig",
-"27 — siebenundzwanzig",
-"28 — achtundzwanzig",
-"29 — neunundzwanzig",
-"30 — dreißig",
-
-"31 — einunddreißig",
-"32 — zweiunddreißig",
-"33 — dreiunddreißig",
-"34 — vierunddreißig",
-"35 — fünfunddreißig",
-"36 — sechsunddreißig",
-"37 — siebenunddreißig",
-"38 — achtunddreißig",
-"39 — neununddreißig",
-"40 — vierzig",
-
-"41 — einundvierzig",
-"42 — zweiundvierzig",
-"43 — dreiundvierzig",
-"44 — vierundvierzig",
-"45 — fünfundvierzig",
-"46 — sechsundvierzig",
-"47 — siebenundvierzig",
-"48 — achtundvierzig",
-"49 — neunundvierzig",
-"50 — fünfzig",
-
-"51 — einundfünfzig",
-"52 — zweiundfünfzig",
-"53 — dreiundfünfzig",
-"54 — vierundfünfzig",
-"55 — fünfundfünfzig",
-"56 — sechsundfünfzig",
-"57 — siebenundfünfzig",
-"58 — achtundfünfzig",
-"59 — neunundfünfzig",
-"60 — sechzig",
-
-"61 — einundsechzig",
-"62 — zweiundsechzig",
-"63 — dreiundsechzig",
-"64 — vierundsechzig",
-"65 — fünfundsechzig",
-"66 — sechsundsechzig",
-"67 — siebenundsechzig",
-"68 — achtundsechzig",
-"69 — neunundsechzig",
-"70 — siebzig",
-
-"71 — einundsiebzig",
-"72 — zweiundsiebzig",
-"73 — dreiundsiebzig",
-"74 — vierundsiebzig",
-"75 — fünfundsiebzig",
-"76 — sechsundsiebzig",
-"77 — siebenundsiebzig",
-"78 — achtundsiebzig",
-"79 — neunundsiebzig",
-"80 — achtzig",
-
-"81 — einundachtzig",
-"82 — zweiundachtzig",
-"83 — dreiundachtzig",
-"84 — vierundachtzig",
-"85 — fünfundachtzig",
-"86 — sechsundachtzig",
-"87 — siebenundachtzig",
-"88 — achtundachtzig",
-"89 — neunundachtzig",
-"90 — neunzig",
-
-"91 — einundneunzig",
-"92 — zweiundneunzig",
-"93 — dreiundneunzig",
-"94 — vierundneunzig",
-"95 — fünfundneunzig",
-"96 — sechsundneunzig",
-"97 — siebenundneunzig",
-"98 — achtundneunzig",
-"99 — neunundneunzig",
-"100 — einhundert"
+"1 — eins","2 — zwei","3 — drei","4 — vier","5 — fünf",
+"6 — sechs","7 — sieben","8 — acht","9 — neun","10 — zehn",
+"11 — elf","12 — zwölf","13 — dreizehn","14 — vierzehn","15 — fünfzehn",
+"16 — sechzehn","17 — siebzehn","18 — achtzehn","19 — neunzehn","20 — zwanzig",
+"21 — einundzwanzig","22 — zweiundzwanzig","23 — dreiundzwanzig",
+"24 — vierundzwanzig","25 — fünfundzwanzig","26 — sechsundzwanzig",
+"27 — siebenundzwanzig","28 — achtundzwanzig","29 — neunundzwanzig",
+"30 — dreißig","31 — einunddreißig","32 — zweiunddreißig",
+"33 — dreiunddreißig","34 — vierunddreißig","35 — fünfunddreißig",
+"36 — sechsunddreißig","37 — siebenunddreißig","38 — achtunddreißig",
+"39 — neununddreißig","40 — vierzig","41 — einundvierzig",
+"42 — zweiundvierzig","43 — dreiundvierzig","44 — vierundvierzig",
+"45 — fünfundvierzig","46 — sechsundvierzig","47 — siebenundvierzig",
+"48 — achtundvierzig","49 — neunundvierzig","50 — fünfzig",
+"51 — einundfünfzig","52 — zweiundfünfzig","53 — dreiundfünfzig",
+"54 — vierundfünfzig","55 — fünfundfünfzig","56 — sechsundfünfzig",
+"57 — siebenundfünfzig","58 — achtundfünfzig","59 — neunundfünfzig",
+"60 — sechzig","61 — einundsechzig","62 — zweiundsechzig",
+"63 — dreiundsechzig","64 — vierundsechzig","65 — fünfundsechzig",
+"66 — sechsundsechzig","67 — siebenundsechzig","68 — achtundsechzig",
+"69 — neunundsechzig","70 — siebzig","71 — einundsiebzig",
+"72 — zweiundsiebzig","73 — dreiundsiebzig","74 — vierundsiebzig",
+"75 — fünfundsiebzig","76 — sechsundsiebzig","77 — siebenundsiebzig",
+"78 — achtundsiebzig","79 — neunundsiebzig","80 — achtzig",
+"81 — einundachtzig","82 — zweiundachtzig","83 — dreiundachtzig",
+"84 — vierundachtzig","85 — fünfundachtzig","86 — sechsundachtzig",
+"87 — siebenundachtzig","88 — achtundachtzig","89 — neunundachtzig",
+"90 — neunzig","91 — einundneunzig","92 — zweiundneunzig",
+"93 — dreiundneunzig","94 — vierundneunzig","95 — fünfundneunzig",
+"96 — sechsundneunzig","97 — siebenundneunzig","98 — achtundneunzig",
+"99 — neunundneunzig","100 — einhundert"
 
 ];
 
@@ -983,35 +702,16 @@ ${numbers.map(n => `<div class="number">${n}</div>`).join("")}
 
 </div>
 
-
-<h3>💡 Important Rule</h3>
+<h3>💡 Examples</h3>
 
 <div class="example">
 
 21 = <b>einundzwanzig</b><br>
-
 35 = <b>fünfunddreißig</b><br>
-
-78 = <b>achtundsiebzig</b>
-
-</div>
-
-
-<h3>💶 Useful Examples</h3>
-
-<div class="words">
+78 = <b>achtundsiebzig</b><br><br>
 
 <b>Wie viel kostet das?</b><br>
-How much does that cost?<br><br>
-
-<b>Das kostet 25 Euro.</b><br>
-That costs 25 euros.<br><br>
-
-<b>Ich bin 18 Jahre alt.</b><br>
-I am 18 years old.<br><br>
-
-<b>Meine Telefonnummer ist ...</b><br>
-My telephone number is ...
+Das kostet 25 Euro.
 
 </div>
 
@@ -1022,9 +722,7 @@ My telephone number is ...
 }
 
 
-/* =========================
-   FAMILY
-========================= */
+/* FAMILY */
 
 else if (lesson === "family") {
 
@@ -1039,88 +737,38 @@ onclick="completeLesson('Family')">
 ✅ Complete Lesson
 </button>
 
-
-<h3>👪 Family Vocabulary</h3>
-
 <div class="words">
 
 <b>die Familie</b> — family<br>
-
 <b>der Vater</b> — father<br>
-
 <b>die Mutter</b> — mother<br>
-
 <b>die Eltern</b> — parents<br>
-
 <b>der Sohn</b> — son<br>
-
 <b>die Tochter</b> — daughter<br>
-
 <b>der Bruder</b> — brother<br>
-
 <b>die Schwester</b> — sister<br>
-
 <b>der Großvater</b> — grandfather<br>
-
 <b>die Großmutter</b> — grandmother<br>
-
 <b>der Onkel</b> — uncle<br>
-
 <b>die Tante</b> — aunt<br>
-
-<b>der Cousin</b> — male cousin<br>
-
-<b>die Cousine</b> — female cousin<br>
-
-<b>der Ehemann</b> — husband<br>
-
-<b>die Ehefrau</b> — wife<br>
-
+<b>der Cousin</b> — cousin<br>
+<b>die Cousine</b> — cousin<br>
 <b>das Kind</b> — child<br>
-
 <b>die Kinder</b> — children
 
 </div>
-
 
 <h3>🗣️ Useful Sentences</h3>
 
 <div class="words">
 
 <b>Wie groß ist deine Familie?</b><br>
-
 <b>Meine Familie hat fünf Personen.</b><br>
-
-<b>Wir sind fünf Personen in meiner Familie.</b><br>
-
 <b>Ich habe einen Bruder.</b><br>
-
 <b>Ich habe eine Schwester.</b><br>
-
 <b>Das ist mein Vater.</b><br>
-
 <b>Das ist meine Mutter.</b><br>
-
-<b>Mein Vater heißt ...</b><br>
-
-<b>Meine Mutter heißt ...</b><br>
-
 <b>Ich liebe meine Familie.</b>
-
-</div>
-
-
-<div class="example">
-
-<b>Mini Conversation</b><br><br>
-
-A: Wie groß ist deine Familie?<br>
-
-B: Meine Familie hat fünf Personen.<br><br>
-
-A: Hast du Geschwister?<br>
-
-B: Ja, ich habe einen Bruder.
 
 </div>
 
@@ -1131,9 +779,7 @@ B: Ja, ich habe einen Bruder.
 }
 
 
-/* =========================
-   HOME
-========================= */
+/* HOME */
 
 else if (lesson === "home") {
 
@@ -1148,74 +794,33 @@ onclick="completeLesson('Home')">
 ✅ Complete Lesson
 </button>
 
-
 <h3>🏠 Rooms</h3>
 
 <div class="words">
 
 <b>das Haus</b> — house<br>
-
 <b>die Wohnung</b> — apartment<br>
-
 <b>das Zimmer</b> — room<br>
-
 <b>das Schlafzimmer</b> — bedroom<br>
-
 <b>das Wohnzimmer</b> — living room<br>
-
 <b>die Küche</b> — kitchen<br>
-
 <b>das Bad</b> — bathroom<br>
-
 <b>der Balkon</b> — balcony<br>
-
-<b>der Garten</b> — garden<br>
-
-<b>der Flur</b> — hallway
+<b>der Garten</b> — garden
 
 </div>
-
 
 <h3>🪑 Furniture</h3>
 
 <div class="words">
 
 <b>der Tisch</b> — table<br>
-
 <b>der Stuhl</b> — chair<br>
-
 <b>das Bett</b> — bed<br>
-
 <b>das Sofa</b> — sofa<br>
-
 <b>der Schrank</b> — cupboard<br>
-
 <b>die Tür</b> — door<br>
-
-<b>das Fenster</b> — window<br>
-
-<b>die Lampe</b> — lamp
-
-</div>
-
-
-<h3>🗣️ Useful Sentences</h3>
-
-<div class="words">
-
-<b>Ich wohne in einem Haus.</b><br>
-
-<b>Ich wohne in einer Wohnung.</b><br>
-
-<b>Mein Zimmer ist groß.</b><br>
-
-<b>Mein Zimmer ist klein.</b><br>
-
-<b>Die Küche ist schön.</b><br>
-
-<b>Das Badezimmer ist sauber.</b><br>
-
-<b>Mein Bett ist bequem.</b>
+<b>das Fenster</b> — window
 
 </div>
 
@@ -1226,9 +831,7 @@ onclick="completeLesson('Home')">
 }
 
 
-/* =========================
-   FOOD
-========================= */
+/* FOOD */
 
 else if (lesson === "food") {
 
@@ -1243,87 +846,38 @@ onclick="completeLesson('Food')">
 ✅ Complete Lesson
 </button>
 
-
-<h3>🍽️ Food Vocabulary</h3>
-
 <div class="words">
 
 <b>das Brot</b> — bread<br>
-
 <b>der Reis</b> — rice<br>
-
 <b>die Kartoffel</b> — potato<br>
-
 <b>das Fleisch</b> — meat<br>
-
 <b>der Fisch</b> — fish<br>
-
 <b>das Hähnchen</b> — chicken<br>
-
 <b>das Ei</b> — egg<br>
-
 <b>die Suppe</b> — soup<br>
-
 <b>der Salat</b> — salad<br>
-
 <b>der Apfel</b> — apple<br>
-
 <b>die Banane</b> — banana<br>
-
 <b>die Orange</b> — orange<br>
-
 <b>das Wasser</b> — water<br>
-
 <b>der Kaffee</b> — coffee<br>
-
 <b>der Tee</b> — tea<br>
-
-<b>der Saft</b> — juice<br>
-
-<b>das Essen</b> — food
+<b>der Saft</b> — juice
 
 </div>
-
 
 <h3>🍴 Useful Sentences</h3>
 
 <div class="words">
 
 <b>Ich habe Hunger.</b><br>
-I am hungry.<br><br>
-
 <b>Ich habe Durst.</b><br>
-I am thirsty.<br><br>
-
 <b>Ich möchte Wasser.</b><br>
-I would like water.<br><br>
-
 <b>Ich möchte Kaffee.</b><br>
-I would like coffee.<br><br>
-
 <b>Ich esse gern Reis.</b><br>
-I like eating rice.<br><br>
-
 <b>Mein Lieblingsessen ist Mandi.</b><br>
-My favorite food is Mandi.<br><br>
-
-<b>Das Essen ist lecker.</b><br>
-The food is delicious.
-
-</div>
-
-
-<h3>🍽️ Restaurant</h3>
-
-<div class="example">
-
-<b>Ich möchte ein Wasser, bitte.</b><br>
-
-<b>Was kostet das?</b><br>
-
-<b>Die Rechnung, bitte.</b><br>
-
-<b>Das schmeckt sehr gut.</b>
+<b>Das Essen ist lecker.</b>
 
 </div>
 
@@ -1334,9 +888,7 @@ The food is delicious.
 }
 
 
-/* =========================
-   DAILY ROUTINE
-========================= */
+/* ROUTINE */
 
 else if (lesson === "routine") {
 
@@ -1351,90 +903,46 @@ onclick="completeLesson('Daily Routine')">
 ✅ Complete Lesson
 </button>
 
-
 <h3>🌅 Morning</h3>
 
 <div class="words">
 
 <b>Ich stehe um 7 Uhr auf.</b><br>
-I get up at 7 o'clock.<br><br>
-
 <b>Ich dusche.</b><br>
-I shower.<br><br>
-
 <b>Ich putze meine Zähne.</b><br>
-I brush my teeth.<br><br>
-
 <b>Ich frühstücke.</b><br>
-I have breakfast.<br><br>
-
-<b>Ich trinke Kaffee.</b><br>
-I drink coffee.
+<b>Ich trinke Kaffee.</b>
 
 </div>
-
 
 <h3>☀️ Afternoon</h3>
 
 <div class="words">
 
-<b>Ich gehe zur Schule.</b><br>
-
-<b>Ich gehe zur Arbeit.</b><br>
-
 <b>Ich lerne Deutsch.</b><br>
-
 <b>Ich esse zu Mittag.</b><br>
-
 <b>Ich spiele Fußball.</b>
 
 </div>
-
-
-<h3>🌆 Evening</h3>
-
-<div class="words">
-
-<b>Ich komme nach Hause.</b><br>
-
-<b>Ich esse zu Abend.</b><br>
-
-<b>Ich sehe fern.</b><br>
-
-<b>Ich höre Musik.</b><br>
-
-<b>Ich gehe spazieren.</b>
-
-</div>
-
 
 <h3>🌙 Night</h3>
 
 <div class="words">
 
-<b>Ich gehe ins Bett.</b><br>
-
+<b>Ich komme nach Hause.</b><br>
+<b>Ich höre Musik.</b><br>
 <b>Ich gehe um 22 Uhr schlafen.</b><br>
-
 <b>Ich schlafe um zehn Uhr ein.</b>
 
 </div>
 
-
-<h3>📝 Complete Routine</h3>
-
 <div class="example">
 
 Normalerweise stehe ich um 7 Uhr auf.<br>
-
 Dann dusche ich und putze meine Zähne.<br>
-
 Danach frühstücke ich.<br>
-
 Am Nachmittag spiele ich Fußball.<br>
-
 Am Abend höre ich Musik.<br>
-
 Um 22 Uhr gehe ich schlafen.
 
 </div>
@@ -1446,9 +954,7 @@ Um 22 Uhr gehe ich schlafen.
 }
 
 
-/* =========================
-   GRAMMAR
-========================= */
+/* GRAMMAR */
 
 else if (lesson === "grammar") {
 
@@ -1463,171 +969,80 @@ onclick="completeLesson('Grammar')">
 ✅ Complete Lesson
 </button>
 
-
 <h3>👤 Personal Pronouns</h3>
 
 <div class="words">
 
 <b>ich</b> — I<br>
-
 <b>du</b> — you<br>
-
 <b>er</b> — he<br>
-
 <b>sie</b> — she<br>
-
 <b>es</b> — it<br>
-
 <b>wir</b> — we<br>
-
 <b>ihr</b> — you plural<br>
-
 <b>sie</b> — they<br>
-
 <b>Sie</b> — you formal
 
 </div>
 
-
-<h3>🔤 sein — to be</h3>
+<h3>🔤 sein</h3>
 
 <div class="words">
 
 ich <b>bin</b><br>
-
 du <b>bist</b><br>
-
 er/sie/es <b>ist</b><br>
-
 wir <b>sind</b><br>
-
 ihr <b>seid</b><br>
-
 sie/Sie <b>sind</b>
 
 </div>
 
-
-<div class="example">
-
-Ich bin Student.<br>
-
-Du bist nett.<br>
-
-Er ist müde.<br>
-
-Wir sind Freunde.
-
-</div>
-
-
-<h3>📚 haben — to have</h3>
+<h3>📚 haben</h3>
 
 <div class="words">
 
 ich <b>habe</b><br>
-
 du <b>hast</b><br>
-
 er/sie/es <b>hat</b><br>
-
 wir <b>haben</b><br>
-
 ihr <b>habt</b><br>
-
 sie/Sie <b>haben</b>
 
 </div>
-
 
 <h3>📌 Articles</h3>
 
 <div class="words">
 
 <b>der</b> — masculine<br>
-
 <b>die</b> — feminine<br>
-
 <b>das</b> — neuter<br>
-
 <b>die</b> — plural
 
 </div>
-
 
 <h3>❓ Question Words</h3>
 
 <div class="words">
 
 <b>Wer?</b> — Who?<br>
-
 <b>Was?</b> — What?<br>
-
 <b>Wo?</b> — Where?<br>
-
 <b>Woher?</b> — Where from?<br>
-
 <b>Wohin?</b> — Where to?<br>
-
 <b>Wann?</b> — When?<br>
-
 <b>Wie?</b> — How?<br>
-
-<b>Warum?</b> — Why?<br>
-
-<b>Wie viel?</b> — How much?
+<b>Warum?</b> — Why?
 
 </div>
-
-
-<h3>🔨 Sentence Structure</h3>
-
-<div class="example">
-
-<b>Ich spiele Fußball.</b><br>
-
-Subject + Verb + Object
-
-</div>
-
-
-<div class="example">
-
-<b>Heute spiele ich Fußball.</b><br>
-
-Time + Verb + Subject + Object
-
-</div>
-
 
 <h3>🚫 Negation</h3>
 
-<div class="words">
+<div class="example">
 
-<b>Ich bin nicht müde.</b><br>
-
-<b>Ich habe kein Auto.</b><br>
-
-<b>Das ist nicht gut.</b>
-
-</div>
-
-
-<h3>🎯 Modal Verbs</h3>
-
-<div class="words">
-
-<b>Ich kann Deutsch sprechen.</b><br>
-
-I can speak German.<br><br>
-
-<b>Ich möchte Kaffee trinken.</b><br>
-
-I would like to drink coffee.<br><br>
-
-<b>Ich muss Deutsch lernen.</b><br>
-
-I must learn German.
+Ich bin <b>nicht</b> müde.<br>
+Ich habe <b>kein</b> Auto.
 
 </div>
 
@@ -1638,9 +1053,7 @@ I must learn German.
 }
 
 
-/* =========================
-   SPEAKING
-========================= */
+/* SPEAKING */
 
 else if (lesson === "speaking") {
 
@@ -1655,148 +1068,49 @@ onclick="completeLesson('Speaking')">
 ✅ Complete Lesson
 </button>
 
-
-<h3>👤 Personal Information</h3>
-
 <div class="question">
-
 <strong>Wie heißt du?</strong>
-
 Antwort: Ich heiße Aswin.
-
 </div>
 
-
 <div class="question">
-
 <strong>Wie alt bist du?</strong>
-
 Antwort: Ich bin 18 Jahre alt.
-
 </div>
 
-
 <div class="question">
-
 <strong>Woher kommst du?</strong>
-
 Antwort: Ich komme aus Indien.
-
 </div>
 
-
 <div class="question">
-
 <strong>Wo wohnst du?</strong>
-
 Antwort: Ich wohne in Wayanad.
-
 </div>
 
-
 <div class="question">
-
 <strong>Was machst du?</strong>
-
 Antwort: Ich bin Student.
-
 </div>
 
-
-<h3>⚽ Hobbies</h3>
-
 <div class="question">
-
 <strong>Was sind deine Hobbys?</strong>
-
 Antwort: Meine Hobbys sind Fußball spielen und Musik hören.
-
 </div>
 
-
 <div class="question">
-
 <strong>Was machst du am Wochenende?</strong>
-
 Antwort: Am Wochenende spiele ich Fußball mit meinen Freunden.
-
 </div>
 
-
-<h3>👨‍👩‍👧 Family</h3>
-
 <div class="question">
-
-<strong>Wie groß ist deine Familie?</strong>
-
-Antwort: Meine Familie hat fünf Personen.
-
-</div>
-
-
-<div class="question">
-
-<strong>Hast du Geschwister?</strong>
-
-Antwort: Ja, ich habe einen Bruder.
-
-</div>
-
-
-<h3>🍎 Food</h3>
-
-<div class="question">
-
 <strong>Was ist dein Lieblingsessen?</strong>
-
 Antwort: Mein Lieblingsessen ist Mandi.
-
 </div>
 
-
 <div class="question">
-
-<strong>Was trinkst du gern?</strong>
-
-Antwort: Ich trinke gern Wasser und Kaffee.
-
-</div>
-
-
-<h3>🕐 Daily Routine</h3>
-
-<div class="question">
-
 <strong>Wann stehst du auf?</strong>
-
 Antwort: Ich stehe um 7 Uhr auf.
-
-</div>
-
-
-<div class="question">
-
-<strong>Wann gehst du schlafen?</strong>
-
-Antwort: Ich gehe um 22 Uhr schlafen.
-
-</div>
-
-
-<h3>🎤 A1 Speaking Challenge</h3>
-
-<div class="example">
-
-1. Stell dich vor.<br>
-
-2. Sprich über deine Familie.<br>
-
-3. Sprich über deine Hobbys.<br>
-
-4. Sprich über dein Lieblingsessen.<br>
-
-5. Beschreibe deinen Tagesablauf.
-
 </div>
 
 </div>
@@ -1806,9 +1120,7 @@ Antwort: Ich gehe um 22 Uhr schlafen.
 }
 
 
-/* =========================
-   QUIZ
-========================= */
+/* QUIZ */
 
 else if (lesson === "quiz") {
 
@@ -1819,7 +1131,7 @@ area.innerHTML = `
 <h2>📝 A1 Quiz</h2>
 
 <p>
-Test your German with random questions from your A1 question bank.
+Test your German with random A1 questions.
 </p>
 
 <button class="next-button"
@@ -1839,46 +1151,683 @@ onclick="startQuiz()">
 
 
 /* =========================
-   QUIZ VARIABLES
+   BUILT-IN A1 QUESTION BANK
 ========================= */
 
-let quizQuestions = [];
+const A1_QUESTIONS = [
 
-let currentQuestion = 0;
+{
+question: "Wie heißt du?",
+options: [
+"Ich heiße Aswin.",
+"Ich bin 18.",
+"Ich komme aus Indien.",
+"Ich wohne in Wayanad."
+],
+answer: 0
+},
 
-let quizScore = 0;
+{
+question: "Wie alt bist du?",
+options: [
+"Ich heiße 18.",
+"Ich bin 18 Jahre alt.",
+"Ich habe 18.",
+"Ich wohne 18."
+],
+answer: 1
+},
 
-let quizFinished = false;
+{
+question: "Woher kommst du?",
+options: [
+"Ich komme aus Indien.",
+"Ich wohne aus Indien.",
+"Ich bin Indien.",
+"Ich habe Indien."
+],
+answer: 0
+},
+
+{
+question: "Wo wohnst du?",
+options: [
+"Ich komme Wayanad.",
+"Ich bin Wayanad.",
+"Ich wohne in Wayanad.",
+"Ich habe Wayanad."
+],
+answer: 2
+},
+
+{
+question: "Was bedeutet „Hallo“?",
+options: [
+"Goodbye",
+"Hello",
+"Thanks",
+"Please"
+],
+answer: 1
+},
+
+{
+question: "Was bedeutet „Danke“?",
+options: [
+"Thanks",
+"Hello",
+"Goodbye",
+"Morning"
+],
+answer: 0
+},
+
+{
+question: "Was bedeutet „Guten Morgen“?",
+options: [
+"Good night",
+"Goodbye",
+"Good morning",
+"Good evening"
+],
+answer: 2
+},
+
+{
+question: "Was bedeutet „Gute Nacht“?",
+options: [
+"Good night",
+"Good morning",
+"Hello",
+"Goodbye"
+],
+answer: 0
+},
+
+{
+question: "Was bedeutet „Tschüss“?",
+options: [
+"Hello",
+"Goodbye",
+"Thanks",
+"Sorry"
+],
+answer: 1
+},
+
+{
+question: "Was ist der richtige Artikel: ___ Vater?",
+options: [
+"die",
+"das",
+"der",
+"den"
+],
+answer: 2
+},
+
+{
+question: "Was ist der richtige Artikel: ___ Mutter?",
+options: [
+"der",
+"die",
+"das",
+"den"
+],
+answer: 1
+},
+
+{
+question: "Was ist der richtige Artikel: ___ Kind?",
+options: [
+"der",
+"die",
+"das",
+"den"
+],
+answer: 2
+},
+
+{
+question: "Ich ___ Deutsch.",
+options: [
+"lerne",
+"lernen",
+"lernst",
+"lernt"
+],
+answer: 0
+},
+
+{
+question: "Du ___ Fußball.",
+options: [
+"spiele",
+"spielst",
+"spielt",
+"spielen"
+],
+answer: 1
+},
+
+{
+question: "Er ___ in Deutschland.",
+options: [
+"wohne",
+"wohnst",
+"wohnt",
+"wohnen"
+],
+answer: 2
+},
+
+{
+question: "Wir ___ Deutsch.",
+options: [
+"lernt",
+"lerne",
+"lernen",
+"lernst"
+],
+answer: 2
+},
+
+{
+question: "Ihr ___ Musik.",
+options: [
+"hört",
+"höre",
+"hörst",
+"hören"
+],
+answer: 0
+},
+
+{
+question: "Ich ___ Kaffee.",
+options: [
+"trinke",
+"trinkst",
+"trinkt",
+"trinken"
+],
+answer: 0
+},
+
+{
+question: "Ich ___ müde.",
+options: [
+"bin",
+"bist",
+"ist",
+"sind"
+],
+answer: 0
+},
+
+{
+question: "Du ___ nett.",
+options: [
+"bin",
+"bist",
+"ist",
+"sind"
+],
+answer: 1
+},
+
+{
+question: "Wir ___ Freunde.",
+options: [
+"bin",
+"bist",
+"ist",
+"sind"
+],
+answer: 3
+},
+
+{
+question: "Ihr ___ Studenten.",
+options: [
+"seid",
+"sind",
+"ist",
+"bist"
+],
+answer: 0
+},
+
+{
+question: "Sie ___ Lehrer.",
+options: [
+"ist",
+"sind",
+"bist",
+"seid"
+],
+answer: 1
+},
+
+{
+question: "Was ist „der Bruder“?",
+options: [
+"sister",
+"brother",
+"father",
+"uncle"
+],
+answer: 1
+},
+
+{
+question: "Was ist „die Schwester“?",
+options: [
+"mother",
+"daughter",
+"sister",
+"aunt"
+],
+answer: 2
+},
+
+{
+question: "Was ist „der Vater“?",
+options: [
+"father",
+"brother",
+"son",
+"grandfather"
+],
+answer: 0
+},
+
+{
+question: "Was ist „die Mutter“?",
+options: [
+"daughter",
+"mother",
+"sister",
+"wife"
+],
+answer: 1
+},
+
+{
+question: "Was bedeutet „Wasser“?",
+options: [
+"water",
+"milk",
+"bread",
+"coffee"
+],
+answer: 0
+},
+
+{
+question: "Was bedeutet „Brot“?",
+options: [
+"rice",
+"bread",
+"meat",
+"apple"
+],
+answer: 1
+},
+
+{
+question: "Was bedeutet „Apfel“?",
+options: [
+"orange",
+"banana",
+"apple",
+"potato"
+],
+answer: 2
+},
+
+{
+question: "Was bedeutet „Fußball spielen“?",
+options: [
+"to watch football",
+"to play football",
+"to buy football",
+"to teach football"
+],
+answer: 1
+},
+
+{
+question: "Was bedeutet „Musik hören“?",
+options: [
+"to make music",
+"to listen to music",
+"to buy music",
+"to write music"
+],
+answer: 1
+},
+
+{
+question: "Ich ___ gern Fußball.",
+options: [
+"spiele",
+"spielst",
+"spielt",
+"spielen"
+],
+answer: 0
+},
+
+{
+question: "Meine Familie ___ fünf Personen.",
+options: [
+"haben",
+"hat",
+"hast",
+"habe"
+],
+answer: 1
+},
+
+{
+question: "Ich habe ___ Bruder.",
+options: [
+"ein",
+"eine",
+"einen",
+"einem"
+],
+answer: 2
+},
+
+{
+question: "Ich habe ___ Schwester.",
+options: [
+"ein",
+"eine",
+"einen",
+"einem"
+],
+answer: 1
+},
+
+{
+question: "___ du Deutsch?",
+options: [
+"Sprichst",
+"Spreche",
+"Spricht",
+"Sprechen"
+],
+answer: 0
+},
+
+{
+question: "___ Sie Englisch?",
+options: [
+"Sprichst",
+"Spreche",
+"Sprechen",
+"Spricht"
+],
+answer: 2
+},
+
+{
+question: "Wie geht es dir?",
+options: [
+"Mir geht es gut.",
+"Ich heiße gut.",
+"Ich wohne gut.",
+"Ich habe gut."
+],
+answer: 0
+},
+
+{
+question: "Was machst du?",
+options: [
+"Ich bin Student.",
+"Ich heiße Aswin.",
+"Ich komme aus Indien.",
+"Ich bin 18 Jahre."
+],
+answer: 0
+},
+
+{
+question: "Wie lange lernst du Deutsch?",
+options: [
+"Seit zwei Monaten.",
+"Um zwei Uhr.",
+"Zwei Personen.",
+"Zwei Euro."
+],
+answer: 0
+},
+
+{
+question: "Wie sagt man 18 auf Deutsch?",
+options: [
+"achtzehn",
+"achtzig",
+"siebzehn",
+"neunzehn"
+],
+answer: 0
+},
+
+{
+question: "Wie sagt man 25 auf Deutsch?",
+options: [
+"fünfzehn",
+"fünfundzwanzig",
+"fünfunddreißig",
+"zweihundertfünf"
+],
+answer: 1
+},
+
+{
+question: "Wie sagt man 40 auf Deutsch?",
+options: [
+"vierzehn",
+"vierzig",
+"vierundzwanzig",
+"vierhundert"
+],
+answer: 1
+},
+
+{
+question: "Was bedeutet „Guten Abend“?",
+options: [
+"Good morning",
+"Good night",
+"Good evening",
+"Goodbye"
+],
+answer: 2
+},
+
+{
+question: "Was bedeutet „Bis bald“?",
+options: [
+"See you soon",
+"Good morning",
+"Thank you",
+"Good night"
+],
+answer: 0
+},
+
+{
+question: "Ich ___ um 7 Uhr auf.",
+options: [
+"stehe",
+"stehst",
+"steht",
+"stehen"
+],
+answer: 0
+},
+
+{
+question: "Ich ___ um 22 Uhr schlafen.",
+options: [
+"gehe",
+"gehst",
+"geht",
+"gehen"
+],
+answer: 0
+},
+
+{
+question: "Was bedeutet „das Haus“?",
+options: [
+"house",
+"school",
+"car",
+"shop"
+],
+answer: 0
+},
+
+{
+question: "Was bedeutet „die Küche“?",
+options: [
+"bedroom",
+"kitchen",
+"bathroom",
+"garden"
+],
+answer: 1
+},
+
+{
+question: "Was bedeutet „das Bett“?",
+options: [
+"table",
+"chair",
+"bed",
+"door"
+],
+answer: 2
+},
+
+{
+question: "Ich ___ Hunger.",
+options: [
+"habe",
+"bin",
+"ist",
+"sind"
+],
+answer: 0
+},
+
+{
+question: "Ich ___ Durst.",
+options: [
+"habe",
+"bin",
+"ist",
+"sind"
+],
+answer: 0
+},
+
+{
+question: "Mein Lieblingsessen ___ Mandi.",
+options: [
+"bin",
+"bist",
+"ist",
+"sind"
+],
+answer: 2
+},
+
+{
+question: "Was trinkst du gern?",
+options: [
+"Ich trinke gern Wasser.",
+"Ich spiele Fußball.",
+"Ich wohne in Indien.",
+"Ich bin Student."
+],
+answer: 0
+},
+
+{
+question: "Was ist dein Lieblingsessen?",
+options: [
+"Mein Lieblingsessen ist Mandi.",
+"Ich bin 18 Jahre alt.",
+"Ich komme aus Indien.",
+"Ich heiße Aswin."
+],
+answer: 0
+},
+
+{
+question: "Wann stehst du auf?",
+options: [
+"Ich stehe um 7 Uhr auf.",
+"Ich heiße Aswin.",
+"Ich komme aus Indien.",
+"Ich spiele Fußball."
+],
+answer: 0
+},
+
+{
+question: "Welche Sprache lernst du?",
+options: [
+"Ich lerne Deutsch.",
+"Ich wohne in Wayanad.",
+"Ich bin Student.",
+"Ich spiele Fußball."
+],
+answer: 0
+},
+
+{
+question: "Wer ist deine Lieblingsperson?",
+options: [
+"Meine Lieblingsperson ist mein Vater.",
+"Ich bin Student.",
+"Ich wohne in Wayanad.",
+"Ich lerne Deutsch."
+],
+answer: 0
+}
+
+];
 
 
 /* =========================
-   START QUIZ
+   QUIZ
 ========================= */
+
+let quizQuestions = [];
+let currentQuestion = 0;
+let quizScore = 0;
+
+
+/* START QUIZ */
 
 function startQuiz() {
 
-    if (
-        typeof A1_QUESTIONS === "undefined" ||
-        !Array.isArray(A1_QUESTIONS) ||
-        A1_QUESTIONS.length === 0
-    ) {
+    const container =
+        document.getElementById("quiz-container");
 
-        document.getElementById("quiz-container").innerHTML = `
+    if (!container) return;
 
-        <div class="example">
-
-        ❌ A1 question bank could not be loaded.
-
-        </div>
-
-        `;
-
-        return;
-    }
-
-
-    const shuffled = [...A1_QUESTIONS];
-
+    const shuffled =
+        [...A1_QUESTIONS];
 
     for (
         let i = shuffled.length - 1;
@@ -1886,9 +1835,8 @@ function startQuiz() {
         i--
     ) {
 
-        const j = Math.floor(
-            Math.random() * (i + 1)
-        );
+        const j =
+            Math.floor(Math.random() * (i + 1));
 
         [
             shuffled[i],
@@ -1897,44 +1845,31 @@ function startQuiz() {
             shuffled[j],
             shuffled[i]
         ];
+
     }
 
-
-    const quizSize = Math.min(
-        10,
-        shuffled.length
-    );
-
-
     quizQuestions =
-        shuffled.slice(0, quizSize);
-
+        shuffled.slice(
+            0,
+            Math.min(10, shuffled.length)
+        );
 
     currentQuestion = 0;
-
     quizScore = 0;
 
-    quizFinished = false;
-
-
     showQuizQuestion();
+
 }
 
 
-/* =========================
-   SHOW QUIZ QUESTION
-========================= */
+/* SHOW QUESTION */
 
 function showQuizQuestion() {
 
     const container =
-        document.getElementById(
-            "quiz-container"
-        );
-
+        document.getElementById("quiz-container");
 
     if (!container) return;
-
 
     if (
         currentQuestion >=
@@ -1942,22 +1877,19 @@ function showQuizQuestion() {
     ) {
 
         finishQuiz();
-
         return;
-    }
 
+    }
 
     const q =
         quizQuestions[currentQuestion];
-
 
     let html = `
 
     <div class="score-box">
 
     Question ${currentQuestion + 1}
-    /
-    ${quizQuestions.length}
+    / ${quizQuestions.length}
 
     </div>
 
@@ -1969,37 +1901,41 @@ function showQuizQuestion() {
 
     `;
 
-
     q.options.forEach(
         (option, index) => {
 
         html += `
 
         <button
-            class="option"
-            onclick="selectAnswer(${index})">
+        class="option"
+        onclick="selectAnswer(${index})">
 
-            ${option}
+        ${option}
 
         </button>
 
         `;
+
     });
 
-
     container.innerHTML = html;
+
 }
 
 
-/* =========================
-   SELECT ANSWER
-========================= */
+/* ANSWER */
 
 function selectAnswer(selected) {
 
     const question =
         quizQuestions[currentQuestion];
 
+    const buttons =
+        document.querySelectorAll(".option");
+
+    buttons.forEach(
+        button => button.disabled = true
+    );
 
     if (
         selected === question.answer
@@ -2007,117 +1943,115 @@ function selectAnswer(selected) {
 
         quizScore++;
 
+        buttons[selected].classList.add("correct");
+
+    } else {
+
+        buttons[selected].classList.add("wrong");
+
+        buttons[
+            question.answer
+        ].classList.add("correct");
+
     }
 
+    setTimeout(
+        () => {
 
-    currentQuestion++;
+            currentQuestion++;
 
-    showQuizQuestion();
+            showQuizQuestion();
+
+        },
+        600
+    );
+
 }
 
 
-/* =========================
-   FINISH QUIZ
-========================= */
+/* FINISH QUIZ */
 
 async function finishQuiz() {
 
     const container =
-        document.getElementById(
-            "quiz-container"
-        );
-
+        document.getElementById("quiz-container");
 
     const total =
         quizQuestions.length;
 
-
     const percentage =
-        total > 0
+        total
         ? Math.round(
             (quizScore / total) * 100
         )
         : 0;
 
-
     container.innerHTML = `
 
     <div class="score-box">
 
-        <h2>🎉 Quiz Finished!</h2>
+    <h2>🎉 Quiz Finished!</h2>
 
-        <p style="margin-top:10px;">
+    <p style="margin-top:10px;">
 
-        Score:
-        <strong>
-        ${quizScore} / ${total}
-        </strong>
+    Score:
+    <strong>
+    ${quizScore} / ${total}
+    </strong>
 
-        </p>
+    </p>
 
-        <p style="margin-top:10px;">
+    <p style="margin-top:10px;">
+    ${percentage}%
+    </p>
 
-        ${percentage}%
+    <button
+    class="next-button"
+    onclick="startQuiz()">
 
-        </p>
+    🔄 Try Again
 
-        <button
-            class="next-button"
-            onclick="startQuiz()">
-
-            🔄 Try Again
-
-        </button>
+    </button>
 
     </div>
 
     `;
 
 
-    if (!currentUser) {
+    /* SAVE RESULT */
 
-        console.log(
-            "User not logged in."
-        );
+    if (
+        supabaseClient &&
+        currentUser
+    ) {
 
-        return;
-    }
+        const { error } =
+            await supabaseClient
+            .from("quiz_results")
+            .insert({
 
+                user_id:
+                    currentUser.id,
 
-    const {
-        error
-    } = await supabaseClient
+                score:
+                    quizScore,
 
-        .from("quiz_results")
+                total:
+                    total
 
-        .insert({
+            });
 
-            user_id:
-                currentUser.id,
+        if (error) {
 
-            score:
-                quizScore,
+            console.log(
+                "Quiz save error:",
+                error.message
+            );
 
-            total:
-                total
-
-        });
-
-
-    if (error) {
-
-        console.log(
-            "Quiz save error:",
-            error.message
-        );
-
-    } else {
-
-        console.log(
-            "Quiz result saved!"
-        );
+        }
 
     }
+
 }
 
 </script>
