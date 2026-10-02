@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DeutschStart - B1 German Course</title>
+  <!-- Supabase JS Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    :root {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --accent-color: #3b82f6;
+      --accent-hover: #2563eb;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --success: #22c55e;
+      --border: #334155;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; padding: 20px; }
+
+    .container { max-width: 1000px; margin: 0 auto; }
+    
+    header { text-align: center; margin-bottom: 30px; padding: 20px; border-bottom: 1px solid var(--border); }
+    h1 { font-size: 2.2rem; margin-bottom: 8px; color: #ffffff; }
+    p.subtitle { color: var(--text-muted); font-size: 1.1rem; }
+
+    /* Dashboard Progress Bar */
+    .dashboard {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 30px;
+      border: 1px solid var(--border);
+    }
+    .progress-bar-container {
+      background-color: var(--border);
+      height: 16px;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background-color: var(--accent-color);
+      transition: width 0.3s ease;
+    }
+
+    /* Course Grid */
+    .modules-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+    
+    .module-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      transition: border-color 0.2s;
+    }
+    .module-card:hover { border-color: var(--accent-color); }
+    
+    .module-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .module-title { font-size: 1.3rem; font-weight: 600; color: #60a5fa; }
+    .badge {
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: var(--border);
+      color: var(--text-muted);
+    }
+    .badge.completed { background: #166534; color: #4ade80; }
+
+    /* Sections within module */
+    .section { margin-top: 15px; padding-top: 15px; border-top: 1px dashed var(--border); }
+    .section-title { font-weight: 600; color: #e2e8f0; margin-bottom: 8px; }
+    
+    /* Quiz & Interactive components */
+    .quiz-option {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 10px 14px;
+      margin: 6px 0;
+      background: var(--bg-color);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .quiz-option:hover { border-color: var(--accent-color); }
+
+    textarea {
+      width: 100%;
+      min-height: 80px;
+      background: var(--bg-color);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 10px;
+      border-radius: 6px;
+      margin-top: 6px;
+      resize: vertical;
+    }
+
+    .btn {
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      margin-top: 12px;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: var(--accent-hover); }
+    
+    .model-answer {
+      display: none;
+      background: #0f2942;
+      border-left: 4px solid var(--accent-color);
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+
+    @media (min-width: 768px) {
+      .container { padding: 40px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>DeutschStart 🇩🇪 — Level B1</h1>
+      <p class="subtitle">Master advanced German grammar, reading, writing, listening, and speaking</p>
+    </header>
+
+    <!-- Supabase Dashboard Progress -->
+    <div class="dashboard">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h2>B1 Dashboard & Progress</h2>
+        <span id="score-display">Completed: 0 / 15 Topics</span>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+    </div>
+
+    <!-- 15 B1 Modules Grid -->
+    <div class="modules-grid" id="modules-container">
+      
+      <!-- 1. Perfekt, Präteritum & Plusquamperfekt -->
+      <div class="module-card" id="mod-1">
+        <div class="module-header">
+          <div class="module-title">1. Perfekt, Präteritum & Plusquamperfekt</div>
+          <span class="badge" id="badge-1">Incomplete</span>
+        </div>
+        <p><strong>Lesson:</strong> <em>Plusquamperfekt</em> describes actions completed before another past event (formed with <code>hatte/war + Partizip II</code>).</p>
+        <div class="section">
+          <div class="section-title">Quiz Question</div>
+          <p>Choose the correct sentence in Plusquamperfekt:</p>
+          <button class="quiz-option" onclick="checkQuiz(1, false, this)">Nachdem er ankam, hatte er gegessen.</button>
+          <button class="quiz-option" onclick="checkQuiz(1, true, this)">Nachdem er gegessen hatte, ging er zum Bahnhof.</button>
+        </div>
+        <button class="btn" onclick="markComplete(1)">Mark Topic Complete</button>
+      </div>
+
+      <!-- 2. Konjunktiv II & Wünsche -->
+      <div class="module-card" id="mod-2">
+        <div class="module-header">
+          <div class="module-title">2. Konjunktiv II & Wünsche</div>
+          <span class="badge" id="badge-2">Incomplete</span>
+        </div>
+        <p><strong>Lesson:</strong> Use Konjunktiv II to express unreal conditions or wishes using <code>hätte</code>, <code>wäre</code>, or <code>würde + Infinitiv</code>.</p>
+        <div class="section">
+          <div class="section-title">Quiz Question</div>
+          <p>"If I had more time, I would travel."</p>
+          <button class="quiz-option" onclick="checkQuiz(2, true, this)">Wenn ich mehr Zeit hätte, würde ich reisen.</button>
+          <button class="quiz-option" onclick="checkQuiz(2, false, this)">Wenn ich mehr Zeit habe, reise ich.</button>
+        </div>
+        <button class="btn" onclick="markComplete(2)">Mark Topic Complete</button>
+      </div>
+
+      <!-- 3. Passiv -->
+      <div class="module-card" id="mod-3">
+        <div class="module-header">
+          <div class="module-title">3. Passiv</div>
+          <span class="badge" id="badge-3">Incomplete</span>
+        </div>
+        <p><strong>Lesson:</strong> Passive voice shifts focus from the doer to the action: <code>werden + Partizip II</code>.</p>
+        <div class="section">
+          <div class="section-title">Quiz Question</div>
+          <p>Passiv von: "Der Mechaniker repariert das Auto."</p>
+          <button class="quiz-option" onclick="checkQuiz(3, true, this)">Das Auto wird repariert.</button>
+          <button class="quiz-option" onclick="checkQuiz(3, false, this)">Das Auto wurde repariert.</button>
+        </div>
+        <button class="btn" onclick="markComplete(3)">Mark Topic Complete</button>
+      </div>
+
+      <!-- 4. Relativsätze -->
+      <div class="module-card" id="mod-4">
+        <div class="module-header">
+          <div class="module-title">4. Relativsätze</div>
+          <span class="badge" id="badge-4">Incomplete</span>
+        </div>
+        <p><strong>Lesson:</strong> Relative clauses provide extra details using relative pronouns that match gender and case.</p>
+        <div class="section">
+          <div class="section-title">Quiz Question</div>
+          <p>"Das ist der Mann, ___ ich gestern gesehen habe."</p>
+          <button class="quiz-option" onclick="checkQuiz(4, false, this)">der</button>
+          <button class="quiz-option" onclick="checkQuiz(4, true, this)">den</button>
+        </div>
+        <button class="btn" onclick="markComplete(4)">Mark Topic Complete</button>
+      </div>
+
+      <!-- 5. Indirekte Fragen & Aussagen -->
+      <div class="module-card" id="mod-5">
+        <div class="module-header">
+          <div class="module-title">5. Indirekte Fragen & Aussagen</div>
+          <span class="badge" id="badge-5">Incomplete</span>
+        </div>
+        <p><strong>Lesson:</strong> Indirect questions use <code>ob</code> for Yes/No questions and $W$-words for open questions.</p>
+        <button class="btn" onclick="markComplete(5)">Mark Topic Complete</button>
+      </div>
+
+      <!-- 6. N-Deklination -->
+      <div class="module-card" id="mod-6">
+        <div class="module-header">
+          <div class="module-title">6. N-Deklination</div>
+          <span class="badge" id="badge-6">Incomplete</span>
+        </div>
+        <p><strong>Lesson:</strong> Certain masculine nouns add an <code>-(e)n</code> ending in Genitive, Dative, and Accusative (e.g., <em>der Student $\rightarrow$ dem Studenten</em>).</p>
+        <button class="btn" onclick="markComplete(6)">Mark Topic Complete</button>
+      </div>
+
+      <!-- 7. Adjektivdeklination — advanced -->
+      <div class="module-card" id="mod-7">
+        <div class="module-header">
+          <div class="module-title">7. Adjektivdeklination — advanced</div>
+          <span class="badge" id="badge-7">Incomplete</span>
+        </div>
+        <p><strong>Lesson:</strong> Master comparative and superlative adjective endings across all four cases.</p>
+        <button class="btn" onclick="markComplete(7)">Mark Topic Complete</button>
+      </div>
+
+      <!-- 8. Verben mit Präpositionen & da-/wo-compounds -->
+      <div class="module-card" id="mod-8">
+        <div class="module-header">
+          <div class="module-title">8. Verben mit Präpositionen & da-/wo-compounds</div>
+          <span class="badge" id="badge-8">Incomplete</span>
+        </div>
+        <p><strong>Lesson:</strong> Use <em>darauf / worauf</em> for objects/ideas and prepositions + pronouns for people.</p>
+        <button class="btn" onclick="markComplete(8)">Mark Topic Complete</button>
+      </div>
+
+      <!-- 9. Infinitiv mit zu -->
+      <div class="module-card" id="mod-9">
+        <div class="module-header">
+          <div class="module-title">9. Infinitiv mit zu</div>
+          <span class="badge" id="badge-9">Incomplete</span>
+        </div>
+        <p><strong>Lesson:</strong> Express purpose or secondary actions with <code>um... zu</code>, <code>ohne... zu</code>, and <code>statt... zu</code>.</p>
+        <button class="btn" onclick="markComplete(9)">Mark Topic Complete</button>
+      </div>
+
+      <!-- 10. Connectors & complex sentences -->
+      <div class="module-card" id="mod-10">
+        <div class="module-header">
+          <div class="module-title">10. Connectors & complex sentences</div>
+          <span class="badge" id="badge-10">Incomplete</span>
+        </div>
+        <p><strong>Lesson:</strong> Link complex ideas using double connectors: <em>zwar ... aber</em>, <em>sowohl ... als auch</em>, <em>weder ... noch</em>.</p>
+        <button class="btn" onclick="markComplete(10)">Mark Topic Complete</button>
+      </div>
+
+      <!-- 11. Argumentieren & Meinung ausdrücken -->
+      <div class="module-card" id="mod-11">
+        <div class="module-header">
+          <div class="module-title">11. Argumentieren & Meinung ausdrücken</div>
+          <span class="badge" id="badge-11">Incomplete</span>
+        </div>
+        <p><strong>Lesson:</strong> Key phrases: <em>Meiner Meinung nach...</em>, <em>Ich bin der Überzeugung, dass...</em></p>
+        <button class="btn" onclick="markComplete(11)">Mark Topic Complete</button>
+      </div>
+
+      <!-- 12. B1 Schreiben -->
+      <div class="module-card" id="mod-12">
+        <div class="module-header">
+          <div class="module-title">12. B1 Schreiben (Writing Task)</div>
+          <span class="badge" id="badge-12">Incomplete</span>
+        </div>
+        <p><strong>Task:</strong> Write a short email (approx. 80 words) inviting a friend to a weekend trip.</p>
+        <textarea id="writing-input" placeholder="Schreiben Sie Ihre E-Mail hier..."></textarea>
+        <button class="btn" onclick="toggleModelAnswer()">Show Model Answer</button>
+        <div class="model-answer" id="model-answer">
+          <strong>Musterantwort:</strong><br>
+          Liebe Maria,<br>
+          wie geht es dir? Ich plane am Samstag einen Ausflug in die Berge und möchte dich herzlich einladen. Wir könnten um 8 Uhr morgens mit dem Zug fahren. Sag mir Bescheid, ob du Zeit hast!<br>
+          Liebe Grüße.
+        </div>
+        <br>
+        <button class="btn" onclick="markComplete(12)">Mark Topic Complete</button>
+      </div>
+
+      <!-- 13. B1 Sprechen -->
+      <div class="module-card" id="mod-13">
+        <div class="module-header">
+          <div class="module-title">13. B1 Sprechen (Speaking Practice)</div>
+          <span class="badge" id="badge-13">Incomplete</span>
+        </div>
+        <p><strong>Prompt:</strong> Plan a joint presentation with a classmate about "Umweltschutz im Alltag".</p>
+        <button class="btn" onclick="markComplete(13)">Mark Topic Complete</button>
+      </div>
+
+      <!-- 14. B1 Lesen -->
+      <div class="module-card" id="mod-14">
+        <div class="module-header">
+          <div class="module-title">14. B1 Lesen (Reading Task)</div>
+          <span class="badge" id="badge-14">Incomplete</span>
+        </div>
+        <p><strong>Text:</strong> "Immer mehr Menschen entscheiden sich für ein mobiles Arbeiten im Homeoffice..."</p>
+        <button class="btn" onclick="markComplete(14)">Mark Topic Complete</button>
+      </div>
+
+      <!-- 15. B1 Hören -->
+      <div class="module-card" id="mod-15">
+        <div class="module-header">
+          <div class="module-title">15. B1 Hören (Listening Exercises)</div>
+          <span class="badge" id="badge-15">Incomplete</span>
+        </div>
+        <p><strong>Exercise:</strong> Listen to simulated exam announcements and answer true/false prompts.</p>
+        <button class="btn" onclick="markComplete(15)">Mark Topic Complete</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Initialize Supabase (Replace with your actual Supabase URL & Key)
+    const SUPABASE_URL = "https://your-supabase-id.supabase.co";
+    const SUPABASE_ANON_KEY = "your-anon-key";
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    let completedModules = new Set();
+    const TOTAL_MODULES = 15;
+
+    // Load progress from Supabase on load
+    async function loadProgress() {
+      try {
+        const { data, error } = await supabase
+          .from('lesson_progress')
+          .select('lesson_id')
+          .eq('level', 'B1');
+
+        if (error) console.error('Error fetching Supabase progress:', error);
+        if (data) {
+          data.forEach(row => {
+            completedModules.add(row.lesson_id);
+            updateUI(row.lesson_id);
+          });
+          updateDashboard();
+        }
+      } catch (err) {
+        console.log('Supabase connection offline or not configured yet.');
+      }
+    }
+
+    // Save progress using existing tables with level: "B1"
+    async function markComplete(lessonId) {
+      completedModules.add(lessonId);
+      updateUI(lessonId);
+      updateDashboard();
+
+      try {
+        await supabase
+          .from('lesson_progress')
+          .upsert({ 
+            lesson_id: lessonId, 
+            level: 'B1', 
+            completed: true, 
+            updated_at: new Date() 
+          });
+      } catch (err) {
+        console.error('Failed to sync with Supabase:', err);
+      }
+    }
+
+    function checkQuiz(lessonId, isCorrect, btnElement) {
+      if (isCorrect) {
+        btnElement.style.backgroundColor = '#166534';
+        btnElement.innerText += "  ✓ Correct!";
+        // Record quiz result to quiz_results table
+        supabase.from('quiz_results').insert({
+          lesson_id: lessonId,
+          level: 'B1',
+          score: 100,
+          created_at: new Date()
+        });
+      } else {
+        btnElement.style.backgroundColor = '#991b1b';
+        btnElement.innerText += "  ✕ Try again";
+      }
+    }
+
+    function toggleModelAnswer() {
+      const el = document.getElementById('model-answer');
+      el.style.display = el.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function updateUI(lessonId) {
+      const badge = document.getElementById(`badge-${lessonId}`);
+      if (badge) {
+        badge.classList.add('completed');
+        badge.innerText = 'Completed ✓';
+      }
+    }
+
+    function updateDashboard() {
+      const count = completedModules.size;
+      const percent = (count / TOTAL_MODULES) * 100;
+      document.getElementById('progress-bar').style.width = percent + '%';
+      document.getElementById('score-display').innerText = `Completed: ${count} / ${TOTAL_MODULES} Topics`;
+    }
+
+    window.onload = loadProgress;
+  </script>
+</body>
+</html>
